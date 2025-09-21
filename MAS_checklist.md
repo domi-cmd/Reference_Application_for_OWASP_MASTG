@@ -56,24 +56,47 @@
 |  | [0250](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0250/) | References to Content Provider Access in WebViews | - | Normal |
 |  | [0251](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0251/) | Runtime Use of Content Provider Access APIs in WebViews | - | Normal |
 |  | [0252](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0252/) | References to Local File Access in WebViews | - | Normal |
-|  | [0253](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0253/)x | Runtime Use of Local File Access APIs in WebViews | - | Normal |
+|  | [0253](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0253/) | Runtime Use of Local File Access APIs in WebViews | - | Normal |
 |  | [0258](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0258/) | References to Keyboard Caching Attributes in UI Elements | - | Normal |
 |  | [0289](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0289/) | Runtime Verification of Sensitive Content Exposure in Screenshots During App Backgrounding | - | Normal |
 |  | [0291](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0291/) | References to Screen Capturing Prevention APIs | - | Normal |
 |  | [0292](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0292/) | `setRecentsScreenshotEnabled` Not Used to Prevent Screenshots When Backgrounded | - | MISSING IMPLEMENTATION |
 |  | [0293](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0293/) | `setSecure` Not Used to Prevent Screenshots in SurfaceViews | - | MISSING IMPLEMENTATION |
 |  | [0294](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0294/) | `SecureOn` Not Used to Prevent Screenshots in Compose Dialogs | - | MISSING IMPLEMENTATION |
-
-
 | MASVS-CODE |  |  |  |  |
-|  | 0 | xyz | - | Normal |
-|  | 0 | xyz | - | Normal |
-
+|  | [0002](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0002/) | Testing Local Storage for Input Validation | - | Updated Soon |
+|  | [0025](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0025/) | Testing for Injection Flaws | - | Updated Soon |
+|  | [0026](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0026/) | Testing Implicit Intents | - | Updated Soon |
+|  | [0027](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0027/) | Testing for URL Loading in WebViews | - | Updated Soon |
+|  | [0034](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0034/) | Testing Object Persistence | - | Updated Soon |
+|  | [0036](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0036/) | Testing Enforced Updating | - | Updated Soon |
+|  | [0043](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0043/) | Memory Corruption Bugs | - | Updated Soon |
+|  | [0222](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0222/) | Position Independent Code (PIC) Not Enabled | - | Normal |
+|  | [0223](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0223/) | Stack Canaries Not Enabled | - | Normal |
+|  | [0245](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0245/) | References to Platform Version APIs | - | Normal |
+|  | [0272](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0272/) | Identify Dependencies with Known Vulnerabilities in the Android Project | - | Normal |
+|  | [0274](https://mas.owasp.org/MASTG/tests/android/MASVS-CODE/MASTG-TEST-0274/) | Dependencies with Known Vulnerabilities in the App's SBOM | - | Normal |
 | MASVS-RESILIENCE |  |  |  |  |
-|  | 0 | xyz | - | Normal |
-|  | 0 | xyz | - | Normal |
-
+|  | [0045](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0045/) | Testing Root Detection | - | Updated Soon |
+|  | [0046](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0046/) | Testing Anti-Debugging Detection | - | Updated Soon |
+|  | [0047](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0047/) | Testing File Integrity Checks | - | Updated Soon |
+|  | [0048](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0048/) | Testing Reverse Engineering Tools Detection | - | Updated Soon |
+|  | [0049](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0049/) | Testing Emulator Detection | - | Updated Soon |
+|  | [0050](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0050/) | Testing Runtime Integrity Checks | - | Updated Soon |
+|  | [0051](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0051/) | Testing Obfuscation | - | Updated Soon |
+|  | [0224](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0224/) | Usage of Insecure Signature Version | - | Normal |
+|  | [0225](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0225/) | Usage of Insecure Signature Key Size | - | Normal |
+|  | [0226](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0226/) | Debuggable Flag Enabled in the AndroidManifest | - | Normal |
+|  | [0227](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0227/) | Debugging Enabled for WebViews | - | Normal |
+|  | [0247](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0247/) | References to APIs for Detecting Secure Screen Lock | - | Normal |
+|  | [0249](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0249/) | Runtime Use of Secure Screen Lock Detection APIs | - | Normal |
+|  | [0263](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0263/) | Logging of StrictMode Violations | - | Normal |
+|  | [0264](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0264/) | Runtime Use of StrictMode APIs | - | Normal |
+|  | [0265](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0265/) | References to StrictMode APIs | - | Normal |
+|  | [0288](https://mas.owasp.org/MASTG/tests/android/MASVS-RESILIENCE/MASTG-TEST-0288/) | Debugging Symbols in Native Binaries | - | Normal |
 | MASVS-PRIVACY |  |  |  |  |
-|  | 0 | xyz | - | Normal |
-|  | 0 | xyz | - | Normal |
-
+|  | [0206](https://mas.owasp.org/MASTG/tests/android/MASVS-PRIVACY/MASTG-TEST-0206/) | Sensitive Data in Network Traffic Capture | - | Normal |
+|  | [0254](https://mas.owasp.org/MASTG/tests/android/MASVS-PRIVACY/MASTG-TEST-0254/) | Dangerous App Permissions | - | Normal |
+|  | [0255](https://mas.owasp.org/MASTG/tests/android/MASVS-PRIVACY/MASTG-TEST-0255/) | Permission Requests Not Minimized | - | MISSING IMPLEMENTATION |
+|  | [0256](https://mas.owasp.org/MASTG/tests/android/MASVS-PRIVACY/MASTG-TEST-0256/) | Missing Permission Rationale | - | MISSING IMPLEMENTATION |
+|  | [0257](https://mas.owasp.org/MASTG/tests/android/MASVS-PRIVACY/MASTG-TEST-0257/) | Not Resetting Unused Permissions | - | MISSING IMPLEMENTATION |

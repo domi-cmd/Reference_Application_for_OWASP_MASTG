@@ -14,23 +14,51 @@
 |  | [0231](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0231/) | References to Logging APIs | - | Normal |
 |  | [0262](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0262/) | References to Backup Configurations Not Excluding Sensitive Data | - | Normal |
 | MASVS-CRYPTO |  |  |  |  |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
+|  | [0014](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0014/) | Testing the Configuration of Cryptographic Standard Algorithms | - | Updated Soon |
+|  | [0015](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0015/) | Testing the Purposes of Keys | - | Updated Soon |
+|  | [0204](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0204/) | Insecure Random API Usage | - | Normal |
+|  | [0205](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0205/) | Non-random Sources Usage | - | Normal |
+|  | [0208](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0208/) | Insufficient Key Sizes | - | Normal |
+|  | [0208](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0212/) | Use of Hardcoded Cryptographic Keys in Code | - | Normal |
+|  | [0221](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0221/) | Broken Symmetric Encryption Algorithms | - | Normal |
+|  | [0232](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0232/) | Broken Symmetric Encryption Modes | - | Normal |
 | MASVS-AUTH |  |  |  |  |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
+|  | [0017](https://mas.owasp.org/MASTG/tests/android/MASVS-AUTH/MASTG-TEST-0017/) | https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0232/ | - | Updated Soon |
+|  | [0018](https://mas.owasp.org/MASTG/tests/android/MASVS-AUTH/MASTG-TEST-0018/) | Testing Biometric Authentication | - | Updated Soon |
 | MASVS-NETWORK |  |  |  |  |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
+|  | [0217](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0217/) | Insecure TLS Protocols Explicitly Allowed in Code | - | Normal |
+|  | [0218](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0218/) | Insecure TLS Protocols in Network Traffic | - | Normal |
+|  | [0233](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0233/) | Hardcoded HTTP URLs | - | Normal |
+|  | [0234](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0234/) | Missing Implementation of Server Hostname Verification with SSLSockets | - | Normal |
+|  | [0235](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0235/) | Android App Configurations Allowing Cleartext Traffic | - | Normal |
+|  | [0236](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0236/) | Cleartext Traffic Observed on the Network | - | Normal |
+|  | [0237](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0237/) | Cross-Platform Framework Configurations Allowing Cleartext Traffic | - | MISSING IMPLEMENTATION |
+|  | [0238](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0238/) | Runtime Use of Network APIs Transmitting Cleartext Traffic | - | MISSING IMPLEMENTATION |
+|  | [0239](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0239/) | Using low-level APIs (e.g. Socket) to set up a custom HTTP connection | - | MISSING IMPLEMENTATION |
+|  | [0242](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0242/) | Missing Certificate Pinning in Network Security Configuration | - | Normal |
+|  | [0243](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0243/) | Expired Certificate Pins in the Network Security Configuration | - | Normal |
+|  | [0244](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0244/) | Missing Certificate Pinning in Network Traffic | - | Normal |
+|  | [0282](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0282/) | Unsafe Custom Trust Evaluation | - | Normal |
+|  | [0283](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0283/) | Incorrect Implementation of Server Hostname Verification | - | Normal |
+|  | [0284](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0284/) | Incorrect SSL Error Handling in WebViews | - | Normal |
+|  | [0285](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0285/) | Outdated Android Version Allowing Trust in User-Provided CAs | - | Normal |
+|  | [0286](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0286/) | Network Security Configuration Allowing Trust in User-Provided CAs | - | Normal |
+|  | [0295](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0295/) | GMS Security Provider Not Updated | - | Normal |
+
+
 | MASVS-PLATFORM |  |  |  |  |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
+|  | 0 | xyz | - | Normal |
+|  | 0 | xyz | - | Normal |
+
 | MASVS-CODE |  |  |  |  |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
+|  | 0 | xyz | - | Normal |
+|  | 0 | xyz | - | Normal |
+
 | MASVS-RESILIENCE |  |  |  |  |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
+|  | 0 | xyz | - | Normal |
+|  | 0 | xyz | - | Normal |
+
 | MASVS-PRIVACY |  |  |  |  |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
-|  | [0200](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0200/) | xyz | - | Normal |
+|  | 0 | xyz | - | Normal |
+|  | 0 | xyz | - | Normal |
+

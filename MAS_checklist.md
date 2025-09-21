@@ -23,7 +23,7 @@
 |  | [0221](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0221/) | Broken Symmetric Encryption Algorithms | - | Normal |
 |  | [0232](https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0232/) | Broken Symmetric Encryption Modes | - | Normal |
 | MASVS-AUTH |  |  |  |  |
-|  | [0017](https://mas.owasp.org/MASTG/tests/android/MASVS-AUTH/MASTG-TEST-0017/) | https://mas.owasp.org/MASTG/tests/android/MASVS-CRYPTO/MASTG-TEST-0232/ | - | Updated Soon |
+|  | [0017](https://mas.owasp.org/MASTG/tests/android/MASVS-AUTH/MASTG-TEST-0017/) | Testing Confirm Credentials | - | Updated Soon |
 |  | [0018](https://mas.owasp.org/MASTG/tests/android/MASVS-AUTH/MASTG-TEST-0018/) | Testing Biometric Authentication | - | Updated Soon |
 | MASVS-NETWORK |  |  |  |  |
 |  | [0217](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0217/) | Insecure TLS Protocols Explicitly Allowed in Code | - | Normal |
@@ -44,11 +44,26 @@
 |  | [0285](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0285/) | Outdated Android Version Allowing Trust in User-Provided CAs | - | Normal |
 |  | [0286](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0286/) | Network Security Configuration Allowing Trust in User-Provided CAs | - | Normal |
 |  | [0295](https://mas.owasp.org/MASTG/tests/android/MASVS-NETWORK/MASTG-TEST-0295/) | GMS Security Provider Not Updated | - | Normal |
-
-
 | MASVS-PLATFORM |  |  |  |  |
-|  | 0 | xyz | - | Normal |
-|  | 0 | xyz | - | Normal |
+|  | [0007](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0007/) | Determining Whether Sensitive Stored Data Has Been Exposed via IPC Mechanisms | - | Normal |
+|  | [0008](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0008/) | Checking for Sensitive Data Disclosure Through the User Interface | - | Normal |
+|  | [0028](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0028/) | Testing Deep Links | - | Updated Soon |
+|  | [0029](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0029/) | Testing for Sensitive Functionality Exposure Through IPC | - | Updated Soon |
+|  | [0030](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0030/) | Testing for Vulnerable Implementation of PendingIntent | - | Updated Soon |
+|  | [0033](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0033/) | Testing for Java Objects Exposed Through WebViews | - | Updated Soon |
+|  | [0035](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0035/) | Testing for Overlay Attacks | - | Updated Soon |
+|  | [0037](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0037/) | Testing WebViews Cleanup | - | Updated Soon |
+|  | [0250](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0250/) | References to Content Provider Access in WebViews | - | Normal |
+|  | [0251](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0251/) | Runtime Use of Content Provider Access APIs in WebViews | - | Normal |
+|  | [0252](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0252/) | References to Local File Access in WebViews | - | Normal |
+|  | [0253](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0253/)x | Runtime Use of Local File Access APIs in WebViews | - | Normal |
+|  | [0258](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0258/) | References to Keyboard Caching Attributes in UI Elements | - | Normal |
+|  | [0289](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0289/) | Runtime Verification of Sensitive Content Exposure in Screenshots During App Backgrounding | - | Normal |
+|  | [0291](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0291/) | References to Screen Capturing Prevention APIs | - | Normal |
+|  | [0292](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0292/) | `setRecentsScreenshotEnabled` Not Used to Prevent Screenshots When Backgrounded | - | MISSING IMPLEMENTATION |
+|  | [0293](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0293/) | `setSecure` Not Used to Prevent Screenshots in SurfaceViews | - | MISSING IMPLEMENTATION |
+|  | [0294](https://mas.owasp.org/MASTG/tests/android/MASVS-PLATFORM/MASTG-TEST-0294/) | `SecureOn` Not Used to Prevent Screenshots in Compose Dialogs | - | MISSING IMPLEMENTATION |
+
 
 | MASVS-CODE |  |  |  |  |
 |  | 0 | xyz | - | Normal |

@@ -146,8 +146,7 @@ Identify trends (e.g., most apps are for education, few cover cryptography issue
 
 Highlight gaps (e.g., lack of long-term maintenance, limited real-world realism).
 
-This SLR protocol doesn’t have to be super formal at bachelor level, but even a shortened version (RQ + search strategy + inclusion criteria 
-+ summary table) will impress my supervisor because it shows rigor.
+This SLR protocol doesn’t have to be super formal at bachelor level, but even a shortened version (RQ + search strategy + inclusion criteria + summary table) will impress my supervisor because it shows rigor.
 
 
 

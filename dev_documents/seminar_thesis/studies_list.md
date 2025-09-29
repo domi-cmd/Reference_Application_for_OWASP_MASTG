@@ -1,6 +1,19 @@
 # List of interesting studies related to android apps vulnerable by design
 
-# Concerning OWASP:
+# Concerning OWASP (building apps):
+
+[Development of Vulnerable Web Application Based on OWASP API Security Risks](https://ieeexplore.ieee.org/abstract/document/9593934?casa_token=uci8K-Ek46YAAAAA:CDFMC6xsXnINcpbF8jKN-cb7NsQunKriL1ZGSeT2LosXLqh9-wXfobsPMKFc_bhkwY0knBzm6w)
+
+[Application for Simulating OWASP Vulnerabilities](https://link.springer.com/chapter/10.1007/978-981-99-5435-3_8)
+([Exerp](https://books.google.ch/books?hl=de&lr=&id=rQDsEAAAQBAJ&oi=fnd&pg=PA112&dq=simulating+owasp+vulnerabilities&ots=lEVB4Ous46&sig=X2NDlGYleFQS5o2RT2DywKI8XSg&redir_esc=y#v=onepage&q=simulating%20owasp%20vulnerabilities&f=false))
+
+[Teaching Android Security Through Examples: A Publicly Available Database of Vulnerable Apps](https://dl.acm.org/doi/pdf/10.1145/2994152?casa_token=IXnewaTd9LIAAAAA:RqdtUUYrheu5So6zxwZzJI47ftq93nKGbj_UHb8xu6cZHus1GBQVr-5oxafKmAeMbfBRopto1Q)
+
+[Educational System for Demonstrating Remote Attacks on Android Devices](https://link.springer.com/chapter/10.1007/978-3-031-50755-7_28)
+
+# Otherwise OWASP:
+
+[Mobile Application Security Penetration Testing Based on OWASP](https://iopscience.iop.org/article/10.1088/1757-899X/846/1/012036/meta)
 
 [Evaluating Mobile Banking Application Security Posture Using the OWASP’s MASVS Framework](https://dl.acm.org/doi/abs/10.1145/3588001.3609367)
 

@@ -16,23 +16,20 @@ https://github.com/Ostorlab/benchmarks
 
 
 
-chatgpt antwort: 
-----------------------
-
 A systematic literature review (SLR) is a structured, methodical way of surveying existing research on a topic. Instead of just collecting and 
-summarizing papers you find, it follows a rigorous process to ensure that:
+summarizing papers I find, it follows a rigorous process to ensure that:
 
-The search is comprehensive and reproducible – you define search terms, databases (like IEEE Xplore, ACM DL, Springer, Google Scholar), and 
-inclusion/exclusion criteria, so someone else could repeat your review.
+The search is comprehensive and reproducible – I define search terms, databases (like IEEE Xplore, ACM DL, Springer, Google Scholar), and 
+inclusion/exclusion criteria, so someone else could repeat my review.
 
-Paper selection is transparent – you state why you included or excluded specific studies (e.g., only papers after 2010, only peer-reviewed, only 
+Paper selection is transparent – I state why I included or excluded specific studies (e.g., only papers after 2010, only peer-reviewed, only 
 about Android security).
 
-Data extraction is systematic – you extract consistent information from each study (like methodology, results, limitations).
+Data extraction is systematic – I extract consistent information from each study (like methodology, results, limitations).
 
-Synthesis is structured – instead of just summarizing, you categorize and compare the studies to identify trends, gaps, and consensus in the field.
+Synthesis is structured – instead of just summarizing, I categorize and compare the studies to identify trends, gaps, and consensus in the field.
 
-In your case—building Android apps that are vulnerable by design—an SLR would mean:
+In my case—building Android apps that are vulnerable by design—an SLR would mean:
 
 Defining research questions, e.g.,
 
@@ -50,10 +47,7 @@ Creating a table with key details of each relevant work (year, scope, vulnerabil
 
 Writing the related work section based on that structured comparison.
 
-It’s basically about making your literature review methodical and defendable, not just “here are some papers I found.”
-
-👉 Do you want me to sketch out how an SLR protocol (the step-by-step plan) might look for your thesis topic? That could help you quickly set 
-it up in a way your supervisor will appreciate.
+It’s basically about making my literature review methodical and defendable, not just “here are some papers I found.”
 
 
 
@@ -61,8 +55,8 @@ it up in a way your supervisor will appreciate.
 
 
 
-Great! Here’s a sketch of a Systematic Literature Review (SLR) protocol tailored to your bachelor thesis topic (Android apps vulnerable by design). This is 
-usually what you’d document in your methodology section before actually doing the review:
+Here’s a sketch of a Systematic Literature Review (SLR) protocol tailored to my bachelor thesis topic (Android apps vulnerable by design). This is 
+usually what I’d document in my methodology section before actually doing the review:
 
 1. Define Research Questions (RQs)
 
@@ -153,10 +147,7 @@ Identify trends (e.g., most apps are for education, few cover cryptography issue
 Highlight gaps (e.g., lack of long-term maintenance, limited real-world realism).
 
 This SLR protocol doesn’t have to be super formal at bachelor level, but even a shortened version (RQ + search strategy + inclusion criteria 
-+ summary table) will impress your supervisor because it shows rigor.
-
-👉 Do you want me to draft an example summary table (like a template you can fill in as you read papers)? That could go directly into your related 
-work section.
++ summary table) will impress my supervisor because it shows rigor.
 
 
 
@@ -164,7 +155,7 @@ work section.
 
 
 
-Perfect! Here’s a **template for a summary table** for your systematic literature review on intentionally vulnerable Android apps. You can fill it in as you go through each paper:
+Here’s a **template for a summary table** for my systematic literature review on intentionally vulnerable Android apps. I can fill it in as I go through each paper:
 
 | No. | Paper / Source       | Year | Vulnerable App / Tool              | Purpose / Use Case              | Vulnerabilities Covered                      | Evaluation / Methodology             | Notes / Limitations                         |
 | --- | -------------------- | ---- | ---------------------------------- | ------------------------------- | -------------------------------------------- | ------------------------------------ | ------------------------------------------- |
@@ -184,14 +175,12 @@ Perfect! Here’s a **template for a summary table** for your systematic literat
 7. **Evaluation / Methodology:** How the app/tool’s effectiveness was assessed.
 8. **Notes / Limitations:** Anything important to highlight, like gaps or restrictions.
 
-Once filled, you can **analyze trends** in your related work section:
+Once filled, I can **analyze trends** in my related work section:
 
 * Which apps are most cited?
 * Which vulnerabilities are commonly covered?
 * Which purposes dominate the field?
-* What gaps exist that your work might address?
-
-I can also **draft a filled example with 5–6 real Android vulnerable apps** so your related work section would almost write itself. Do you want me to do that next?
+* What gaps exist that my work might address?
 
 
 
@@ -199,9 +188,8 @@ I can also **draft a filled example with 5–6 real Android vulnerable apps** so
 
 
 
-Perfect — that makes your SLR very focused. Since your **research question (RQ)** is about the **state of the art of current “vulnerable-by-design” 
-Android apps**, the SLR should aim to **systematically map what apps exist, what vulnerabilities they cover, and how they’re used**. Here’s how you 
-can adapt the previous table and methodology specifically for your RQ:
+Since my **research question (RQ)** is about the **state of the art of current “vulnerable-by-design” Android apps**, the SLR should aim to **systematically map what apps exist, what vulnerabilities they cover, and how they’re used**. Here’s how I 
+can adapt the previous table and methodology specifically for my RQ:
 
 ---
 
@@ -231,9 +219,9 @@ Sub-questions could be:
 
 ---
 
-### 3. How This Serves Your RQ
+### 3. How This Serves my RQ
 
-* **Mapping the landscape:** You can visually and textually summarize which apps exist.
+* **Mapping the landscape:** I can visually and textually summarize which apps exist.
 * **Coverage analysis:** Compare which vulnerabilities are commonly included and which are rare.
 * **Purpose analysis:** Show whether the focus is on teaching, research, or testing.
 * **Gap identification:** Highlight missing coverage (e.g., few apps for IoT-related Android apps, weak crypto coverage, outdated frameworks).
@@ -242,14 +230,9 @@ Sub-questions could be:
 
 ### 4. Tips for Writing the Related Work Section
 
-1. Start by **briefly explaining your SLR methodology** (databases searched, keywords, inclusion/exclusion criteria).
+1. Start by **briefly explaining my SLR methodology** (databases searched, keywords, inclusion/exclusion criteria).
 2. Introduce the table, highlighting trends and notable apps.
-3. Discuss patterns you observe: e.g., “Most vulnerable-by-design apps target education, with limited focus on penetration testing beyond simulated 
+3. Discuss patterns I observe: e.g., “Most vulnerable-by-design apps target education, with limited focus on penetration testing beyond simulated 
 banking apps.”
-4. Conclude with a **gap statement**, which can naturally lead into your own contribution: e.g., “No current app offers a comprehensive set of modern 
+4. Conclude with a **gap statement**, which can naturally lead into my own contribution: e.g., “No current app offers a comprehensive set of modern 
 Android vulnerabilities for both education and research, motivating this work.”
-
----
-
-If you want, I can **draft a filled table of 5–7 real “vulnerable-by-design” Android apps** with their purposes and vulnerabilities — this would give 
-you a strong starting point for your related work section. Do you want me to do that?

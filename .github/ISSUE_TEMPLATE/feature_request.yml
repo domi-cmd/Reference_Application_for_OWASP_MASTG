@@ -1,0 +1,32 @@
+name: 💡 Feature Request
+description: Suggest a new feature, improvement, or experiment idea
+title: "[FEATURE] <short summary>"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest a new feature or improvement for your thesis project.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      placeholder: "Add a visualization tool for results"
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation / Rationale
+      description: Why is this feature important for your thesis or research?
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution
+      description: Describe how you’d like to implement it
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Low
+        - Medium
+        - High

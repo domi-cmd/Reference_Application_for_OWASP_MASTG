@@ -1,0 +1,32 @@
+name: 📚 Research Task
+description: Track a specific research or thesis-related task
+title: "[TASK] <short summary>"
+labels: ["research", "task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to document a specific research or writing task.
+  - type: input
+    id: objective
+    attributes:
+      label: Objective
+      description: What is the goal of this task?
+      placeholder: "Conduct literature review on X"
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Add any relevant details, notes, or subtasks
+      placeholder: |
+        - Read papers A, B, C
+        - Summarize findings
+        - Identify research gaps
+  - type: dropdown
+    id: status
+    attributes:
+      label: Current Status
+      options:
+        - Not started
+        - In progress
+        - Completed

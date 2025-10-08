@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.app_01"
+    namespace = "com.dkronig.app_01"
     compileSdk = 35
 
     defaultConfig {

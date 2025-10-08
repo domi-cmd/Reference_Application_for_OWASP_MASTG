@@ -1,4 +1,4 @@
-package com.example.app_01;
+package com.dkronig.app_01;
 
 import android.content.Context;
 

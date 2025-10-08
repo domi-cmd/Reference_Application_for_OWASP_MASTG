@@ -7,7 +7,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.app_01"
+        applicationId = "com.dkronig.app_01"
         minSdk = 35
         targetSdk = 35
         versionCode = 1

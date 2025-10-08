@@ -1,25 +1,38 @@
 package com.dkronig.app_01;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
     // Define UI elements
     private Button main_menu_button;
+    private EditText et_email, et_password;
+    private Button register_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set the layout of the activity
         setContentView(R.layout.activity_register);
 
+        // Instantiate the UI elements
         main_menu_button = findViewById(R.id.main_menu_button);
+        et_email = findViewById(R.id.et_email);
+        et_password = findViewById(R.id.et_password);
+        register_button = findViewById(R.id.register_button);
 
-        // Add listeners to buttons
+        // Add listener to button main menu button
         main_menu_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -28,7 +41,38 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        // Add a listener to the register button
+        register_button.setOnClickListener(v -> registerUser());
+    }
 
+    private void registerUser(){
+        // Extract and store users email and password
+        String user_email = et_email.getText().toString().trim();
+        String user_password = et_password.getText().toString().trim();
+
+        SharedPreferences shared_prefs = getSharedPreferences("my_app_prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = shared_prefs.edit();
+        // Store plaintext strings (unsafe)
+        editor.putString("user_email", user_email);
+        editor.putString("user_password", user_password);
+        editor.apply();
+
+        // Log user credentials to system logs (unsafe) (System Logs)
+        Log.d("[REGISTER ACTIVITY]", "New User registered");
+        Log.d("[REGISTER ACTIVITY", "User E-Mail: "+ user_email);
+        Log.d("[REGISTER ACTIVITY", "User Password: " + user_password);
+
+        // Logging sensitive data to a file in app's data directory (App Logs)
+        try {
+            File logFile = new File(getFilesDir(), "login_logs.txt");
+            FileWriter writer = new FileWriter(logFile, true);
+            writer.append("Login - Username: " + user_email + ", Password: " + user_password + "\n");
+            writer.close();
+            Log.d("[REGISTER ACTIVITY", "Logged credentials to app logs");
+        } catch (IOException e) {
+            // System log incase the app logging did not work
+            Log.e("[REGISTER ACTIVITY]", "Error writing to log file: " + e.getMessage());
+        }
 
     }
 }

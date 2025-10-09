@@ -1,11 +1,11 @@
-# Vulnerabilities Implemented: 0 / 93
+# Vulnerabilities Implemented: 1 / X
 
 # Checklist
 
 | Category | # | Description | Implementation-Status | MAS-Status |
 |----------|----------|----------|----------|----------|
 | STORAGE |  |  |  |  |
-|  | [0001](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0001/) | Insertion of Sensitive Data into Logs | ❌ | Exists |
+|  | [0001](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0001/) | Insertion of Sensitive Data into Logs | ✅ | Exists |
 |  | [0002](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0002/) | Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations |❌| Placeholder |
 |  | [0003](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0003/) | Backup Unencrypted |❌| Placeholder |
 |  | [0004](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0004/) | Sensitive Data Not Excluded From Backup |❌| Exists |

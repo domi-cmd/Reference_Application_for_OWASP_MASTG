@@ -18,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button main_menu_button;
     private EditText et_email, et_password;
     private Button register_button;
+    private static final String TAG = "[REGISTER ACTIVITY]";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +70,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void userDataToSystemLogs(String user_email, String user_password){
         // Log user credentials to system logs (unsafe) (System Logs)
-        Log.d("[REGISTER ACTIVITY]", "New User registered");
-        Log.d("[REGISTER ACTIVITY", "User E-Mail: "+ user_email);
-        Log.d("[REGISTER ACTIVITY", "User Password: " + user_password);
+        Log.d(TAG, "New User registered");
+        Log.d(TAG, "User E-Mail: "+ user_email);
+        Log.d(TAG, "User Password: " + user_password);
     }
 
     private void userDataToAppLogs(String user_email, String user_password){
@@ -81,10 +82,10 @@ public class RegisterActivity extends AppCompatActivity {
             FileWriter writer = new FileWriter(logFile, true);
             writer.append("Login - Username: " + user_email + ", Password: " + user_password + "\n");
             writer.close();
-            Log.d("[REGISTER ACTIVITY", "Logged credentials to app logs");
+            Log.d(TAG, "Logged credentials to app logs");
         } catch (IOException e) {
             // System log incase the app logging did not work
-            Log.e("[REGISTER ACTIVITY]", "Error writing to log file: " + e.getMessage());
+            Log.e(TAG, "Error writing to log file: " + e.getMessage());
         }
     }
 }

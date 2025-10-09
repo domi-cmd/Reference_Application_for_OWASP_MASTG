@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 1 / 115
+# Vulnerabilities Implemented: 2 / 115
 
 # Checklist
 
@@ -8,7 +8,7 @@
 |  | [0001](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0001/) | Insertion of Sensitive Data into Logs | ✅ [Here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/main/apps/app_01/app/src/main/java/com/dkronig/app_01/RegisterActivity.java#L71-L90) | Beta |
 |  | [0002](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0002/) | Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations |❌| Placeholder |
 |  | [0003](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0003/) | Backup Unencrypted |❌| Placeholder |
-|  | [0004](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0004/) | Sensitive Data Not Excluded From Backup |❌| Beta |
+|  | [0004](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0004/) | Sensitive Data Not Excluded From Backup |✅ [Here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/main/apps/app_01/app/src/main/res/xml/backup_rules.xml#L5-L8) [Here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/main/apps/app_01/app/src/main/AndroidManifest.xml#L6-L7) | Beta |
 |  | [0006](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0006/) | Sensitive Data Stored Unencrypted in Private Storage Locations |❌| Beta |
 |  | [0007](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0007/) | Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |❌| Beta |
 | CRYPTO |  |  |  |  |

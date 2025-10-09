@@ -1,5 +1,6 @@
 package com.dkronig.app_01;
 
+import android.app.Activity;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
@@ -26,26 +27,16 @@ public class MainActivity extends AppCompatActivity {
         settings_button = findViewById(R.id.settings_button);
 
         // Add listeners to buttons
-        login_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-        register_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-        settings_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
+        addListener(login_button, LoginActivity.class);
+        addListener(register_button, RegisterActivity.class);
+        addListener(settings_button, SettingsActivity.class);
+    }
+
+
+    private void addListener(Button button, Class<? extends Activity> targetActivityClass){
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, targetActivityClass);
+            startActivity(intent);
         });
     }
 }

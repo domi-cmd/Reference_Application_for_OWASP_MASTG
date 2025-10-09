@@ -60,14 +60,28 @@
 |  | [0051](https://mas.owasp.org/MASWE/MASVS-NETWORK/MASWE-0051/) | Unprotected Open Ports |❌| Beta |
 |  | [0052](https://mas.owasp.org/MASWE/MASVS-NETWORK/MASWE-0052/) | Insecure Certificate Validation |❌| Beta |
 | PLATFORM |  |  |  |  |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
+|  | [0053](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0053/) | Sensitive Data Leaked via the User Interface |❌| Placeholder |
+|  | [0054](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0054/) | Sensitive Data Leaked via Notifications |❌| Placeholder |
+|  | [0055](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0055/) | Sensitive Data Leaked via Screenshots |❌| Placeholder |
+|  | [0056](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0056/) | Tapjacking Attacks |❌| Placeholder |
+|  | [0057](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0057/) | StrandHogg Attack / Task Affinity Vulnerability |❌| Placeholder |
+|  | [0058](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0058/) | Insecure Deep Links |❌| Placeholder |
+|  | [0059](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0059/) | Use Of Unauthenticated Platform IPC |❌| Placeholder |
+|  | [0060](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0060/) | Insecure Use of UIActivity |❌| Placeholder |
+|  | [0061](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0061/) | Insecure Use of App Extensions |❌| Placeholder |
+|  | [0062](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0062/) | Insecure Services |❌| Placeholder |
+|  | [0063](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0063/) | Insecure Broadcast Receivers |❌| Placeholder |
+|  | [0064](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0064/) | Insecure Content Providers |❌| Placeholder |
+|  | [0065](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0065/) | Sensitive Data Permanently Shared with Other Apps |❌| Placeholder |
+|  | [0066](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0066/) | Insecure Intents |❌| Placeholder |
+|  | [0067](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0067/) | Debuggable Flag Not Disabled |❌| Beta |
+|  | [0068](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0068/) | JavaScript Bridges in WebViews |❌| Placeholder |
+|  | [0069](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0069/) | WebViews Allows Access to Local Resources |❌| Placeholder |
+|  | [0070](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0070/) | JavaScript Loaded from Untrusted Sources |❌| Placeholder |
+|  | [0071](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0071/) | WebViews Loading Content from Untrusted Sources |❌| Placeholder |
+|  | [0072](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0072/) | Universal XSS |❌| Placeholder |
+|  | [0073](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0073/) | Insecure WebResourceResponse Implementations |❌| Placeholder |
+|  | [0074](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0074/) | Web Content Debugging Enabled |❌| Placeholder |
 | CODE |  |  |  |  |
 |  | Number | Description |❌| Placeholder |
 |  | Number | Description |❌| Placeholder |

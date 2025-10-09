@@ -50,18 +50,31 @@ public class RegisterActivity extends AppCompatActivity {
         String user_email = et_email.getText().toString().trim();
         String user_password = et_password.getText().toString().trim();
 
+        // Add user credentials to apps shared preferences
+        userDataToSharedPreferences(user_email, user_password);
+        // Log user credentials to system logs (unsafe) (System Logs)
+        userDataToSystemLogs(user_email, user_password);
+        // Logging sensitive data to a file in app's data directory (App Logs)
+        userDataToAppLogs(user_email, user_password);
+    }
+
+    private void userDataToSharedPreferences(String user_email, String user_password){
         SharedPreferences shared_prefs = getSharedPreferences("my_app_prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = shared_prefs.edit();
         // Store plaintext strings (unsafe)
         editor.putString("user_email", user_email);
         editor.putString("user_password", user_password);
         editor.apply();
+    }
 
+    private void userDataToSystemLogs(String user_email, String user_password){
         // Log user credentials to system logs (unsafe) (System Logs)
         Log.d("[REGISTER ACTIVITY]", "New User registered");
         Log.d("[REGISTER ACTIVITY", "User E-Mail: "+ user_email);
         Log.d("[REGISTER ACTIVITY", "User Password: " + user_password);
+    }
 
+    private void userDataToAppLogs(String user_email, String user_password){
         // Logging sensitive data to a file in app's data directory (App Logs)
         try {
             File logFile = new File(getFilesDir(), "login_logs.txt");
@@ -73,6 +86,5 @@ public class RegisterActivity extends AppCompatActivity {
             // System log incase the app logging did not work
             Log.e("[REGISTER ACTIVITY]", "Error writing to log file: " + e.getMessage());
         }
-
     }
 }

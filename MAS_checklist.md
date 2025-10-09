@@ -5,19 +5,19 @@
 | Category | # | Description | Implementation-Status | MAS-Status |
 |----------|----------|----------|----------|----------|
 | STORAGE |  |  |  |  |
-|  | [0001](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0001/) | Insertion of Sensitive Data into Logs | ✅ | Exists |
+|  | [0001](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0001/) | Insertion of Sensitive Data into Logs | ✅ | Beta |
 |  | [0002](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0002/) | Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations |❌| Placeholder |
 |  | [0003](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0003/) | Backup Unencrypted |❌| Placeholder |
-|  | [0004](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0004/) | Sensitive Data Not Excluded From Backup |❌| Exists |
-|  | [0006](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0006/) | Sensitive Data Stored Unencrypted in Private Storage Locations |❌| Exists |
-|  | [0007](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0007/) | Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |❌| Exists |
+|  | [0004](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0004/) | Sensitive Data Not Excluded From Backup |❌| Beta |
+|  | [0006](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0006/) | Sensitive Data Stored Unencrypted in Private Storage Locations |❌| Beta |
+|  | [0007](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0007/) | Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |❌| Beta |
 | CRYPTO |  |  |  |  |
-|  | [0009](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0009/) | Improper Cryptographic Key Generation |❌| Exists |
+|  | [0009](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0009/) | Improper Cryptographic Key Generation |❌| Beta |
 |  | [0010](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0010/) | Improper Cryptographic Key Derivation |❌| Placeholder |
 |  | [0011](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0011/) | Cryptographic Key Rotation Not Implemented |❌| Placeholder |
 |  | [0012](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0012/) | Insecure or Wrong Usage of Cryptographic Key |❌| Placeholder |
 |  | [0013](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0013/) | Hardcoded Cryptographic Keys in Use |❌| DEPRECATED |
-|  | [0014](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0014/) | Cryptographic Keys Not Properly Protected at Rest |❌| Normal |
+|  | [0014](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0014/) | Cryptographic Keys Not Properly Protected at Rest |❌| Beta |
 |  | [0015](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0015/) | Deprecated Android KeyStore Implementations |❌| Placeholder |
 |  | [0016](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0016/) | Unsafe Handling of Imported Cryptographic Keys |❌| Placeholder |
 |  | [0017](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0017/) | Cryptographic Keys Not Properly Protected on Export |❌| Placeholder |
@@ -83,31 +83,49 @@
 |  | [0073](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0073/) | Insecure WebResourceResponse Implementations |❌| Placeholder |
 |  | [0074](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0074/) | Web Content Debugging Enabled |❌| Placeholder |
 | CODE |  |  |  |  |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
+|  | [0075](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0075/) | Enforced Updating Not Implemented |❌| Placeholder |
+|  | [0076](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0076/) | Dependencies with Known Vulnerabilities |❌| Beta |
+|  | [0077](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0077/) | Running on a recent Platform Version Not Ensured |❌| Placeholder |
+|  | [0078](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0078/) | Latest Platform Version Not Targeted |❌| Placeholder |
+|  | [0079](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0079/) | Unsafe Handling of Data from the Network |❌| Placeholder |
+|  | [0080](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0080/) | Unsafe Handling of Data from Backups |❌| Placeholder |
+|  | [0081](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0081/) | Unsafe Handling Of Data From External Interfaces |❌| Placeholder |
+|  | [0082](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0082/) | Unsafe Handling of Data From Local Storage |❌| Placeholder |
+|  | [0083](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0083/) | Unsafe Handling of Data From The User Interface |❌| Placeholder |
+|  | [0084](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0084/) | Unsafe Handling of Data from IPC |❌| Placeholder |
+|  | [0085](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0085/) | Unsafe Dynamic Code Loading |❌| Placeholder |
+|  | [0086](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0086/) | SQL Injection |❌| Placeholder |
+|  | [0087](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0087/) | Insecure Parsing and Escaping |❌| Placeholder |
+|  | [0088](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0088/) | Insecure Object Deserialization |❌| Placeholder |
+|  | [0116](https://mas.owasp.org/MASWE/MASVS-CODE/MASWE-0116/) | Compiler Provided Security Features Not Used |❌| Placeholder |
 | RESILIENCE |  |  |  |  |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
+|  | [0008](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0008/) | Missing Device Secure Lock Verification Implementation |❌| Placeholder |
+|  | [0089](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0089/) | Code Obfuscation Not Implemented |❌| Placeholder |
+|  | [0090](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0090/) | Resource Obfuscation Not Implemented |❌| Placeholder |
+|  | [0091](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0091/) | Anti-Deobfuscation Techniques Not Implemented |❌| Placeholder |
+|  | [0092](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0092/) | Static Analysis Tools Not Prevented |❌| Placeholder |
+|  | [0093](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0093/) | Debugging Symbols Not Removed |❌| Placeholder |
+|  | [0094](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0094/) | Non-Production Resources Not Removed |❌| Placeholder |
+|  | [0095](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0095/) | Code That Disables Security Controls Not Removed |❌| Placeholder |
+|  | [0096](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0096/) | Data Sent Unencrypted Over Encrypted Connections |❌| Placeholder |
+|  | [0097](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0097/) | Root/Jailbreak Detection Not Implemented |❌| Placeholder |
+|  | [0098](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0098/) | App Virtualization Environment Detection Not Implemented |❌| Placeholder |
+|  | [0099](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0099/) | Emulator Detection Not Implemented |❌| Placeholder |
+|  | [0100](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0100/) | Device Attestation Not Implemented |❌| Placeholder |
+|  | [0101](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0101/) | Debugger Detection Not Implemented |❌| Placeholder |
+|  | [0102](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0102/) | Dynamic Analysis Tools Detection Not Implemented |❌| Placeholder |
+|  | [0103](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0103/) | RASP Techniques Not Implemented |❌| Placeholder |
+|  | [0104](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0104/) | App Integrity Not Verified |❌| Placeholder |
+|  | [0105](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0105/) | Integrity of App Resources Not Verified |❌| Placeholder |
+|  | [0106](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0106/) | Official Store Verification Not Implemented |❌| Placeholder |
+|  | [0107](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0107/) | Runtime Code Integrity Not Verified |❌| Placeholder |
 | PRIVACY |  |  |  |  |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Placeholder |
-|  | Number | Description |❌| Normal |
-|  | Number | Description |❌| Normal |
+|  | [0108](https://mas.owasp.org/MASWE/MASVS-PRIVACY/MASWE-0108/) | Sensitive Data in Network Traffic |❌| Beta |
+|  | [0109](https://mas.owasp.org/MASWE/MASVS-PRIVACY/MASWE-0109/) | Lack of Anonymization or Pseudonymisation Measures |❌| Beta |
+|  | [0110](https://mas.owasp.org/MASWE/MASVS-PRIVACY/MASWE-0110/) |  Use of Unique Identifiers for User Tracking |❌| Beta |
+|  | [0111](https://mas.owasp.org/MASWE/MASVS-PRIVACY/MASWE-0111/) | Inadequate Privacy Policy |❌| Beta |
+|  | [0112](https://mas.owasp.org/MASWE/MASVS-PRIVACY/MASWE-0112/) | Inadequate Data Collection Declarations |❌| Beta |
+|  | [0113](https://mas.owasp.org/MASWE/MASVS-PRIVACY/MASWE-0113/) | Lack of Proper Data Management Controls |❌| Beta |
+|  | [0114](https://mas.owasp.org/MASWE/MASVS-PRIVACY/MASWE-0114/) | Inadequate Data Visibility Controls |❌| Beta |
+|  | [0115](https://mas.owasp.org/MASWE/MASVS-PRIVACY/MASWE-0115/) | Inadequate or Ambiguous User Consent Mechanisms |❌| Beta |
+|  | [0117](https://mas.owasp.org/MASWE/MASVS-PRIVACY/MASWE-0117/) | Inadequate Permission Management |❌| Beta |

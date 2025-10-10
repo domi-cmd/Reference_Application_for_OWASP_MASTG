@@ -1,0 +1,31 @@
+bestehende benchmarks
+
+statische analyste tools testen
+
+1.
+	welche apps/benchmarks gibts schon (apps teil von benchmarks) welche vulnerabilities decken sie ab
+
+	-> auf owasp mastg die apps anschauen (DIVA, uncrackables etc)
+
+	**was gibst schon**
+
+
+2.
+	wie werden diese standards eingesetzt (industrie auch relevant bei akademisch)
+	
+	google scholar, (owasp mastg) erste 20 resultate anschauen, gibt es scientific papers dazu, und wofür brauchen sie den standard genau
+	oder wird er gar nicht eingesetzt, falls ja unter welchen bereichen (zb pen testing, benchmarking statischen analyse tools, compliance etc.)
+
+
+3.
+	gibt es referenz datensets (es gibt haufen vuln. apps) welche gibts schon, welche vulnerabilities decken sie ab, welche nicht
+
+	**was ich will machen**
+
+
+
+	(MODE_WORLD_WRITEABLE deprecated)
+	-> os command ta mod
+
+
+studien mitnehmen in nächste sitzung

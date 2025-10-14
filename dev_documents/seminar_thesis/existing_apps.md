@@ -1,11 +1,11 @@
 | App Name | # Vulnerabilites | Storage | Crypto | Auth | Network | Platform | Code | Resilience | Privacy | 
 | - | - | - | - | - | - | - | - | - | - | 
-| [Androgoat](https://github.com/satishpatnayak/AndroGoat) | 24 | 6 Storage | 1 Crypto | - | 4 Network | 6 Platform | 4 Code | 2 Resilience | 1 Privacy | 
-| [DIVA](https://github.com/payatu/diva-android) | 13 | 4 Storage | 2 Crypto | 3 Atuh | - | - | 3 Code | - | 1 Privacy | 
-| [InsecureBankv2](https://github.com/dineshshetty/Android-InsecureBankv2) | 25 | 3 Storage | 2 Crypto | 3 Auth | 1 Network | 6 Platform | 3 Code | 5 Resilience | 2 Privacy | 
-| [Hacking Playground Android App](https://github.com/OWASP/MASTG-Hacking-Playground) | 15 | 6 Storage | 1 Crypto | 0 Auth | 1 Network | 2 Platform | 3 Code | 1 Resilience | 1 Privacy | 
-| [OVAA](https://github.com/oversecured/ovaa) | 18 | 1 Storage | 1 Crypto | 0 Auth | 0 Network | 10 Platform | 3 Code | 3 Resilience | 0 Privacy | 
-| InsecureShop | 19 | 2 Storage | 0 Crypto | 2 Auth | 1 Network | 13 Platform | 0 Code | 1 Resilience | 0 Privacy | 
+| [Androgoat](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/4b67fbcf3a70843f06aade31a23fdca2642a8536/dev_documents/seminar_thesis/existing_apps.md?plain=1#L13-L14) | 24 | 6 Storage | 1 Crypto | - | 4 Network | 6 Platform | 4 Code | 2 Resilience | 1 Privacy | 
+| [DIVA](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/4b67fbcf3a70843f06aade31a23fdca2642a8536/dev_documents/seminar_thesis/existing_apps.md?plain=1#L77-L78) | 13 | 4 Storage | 2 Crypto | 3 Atuh | - | - | 3 Code | - | 1 Privacy | 
+| [InsecureBankv2](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/4b67fbcf3a70843f06aade31a23fdca2642a8536/dev_documents/seminar_thesis/existing_apps.md?plain=1#L116-L117) | 25 | 3 Storage | 2 Crypto | 3 Auth | 1 Network | 6 Platform | 3 Code | 5 Resilience | 2 Privacy | 
+| [Hacking Playground Android App](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/4b67fbcf3a70843f06aade31a23fdca2642a8536/dev_documents/seminar_thesis/existing_apps.md?plain=1#L168-L169) | 15 | 6 Storage | 1 Crypto | 0 Auth | 1 Network | 2 Platform | 3 Code | 1 Resilience | 1 Privacy | 
+| [OVAA](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/4b67fbcf3a70843f06aade31a23fdca2642a8536/dev_documents/seminar_thesis/existing_apps.md?plain=1#L206-L207) | 18 | 1 Storage | 1 Crypto | 0 Auth | 0 Network | 10 Platform | 3 Code | 3 Resilience | 0 Privacy | 
+| [InsecureShop](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/4b67fbcf3a70843f06aade31a23fdca2642a8536/dev_documents/seminar_thesis/existing_apps.md?plain=1#L251-L252) | 19 | 2 Storage | 0 Crypto | 2 Auth | 1 Network | 13 Platform | 0 Code | 1 Resilience | 0 Privacy | 
 | - | # | - Storage | - Crypto | - Auth | - Network | - Platform | - Code | - Resilience | - Privacy | 
 | - | # | - Storage | - Crypto | - Auth | - Network | - Platform | - Code | - Resilience | - Privacy | 
 

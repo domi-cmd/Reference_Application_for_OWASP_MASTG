@@ -5,12 +5,12 @@
 | [InsecureBankv2](https://github.com/dineshshetty/Android-InsecureBankv2) | 25 | 3 Storage | 2 Crypto | 3 Auth | 1 Network | 6 Platform | 3 Code | 5 Resilience | 2 Privacy | 
 | [Hacking Playground Android App](https://github.com/OWASP/MASTG-Hacking-Playground) | 15 | 6 Storage | 1 Crypto | 0 Auth | 1 Network | 2 Platform | 3 Code | 1 Resilience | 1 Privacy | 
 | [OVAA](https://github.com/oversecured/ovaa) | 18 | 1 Storage | 1 Crypto | 0 Auth | 0 Network | 10 Platform | 3 Code | 3 Resilience | 0 Privacy | 
+| InsecureShop | 19 | 2 Storage | 0 Crypto | 2 Auth | 1 Network | 13 Platform | 0 Code | 1 Resilience | 0 Privacy | 
+| - | # | - Storage | - Crypto | - Auth | - Network | - Platform | - Code | - Resilience | - Privacy | 
 | - | # | - Storage | - Crypto | - Auth | - Network | - Platform | - Code | - Resilience | - Privacy | 
 
 
-
-
-# Androgoat
+# [Androgoat](https://github.com/satishpatnayak/AndroGoat)
 Vulnerabilities covered in this app:
 ## Storage
 - Insecure Data Storage – Shared Prefs - 1
@@ -74,7 +74,7 @@ Vulnerabilities covered in this app:
 
 
 
-# DIVA
+# [DIVA](https://github.com/payatu/diva-android)
 Vulnerabilities covered in this app:
 ## Storage
 - Insecure Data Storage – Part 1
@@ -165,7 +165,7 @@ Vulnerabilities covered in this app:
 
 
 
-# Hacking Playground Android App
+# [Hacking Playground Android App](https://github.com/OWASP/MASTG-Hacking-Playground)
 Vulnerabilities covered in this app:
 ### Storage
 - Sensitive data in internal storage
@@ -203,7 +203,7 @@ Vulnerabilities covered in this app:
 
 
 
-# OVAA
+# [OVAA](https://github.com/oversecured/ovaa)
 Vulnerabilities covered in this app:
 ### Storage
 - Obtaining access to app logs via InsecureLoggerService. Leak of credentials in LoginActivity Log.d("ovaa", "Processing " + loginData). (Insecure logging of sensitive user data)
@@ -248,6 +248,51 @@ Vulnerabilities covered in this app:
 
 
 
+# [InsecureShop](https://github.com/hax0rgb/InsecureShop/)
+Vulnerabilities covered in this app:
+### Storage
+- Insecure Data Storage: The app stores user credentials locally without encrypting them. **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
+- Insecure Logging: User credentials are leaked in logcat. Only attackers with physical access to the device can access this information. **(MASWE-0001: Insertion of Sensitive Data into Logs)**
+
+### Crypto
+- 
+
+### Auth
+- AWS Cognito Misconfiguration: The misconfigured AWS cognito instance can be used to accesss AWS S3 bucket. **(MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed)**
+- Hardcoded Credentials: Credentials are hardcoded somewhere that can be used to login to the application **(?MASWE-0005: API Keys Hardcoded in the App Package?)**
+
+### Network
+- Lack of SSL Certificate Validation: The unsafe implementation of OnReceived SSL Error can be used to eavesdrop all the traffic loaded in webview. **(MASWE-0052: Insecure Certificate Validation)**
+    
+### Platform
+- Insufficient URL Validation: Possible to load any arbitrary URL in webview via Deeplink. **(MASWE-0058: Insecure Deep Links)**
+- Weak Host Validation Check: Possible to bypass host validation check to load any arbitrary URL in webview. **(MASWE-0071: WebViews Loading Content from Untrusted Sources)**
+- Arbitrary Code Execution: Arbitrary Code Execution via third-party package contexts. **(?MASWE-0107: Runtime Code Integrity Not Verified?)**
+- Access to Protected Components: The app takes an embedded Intent and passes it to method like startActivity. This allows any third party app to launch any protected component. **(?MASWE-0066: Insecure Intents?)**
+- Unprotected Data URIs: The untrusted URI's passed via loadUrl method allows attackers to pass arbitrary URL in webview. **(MASWE-0071: WebViews Loading Content from Untrusted Sources)**
+- Theft of Arbitrary: Possible to steal files from app's local storage via ChooserActivity. **(MASWE-0066: Insecure Intents)**
+- Insecure Broadcast Receiver: An exported activity registers a broadcast during onCreate method execution. An attacker can trigger this broadcast and provide arbitrary URL in 'web_url' parameter. **(MASWE-0063: Insecure Broadcast Receivers)**
+- Insecure use of FilePaths in FileProvider: The use of wide file sharing declaration can be used to access root directory via content Provider. **(MASWE-0064: Insecure Content Providers)**
+- Use of Implicit intent to send a broadcast with sensitive data: The use of Implicit intent can allow third-party apps to steal credentials. **(MASWE-0066: Insecure Intents)**
+- Intercepting Implicit intent to load arbitrary URL: The use of Implicit intent can allow third-party apps to load any arbitrary URL in webview. **(?MASWE-0066: Insecure Intents?)**
+- Insecure Implementation of SetResult in exported Activity: The insecure implementation used in ResultActivity can be used to access arbitrary content providers. **(MASWE-0066: Insecure Intents)**
+- Insecure Content Provider: The content provider can be accessed by any third-party app to steal user credentials. **(MASWE-0064: Insecure Content Providers)**
+- Insecure Webview Properties Enabled: Insecure Webview properties are enabled that can allow third-party apps to exfiltrate local data to remote domain. **(MASWE-0069: WebViews Allows Access to Local Resources)**
+
+### Code
+-
+
+### Resilience
+- Using Components with Known Vulnerabilities: Identify the vulnerable components or libraries used in the app that can allow you to exfiltrate local files to remote domain. **(MASWE-0104: App Integrity Not Verified)**
+
+### Privacy
+- 
+
+
+
+
+
+
 # AppName
 Vulnerabilities covered in this app:
 ### Storage
@@ -273,3 +318,4 @@ Vulnerabilities covered in this app:
 
 ### Privacy
 - 
+

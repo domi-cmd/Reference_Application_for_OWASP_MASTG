@@ -1,0 +1,164 @@
+App Name,MASVS Category,Vulnerability,MASVS Counterpart
+Androgoat,Storage,Insecure Data Storage – Shared Prefs - 1,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+Androgoat,Storage,Insecure Data Storage - Shared Prefs - 2,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+Androgoat,Storage,Insecure Data Storage - SQLite,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+Androgoat,Storage,Insecure Data Storage – Temp Files,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+Androgoat,Storage,Insecure Data Storage – SD Card,MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction
+Androgoat,Storage,Insecure Logging,MASWE-0001: Insertion of Sensitive Data into Logs
+Androgoat,Storage,Android allowBackup,MASWE-0003: Backup Unencrypted + MASWE-0004: Sensitive Data Not Excluded From Backup
+Androgoat,Crypto,Broken Cryptography,?MASWE-0020: Improper Encryption?
+Androgoat,Auth,Hard coding issues,?MASWE-0005: API Keys Hardcoded in the App Package?
+Androgoat,Network,Network intercepting – HTTP,MASWE-0050: Cleartext Traffic
+Androgoat,Network,Network intercepting – HTTPS,?MASWE-0052: Insecure Certificate Validation?
+Androgoat,Network,Network intercepting – Certificate Pinning,MASWE-0047: Insecure Identity Pinning
+Androgoat,Network,Misconfigured Network_Security_Config.xml,?MASWE-0050: Cleartext Traffic?
+Androgoat,Platform,Keyboard Cache,MASWE-0053: Sensitive Data Leaked via the User Interface
+Androgoat,Platform,Unprotected Android Components – Activity,MASWE-0066: Insecure Intents
+Androgoat,Platform,Unprotected Android Components – Service,MASWE-0062: Insecure Services
+Androgoat,Platform,Unprotected Android Components – Broadcast Receivers,MASWE-0063: Insecure Broadcast Receivers
+Androgoat,Platform,AndroidDebuggable,MASWE-0067: Debuggable Flag Not Disabled
+Androgoat,Platform,Custom URL Scheme,MASWE-0058: Insecure Deep Links
+Androgoat,Platform,Input Validations – XSS,MASWE-0072: Universal XSS
+Androgoat,Platform,Input Validations – WebView,MASWE-0071: WebViews Loading Content from Untrusted Sources
+Androgoat,Code,Input Validations – SQLi,MASWE-0086: SQL Injection
+Androgoat,Resilience,Root Detection,MASWE-0097: Root/Jailbreak Detection Not Implemented
+Androgoat,Resilience,Emulator Detection,MASWE-0099: Emulator Detection Not Implemented
+DIVA,Storage,Insecure Data Storage – Part 1,??MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations??
+DIVA,Storage,Insecure Data Storage – Part 2,??MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction??
+DIVA,Storage,Insecure Data Storage – Part 3,??MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations??
+DIVA,Storage,Insecure Data Storage – Part 4,??MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations??
+DIVA,Storage,Insecure Logging,MASWE-0001: Insertion of Sensitive Data into Logs
+DIVA,Auth,Hardcoding Issues – Part 1,??MASWE-0005: API Keys Hardcoded in the App Package??
+DIVA,Auth,Hardcoding Issues – Part 2,??MASWE-0005: API Keys Hardcoded in the App Package??
+DIVA,Auth,Access Control Issues – Part 1,Further Analysis Required
+DIVA,Auth,Access Control Issues – Part 2,Further Analysis Required
+DIVA,Auth,Access Control Issues – Part 3,Further Analysis Required
+DIVA,Code,Input Validation Issues – Part 1,?MASWE-0086: SQL Injection?
+DIVA,Code,Input Validation Issues – Part 2,Further Analysis Required
+DIVA,Code,Input Validation Issues – Part 3,Further Analysis Required
+InsecureBankv2,Storage,Insecure SDCard storage,MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction
+InsecureBankv2,Storage,Insecure Logging mechanism,MASWE-0001: Insertion of Sensitive Data into Logs
+InsecureBankv2,Storage,Sensitive Information in Memory,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+InsecureBankv2,Storage,Android Backup vulnerability,MASWE-0003: Backup Unencrypted + MASWE-0003: Backup Unencrypted
+InsecureBankv2,Crypto,Weak Cryptography implementation,MASWE-0019: Risky Cryptography Implementations + MASWE-0020: Improper Encryption
+InsecureBankv2,Crypto,Local Encryption issues,MASWE-0020: Improper Encryption + MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+InsecureBankv2,Auth,Weak Authorization mechanism,MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed
+InsecureBankv2,Auth,Weak change password implementation,MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed
+InsecureBankv2,Auth,Username Enumeration issue,MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed
+InsecureBankv2,Auth,Hardcoded secrets,?MASWE-0005: API Keys Hardcoded in the App Package?
+InsecureBankv2,Network,Insecure HTTP connections,MASWE-0050: Cleartext Traffic
+InsecureBankv2,Platform,Android Pasteboard vulnerability,MASWE-0053: Sensitive Data Leaked via the User Interface
+InsecureBankv2,Platform,Android keyboard cache issues,MASWE-0053: Sensitive Data Leaked via the User Interface
+InsecureBankv2,Platform,Insecure Content Provider access,MASWE-0064: Insecure Content Providers
+InsecureBankv2,Platform,Vulnerable Activity Components,MASWE-0066: Insecure Intents
+InsecureBankv2,Platform,Flawed Broadcast Receivers,MASWE-0063: Insecure Broadcast Receivers
+InsecureBankv2,Platform,Application Debuggable,MASWE-0067: Debuggable Flag Not Disabled
+InsecureBankv2,Platform,Insecure Webview implementation,MASWE-0069: WebViews Allows Access to Local Resources + MASWE-0071: WebViews Loading Content from Untrusted Sources
+InsecureBankv2,Platform,Intent Sniffing and Injection,MASWE-0066: Insecure Intents
+InsecureBankv2,Code,Parameter Manipulation,?MASWE-0081: Unsafe Handling Of Data From External Interfaces?
+InsecureBankv2,Resilience,Root Detection and Bypass,MASWE-0097: Root/Jailbreak Detection Not Implemented
+InsecureBankv2,Resilience,Emulator Detection and Bypass,MASWE-0099: Emulator Detection Not Implemented
+InsecureBankv2,Resilience,Runtime Manipulation,MASWE-0103: RASP Techniques Not Implemented + MASWE-0105: Integrity of App Resources Not Verified
+InsecureBankv2,Resilience,Developer Backdoors,MASWE-0095: Code That Disables Security Controls Not Removed
+InsecureBankv2,Resilience,Application Patching,MASWE-0085: Unsafe Dynamic Code Loading + MASWE-0103: RASP Techniques Not Implemented
+Hacking Playground Android App,Storage,Sensitive data in internal storage,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+Hacking Playground Android App,Storage,Sensitive data in external storage,MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction
+Hacking Playground Android App,Storage,Sensitive data in plaintext shared preferences,MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction
+Hacking Playground Android App,Storage,Sensitive data in unencrypted SQLite database,MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction
+Hacking Playground Android App,Storage,Sensitive data in logs,MASWE-0001: Insertion of Sensitive Data into Logs
+Hacking Playground Android App,Crypto,Weak Encryption (XOR),MASWE-0020: Improper Encryption
+Hacking Playground Android App,Network,Using insecure channels for loading webpages (http instead of https),MASWE-0050: Cleartext Traffic
+Hacking Playground Android App,Platform,Unsecure remote WebViews,?MASWE-0071: WebViews Loading Content from Untrusted Sources?
+Hacking Playground Android App,Platform,Unsecure local WebViews,?MASWE-0069: WebViews Allows Access to Local Resources?
+Hacking Playground Android App,Platform,Keyboard cache remembers sensitive data,MASWE-0053: Sensitive Data Leaked via the User Interface
+Hacking Playground Android App,Code,SQL injection,MASWE-0086: SQL Injection
+Hacking Playground Android App,Code,SQL injections via content provider,MASWE-0064: Insecure Content Providers + MASWE-0086: SQL Injection
+Hacking Playground Android App,Code,Dynamic code injection (DEXClassLoader),MASWE-0085: Unsafe Dynamic Code Loading
+Hacking Playground Android App,Resilience,Key to encrypted SQLite database stored locally (retrievable),MASWE-0014: Cryptographic Keys Not Properly Protected at Rest + MASWE-0020: Improper Encryption
+Hacking Playground Android App,Resilience,"Memory dumps leaking sensitive data (decrypted keys, etc)",MASWE-0082: Unsafe Handling of Data From Local Storage
+OVAA,Storage,"Obtaining access to app logs via InsecureLoggerService. Leak of credentials in LoginActivity Log.d(""ovaa"", ""Processing "" + loginData). (Insecure logging of sensitive user data)",MASWE-0001: Insertion of Sensitive Data into Logs
+OVAA,Crypto,Use of the hardcoded AES key in WeakCrypto. (crypto/key management failure),MASWE-0013: Hardcoded Cryptographic Keys in Use
+OVAA,Platform,Arbitrary login url via deeplink leaking sensitive user data (Platform IPC/manifest concern/issue),MASWE-0058: Insecure Deep Links
+OVAA,Platform,Obtaining access to arbitrary content providers via deeplink (Misuse of content provider permissions semantics and intent flags),MASWE-0066: Insecure Intents + MASWE-0064: Insecure Content Providers
+OVAA,Platform,Vulnerable host validation when processing deeplink (Incorrect origin/host validation & WebView/deeplink platform integration issue),MASWE-0058: Insecure Deep Links
+OVAA,Platform,Opening arbitrary URLs via deeplink (Unsafe WebView configuration),MASWE-0070: JavaScript Loaded from Untrusted Sources
+OVAA,Platform,Access to arbitrary activities and access to arbitrary content providers via arbitrary Intent object (Insecure Intent handling),MASWE-0066: Insecure Intents
+OVAA,Platform,Theft of arbitrary files in MainActivity by intercepting an activity launch from Intent.ACTION_PICK and passing the URI to any file as data. (broken intent/URI handling & insufficient URI validation when interacting with platform picker),MASWE-0066: Insecure Intents + MASWE-0064: Insecure Content Providers
+OVAA,Platform,Insecure broadcast to MainActivity containing credentials. The attacker can register a broadcast receiver with action oversecured.ovaa.action.UNPROTECTED_CREDENTIALS_DATA and obtain the user's data. (Unsafe broadcast IPC and exposed receiver -> platform ipc misconfiguration),MASWE-0063: Insecure Broadcast Receivers
+OVAA,Platform,"Insecure activity launch in MainActivity with action oversecured.ovaa.action.WEBVIEW, containing the user's encrypted data in the query parameter token. (Sensitive data passed via intents/URIs — unsafe use of platform IPC)",MASWE-0066: Insecure Intents + ?MASWE-0053: Sensitive Data Leaked via the User Interface?
+OVAA,Platform,Obtaining read/write access to arbitrary files in TheftOverwriteProvider via path-traversal in the value uri.getLastPathSegment(). (ContentProvider implementation mistake (platform component) that allows directory traversal),MASWE-0064: Insecure Content Providers + MASWE-0081: Unsafe Handling Of Data From External Interfaces
+OVAA,Platform,Use of very wide file sharing declaration for oversecured.ovaa.fileprovider content provider in root entry. (Manifest/provider configuration that exposes files system-wide — platform config issue),MASWE-0064: Insecure Content Providers
+OVAA,Code,Deletion of arbitrary files via the insecure DeleteFilesSerializable deserialization object. (Insecure Deserialization),MASWE-0088: Insecure Object Deserialization
+OVAA,Code,Hardcoded credentials to a dev environment endpoint in strings.xml in test_url entry. (Hardcoded sensitive data),MASWE-0005: API Keys Hardcoded in the App Package
+OVAA,Code,Arbitrary code execution via a DEX library located in a world-readable/writable directory. (Unsafe runtime code loading from writable locations enables tampering / arbitrary code injection),MASWE-0085: Unsafe Dynamic Code Loading
+OVAA,Code,Memory corruption via the MemoryCorruptionParcelable object.,MASWE-0088: Insecure Object Deserialization
+OVAA,Code,Memory corruption via the MemoryCorruptionSerializable object.,MASWE-0088: Insecure Object Deserialization
+OVAA,Code,Arbitrary Code Execution in OversecuredApplication by launching code from third-party apps with no security checks. (Allowing external code execution undermines runtime integrity / tamper resistance),MASWE-0085: Unsafe Dynamic Code Loading
+InsecureShop,Storage,Insecure Data Storage: The app stores user credentials locally without encrypting them.,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+InsecureShop,Storage,Insecure Logging: User credentials are leaked in logcat. Only attackers with physical access to the device can access this information.,MASWE-0001: Insertion of Sensitive Data into Logs
+InsecureShop,Auth,AWS Cognito Misconfiguration: The misconfigured AWS cognito instance can be used to accesss AWS S3 bucket.,MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed
+InsecureShop,Auth,Hardcoded Credentials: Credentials are hardcoded somewhere that can be used to login to the application,?MASWE-0005: API Keys Hardcoded in the App Package?
+InsecureShop,Network,Lack of SSL Certificate Validation: The unsafe implementation of OnReceived SSL Error can be used to eavesdrop all the traffic loaded in webview.,MASWE-0052: Insecure Certificate Validation
+InsecureShop,Platform,Insufficient URL Validation: Possible to load any arbitrary URL in webview via Deeplink.,MASWE-0058: Insecure Deep Links
+InsecureShop,Platform,Weak Host Validation Check: Possible to bypass host validation check to load any arbitrary URL in webview.,MASWE-0071: WebViews Loading Content from Untrusted Sources
+InsecureShop,Platform,Arbitrary Code Execution: Arbitrary Code Execution via third-party package contexts.,?MASWE-0107: Runtime Code Integrity Not Verified?
+InsecureShop,Platform,Access to Protected Components: The app takes an embedded Intent and passes it to method like startActivity. This allows any third party app to launch any protected component.,?MASWE-0066: Insecure Intents?
+InsecureShop,Platform,Unprotected Data URIs: The untrusted URI's passed via loadUrl method allows attackers to pass arbitrary URL in webview.,MASWE-0071: WebViews Loading Content from Untrusted Sources
+InsecureShop,Platform,Theft of Arbitrary: Possible to steal files from app's local storage via ChooserActivity.,MASWE-0066: Insecure Intents
+InsecureShop,Platform,Insecure Broadcast Receiver: An exported activity registers a broadcast during onCreate method execution. An attacker can trigger this broadcast and provide arbitrary URL in 'web_url' parameter.,MASWE-0063: Insecure Broadcast Receivers
+InsecureShop,Platform,Insecure use of FilePaths in FileProvider: The use of wide file sharing declaration can be used to access root directory via content Provider.,MASWE-0064: Insecure Content Providers
+InsecureShop,Platform,Use of Implicit intent to send a broadcast with sensitive data: The use of Implicit intent can allow third-party apps to steal credentials.,MASWE-0066: Insecure Intents
+InsecureShop,Platform,Intercepting Implicit intent to load arbitrary URL: The use of Implicit intent can allow third-party apps to load any arbitrary URL in webview.,?MASWE-0066: Insecure Intents?
+InsecureShop,Platform,Insecure Implementation of SetResult in exported Activity: The insecure implementation used in ResultActivity can be used to access arbitrary content providers.,MASWE-0066: Insecure Intents
+InsecureShop,Platform,Insecure Content Provider: The content provider can be accessed by any third-party app to steal user credentials.,MASWE-0064: Insecure Content Providers
+InsecureShop,Platform,Insecure Webview Properties Enabled: Insecure Webview properties are enabled that can allow third-party apps to exfiltrate local data to remote domain.,MASWE-0069: WebViews Allows Access to Local Resources
+InsecureShop,Resilience,Using Components with Known Vulnerabilities: Identify the vulnerable components or libraries used in the app that can allow you to exfiltrate local files to remote domain.,MASWE-0104: App Integrity Not Verified
+Finstergram,Platform,Exported ImageListActivity,MASWE-0066: Insecure Intents
+Finstergram,Platform,"Exported BroadcastReceiver, sendBroadcast with implicit Intent",MASWE-0063: Insecure Broadcast Receivers
+Finstergram,Platform,Intent injection in SharedImageActivity,MASWE-0066: Insecure Intents
+Finstergram,Code,SQL Injection in DatabaseHelper,MASWE-0086: SQL Injection
+Finstergram,Code,Deserialization vulnerability in SharedImageActivity,MASWE-0088: Insecure Object Deserialization
+BugBazaar,Storage,Insecure Logging (logging user creds),MASWE-0001: Insertion of Sensitive Data into Logs
+BugBazaar,Storage,Unencrypted database,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+BugBazaar,Storage,Man in the Disk Attack,?MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction?
+BugBazaar,Storage,Storing sensitive info in SharedPref,MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations + MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+BugBazaar,Storage,Hardcoded secrets,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+BugBazaar,Storage,Backup enabled,MASWE-0003: Backup Unencrypted + MASWE-0004: Sensitive Data Not Excluded From Backup
+BugBazaar,Storage,Improper cache handling,MASVSCounterpart
+BugBazaar,Auth,Misconfigured firebase's firestore,MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed
+BugBazaar,Platform,Opening arbitrary URLs in the webview,MASWE-0071: WebViews Loading Content from Untrusted Sources
+BugBazaar,Platform,XSS,MASWE-0072: Universal XSS
+BugBazaar,Platform,OPEN REDIRECTION,MASWE-0066: Insecure Intents
+BugBazaar,Platform,Account Takeover via Stealing Session ID (Host validation bypass),MASWE-0070: JavaScript Loaded from Untrusted Sources
+BugBazaar,Platform,Stealing User token Via JavaScriptInterface class,MASWE-0068: JavaScript Bridges in WebViews
+BugBazaar,Platform,Access of Arbitrary files via insecure Flags Note: Only exploitable until API level 28,MASWE-0069: WebViews Allows Access to Local Resources
+BugBazaar,Platform,Stealing of Arbitrary files via Insecure WebResourceResponse,MASWE-0073: Insecure WebResourceResponse Implementations
+BugBazaar,Platform,Intent interception,MASWE-0066: Insecure Intents
+BugBazaar,Platform,Account takeover via intent Spoofing,MASWE-0066: Insecure Intents
+BugBazaar,Platform,Steal User's Contact via Insecure Pending Intent,MASWE-0066: Insecure Intents
+BugBazaar,Platform,CSRF to add the product to cart,MASWE-0058: Insecure Deep Links
+BugBazaar,Platform,Deep link hijacking to load URLs in webview,MASWE-0058: Insecure Deep Links + MASWE-0071: WebViews Loading Content from Untrusted Sources
+BugBazaar,Platform,Content Spoofing on Offers activity,MASWE-0058: Insecure Deep Links
+BugBazaar,Platform,Exported Components,MASWE-0066: Insecure Intents
+BugBazaar,Platform,Steal User's Contact via typo permission in Content Provider,MASWE-0064: Insecure Content Providers
+BugBazaar,Platform,Insecure broadcast receiver,MASWE-0063: Insecure Broadcast Receivers
+BugBazaar,Platform,Access to Protected Components via broadcast Receiver,MASWE-0063: Insecure Broadcast Receivers + MASWE-0066: Insecure Intents
+BugBazaar,Platform,Insecure services,MASWE-0062: Insecure Services
+BugBazaar,Platform,Fragment injection in Refer-Us,MASWE-0060: Insecure Use of UIActivity
+BugBazaar,Platform,Copy/Paste buffer Caching,MASWE-0053: Sensitive Data Leaked via the User Interface
+BugBazaar,Platform,Application backgrounding,MASWE-0053: Sensitive Data Leaked via the User Interface + MASWE-0055: Sensitive Data Leaked via Screenshots
+BugBazaar,Platform,Tapjacking,MASWE-0056: Tapjacking Attacks
+BugBazaar,Platform,Task Hijacking,MASWE-0057: StrandHogg Attack / Task Affinity Vulnerability
+BugBazaar,Code,RCE through insecure Dynamic Code Loading,MASWE-0085: Unsafe Dynamic Code Loading
+BugBazaar,Code,SQL Injection via user input in My order,MASWE-0086: SQL Injection
+BugBazaar,Code,Content Provider SQL Injection in Address,MASWE-0086: SQL Injection + MASWE-0064: Insecure Content Providers
+BugBazaar,Code,Data insertion via insecure Content Provider in Address,MASWE-0064: Insecure Content Providers
+BugBazaar,Code,Improper Input Validation,MASWE-0081: Unsafe Handling Of Data From External Interfaces + MASWE-0083: Unsafe Handling of Data From The User Interface
+BugBazaar,Code,Unrestricted file upload,MASWE-0081: Unsafe Handling Of Data From External Interfaces
+BugBazaar,Code,Improper exception Handling,?MASWE-0081: Unsafe Handling Of Data From External Interfaces?
+BugBazaar,Code,Improper cache handling,MASWE-0082: Unsafe Handling of Data From Local Storage
+BugBazaar,Code,Runtime code modification,MASWE-0085: Unsafe Dynamic Code Loading + MASWE-0107: Runtime Code Integrity Not Verified
+BugBazaar,Code,Improper cache handling,MASWE-0082 (Unsafe Handling of Data from Local Storage
+BugBazaar,Resilience,Passcode Bypass,MASWE-0008: Missing Device Secure Lock Verification Implementation
+BugBazaar,Resilience,Debuggable application,MASWE-0067: Debuggable Flag Not Disabled + MASWE-0101: Debugger Detection Not Implemented
+BugBazaar,Resilience,Login pin bypass via Frida/Objection,???MASWE-0097: Root/Jailbreak Detection Not Implemented???

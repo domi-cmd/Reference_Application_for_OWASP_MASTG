@@ -1,7 +1,7 @@
 | App Name | # Vulnerabilites | Storage | Crypto | Auth | Network | Platform | Code | Resilience | Privacy | 
 | - | - | - | - | - | - | - | - | - | - | 
 | Androgoat | 24 | 7 Storage | 1 Crypto | 1 Auth | 4 Network | 7 Platform | 1 Code | 2 Resilience | 1 Privacy | 
-| DIVA | 13 | 4 Storage | 2 Crypto | 3 Atuh | - | - | 3 Code | - | 1 Privacy | 
+| DIVA | 13 | 5 Storage | 0 Crypto | 5 Auth | - | - | 3 Code | - | - | 
 | InsecureBankv2 | 25 | 3 Storage | 2 Crypto | 3 Auth | 1 Network | 6 Platform | 3 Code | 5 Resilience | 2 Privacy | 
 | Hacking Playground Android App | 15 | 6 Storage | 1 Crypto | - | 1 Network | 2 Platform | 3 Code | 1 Resilience | 1 Privacy | 
 | OVAA | 18 | 1 Storage | 1 Crypto | - | - | 10 Platform | 3 Code | 3 Resilience | - | 
@@ -58,40 +58,23 @@ Vulnerabilities covered in this app:
 
 
 
-# Uncrackables L1-L4 
-## -> No Documentation of Vulnerabilities, only code
-
-
-
-
-
-
-# Digitalbank
-## -> No Documentation of Vulnerabilities, only code
-Vulnerabilities covered in this app:
-
-
-
-
-
-
 # [DIVA](https://github.com/payatu/diva-android)
 Vulnerabilities covered in this app:
 ## Storage
-- Insecure Data Storage – Part 1
-- Insecure Data Storage – Part 2
-- Insecure Data Storage – Part 3
-- Insecure Data Storage – Part 4
-- Insecure Logging
+- Insecure Data Storage – Part 1 **(??MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations??)**
+- Insecure Data Storage – Part 2 **(??MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction??)**
+- Insecure Data Storage – Part 3 **(??MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations??)**
+- Insecure Data Storage – Part 4 **(??MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations??)**
+- Insecure Logging **(MASWE-0001: Insertion of Sensitive Data into Logs)**
 
 ## Crypto
-- Hardcoding Issues – Part 1
-- Hardcoding Issues – Part 2
 
 ## Auth
-- Access Control Issues – Part 1
-- Access Control Issues – Part 2
-- Access Control Issues – Part 3
+- Hardcoding Issues – Part 1 **(??MASWE-0005: API Keys Hardcoded in the App Package??)**
+- Hardcoding Issues – Part 2 **(??MASWE-0005: API Keys Hardcoded in the App Package??)**
+- Access Control Issues – Part 1 **(Further Analysis Required)**
+- Access Control Issues – Part 2 **(Further Analysis Required)**
+- Access Control Issues – Part 3 **(Further Analysis Required)**
 
 ## Network
 - 
@@ -100,9 +83,9 @@ Vulnerabilities covered in this app:
 -
 
 ## Code
-- Input Validation Issues – Part 1
-- Input Validation Issues – Part 2
-- Input Validation Issues – Part 3
+- Input Validation Issues – Part 1 **(?MASWE-0086: SQL Injection?)**
+- Input Validation Issues – Part 2 **(Further Analysis Required)**
+- Input Validation Issues – Part 3 **(Further Analysis Required)**
 
 ## Resilience
 -
@@ -398,6 +381,19 @@ Vulnerabilities covered in this app:
 
 
 
+
+
+# Uncrackables L1-L4 
+## -> No Documentation of Vulnerabilities, only code
+
+
+
+
+
+
+# Digitalbank
+## -> No Documentation of Vulnerabilities, only code
+Vulnerabilities covered in this app:
 
 
 

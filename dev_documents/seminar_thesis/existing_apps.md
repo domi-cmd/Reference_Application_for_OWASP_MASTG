@@ -1,8 +1,8 @@
 | App Name | # Vulnerabilites | Storage | Crypto | Auth | Network | Platform | Code | Resilience | Privacy | 
 | - | - | - | - | - | - | - | - | - | - | 
 | Androgoat | 24 | 7 Storage | 1 Crypto | 1 Auth | 4 Network | 7 Platform | 1 Code | 2 Resilience | 1 Privacy | 
-| DIVA | 13 | 5 Storage | 0 Crypto | 5 Auth | - | - | 3 Code | - | - | 
-| InsecureBankv2 | 25 | 3 Storage | 2 Crypto | 3 Auth | 1 Network | 6 Platform | 3 Code | 5 Resilience | 2 Privacy | 
+| DIVA | 13 | 5 Storage | - | 5 Auth | - | - | 3 Code | - | - | 
+| InsecureBankv2 | 25 | 4 Storage | 2 Crypto | 4 Auth | 1 Network | 8 Platform | 1 Code | 5 Resilience | - | 
 | Hacking Playground Android App | 15 | 6 Storage | 1 Crypto | - | 1 Network | 2 Platform | 3 Code | 1 Resilience | 1 Privacy | 
 | OVAA | 18 | 1 Storage | 1 Crypto | - | - | 10 Platform | 3 Code | 3 Resilience | - | 
 | InsecureShop | 19 | 2 Storage | - | 2 Auth | 1 Network | 13 Platform | - | 1 Resilience | - | 
@@ -100,46 +100,47 @@ Vulnerabilities covered in this app:
 # [InsecureBankv2](https://github.com/dineshshetty/Android-InsecureBankv2)
 Vulnerabilities covered in this app:
 ### Storage
-- Insecure SDCard storage
-- Insecure Logging mechanism
-- Sensitive Information in Memory
+- Insecure SDCard storage **(MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction)**
+- Insecure Logging mechanism **(MASWE-0001: Insertion of Sensitive Data into Logs)**
+- Sensitive Information in Memory **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
+- Android Backup vulnerability **(MASWE-0003: Backup Unencrypted + MASWE-0003: Backup Unencrypted)**
 
 ### Crypto
-- Weak Cryptography implementation
-- Local Encryption issues
+- Weak Cryptography implementation **(MASWE-0019: Risky Cryptography Implementations + MASWE-0020: Improper Encryption)**
+- Local Encryption issues **(MASWE-0020: Improper Encryption + MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
 
 ### Auth
-- Weak Authorization mechanism
-- Weak change password implementation
-- Username Enumeration issue
+- Weak Authorization mechanism **(MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed)**
+- Weak change password implementation **(MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed)**
+- Username Enumeration issue **(MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed)**
+- Hardcoded secrets **(?MASWE-0005: API Keys Hardcoded in the App Package?)**
 
 ### Network
-- Insecure HTTP connections
+- Insecure HTTP connections **(MASWE-0050: Cleartext Traffic)**
     
 ### Platform
-- Insecure Content Provider access
-- Vulnerable Activity Components
-- Flawed Broadcast Receivers
-- Android Backup vulnerability
-- Application Debuggable
-- Insecure Webview implementation
+- Android Pasteboard vulnerability **(MASWE-0053: Sensitive Data Leaked via the User Interface)**
+- Android keyboard cache issues **(MASWE-0053: Sensitive Data Leaked via the User Interface)**
+- Insecure Content Provider access **(MASWE-0064: Insecure Content Providers)**
+- Vulnerable Activity Components **(MASWE-0066: Insecure Intents)**
+- Flawed Broadcast Receivers **(MASWE-0063: Insecure Broadcast Receivers)**
+- Application Debuggable **(MASWE-0067: Debuggable Flag Not Disabled)**
+- Insecure Webview implementation **(MASWE-0069: WebViews Allows Access to Local Resources + MASWE-0071: WebViews Loading Content from Untrusted Sources)**
+- Intent Sniffing and Injection **(MASWE-0066: Insecure Intents)**
 
 ### Code
-- Intent Sniffing and Injection
-- Parameter Manipulation
-- Hardcoded secrets
+- Parameter Manipulation **(?MASWE-0081: Unsafe Handling Of Data From External Interfaces?)**
 
 ### Resilience
-- Root Detection and Bypass
-- Emulator Detection and Bypass
-- Runtime Manipulation
-- Developer Backdoors
-- Application Patching
+- Root Detection and Bypass **(MASWE-0097: Root/Jailbreak Detection Not Implemented)**
+- Emulator Detection and Bypass **(MASWE-0099: Emulator Detection Not Implemented)**
+- Runtime Manipulation **(MASWE-0103: RASP Techniques Not Implemented + MASWE-0105: Integrity of App Resources Not Verified)**
+- Developer Backdoors **(MASWE-0095: Code That Disables Security Controls Not Removed)**
+- Application Patching **(MASWE-0085: Unsafe Dynamic Code Loading + MASWE-0103: RASP Techniques Not Implemented)**
 
 
 ### Privacy
-- Android keyboard cache issues
-- Android Pasteboard vulnerability
+- 
 
 
 

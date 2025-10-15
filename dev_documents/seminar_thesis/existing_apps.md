@@ -3,7 +3,7 @@
 | Androgoat | 24 | 7 Storage | 1 Crypto | 1 Auth | 4 Network | 7 Platform | 1 Code | 2 Resilience | 1 Privacy | 
 | DIVA | 13 | 5 Storage | - | 5 Auth | - | - | 3 Code | - | - | 
 | InsecureBankv2 | 25 | 4 Storage | 2 Crypto | 4 Auth | 1 Network | 8 Platform | 1 Code | 5 Resilience | - | 
-| Hacking Playground Android App | 15 | 6 Storage | 1 Crypto | - | 1 Network | 2 Platform | 3 Code | 1 Resilience | 1 Privacy | 
+| Hacking Playground Android App | 15 | 5 Storage | 1 Crypto | - | 1 Network | 3 Platform | 3 Code | 2 Resilience | - | 
 | OVAA | 18 | 1 Storage | 1 Crypto | - | - | 10 Platform | 3 Code | 3 Resilience | - | 
 | InsecureShop | 19 | 2 Storage | - | 2 Auth | 1 Network | 13 Platform | - | 1 Resilience | - | 
 | Finstergram | 5 | - | - | - | - | 3 Platform | 2 Code | - | - | 
@@ -153,36 +153,37 @@ Vulnerabilities covered in this app:
 # [Hacking Playground Android App](https://github.com/OWASP/MASTG-Hacking-Playground)
 Vulnerabilities covered in this app:
 ### Storage
-- Sensitive data in internal storage
-- Sensitive data in external storage
-- Sensitive data in plaintext shared preferences
-- Sensitive data in unencrypted SQLite database
-- Sensitive data in logs
-- Memory dumps leaking sensitive data (decrypted keys, etc)
+- Sensitive data in internal storage **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
+- Sensitive data in external storage **(MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction)**
+- Sensitive data in plaintext shared preferences **(MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction)**
+- Sensitive data in unencrypted SQLite database **(MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction)**
+- Sensitive data in logs **(MASWE-0001: Insertion of Sensitive Data into Logs)**
 
 ### Crypto
-- Weak Encryption (XOR)
+- Weak Encryption (XOR) **(MASWE-0020: Improper Encryption)**
 
 ### Auth
 - 
 
 ### Network
-- Using insecure channels for loading webpages (http instead of https)
+- Using insecure channels for loading webpages (http instead of https) **(MASWE-0050: Cleartext Traffic)**
     
 ### Platform
-- Unsecure remote WebViews
-- Unsecure local WebViews
+- Unsecure remote WebViews **(?MASWE-0071: WebViews Loading Content from Untrusted Sources?)**
+- Unsecure local WebViews **(?MASWE-0069: WebViews Allows Access to Local Resources?)**
+- Keyboard cache remembers sensitive data **(MASWE-0053: Sensitive Data Leaked via the User Interface)**
 
 ### Code
-- SQL injection
-- SQL injections via content provider
+- SQL injection **(MASWE-0086: SQL Injection)**
+- SQL injections via content provider **(MASWE-0064: Insecure Content Providers + MASWE-0086: SQL Injection)**
 - Dynamic code injection (DEXClassLoader) **(MASWE-0085: Unsafe Dynamic Code Loading)**
 
 ### Resilience
-- Key to encrypted SQLite database stored locally (retrievable)
+- Key to encrypted SQLite database stored locally (retrievable) **(MASWE-0014: Cryptographic Keys Not Properly Protected at Rest + MASWE-0020: Improper Encryption)**
+- Memory dumps leaking sensitive data (decrypted keys, etc) **(MASWE-0082: Unsafe Handling of Data From Local Storage)**
 
 ### Privacy
-- Keyboard cache remembers sensitive data
+- 
 
 
 

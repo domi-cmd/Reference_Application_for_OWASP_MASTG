@@ -4,7 +4,7 @@
 | DIVA | 13 | 5 Storage | - | 5 Auth | - | - | 3 Code | - | - | 
 | InsecureBankv2 | 25 | 4 Storage | 2 Crypto | 4 Auth | 1 Network | 8 Platform | 1 Code | 5 Resilience | - | 
 | Hacking Playground Android App | 15 | 5 Storage | 1 Crypto | - | 1 Network | 3 Platform | 3 Code | 2 Resilience | - | 
-| OVAA | 18 | 1 Storage | 1 Crypto | - | - | 10 Platform | 3 Code | 3 Resilience | - | 
+| OVAA | 18 | 1 Storage | 1 Crypto | - | - | 10 Platform | 6 Code | - | - | 
 | InsecureShop | 19 | 2 Storage | - | 2 Auth | 1 Network | 13 Platform | - | 1 Resilience | - | 
 | Finstergram | 5 | - | - | - | - | 3 Platform | 2 Code | - | - | 
 | BugBazaar | 43 | 7 Storage | - | 1 Auth | - | 23 Platform | 9 Code | 3 Resilience | - | 
@@ -192,10 +192,10 @@ Vulnerabilities covered in this app:
 # [OVAA](https://github.com/oversecured/ovaa)
 Vulnerabilities covered in this app:
 ### Storage
-- Obtaining access to app logs via InsecureLoggerService. Leak of credentials in LoginActivity Log.d("ovaa", "Processing " + loginData). (Insecure logging of sensitive user data)
+- Obtaining access to app logs via InsecureLoggerService. Leak of credentials in LoginActivity Log.d("ovaa", "Processing " + loginData). (Insecure logging of sensitive user data) **(MASWE-0001: Insertion of Sensitive Data into Logs)**
 
 ### Crypto
-- Use of the hardcoded AES key in WeakCrypto. (crypto/key management failure)
+- Use of the hardcoded AES key in WeakCrypto. (crypto/key management failure) **(MASWE-0013: Hardcoded Cryptographic Keys in Use)**
 
 ### Auth
 - 
@@ -204,26 +204,27 @@ Vulnerabilities covered in this app:
 - 
     
 ### Platform
-- Arbitrary login url via deeplink leaking sensitive user data (Platform IPC/manifest concern/issue)
-- Obtaining access to arbitrary content providers via deeplink (Misuse of content provider permissions semantics and intent flags)
-- Vulnerable host validation when processing deeplink (Incorrect origin/host validation, WebView/deeplink platform integration issue)
-- Opening arbitrary URLs via deeplink (Unsafe WebView configuration)
-- Access to arbitrary activities and access to arbitrary content providers via arbitrary Intent object (Insecure Intent handling)
-- Theft of arbitrary files in MainActivity by intercepting an activity launch from Intent.ACTION_PICK and passing the URI to any file as data. (broken intent/URI handling & insufficient URI validation when interacting with platform picker)
-- Insecure broadcast to MainActivity containing credentials. The attacker can register a broadcast receiver with action oversecured.ovaa.action.UNPROTECTED_CREDENTIALS_DATA and obtain the user's data. (Unsafe broadcast IPC and exposed receiver -> platform ipc misconfiguration)
-- Insecure activity launch in MainActivity with action oversecured.ovaa.action.WEBVIEW, containing the user's encrypted data in the query parameter token. (Sensitive data passed via intents/URIs — unsafe use of platform IPC)
-- Obtaining read/write access to arbitrary files in TheftOverwriteProvider via path-traversal in the value uri.getLastPathSegment(). (ContentProvider implementation mistake (platform component) that allows directory traversal)
-- Use of very wide file sharing declaration for oversecured.ovaa.fileprovider content provider in root entry. (Manifest/provider configuration that exposes files system-wide — platform config issue)
+- Arbitrary login url via deeplink leaking sensitive user data (Platform IPC/manifest concern/issue) **(MASWE-0058: Insecure Deep Links)**
+- Obtaining access to arbitrary content providers via deeplink (Misuse of content provider permissions semantics and intent flags) **(MASWE-0066: Insecure Intents + MASWE-0064: Insecure Content Providers)**
+- Vulnerable host validation when processing deeplink (Incorrect origin/host validation, WebView/deeplink platform integration issue) **(MASWE-0058: Insecure Deep Links)**
+- Opening arbitrary URLs via deeplink (Unsafe WebView configuration) **(MASWE-0070: JavaScript Loaded from Untrusted Sources)**
+- Access to arbitrary activities and access to arbitrary content providers via arbitrary Intent object (Insecure Intent handling) **(MASWE-0066: Insecure Intents)**
+- Theft of arbitrary files in MainActivity by intercepting an activity launch from Intent.ACTION_PICK and passing the URI to any file as data. (broken intent/URI handling & insufficient URI validation when interacting with platform picker) **(MASWE-0066: Insecure Intents + MASWE-0064: Insecure Content Providers)**
+- Insecure broadcast to MainActivity containing credentials. The attacker can register a broadcast receiver with action oversecured.ovaa.action.UNPROTECTED_CREDENTIALS_DATA and obtain the user's data. (Unsafe broadcast IPC and exposed receiver -> platform ipc misconfiguration) **(MASWE-0063: Insecure Broadcast Receivers)**
+- Insecure activity launch in MainActivity with action oversecured.ovaa.action.WEBVIEW, containing the user's encrypted data in the query parameter token. (Sensitive data passed via intents/URIs — unsafe use of platform IPC) **(MASWE-0066: Insecure Intents + ?MASWE-0053: Sensitive Data Leaked via the User Interface?)**
+- Obtaining read/write access to arbitrary files in TheftOverwriteProvider via path-traversal in the value uri.getLastPathSegment(). (ContentProvider implementation mistake (platform component) that allows directory traversal) **(MASWE-0064: Insecure Content Providers + MASWE-0081: Unsafe Handling Of Data From External Interfaces)**
+- Use of very wide file sharing declaration for oversecured.ovaa.fileprovider content provider in root entry. (Manifest/provider configuration that exposes files system-wide — platform config issue) **(MASWE-0064: Insecure Content Providers)**
 
 ### Code
-- Deletion of arbitrary files via the insecure DeleteFilesSerializable deserialization object. (Insecure Deserialization)
-- Hardcoded credentials to a dev environment endpoint in strings.xml in test_url entry. (Hardcoded sensitive data)
+- Deletion of arbitrary files via the insecure DeleteFilesSerializable deserialization object. (Insecure Deserialization) **(MASWE-0088: Insecure Object Deserialization)**
+- Hardcoded credentials to a dev environment endpoint in strings.xml in test_url entry. (Hardcoded sensitive data) **(MASWE-0005: API Keys Hardcoded in the App Package)**
 - Arbitrary code execution via a DEX library located in a world-readable/writable directory. (Unsafe runtime code loading from writable locations enables tampering / arbitrary code injection) **(MASWE-0085: Unsafe Dynamic Code Loading)**
+- Memory corruption via the MemoryCorruptionParcelable object. **(MASWE-0088: Insecure Object Deserialization)**
+- Memory corruption via the MemoryCorruptionSerializable object. **(MASWE-0088: Insecure Object Deserialization)**
+- Arbitrary Code Execution in OversecuredApplication by launching code from third-party apps with no security checks. (Allowing external code execution undermines runtime integrity / tamper resistance) **(MASWE-0085: Unsafe Dynamic Code Loading)**
 
 ### Resilience
-- Memory corruption via the MemoryCorruptionParcelable object.
-- Memory corruption via the MemoryCorruptionSerializable object.
-- Arbitrary Code Execution in OversecuredApplication by launching code from third-party apps with no security checks. (Allowing external code execution undermines runtime integrity / tamper resistance)
+-
 
 ### Privacy
 - 

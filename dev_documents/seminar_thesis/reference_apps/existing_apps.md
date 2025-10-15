@@ -17,10 +17,10 @@
 | - | - | - | - |
 | [Androgoat](https://github.com/satishpatnayak/AndroGoat) |  |  |  |
 |  | Storage |  |  |
-|  |  | Insecure Data Storage – Shared Prefs - 1 | **MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations** |
-|  |  | Insecure Data Storage - Shared Prefs - 2 | **MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations** |
-|  |  | Insecure Data Storage - SQLite | **MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations** |
-|  |  | Insecure Data Storage – Temp Files | **MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations** |
+|  |  | Insecure Data Storage – Shared Prefs - 1 | MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
+|  |  | Insecure Data Storage - Shared Prefs - 2 | MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
+|  |  | Insecure Data Storage - SQLite | MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
+|  |  | Insecure Data Storage – Temp Files | MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
 |  |  | Insecure Data Storage – SD Card | MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |
 |  |  | Insecure Logging | MASWE-0001: Insertion of Sensitive Data into Logs |
 |  |  | Android allowBackup | MASWE-0003: Backup Unencrypted + MASWE-0004: Sensitive Data Not Excluded From Backup |

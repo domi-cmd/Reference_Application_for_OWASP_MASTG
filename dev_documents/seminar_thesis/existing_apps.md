@@ -1,152 +1,117 @@
+# Overview
 | App Name | # Vulnerabilites | Storage | Crypto | Auth | Network | Platform | Code | Resilience | Privacy | 
 | - | - | - | - | - | - | - | - | - | - | 
 | Androgoat | 24 | 7 Storage | 1 Crypto | 1 Auth | 4 Network | 7 Platform | 1 Code | 2 Resilience | 1 Privacy | 
-| DIVA | 13 | 5 Storage | - | 5 Auth | - | - | 3 Code | - | - | 
-| InsecureBankv2 | 25 | 4 Storage | 2 Crypto | 4 Auth | 1 Network | 8 Platform | 1 Code | 5 Resilience | - | 
-| Hacking Playground Android App | 15 | 5 Storage | 1 Crypto | - | 1 Network | 3 Platform | 3 Code | 2 Resilience | - | 
-| OVAA | 18 | 1 Storage | 1 Crypto | - | - | 10 Platform | 6 Code | - | - | 
-| InsecureShop | 19 | 2 Storage | - | 2 Auth | 1 Network | 13 Platform | - | 1 Resilience | - | 
-| Finstergram | 5 | - | - | - | - | 3 Platform | 2 Code | - | - | 
-| BugBazaar | 43 | 7 Storage | - | 1 Auth | - | 23 Platform | 9 Code | 3 Resilience | - | 
+| DIVA | 13 | 5 Storage |  | 5 Auth |  |  | 3 Code |  |  | 
+| InsecureBankv2 | 25 | 4 Storage | 2 Crypto | 4 Auth | 1 Network | 8 Platform | 1 Code | 5 Resilience |  | 
+| Hacking Playground Android App | 15 | 5 Storage | 1 Crypto |  | 1 Network | 3 Platform | 3 Code | 2 Resilience |  | 
+| OVAA | 18 | 1 Storage | 1 Crypto |  |  | 10 Platform | 6 Code |  |  | 
+| InsecureShop | 19 | 2 Storage |  | 2 Auth | 1 Network | 13 Platform |  | 1 Resilience |  | 
+| Finstergram | 5 |  |  |  |  | 3 Platform | 2 Code |  |  | 
+| BugBazaar | 43 | 7 Storage |  | 1 Auth |  | 23 Platform | 9 Code | 3 Resilience |  | 
 | - | # | - Storage | - Crypto | - Auth | - Network | -- Platform | - Code | - Resilience | - Privacy | 
 
 
-# [Androgoat](https://github.com/satishpatnayak/AndroGoat)
-Vulnerabilities covered in this app:
-## Storage
-- Insecure Data Storage – Shared Prefs - 1 **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
-- Insecure Data Storage - Shared Prefs - 2 **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
-- Insecure Data Storage - SQLite **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
-- Insecure Data Storage – Temp Files **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
-- Insecure Data Storage – SD Card **(MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction)**
-- Insecure Logging **(MASWE-0001: Insertion of Sensitive Data into Logs)**
-- Android allowBackup **(MASWE-0003: Backup Unencrypted + MASWE-0004: Sensitive Data Not Excluded From Backup)**
-
-## Crypto
-- Broken Cryptography **(?MASWE-0020: Improper Encryption?)**
-
-## Auth
-- Hard coding issues **(?MASWE-0005: API Keys Hardcoded in the App Package?)**
-
-## Network
-- Network intercepting – HTTP **(MASWE-0050: Cleartext Traffic)**
-- Network intercepting – HTTPS **(?MASWE-0052: Insecure Certificate Validation?)**
-- Network intercepting – Certificate Pinning **(MASWE-0047: Insecure Identity Pinning)**
-- Misconfigured Network_Security_Config.xml **(?MASWE-0050: Cleartext Traffic?)**
-    
-## Platform
-- Unprotected Android Components – Activity **(MASWE-0066: Insecure Intents)**
-- Unprotected Android Components – Service **(MASWE-0062: Insecure Services)**
-- Unprotected Android Components – Broadcast Receivers **(MASWE-0063: Insecure Broadcast Receivers)**
-- AndroidDebuggable **(MASWE-0067: Debuggable Flag Not Disabled)**
-- Custom URL Scheme **(MASWE-0058: Insecure Deep Links)**
-- Input Validations – XSS **(MASWE-0072: Universal XSS)**
-- Input Validations – WebView **(MASWE-0071: WebViews Loading Content from Untrusted Sources)**
-
-## Code
-- Input Validations – SQLi **(MASWE-0086: SQL Injection)**
-
-## Resilience
-- Root Detection **(MASWE-0097: Root/Jailbreak Detection Not Implemented)**
-- Emulator Detection **(MASWE-0099: Emulator Detection Not Implemented)**
-
-## Privacy
-- Keyboard Cache **(MASWE-0053: Sensitive Data Leaked via the User Interface)**
-
-
-
-
-
-
-# [DIVA](https://github.com/payatu/diva-android)
-Vulnerabilities covered in this app:
-## Storage
-- Insecure Data Storage – Part 1 **(??MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations??)**
-- Insecure Data Storage – Part 2 **(??MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction??)**
-- Insecure Data Storage – Part 3 **(??MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations??)**
-- Insecure Data Storage – Part 4 **(??MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations??)**
-- Insecure Logging **(MASWE-0001: Insertion of Sensitive Data into Logs)**
-
-## Crypto
-
-## Auth
-- Hardcoding Issues – Part 1 **(??MASWE-0005: API Keys Hardcoded in the App Package??)**
-- Hardcoding Issues – Part 2 **(??MASWE-0005: API Keys Hardcoded in the App Package??)**
-- Access Control Issues – Part 1 **(Further Analysis Required)**
-- Access Control Issues – Part 2 **(Further Analysis Required)**
-- Access Control Issues – Part 3 **(Further Analysis Required)**
-
-## Network
-- 
-    
-## Platform
--
-
-## Code
-- Input Validation Issues – Part 1 **(?MASWE-0086: SQL Injection?)**
-- Input Validation Issues – Part 2 **(Further Analysis Required)**
-- Input Validation Issues – Part 3 **(Further Analysis Required)**
-
-## Resilience
--
-
-## Privacy
-- 
-
-
-
-
-
-# [InsecureBankv2](https://github.com/dineshshetty/Android-InsecureBankv2)
-Vulnerabilities covered in this app:
-### Storage
-- Insecure SDCard storage **(MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction)**
-- Insecure Logging mechanism **(MASWE-0001: Insertion of Sensitive Data into Logs)**
-- Sensitive Information in Memory **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
-- Android Backup vulnerability **(MASWE-0003: Backup Unencrypted + MASWE-0003: Backup Unencrypted)**
-
-### Crypto
-- Weak Cryptography implementation **(MASWE-0019: Risky Cryptography Implementations + MASWE-0020: Improper Encryption)**
-- Local Encryption issues **(MASWE-0020: Improper Encryption + MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
-
-### Auth
-- Weak Authorization mechanism **(MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed)**
-- Weak change password implementation **(MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed)**
-- Username Enumeration issue **(MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed)**
-- Hardcoded secrets **(?MASWE-0005: API Keys Hardcoded in the App Package?)**
-
-### Network
-- Insecure HTTP connections **(MASWE-0050: Cleartext Traffic)**
-    
-### Platform
-- Android Pasteboard vulnerability **(MASWE-0053: Sensitive Data Leaked via the User Interface)**
-- Android keyboard cache issues **(MASWE-0053: Sensitive Data Leaked via the User Interface)**
-- Insecure Content Provider access **(MASWE-0064: Insecure Content Providers)**
-- Vulnerable Activity Components **(MASWE-0066: Insecure Intents)**
-- Flawed Broadcast Receivers **(MASWE-0063: Insecure Broadcast Receivers)**
-- Application Debuggable **(MASWE-0067: Debuggable Flag Not Disabled)**
-- Insecure Webview implementation **(MASWE-0069: WebViews Allows Access to Local Resources + MASWE-0071: WebViews Loading Content from Untrusted Sources)**
-- Intent Sniffing and Injection **(MASWE-0066: Insecure Intents)**
-
-### Code
-- Parameter Manipulation **(?MASWE-0081: Unsafe Handling Of Data From External Interfaces?)**
-
-### Resilience
-- Root Detection and Bypass **(MASWE-0097: Root/Jailbreak Detection Not Implemented)**
-- Emulator Detection and Bypass **(MASWE-0099: Emulator Detection Not Implemented)**
-- Runtime Manipulation **(MASWE-0103: RASP Techniques Not Implemented + MASWE-0105: Integrity of App Resources Not Verified)**
-- Developer Backdoors **(MASWE-0095: Code That Disables Security Controls Not Removed)**
-- Application Patching **(MASWE-0085: Unsafe Dynamic Code Loading + MASWE-0103: RASP Techniques Not Implemented)**
-
-
-### Privacy
-- 
-
-
-
-
-
-
+# Specifics
+| App Name | MASVS Category | Vulnerability | MASVS Counterpart |
+| - | - | - | - |
+| [Androgoat](https://github.com/satishpatnayak/AndroGoat) |  |  |  |
+|  | Storage |  |  |
+|  |  | Insecure Data Storage – Shared Prefs - 1 | **MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations** |
+|  |  | Insecure Data Storage - Shared Prefs - 2 | **MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations** |
+|  |  | Insecure Data Storage - SQLite | **MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations** |
+|  |  | Insecure Data Storage – Temp Files | **MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations** |
+|  |  | Insecure Data Storage – SD Card | MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |
+|  |  | Insecure Logging | MASWE-0001: Insertion of Sensitive Data into Logs |
+|  |  | Android allowBackup | MASWE-0003: Backup Unencrypted + MASWE-0004: Sensitive Data Not Excluded From Backup |
+|  | Crypto |  |  |
+|  |  | Broken Cryptography | ?MASWE-0020: Improper Encryption? |
+|  | Auth |  |  |
+|  |  | Hard coding issues | ?MASWE-0005: API Keys Hardcoded in the App Package? |
+|  | Network |  |  |
+|  |  | Network intercepting – HTTP | MASWE-0050: Cleartext Traffic |
+|  |  | Network intercepting – HTTPS | ?MASWE-0052: Insecure Certificate Validation? |
+|  |  | Network intercepting – Certificate Pinning | MASWE-0047: Insecure Identity Pinning |
+|  |  | Misconfigured Network_Security_Config.xml | ?MASWE-0050: Cleartext Traffic? |
+|  | Platform |  |  |
+|  |  | Keyboard Cache | MASWE-0053: Sensitive Data Leaked via the User Interface |
+|  |  | Unprotected Android Components – Activity | MASWE-0066: Insecure Intents |
+|  |  | Unprotected Android Components – Service | MASWE-0062: Insecure Services |
+|  |  | Unprotected Android Components – Broadcast Receivers | MASWE-0063: Insecure Broadcast Receivers |
+|  |  | AndroidDebuggable | MASWE-0067: Debuggable Flag Not Disabled |
+|  |  | Custom URL Scheme | MASWE-0058: Insecure Deep Links |
+|  |  | Input Validations – XSS | MASWE-0072: Universal XSS |
+|  |  | Input Validations – WebView | MASWE-0071: WebViews Loading Content from Untrusted Sources |
+|  | Code |  |  |
+|  |  | Input Validations – SQLi | MASWE-0086: SQL Injection |
+|  | Resilience |  |  |
+|  |  | Root Detection | MASWE-0097: Root/Jailbreak Detection Not Implemented |
+|  |  | Emulator Detection | MASWE-0099: Emulator Detection Not Implemented |
+|  | Privacy |  |  |
+|  |  | - | - |
+| [DIVA](https://github.com/payatu/diva-android) |  |  |  |
+|  | Storage |  |  |
+|  |  | Insecure Data Storage – Part 1 | ??MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations?? |
+|  |  | Insecure Data Storage – Part 2 | ??MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction?? |
+|  |  | Insecure Data Storage – Part 3 | ??MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations?? |
+|  |  | Insecure Data Storage – Part 4 | ??MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations?? |
+|  |  | Insecure Logging | MASWE-0001: Insertion of Sensitive Data into Logs |
+|  | Crypto |  |  |
+|  |  | - | - |
+|  | Auth |  |  |
+|  |  | Hardcoding Issues – Part 1 | ??MASWE-0005: API Keys Hardcoded in the App Package?? |
+|  |  | Hardcoding Issues – Part 2 | ??MASWE-0005: API Keys Hardcoded in the App Package?? |
+|  |  | Access Control Issues – Part 1 | Further Analysis Required |
+|  |  | Access Control Issues – Part 2 | Further Analysis Required |
+|  |  | Access Control Issues – Part 3 | Further Analysis Required |
+|  | Network |  |  |
+|  |  | - | - |
+|  | Platform |  |  |
+|  |  | - | - |
+|  | Code |  |  |
+|  |  | Input Validation Issues – Part 1 | ?MASWE-0086: SQL Injection? |
+|  |  | Input Validation Issues – Part 2 | Further Analysis Required |
+|  |  |  Input Validation Issues – Part 3 | Further Analysis Required |
+|  | Resilience |  |  |
+|  |  | - | - |
+|  | Privacy |  |  |
+|  |  | - | - |
+| [InsecureBankv2](https://github.com/dineshshetty/Android-InsecureBankv2) |  |  |  |
+|  | Storage |  |  |
+|  |  | Insecure SDCard storage | MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |
+|  |  | Insecure Logging mechanism | MASWE-0001: Insertion of Sensitive Data into Logs |
+|  |  | Sensitive Information in Memory | MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
+|  |  | Android Backup vulnerability | MASWE-0003: Backup Unencrypted + MASWE-0003: Backup Unencrypted |
+|  | Crypto |  |  |
+|  |  | Weak Cryptography implementation | MASWE-0019: Risky Cryptography Implementations + MASWE-0020: Improper Encryption |
+|  |  | Local Encryption issues | MASWE-0020: Improper Encryption + MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
+|  | Auth |  |  |
+|  |  | Weak Authorization mechanism | MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed |
+|  |  | Weak change password implementation | MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed |
+|  |  | Username Enumeration issue | MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed |
+|  |  | Hardcoded secrets | ?MASWE-0005: API Keys Hardcoded in the App Package? |
+|  | Network |  |  |
+|  |  | Insecure HTTP connections | MASWE-0050: Cleartext Traffic |
+|  | Platform |  |  |
+|  |  | Android Pasteboard vulnerability | MASWE-0053: Sensitive Data Leaked via the User Interface |
+|  |  | Android keyboard cache issues | MASWE-0053: Sensitive Data Leaked via the User Interface |
+|  |  | Insecure Content Provider access | MASWE-0064: Insecure Content Providers |
+|  |  | Vulnerable Activity Components | MASWE-0066: Insecure Intents |
+|  |  | Flawed Broadcast Receivers | MASWE-0063: Insecure Broadcast Receivers |
+|  |  | Application Debuggable | MASWE-0067: Debuggable Flag Not Disabled |
+|  |  | Insecure Webview implementation | MASWE-0069: WebViews Allows Access to Local Resources + MASWE-0071: WebViews Loading Content from Untrusted Sources |
+|  |  | Intent Sniffing and Injection | MASWE-0066: Insecure Intents |
+|  | Code |  |  |
+|  |  | Parameter Manipulation | ?MASWE-0081: Unsafe Handling Of Data From External Interfaces? |
+|  | Resilience |  |  |
+|  |  | Root Detection and Bypass | MASWE-0097: Root/Jailbreak Detection Not Implemented |
+|  |  | Emulator Detection and Bypass | MASWE-0099: Emulator Detection Not Implemented |
+|  |  | Runtime Manipulation | MASWE-0103: RASP Techniques Not Implemented + MASWE-0105: Integrity of App Resources Not Verified |
+|  |  | Developer Backdoors | MASWE-0095: Code That Disables Security Controls Not Removed |
+|  |  | Application Patching | MASWE-0085: Unsafe Dynamic Code Loading + MASWE-0103: RASP Techniques Not Implemented |
+|  | Privacy |  |  |
+|  |  | - | - |
+|  |  | Vulnerability | MASVSCounterpart |
 
 
 

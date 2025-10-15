@@ -6,8 +6,8 @@
 | Hacking Playground Android App | 15 | 6 Storage | 1 Crypto | - | 1 Network | 2 Platform | 3 Code | 1 Resilience | 1 Privacy | 
 | OVAA | 18 | 1 Storage | 1 Crypto | - | - | 10 Platform | 3 Code | 3 Resilience | - | 
 | InsecureShop | 19 | 2 Storage | - | 2 Auth | 1 Network | 13 Platform | - | 1 Resilience | - | 
-| Finstergram | # | - | - | - | - | 3 Platform | 2 Code | - | - | 
-| - | # | - Storage | - Crypto | - Auth | - Network | -- Platform | - Code | - Resilience | - Privacy | 
+| Finstergram | 5 | - | - | - | - | 3 Platform | 2 Code | - | - | 
+| BugBazaar | 43 | 7 Storage | - | 1 Auth | - | 23 Platform | 9 Code | 3 Resilience | - | 
 | - | # | - Storage | - Crypto | - Auth | - Network | -- Platform | - Code | - Resilience | - Privacy | 
 
 
@@ -192,7 +192,7 @@ Vulnerabilities covered in this app:
 ### Code
 - SQL injection
 - SQL injections via content provider
-- Dynamic code injection (DEXClassLoader)
+- Dynamic code injection (DEXClassLoader) **(MASWE-0085: Unsafe Dynamic Code Loading)**
 
 ### Resilience
 - Key to encrypted SQLite database stored locally (retrievable)
@@ -233,7 +233,7 @@ Vulnerabilities covered in this app:
 ### Code
 - Deletion of arbitrary files via the insecure DeleteFilesSerializable deserialization object. (Insecure Deserialization)
 - Hardcoded credentials to a dev environment endpoint in strings.xml in test_url entry. (Hardcoded sensitive data)
-- Arbitrary code execution via a DEX library located in a world-readable/writable directory. (Unsafe runtime code loading from writable locations enables tampering / arbitrary code injection)
+- Arbitrary code execution via a DEX library located in a world-readable/writable directory. (Unsafe runtime code loading from writable locations enables tampering / arbitrary code injection) **(MASWE-0085: Unsafe Dynamic Code Loading)**
 
 ### Resilience
 - Memory corruption via the MemoryCorruptionParcelable object.
@@ -331,6 +331,78 @@ Vulnerabilities covered in this app:
 
 
 
+# [BugBazaar](https://github.com/payatu/BugBazaar?tab=readme-ov-file)
+Vulnerabilities covered in this app:
+### Storage
+- Insecure Logging (logging user creds) **(MASWE-0001: Insertion of Sensitive Data into Logs)**
+- Unencrypted database **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
+- Man in the Disk Attack **(?MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction?)**
+- Storing sensitive info in SharedPref **(MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations + MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
+- Hardcoded secrets **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
+- Backup enabled **(MASWE-0003: Backup Unencrypted + MASWE-0004: Sensitive Data Not Excluded From Backup)**
+- Improper cache handling
+
+### Crypto
+- 
+
+### Auth
+- Misconfigured firebase's firestore **(MASWE-0033: Authentication or Authorization Protocol Security Best Practices Not Followed)**
+
+### Network
+- 
+    
+### Platform
+- Opening arbitrary URLs in the webview **(MASWE-0071: WebViews Loading Content from Untrusted Sources)**
+- XSS **(MASWE-0072: Universal XSS)**
+- OPEN REDIRECTION **(MASWE-0066: Insecure Intents)**
+- Account Takeover via Stealing Session ID (Host validation bypass) **(MASWE-0070: JavaScript Loaded from Untrusted Sources)**
+- Stealing User token Via JavaScriptInterface class **(MASWE-0068: JavaScript Bridges in WebViews)**
+- Access of Arbitrary files via insecure Flags Note: Only exploitable until API level 28 **(MASWE-0069: WebViews Allows Access to Local Resources)**
+- Stealing of Arbitrary files via Insecure WebResourceResponse **(MASWE-0073: Insecure WebResourceResponse Implementations)**
+- Intent interception **(MASWE-0066: Insecure Intents)**
+- Account takeover via intent Spoofing **(MASWE-0066: Insecure Intents)**
+- Steal User's Contact via Insecure Pending Intent **(MASWE-0066: Insecure Intents)**
+- CSRF to add the product to cart **(MASWE-0058: Insecure Deep Links)**
+- Deep link hijacking to load URLs in webview **(MASWE-0058: Insecure Deep Links + MASWE-0071: WebViews Loading Content from Untrusted Sources)**
+- Content Spoofing on Offers activity **(MASWE-0058: Insecure Deep Links)**
+- Exported Components **(MASWE-0066: Insecure Intents)**
+- Steal User's Contact via typo permission in Content Provider **(MASWE-0064: Insecure Content Providers)**
+- Insecure broadcast receiver **(MASWE-0063: Insecure Broadcast Receivers)**
+- Access to Protected Components via broadcast Receiver **(MASWE-0063: Insecure Broadcast Receivers + MASWE-0066: Insecure Intents)**
+- Insecure services **(MASWE-0062: Insecure Services)**
+- Fragment injection in Refer-Us **(MASWE-0060: Insecure Use of UIActivity)**
+- Copy/Paste buffer Caching **(MASWE-0053: Sensitive Data Leaked via the User Interface)**
+- Application backgrounding **(MASWE-0053: Sensitive Data Leaked via the User Interface + MASWE-0055: Sensitive Data Leaked via Screenshots)**
+- Tapjacking **(MASWE-0056: Tapjacking Attacks)**
+- Task Hijacking **(MASWE-0057: StrandHogg Attack / Task Affinity Vulnerability)**
+
+### Code
+- RCE through insecure Dynamic Code Loading **(MASWE-0085: Unsafe Dynamic Code Loading)**
+- SQL Injection via user input in My order **(MASWE-0086: SQL Injection)**
+- Content Provider SQL Injection in Address **(MASWE-0086: SQL Injection + MASWE-0064: Insecure Content Providers)**
+- Data insertion via insecure Content Provider in Address **(MASWE-0064: Insecure Content Providers)**
+- Improper Input Validation **(MASWE-0081: Unsafe Handling Of Data From External Interfaces + MASWE-0083: Unsafe Handling of Data From The User Interface)**
+- Unrestricted file upload **(MASWE-0081: Unsafe Handling Of Data From External Interfaces)**
+- Improper exception Handling **(?MASWE-0081: Unsafe Handling Of Data From External Interfaces?)**
+- Improper cache handling **(MASWE-0082: Unsafe Handling of Data From Local Storage)**
+- Runtime code modification **(MASWE-0085: Unsafe Dynamic Code Loading + MASWE-0107: Runtime Code Integrity Not Verified)**
+
+### Resilience
+- Passcode Bypass **(MASWE-0008: Missing Device Secure Lock Verification Implementation)**
+- Debuggable application **(MASWE-0067: Debuggable Flag Not Disabled + MASWE-0101: Debugger Detection Not Implemented)**
+- Login pin bypass via Frida/Objection **(???MASWE-0097: Root/Jailbreak Detection Not Implemented???)**
+
+
+### Privacy
+-
+
+
+
+
+
+
+
+
 # AppName
 Vulnerabilities covered in this app:
 ### Storage
@@ -356,7 +428,4 @@ Vulnerabilities covered in this app:
 
 ### Privacy
 -
-
-
-
 

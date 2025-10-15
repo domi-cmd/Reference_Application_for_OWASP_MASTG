@@ -1,0 +1,10 @@
+| App Name | # Vulnerabilites | Storage | Crypto | Auth | Network | Platform | Code | Resilience | Privacy | 
+| - | - | - | - | - | - | - | - | - | - | 
+| Androgoat | 24 | 7 Storage | 1 Crypto | 1 Auth | 4 Network | 7 Platform | 1 Code | 2 Resilience | 1 Privacy | 
+| DIVA | 13 | 5 Storage |  | 5 Auth |  |  | 3 Code |  |  | 
+| InsecureBankv2 | 25 | 4 Storage | 2 Crypto | 4 Auth | 1 Network | 8 Platform | 1 Code | 5 Resilience |  | 
+| Hacking Playground Android App | 15 | 5 Storage | 1 Crypto |  | 1 Network | 3 Platform | 3 Code | 2 Resilience |  | 
+| OVAA | 18 | 1 Storage | 1 Crypto |  |  | 10 Platform | 6 Code |  |  | 
+| InsecureShop | 19 | 2 Storage |  | 2 Auth | 1 Network | 13 Platform |  | 1 Resilience |  | 
+| Finstergram | 5 |  |  |  |  | 3 Platform | 2 Code |  |  | 
+| BugBazaar | 43 | 7 Storage |  | 1 Auth |  | 23 Platform | 9 Code | 3 Resilience |  | 

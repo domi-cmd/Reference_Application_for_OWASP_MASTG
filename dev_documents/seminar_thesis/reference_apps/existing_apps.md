@@ -111,92 +111,74 @@
 |  |  | Application Patching | MASWE-0085: Unsafe Dynamic Code Loading + MASWE-0103: RASP Techniques Not Implemented |
 |  | Privacy |  |  |
 |  |  | - | - |
+| [Hacking Playground Android App](https://github.com/OWASP/MASTG-Hacking-Playground) | |  |  |
+|  | Storage |  |  |
+|  |  | Sensitive data in internal storage | MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
+|  |  | Sensitive data in external storage | MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |
+|  |  | Sensitive data in plaintext shared preferences | MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |
+|  |  | Sensitive data in unencrypted SQLite database | MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |
+|  |  | Sensitive data in logs | MASWE-0001: Insertion of Sensitive Data into Logs |
+|  | Crypto |  |  |
+|  |  | Weak Encryption (XOR) | MASWE-0020: Improper Encryption |
+|  | Auth |  |  |
+|  |  | - | - |
+|  | Network |  |  |
+|  |  | Using insecure channels for loading webpages (http instead of https) | MASWE-0050: Cleartext Traffic |
+|  | Platform |  |  |
+|  |  | Unsecure remote WebViews | ?MASWE-0071: WebViews Loading Content from Untrusted Sources? |
+|  |  | Unsecure local WebViews | ?MASWE-0069: WebViews Allows Access to Local Resources? |
+|  |  | Keyboard cache remembers sensitive data | MASWE-0053: Sensitive Data Leaked via the User Interface |
+|  | Code |  |  |
+|  |  | SQL injection | MASWE-0086: SQL Injection |
+|  |  | SQL injections via content provider | MASWE-0064: Insecure Content Providers + MASWE-0086: SQL Injection |
+|  |  | Dynamic code injection (DEXClassLoader) | MASWE-0085: Unsafe Dynamic Code Loading |
+|  | Resilience |  |  |
+|  |  | Key to encrypted SQLite database stored locally (retrievable) | MASWE-0014: Cryptographic Keys Not Properly Protected at Rest + MASWE-0020: Improper Encryption |
+|  |  | Memory dumps leaking sensitive data (decrypted keys, etc) | MASWE-0082: Unsafe Handling of Data From Local Storage |
+|  | Privacy |  |  |
+|  |  | - | - |
+| [OVAA](https://github.com/oversecured/ovaa) |  |  |  |
+|  | Storage |  |  |
+|  |  | Obtaining access to app logs via InsecureLoggerService. Leak of credentials in LoginActivity Log.d("ovaa", "Processing " + loginData). (Insecure logging of sensitive user data) | MASWE-0001: Insertion of Sensitive Data into Logs |
+|  | Crypto |  |  |
+|  |  | Use of the hardcoded AES key in WeakCrypto. (crypto/key management failure) | MASWE-0013: Hardcoded Cryptographic Keys in Use |
+|  | Auth |  |  |
+|  |  | - | - |
+|  | Network |  |  |
+|  |  | - | - |
+|  | Platform |  |  |
+|  |  | Arbitrary login url via deeplink leaking sensitive user data (Platform IPC/manifest concern/issue) | MASWE-0058: Insecure Deep Links |
+|  |  | Obtaining access to arbitrary content providers via deeplink (Misuse of content provider permissions semantics and intent flags) | MASWE-0066: Insecure Intents + MASWE-0064: Insecure Content Providers |
+|  |  | Vulnerable host validation when processing deeplink (Incorrect origin/host validation & WebView/deeplink platform integration issue) | MASWE-0058: Insecure Deep Links |
+|  |  | Opening arbitrary URLs via deeplink (Unsafe WebView configuration) | MASWE-0070: JavaScript Loaded from Untrusted Sources |
+|  |  | Access to arbitrary activities and access to arbitrary content providers via arbitrary Intent object (Insecure Intent handling) | MASWE-0066: Insecure Intents |
+|  |  | Theft of arbitrary files in MainActivity by intercepting an activity launch from Intent.ACTION_PICK and passing the URI to any file as data. (broken intent/URI handling & insufficient URI validation when interacting with platform picker) | MASWE-0066: Insecure Intents + MASWE-0064: Insecure Content Providers |
+|  |  | Insecure broadcast to MainActivity containing credentials. The attacker can register a broadcast receiver with action oversecured.ovaa.action.UNPROTECTED_CREDENTIALS_DATA and obtain the user's data. (Unsafe broadcast IPC and exposed receiver -> platform ipc misconfiguration) | MASWE-0063: Insecure Broadcast Receivers |
+|  |  | Insecure activity launch in MainActivity with action oversecured.ovaa.action.WEBVIEW, containing the user's encrypted data in the query parameter token. (Sensitive data passed via intents/URIs — unsafe use of platform IPC) | MASWE-0066: Insecure Intents + ?MASWE-0053: Sensitive Data Leaked via the User Interface? |
+|  |  | Obtaining read/write access to arbitrary files in TheftOverwriteProvider via path-traversal in the value uri.getLastPathSegment(). (ContentProvider implementation mistake (platform component) that allows directory traversal) | MASWE-0064: Insecure Content Providers + MASWE-0081: Unsafe Handling Of Data From External Interfaces |
+|  |  | Use of very wide file sharing declaration for oversecured.ovaa.fileprovider content provider in root entry. (Manifest/provider configuration that exposes files system-wide — platform config issue) | MASWE-0064: Insecure Content Providers |
+|  | Code |  |  |
+|  |  | Deletion of arbitrary files via the insecure DeleteFilesSerializable deserialization object. (Insecure Deserialization) | MASWE-0088: Insecure Object Deserialization |
+|  |  | Hardcoded credentials to a dev environment endpoint in strings.xml in test_url entry. (Hardcoded sensitive data) | MASWE-0005: API Keys Hardcoded in the App Package |
+|  |  | Arbitrary code execution via a DEX library located in a world-readable/writable directory. (Unsafe runtime code loading from writable locations enables tampering / arbitrary code injection) | MASWE-0085: Unsafe Dynamic Code Loading |
+|  |  | Memory corruption via the MemoryCorruptionParcelable object. | MASWE-0088: Insecure Object Deserialization |
+|  |  | Memory corruption via the MemoryCorruptionSerializable object. | MASWE-0088: Insecure Object Deserialization |
+|  |  | Arbitrary Code Execution in OversecuredApplication by launching code from third-party apps with no security checks. (Allowing external code execution undermines runtime integrity / tamper resistance) | MASWE-0085: Unsafe Dynamic Code Loading |
+|  | Resilience |  |  |
+|  |  | - | - |
+|  | Privacy |  |  |
+|  |  | - | - |
 |  |  | Vulnerability | MASVSCounterpart |
-
-
-
-# [Hacking Playground Android App](https://github.com/OWASP/MASTG-Hacking-Playground)
-Vulnerabilities covered in this app:
-### Storage
-- Sensitive data in internal storage **(MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations)**
-- Sensitive data in external storage **(MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction)**
-- Sensitive data in plaintext shared preferences **(MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction)**
-- Sensitive data in unencrypted SQLite database **(MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction)**
-- Sensitive data in logs **(MASWE-0001: Insertion of Sensitive Data into Logs)**
-
-### Crypto
-- Weak Encryption (XOR) **(MASWE-0020: Improper Encryption)**
-
-### Auth
-- 
-
-### Network
-- Using insecure channels for loading webpages (http instead of https) **(MASWE-0050: Cleartext Traffic)**
-    
-### Platform
-- Unsecure remote WebViews **(?MASWE-0071: WebViews Loading Content from Untrusted Sources?)**
-- Unsecure local WebViews **(?MASWE-0069: WebViews Allows Access to Local Resources?)**
-- Keyboard cache remembers sensitive data **(MASWE-0053: Sensitive Data Leaked via the User Interface)**
-
-### Code
-- SQL injection **(MASWE-0086: SQL Injection)**
-- SQL injections via content provider **(MASWE-0064: Insecure Content Providers + MASWE-0086: SQL Injection)**
-- Dynamic code injection (DEXClassLoader) **(MASWE-0085: Unsafe Dynamic Code Loading)**
-
-### Resilience
-- Key to encrypted SQLite database stored locally (retrievable) **(MASWE-0014: Cryptographic Keys Not Properly Protected at Rest + MASWE-0020: Improper Encryption)**
-- Memory dumps leaking sensitive data (decrypted keys, etc) **(MASWE-0082: Unsafe Handling of Data From Local Storage)**
-
-### Privacy
-- 
-
-
-
-
-
-# [OVAA](https://github.com/oversecured/ovaa)
-Vulnerabilities covered in this app:
-### Storage
-- Obtaining access to app logs via InsecureLoggerService. Leak of credentials in LoginActivity Log.d("ovaa", "Processing " + loginData). (Insecure logging of sensitive user data) **(MASWE-0001: Insertion of Sensitive Data into Logs)**
-
-### Crypto
-- Use of the hardcoded AES key in WeakCrypto. (crypto/key management failure) **(MASWE-0013: Hardcoded Cryptographic Keys in Use)**
-
-### Auth
-- 
-
-### Network
-- 
-    
-### Platform
-- Arbitrary login url via deeplink leaking sensitive user data (Platform IPC/manifest concern/issue) **(MASWE-0058: Insecure Deep Links)**
-- Obtaining access to arbitrary content providers via deeplink (Misuse of content provider permissions semantics and intent flags) **(MASWE-0066: Insecure Intents + MASWE-0064: Insecure Content Providers)**
-- Vulnerable host validation when processing deeplink (Incorrect origin/host validation, WebView/deeplink platform integration issue) **(MASWE-0058: Insecure Deep Links)**
-- Opening arbitrary URLs via deeplink (Unsafe WebView configuration) **(MASWE-0070: JavaScript Loaded from Untrusted Sources)**
-- Access to arbitrary activities and access to arbitrary content providers via arbitrary Intent object (Insecure Intent handling) **(MASWE-0066: Insecure Intents)**
-- Theft of arbitrary files in MainActivity by intercepting an activity launch from Intent.ACTION_PICK and passing the URI to any file as data. (broken intent/URI handling & insufficient URI validation when interacting with platform picker) **(MASWE-0066: Insecure Intents + MASWE-0064: Insecure Content Providers)**
-- Insecure broadcast to MainActivity containing credentials. The attacker can register a broadcast receiver with action oversecured.ovaa.action.UNPROTECTED_CREDENTIALS_DATA and obtain the user's data. (Unsafe broadcast IPC and exposed receiver -> platform ipc misconfiguration) **(MASWE-0063: Insecure Broadcast Receivers)**
-- Insecure activity launch in MainActivity with action oversecured.ovaa.action.WEBVIEW, containing the user's encrypted data in the query parameter token. (Sensitive data passed via intents/URIs — unsafe use of platform IPC) **(MASWE-0066: Insecure Intents + ?MASWE-0053: Sensitive Data Leaked via the User Interface?)**
-- Obtaining read/write access to arbitrary files in TheftOverwriteProvider via path-traversal in the value uri.getLastPathSegment(). (ContentProvider implementation mistake (platform component) that allows directory traversal) **(MASWE-0064: Insecure Content Providers + MASWE-0081: Unsafe Handling Of Data From External Interfaces)**
-- Use of very wide file sharing declaration for oversecured.ovaa.fileprovider content provider in root entry. (Manifest/provider configuration that exposes files system-wide — platform config issue) **(MASWE-0064: Insecure Content Providers)**
-
-### Code
-- Deletion of arbitrary files via the insecure DeleteFilesSerializable deserialization object. (Insecure Deserialization) **(MASWE-0088: Insecure Object Deserialization)**
-- Hardcoded credentials to a dev environment endpoint in strings.xml in test_url entry. (Hardcoded sensitive data) **(MASWE-0005: API Keys Hardcoded in the App Package)**
-- Arbitrary code execution via a DEX library located in a world-readable/writable directory. (Unsafe runtime code loading from writable locations enables tampering / arbitrary code injection) **(MASWE-0085: Unsafe Dynamic Code Loading)**
-- Memory corruption via the MemoryCorruptionParcelable object. **(MASWE-0088: Insecure Object Deserialization)**
-- Memory corruption via the MemoryCorruptionSerializable object. **(MASWE-0088: Insecure Object Deserialization)**
-- Arbitrary Code Execution in OversecuredApplication by launching code from third-party apps with no security checks. (Allowing external code execution undermines runtime integrity / tamper resistance) **(MASWE-0085: Unsafe Dynamic Code Loading)**
-
-### Resilience
--
-
-### Privacy
-- 
-
-
-
-
+|  |  | Vulnerability | MASVSCounterpart |
+|  |  | Vulnerability | MASVSCounterpart |
+|  |  | Vulnerability | MASVSCounterpart |
+|  |  | Vulnerability | MASVSCounterpart |
+|  |  | Vulnerability | MASVSCounterpart |
+|  |  | Vulnerability | MASVSCounterpart |
+|  |  | Vulnerability | MASVSCounterpart |
+|  |  | Vulnerability | MASVSCounterpart |
+|  |  | Vulnerability | MASVSCounterpart |
+|  |  | Vulnerability | MASVSCounterpart |
 
 
 

@@ -1,4 +1,4 @@
-package com.dkronig.app_01.storage.maswe_0001;
+package com.dkronig.storage.maswe_0001;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,7 +12,7 @@ import android.content.Intent;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dkronig.app_01.R;
+import com.dkronig.storage.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

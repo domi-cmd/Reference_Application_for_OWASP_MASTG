@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
 
-import com.dkronig.app_01.storage.maswe_0001.MainActivity0001;
-import com.dkronig.app_01.storage.StorageMenu;
+import com.dkronig.storage.StorageMenu;
 
 /**
  * The {@code MainActivity} class serves as the main entry point of the application.

@@ -21,12 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".storage.maswe_0001.LoginActivity" />
-        <activity android:name=".storage.maswe_0001.RegisterActivity" />
-        <activity android:name=".storage.maswe_0001.ProfileActivity" />
-        <activity android:name=".storage.maswe_0001.SettingsActivity" />
-        <activity android:name=".storage.maswe_0001.MainActivity0001" />
-        <activity android:name=".storage.StorageMenu" />
     </application>
 
 </manifest>

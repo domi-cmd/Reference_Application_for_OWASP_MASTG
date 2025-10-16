@@ -28,7 +28,8 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="55dp" />
+        android:layout_marginTop="55dp"
+        android:backgroundTint="#df5c8d"/>
 
     <Button
         android:id="@+id/crypto_button"
@@ -38,7 +39,8 @@
         app:layout_constraintTop_toBottomOf="@+id/storage_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#f65928" />
 
     <Button
         android:id="@+id/auth_button"
@@ -48,7 +50,8 @@
         app:layout_constraintTop_toBottomOf="@+id/crypto_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#f09236" />
 
     <Button
         android:id="@+id/network_button"
@@ -58,7 +61,8 @@
         app:layout_constraintTop_toBottomOf="@+id/auth_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#f2c200" />
 
     <Button
         android:id="@+id/platform_button"
@@ -68,7 +72,8 @@
         app:layout_constraintTop_toBottomOf="@+id/network_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#4fb991" />
 
     <Button
         android:id="@+id/code_button"
@@ -78,7 +83,8 @@
         app:layout_constraintTop_toBottomOf="@+id/platform_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#5facd3" />
 
     <Button
         android:id="@+id/resilience_button"
@@ -88,7 +94,8 @@
         app:layout_constraintTop_toBottomOf="@+id/code_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#317cc0" />
 
     <Button
         android:id="@+id/privacy_button"
@@ -98,7 +105,8 @@
         app:layout_constraintTop_toBottomOf="@+id/resilience_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#8b5f9e" />
 
 
 

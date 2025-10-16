@@ -1,4 +1,4 @@
-| App Name | # Vulnerabilites | Storage | Crypto | Auth | Network | Platform | Code | Resilience | Privacy | 
+| App Name | # Vulnerabilities | Storage | Crypto | Auth | Network | Platform | Code | Resilience | Privacy | 
 | - | - | - | - | - | - | - | - | - | - | 
 | Androgoat | 24 | 7 Storage | 1 Crypto | 1 Auth | 4 Network | 7 Platform | 1 Code | 2 Resilience | 1 Privacy | 
 | DIVA | 13 | 5 Storage |  | 5 Auth |  |  | 3 Code |  |  | 

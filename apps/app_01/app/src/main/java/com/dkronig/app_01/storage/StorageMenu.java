@@ -1,4 +1,4 @@
-package com.dkronig.app_01;
+package com.dkronig.app_01.storage;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
 
+import com.dkronig.app_01.R;
 import com.dkronig.app_01.storage.maswe_0001.MainActivity0001;
-import com.dkronig.app_01.storage.StorageMenu;
 
 /**
  * The {@code MainActivity} class serves as the main entry point of the application.
@@ -28,12 +28,11 @@ import com.dkronig.app_01.storage.StorageMenu;
  *
  * @author Dominic Kronig
  */
-public class MainActivity extends AppCompatActivity {
+public class StorageMenu extends AppCompatActivity {
 
     // Define UI elements
     /** Button to navigate to the Login screen. */
-    private Button storage_button, crypto_button, auth_button, network_button,
-            platform_button, code_button, resilience_button, privacy_button;
+    private Button maswe_0001_button;
 
 
 
@@ -51,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_storage_menu);
 
         // Instantiate UI elements
-        storage_button = findViewById(R.id.storage_button);
+        maswe_0001_button = findViewById(R.id.maswe_0001_button);
         //crypto_button = findViewById(R.id.crypto_button);
         //auth_button = findViewById(R.id.auth_button);
         //network_button = findViewById(R.id.network_button);
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         //privacy_button = findViewById(R.id.privacy_button);
 
 
-        addListener(storage_button, StorageMenu.class);
+        addListener(maswe_0001_button, MainActivity0001.class);
     }
 
 
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void addListener(Button button, Class<? extends Activity> targetActivityClass){
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, targetActivityClass);
+            Intent intent = new Intent(StorageMenu.this, targetActivityClass);
             startActivity(intent);
         });
     }

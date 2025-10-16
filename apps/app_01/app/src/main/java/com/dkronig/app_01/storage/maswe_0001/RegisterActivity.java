@@ -1,4 +1,4 @@
-package com.dkronig.app_01;
+package com.dkronig.app_01.storage.maswe_0001;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.content.Intent;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.dkronig.app_01.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -37,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         main_menu_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, MainActivity0001.class);
                 startActivity(intent);
             }
         });

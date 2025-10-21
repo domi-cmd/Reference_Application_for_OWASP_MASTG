@@ -1,4 +1,4 @@
-package com.dkronig.app_01;
+package com.dkronig.storage.maswe_0001;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
 
-import com.dkronig.storage.StorageMenu;
+import com.dkronig.storage.R;
 
 /**
  * The {@code MainActivity} class serves as the main entry point of the application.
@@ -27,14 +27,15 @@ import com.dkronig.storage.StorageMenu;
  *
  * @author Dominic Kronig
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity0001 extends AppCompatActivity {
 
     // Define UI elements
     /** Button to navigate to the Login screen. */
-    private Button storage_button, crypto_button, auth_button, network_button,
-            platform_button, code_button, resilience_button, privacy_button;
-
-
+    private Button login_button;
+    /** Button to navigate to the Registering screen. */
+    private Button register_button;
+    /** Button to navigate to the Settings screen. */
+    private Button settings_button;
 
     /**
      * Called when the activity is first created.
@@ -50,20 +51,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_0001);
 
         // Instantiate UI elements
-        storage_button = findViewById(R.id.storage_button);
-        //crypto_button = findViewById(R.id.crypto_button);
-        //auth_button = findViewById(R.id.auth_button);
-        //network_button = findViewById(R.id.network_button);
-        //platform_button = findViewById(R.id.platform_button);
-        //code_button = findViewById(R.id.code_button);
-        //resilience_button = findViewById(R.id.resilience_button);
-        //privacy_button = findViewById(R.id.privacy_button);
+        login_button = findViewById(R.id.login_button);
+        register_button = findViewById(R.id.register_button);
+        settings_button = findViewById(R.id.settings_button);
 
-
-        addListener(storage_button, StorageMenu.class);
+        // Add listeners to buttons
+        addListener(login_button, LoginActivity.class);
+        addListener(register_button, RegisterActivity.class);
+        addListener(settings_button, SettingsActivity.class);
     }
 
 
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void addListener(Button button, Class<? extends Activity> targetActivityClass){
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, targetActivityClass);
+            Intent intent = new Intent(MainActivity0001.this, targetActivityClass);
             startActivity(intent);
         });
     }

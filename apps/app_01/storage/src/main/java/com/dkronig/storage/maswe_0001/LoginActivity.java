@@ -1,4 +1,4 @@
-package com.dkronig.app_01;
+package com.dkronig.storage.maswe_0001;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.util.Log;
 import android.widget.Toast;
 import android.text.TextUtils;
+
+import com.dkronig.storage.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         main_menu_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity0001.class);
                 startActivity(intent);
             }
         });

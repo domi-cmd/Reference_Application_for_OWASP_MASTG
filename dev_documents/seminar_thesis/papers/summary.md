@@ -1,0 +1,13 @@
+Here I'll collect my thoughts and notes on read papers
+
+# The OWApp Benchmark: an OWASP-compliant Vulnerable Android App Dataset
+- Published 2024
+
+Goal of paper:
+1. Evaluate OWASP MASVS&MASTG, find security controls relevant to SAST tools that can be automated using static analysis techniques.
+2. Review existing benchmark suites and datasets for Android apps to assess their coverage of OWASP security controls.
+3. Propose their own benchmark suite "OWApp Benchmark Suite", includes dataset covering all MASVS security controls that are coverable using SAST techniques.
+- Popular apps on average 39 security and privacy vulnerabilities
+- SAST (Static Application Security Testing) & DAST (Dynamic Application Security Testing)
+- State of the art datasets for SAST: Ghera, DroidBench
+-> "these datasets **focus on specific categories of vulnerabilities** and **fail to encompass the full range of security controls outlined by standards such as the OWASP MASVS**. For example, while Ghera offers vulnerable apps based on common coding errors, it does not address more advanced security issues, such as complex cryptographic vulnerabilities or multicomponent interactions, which are critical in modern mobile app ecosystems"

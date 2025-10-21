@@ -9,57 +9,107 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, World!"
+        android:text="Chose Vulnerability Category"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/email_input"
+
+    <Button
+        android:id="@+id/storage_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="Storage"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="55dp"
+        android:backgroundTint="#df5c8d"/>
+
+    <Button
+        android:id="@+id/crypto_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Crypto"
+        app:layout_constraintTop_toBottomOf="@+id/storage_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:backgroundTint="#f65928" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/auth_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Log In"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Authentication"
+        app:layout_constraintTop_toBottomOf="@+id/crypto_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="200dp"/>
+        android:backgroundTint="#f09236" />
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/network_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Register"
-        app:layout_constraintTop_toBottomOf="@id/login_button"
+        android:text="Network"
+        app:layout_constraintTop_toBottomOf="@+id/auth_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#f2c200" />
 
     <Button
-        android:id="@+id/settings_button"
+        android:id="@+id/platform_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        app:layout_constraintTop_toBottomOf="@id/register_button"
+        android:text="Platform"
+        app:layout_constraintTop_toBottomOf="@+id/network_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#4fb991" />
+
+    <Button
+        android:id="@+id/code_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Code"
+        app:layout_constraintTop_toBottomOf="@+id/platform_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#5facd3" />
+
+    <Button
+        android:id="@+id/resilience_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Resilience"
+        app:layout_constraintTop_toBottomOf="@+id/code_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#317cc0" />
+
+    <Button
+        android:id="@+id/privacy_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Privacy"
+        app:layout_constraintTop_toBottomOf="@+id/resilience_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#8b5f9e" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

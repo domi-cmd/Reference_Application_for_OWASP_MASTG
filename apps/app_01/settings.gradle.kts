@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "app_01"
 include(":app")
- 
+include(":storage")

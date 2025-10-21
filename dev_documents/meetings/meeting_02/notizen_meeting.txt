@@ -7,7 +7,7 @@ statische analyste tools testen
 
 	-> auf owasp mastg die apps anschauen (DIVA, uncrackables etc)
 
-	**was gibst schon**
+	**was gibts schon**
 
 
 2.

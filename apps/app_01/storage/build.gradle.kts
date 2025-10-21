@@ -1,19 +1,16 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
 }
 
 android {
-    namespace = "com.dkronig.app_01"
+    namespace = "com.dkronig.storage"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.dkronig.app_01"
         minSdk = 35
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,7 +32,6 @@ dependencies {
 
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(project(":storage"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -4,12 +4,29 @@ xmlns:tools="http://schemas.android.com/tools">
 
 <!-- Allow all data to be backup up, including sensitive data. -->
 <application>
-    <activity android:name="com.dkronig.storage.maswe_0001.LoginActivity" />
-    <activity android:name="com.dkronig.storage.maswe_0001.RegisterActivity" />
-    <activity android:name="com.dkronig.storage.maswe_0001.ProfileActivity" />
-    <activity android:name="com.dkronig.storage.maswe_0001.SettingsActivity" />
-    <activity android:name="com.dkronig.storage.maswe_0001.MainActivity0001" />
-    <activity android:name="com.dkronig.storage.StorageMenu" />
+    <activity
+        android:name="com.dkronig.storage.maswe_0001.LoginActivity"
+        android:theme="@style/Theme.maswe_storage"/>
+
+    <activity
+        android:name="com.dkronig.storage.maswe_0001.RegisterActivity"
+        android:theme="@style/Theme.maswe_storage" />
+
+    <activity
+        android:name="com.dkronig.storage.maswe_0001.ProfileActivity"
+        android:theme="@style/Theme.maswe_storage"/>
+
+    <activity
+        android:name="com.dkronig.storage.maswe_0001.SettingsActivity"
+        android:theme="@style/Theme.maswe_storage" />
+
+    <activity
+        android:name="com.dkronig.storage.maswe_0001.MainActivity0001"
+        android:theme="@style/Theme.maswe_storage" />
+
+    <activity
+        android:name="com.dkronig.storage.StorageMenu"
+        android:theme="@style/Theme.maswe_storage" />
 </application>
 
 </manifest>

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="owasp_storage">#df5c8d</color>
+    <color name="owasp_crypto">#f65928</color>
+    <color name="owasp_auth">#f09236</color>
+    <color name="owasp_network">#f2c200</color>
+    <color name="owasp_platform">#4fb991</color>
+    <color name="owasp_code">#5facd3</color>
+    <color name="owasp_resilience">#317cc0</color>
+    <color name="owasp_privacy">#8b5f9e</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

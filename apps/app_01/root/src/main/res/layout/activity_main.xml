@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="55dp"
-        android:backgroundTint="#df5c8d"/>
+        android:backgroundTint="@color/owasp_storage"/>
 
     <Button
         android:id="@+id/crypto_button"
@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#f65928" />
+        android:backgroundTint="@color/owasp_crypto" />
 
     <Button
         android:id="@+id/auth_button"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#f09236" />
+        android:backgroundTint="@color/owasp_auth" />
 
     <Button
         android:id="@+id/network_button"
@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#f2c200" />
+        android:backgroundTint="@color/owasp_network" />
 
     <Button
         android:id="@+id/platform_button"
@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#4fb991" />
+        android:backgroundTint="@color/owasp_platform" />
 
     <Button
         android:id="@+id/code_button"
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#5facd3" />
+        android:backgroundTint="@color/owasp_code" />
 
     <Button
         android:id="@+id/resilience_button"
@@ -95,7 +95,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#317cc0" />
+        android:backgroundTint="@color/owasp_resilience" />
 
     <Button
         android:id="@+id/privacy_button"
@@ -106,7 +106,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#8b5f9e" />
+        android:backgroundTint="@color/owasp_privacy" />
 
 
 

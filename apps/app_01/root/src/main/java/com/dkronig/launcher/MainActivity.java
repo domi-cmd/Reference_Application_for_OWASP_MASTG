@@ -6,49 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
 
+import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.StorageMenu;
 import com.dkronig.maswe_crypto.CryptoMenu;
-import com.dkronig.common.BaseActivityTemplate;
 
-/**
- * The {@code MainActivity} class serves as the main entry point of the application.
- * <p>
- * It displays three buttons (Login, Register, and Settings) that navigate
- * the user to their respective activities when clicked.
- * </p>
- *
- * <p><b>Responsibilities:</b></p>
- * <ul>
- *     <li>Initialize and reference the main UI buttons.</li>
- *     <li>Attach click listeners to each button to start new activities.</li>
- * </ul>
- *
- * <p><b>Usage:</b></p>
- * This activity is declared as the LAUNCHER activity in
- * {@code AndroidManifest.xml}, so it starts automatically when the app launches.
- *
- * @author Dominic Kronig
- */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivityTemplate {
 
     // Define UI elements
-    /** Button to navigate to the Login screen. */
     private Button storage_button, crypto_button, auth_button, network_button,
             platform_button, code_button, resilience_button, privacy_button;
 
 
-
-    /**
-     * Called when the activity is first created.
-     * <p>
-     * Initializes the user interface, retrieves button views, and
-     * attaches click listeners that start the appropriate activities.
-     * </p>
-     *
-     * @param savedInstanceState If the activity is being re-initialized after previously
-     *                           being shut down, this Bundle contains the most recent
-     *                           data supplied; otherwise, it is {@code null}.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,27 +32,14 @@ public class MainActivity extends AppCompatActivity {
         //resilience_button = findViewById(R.id.resilience_button);
         //privacy_button = findViewById(R.id.privacy_button);
 
-
+        // Add listeners to menu buttons
         addListener(storage_button, StorageMenu.class);
         addListener(crypto_button, CryptoMenu.class);
     }
 
-
-    /**
-     * Helper function to remove boiler plate code.
-     * Attaches a click listener to the given button that launches the specified activity.
-     * <p>
-     * When the button is pressed, a new {@link Intent} is created and used to start
-     * the target activity.
-     * </p>
-     *
-     * @param button              The {@link Button} that should respond to clicks.
-     * @param targetActivityClass The {@link Activity} class to launch when the button is clicked.
-     */
-    private void addListener(Button button, Class<? extends Activity> targetActivityClass){
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, targetActivityClass);
-            startActivity(intent);
-        });
+    // Set name for action bar handled in BaseActivityTemplate
+    @Override
+    protected String getScreenTitle() {
+        return "Choose MASWE Category";
     }
 }

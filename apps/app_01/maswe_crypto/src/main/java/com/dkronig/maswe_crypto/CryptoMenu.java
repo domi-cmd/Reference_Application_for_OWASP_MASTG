@@ -1,12 +1,7 @@
 package com.dkronig.maswe_crypto;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
-import android.app.Activity;
-
 import com.dkronig.common.BaseActivityTemplate;
 
 public class CryptoMenu extends BaseActivityTemplate {
@@ -27,9 +22,9 @@ public class CryptoMenu extends BaseActivityTemplate {
     }
 
 
-    // Handles "Go Back" navigation functionality
+    // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "MASWE Crypto";  // Optional custom title
+        return "MASWE Crypto";
     }
 }

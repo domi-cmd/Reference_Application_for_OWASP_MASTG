@@ -17,10 +17,6 @@ xmlns:tools="http://schemas.android.com/tools">
         android:theme="@style/Theme.maswe_storage"/>
 
     <activity
-        android:name="com.dkronig.maswe_storage.maswe_0001.SettingsActivity"
-        android:theme="@style/Theme.maswe_storage" />
-
-    <activity
         android:name="com.dkronig.maswe_storage.maswe_0001.MainActivity0001"
         android:theme="@style/Theme.maswe_storage" />
 

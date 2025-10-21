@@ -10,8 +10,6 @@ public class MainActivity0001 extends BaseActivityTemplate {
     // Define UI elements
     private Button login_button;
     private Button register_button;
-    private Button settings_button;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +19,10 @@ public class MainActivity0001 extends BaseActivityTemplate {
         // Instantiate UI elements
         login_button = findViewById(R.id.login_button);
         register_button = findViewById(R.id.register_button);
-        settings_button = findViewById(R.id.settings_button);
 
         // Add listeners to buttons
         addListener(login_button, LoginActivity.class);
         addListener(register_button, RegisterActivity.class);
-        addListener(settings_button, SettingsActivity.class);
     }
 
     // Set name for action bar handled in BaseActivityTemplate

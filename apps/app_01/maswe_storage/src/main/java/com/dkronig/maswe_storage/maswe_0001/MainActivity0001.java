@@ -43,18 +43,6 @@ public class MainActivity0001 extends AppCompatActivity {
         addListener(settings_button, SettingsActivity.class);
     }
 
-
-    /**
-     * Helper function to remove boiler plate code.
-     * Attaches a click listener to the given button that launches the specified activity.
-     * <p>
-     * When the button is pressed, a new {@link Intent} is created and used to start
-     * the target activity.
-     * </p>
-     *
-     * @param button              The {@link Button} that should respond to clicks.
-     * @param targetActivityClass The {@link Activity} class to launch when the button is clicked.
-     */
     private void addListener(Button button, Class<? extends Activity> targetActivityClass){
         button.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity0001.this, targetActivityClass);

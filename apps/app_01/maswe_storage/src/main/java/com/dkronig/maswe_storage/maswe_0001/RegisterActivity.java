@@ -12,12 +12,12 @@ import android.content.Intent;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.R;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivityTemplate {
 
     // Define UI elements
-    private Button main_menu_button;
     private EditText et_email, et_password;
     private Button register_button;
     private static final String TAG = "[REGISTER ACTIVITY]";
@@ -30,19 +30,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Instantiate the UI elements
-        main_menu_button = findViewById(R.id.main_menu_button);
         et_email = findViewById(R.id.et_email);
         et_password = findViewById(R.id.et_password);
         register_button = findViewById(R.id.register_button);
-
-        // Add listener to button main menu button
-        main_menu_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(RegisterActivity.this, MainActivity0001.class);
-                startActivity(intent);
-            }
-        });
 
         // Add a listener to the register button
         register_button.setOnClickListener(v -> registerUser());

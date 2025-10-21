@@ -7,9 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
+import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.R;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends BaseActivityTemplate {
 
     // Define UI elements
     private Button main_menu_button;
@@ -18,19 +19,6 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        main_menu_button = findViewById(R.id.main_menu_button);
-
-        // Add listeners to buttons
-        main_menu_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(ProfileActivity.this, MainActivity0001.class);
-                startActivity(intent);
-            }
-        });
-
-
 
     }
 }

@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "app_01"
-include(":app")
-include(":storage")
+rootProject.name = "launcher"
+include(":root")
+include(":maswe_storage")

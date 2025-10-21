@@ -1,4 +1,4 @@
-package com.dkronig.app_01;
+package com.dkronig.launcher;
 
 import android.app.Activity;
 import android.os.Bundle;

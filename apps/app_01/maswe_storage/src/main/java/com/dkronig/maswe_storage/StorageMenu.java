@@ -5,29 +5,11 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
-
+import android.view.MenuItem;
 import com.dkronig.maswe_storage.R;
 import com.dkronig.maswe_storage.maswe_0001.MainActivity0001;
 
-/**
- * The {@code MainActivity} class serves as the main entry point of the application.
- * <p>
- * It displays three buttons (Login, Register, and Settings) that navigate
- * the user to their respective activities when clicked.
- * </p>
- *
- * <p><b>Responsibilities:</b></p>
- * <ul>
- *     <li>Initialize and reference the main UI buttons.</li>
- *     <li>Attach click listeners to each button to start new activities.</li>
- * </ul>
- *
- * <p><b>Usage:</b></p>
- * This activity is declared as the LAUNCHER activity in
- * {@code AndroidManifest.xml}, so it starts automatically when the app launches.
- *
- * @author Dominic Kronig
- */
+
 public class StorageMenu extends AppCompatActivity {
 
     // Define UI elements
@@ -54,34 +36,34 @@ public class StorageMenu extends AppCompatActivity {
 
         // Instantiate UI elements
         maswe_0001_button = findViewById(R.id.maswe_0001_button);
-        //crypto_button = findViewById(R.id.crypto_button);
-        //auth_button = findViewById(R.id.auth_button);
-        //network_button = findViewById(R.id.network_button);
-        //platform_button = findViewById(R.id.platform_button);
-        //code_button = findViewById(R.id.code_button);
-        //resilience_button = findViewById(R.id.resilience_button);
-        //privacy_button = findViewById(R.id.privacy_button);
+
+        // Set actionbar title and enable the back arrow (“Up” button) in the ActionBar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("MASWE Storage"); // optional
+        }
 
 
         addListener(maswe_0001_button, MainActivity0001.class);
     }
 
 
-    /**
-     * Helper function to remove boiler plate code.
-     * Attaches a click listener to the given button that launches the specified activity.
-     * <p>
-     * When the button is pressed, a new {@link Intent} is created and used to start
-     * the target activity.
-     * </p>
-     *
-     * @param button              The {@link Button} that should respond to clicks.
-     * @param targetActivityClass The {@link Activity} class to launch when the button is clicked.
-     */
     private void addListener(Button button, Class<? extends Activity> targetActivityClass){
         button.setOnClickListener(v -> {
             Intent intent = new Intent(StorageMenu.this, targetActivityClass);
             startActivity(intent);
         });
+    }
+
+    // Handles "Go Back" navigation functionality
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle clicks on the ActionBar items
+        if (item.getItemId() == android.R.id.home) {
+            // Go back to previous activity
+            getOnBackPressedDispatcher().onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,0 +1,35 @@
+package com.dkronig.launcher;
+
+import android.os.Bundle;
+import android.view.MenuItem;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+public abstract class BaseActivityTemplate extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // All subclasses get an ActionBar with an Up (back) arrow by default
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(getScreenTitle());
+        }
+    }
+
+    // Optionally allow each activity to define its own title
+    protected String getScreenTitle() {
+        return getClass().getSimpleName(); // Default: class name
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // Use modern back navigation API
+            getOnBackPressedDispatcher().onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

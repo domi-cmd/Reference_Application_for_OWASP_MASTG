@@ -24,7 +24,7 @@
         android:id="@+id/placeholder_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="maswe_0001"
+        android:text="placeholder"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

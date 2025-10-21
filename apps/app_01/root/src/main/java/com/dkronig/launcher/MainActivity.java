@@ -8,6 +8,7 @@ import android.content.Intent;
 
 import com.dkronig.maswe_storage.StorageMenu;
 import com.dkronig.maswe_crypto.CryptoMenu;
+import com.dkronig.common.BaseActivityTemplate;
 
 /**
  * The {@code MainActivity} class serves as the main entry point of the application.

@@ -1,9 +1,11 @@
-package com.dkronig.launcher;
+package com.dkronig.common;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.widget.Button;
 
 public abstract class BaseActivityTemplate extends AppCompatActivity {
 
@@ -31,5 +33,16 @@ public abstract class BaseActivityTemplate extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Adds a click listener to a button that launches the target activity.
+     * Usage: addListener(myButton, TargetActivity.class);
+     */
+    protected void addListener(Button button, Class<? extends AppCompatActivity> targetActivityClass) {
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(BaseActivityTemplate.this, targetActivityClass);
+            startActivity(intent);
+        });
     }
 }

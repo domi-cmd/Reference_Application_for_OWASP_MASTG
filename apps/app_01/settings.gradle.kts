@@ -23,3 +23,4 @@ rootProject.name = "launcher"
 include(":root")
 include(":maswe_storage")
 include(":maswe_crypto")
+include(":common")

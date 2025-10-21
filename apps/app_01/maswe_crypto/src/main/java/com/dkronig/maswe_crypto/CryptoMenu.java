@@ -7,7 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 
-
+import com.dkronig.common.BaseActivityTemplate;
 
 
 /**
@@ -29,7 +29,7 @@ import android.app.Activity;
  *
  * @author Dominic Kronig
  */
-public class CryptoMenu extends AppCompatActivity {
+public class CryptoMenu extends BaseActivityTemplate {
 
     // Define UI elements
     /** Button to navigate to the Login screen. */
@@ -60,21 +60,9 @@ public class CryptoMenu extends AppCompatActivity {
     }
 
 
-    /**
-     * Helper function to remove boiler plate code.
-     * Attaches a click listener to the given button that launches the specified activity.
-     * <p>
-     * When the button is pressed, a new {@link Intent} is created and used to start
-     * the target activity.
-     * </p>
-     *
-     * @param button              The {@link Button} that should respond to clicks.
-     * @param targetActivityClass The {@link Activity} class to launch when the button is clicked.
-     */
-    private void addListener(Button button, Class<? extends Activity> targetActivityClass){
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(CryptoMenu.this, targetActivityClass);
-            startActivity(intent);
-        });
+    // Handles "Go Back" navigation functionality
+    @Override
+    protected String getScreenTitle() {
+        return "MASWE Crypto";  // Optional custom title
     }
 }

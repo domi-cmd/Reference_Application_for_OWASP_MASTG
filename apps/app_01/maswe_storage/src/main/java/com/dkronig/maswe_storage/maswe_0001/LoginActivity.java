@@ -10,13 +10,12 @@ import android.widget.EditText;
 import android.util.Log;
 import android.widget.Toast;
 import android.text.TextUtils;
-
+import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivityTemplate {
 
     // Define UI elements
-    private Button main_menu_button;
     private EditText et_email, et_password;
     private Button login_button;
     private static final String TAG = "LoginActivity";
@@ -26,19 +25,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        main_menu_button = findViewById(R.id.main_menu_button);
         et_email = findViewById(R.id.et_email);
         et_password = findViewById(R.id.et_password);
         login_button = findViewById(R.id.login_button);
-
-        // Add listeners to buttons
-        main_menu_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(LoginActivity.this, MainActivity0001.class);
-                startActivity(intent);
-            }
-        });
 
         // Add a listener to the register button
         login_button.setOnClickListener(v -> loginUser());

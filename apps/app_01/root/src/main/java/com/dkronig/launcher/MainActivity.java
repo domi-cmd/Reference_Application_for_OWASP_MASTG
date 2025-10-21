@@ -9,32 +9,26 @@ import android.content.Intent;
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.StorageMenu;
 import com.dkronig.maswe_crypto.CryptoMenu;
+import java.util.Map;
 
 public class MainActivity extends BaseActivityTemplate {
-
-    // Define UI elements
-    private Button storage_button, crypto_button, auth_button, network_button,
-            platform_button, code_button, resilience_button, privacy_button;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Instantiate UI elements
-        storage_button = findViewById(R.id.storage_button);
-        crypto_button = findViewById(R.id.crypto_button);
-        //auth_button = findViewById(R.id.auth_button);
-        //network_button = findViewById(R.id.network_button);
-        //platform_button = findViewById(R.id.platform_button);
-        //code_button = findViewById(R.id.code_button);
-        //resilience_button = findViewById(R.id.resilience_button);
-        //privacy_button = findViewById(R.id.privacy_button);
+        // Map UI buttons, handled in BaseActivityTemplate
+        bindButtons(Map.of(
+                R.id.storage_button, StorageMenu.class,
+                R.id.crypto_button, CryptoMenu.class
+                //R.id.auth_button, AuthMenu.class,
+                //R.id.network_button = NetworkMenu.class;
+                //R.id.platform_button = PlatformMenu.class;
+                //R.id.code_button = CodeMenu.class;
+                //R.id.resilience_button = ResilienceMenu.class;
+                //R.id.privacy_button = PrivacyMenu.class;
+        ));
 
-        // Add listeners to menu buttons
-        addListener(storage_button, StorageMenu.class);
-        addListener(crypto_button, CryptoMenu.class);
     }
 
     // Set name for action bar handled in BaseActivityTemplate

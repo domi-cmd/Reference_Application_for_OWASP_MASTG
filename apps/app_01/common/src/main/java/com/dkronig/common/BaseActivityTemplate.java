@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.widget.Button;
+import java.util.Map;
 
 public abstract class BaseActivityTemplate extends AppCompatActivity {
 
@@ -44,5 +45,19 @@ public abstract class BaseActivityTemplate extends AppCompatActivity {
             Intent intent = new Intent(BaseActivityTemplate.this, targetActivityClass);
             startActivity(intent);
         });
+    }
+
+    /**
+     * Automatically binds buttons to activities based on their IDs
+     * Example usage in child activity:
+     * bindButtons(Map.of(R.id.login_button, LoginActivity.class, R.id.register_button, RegisterActivity.class));
+     */
+    protected void bindButtons(Map<Integer, Class<? extends AppCompatActivity>> buttonMap) {
+        for (Map.Entry<Integer, Class<? extends AppCompatActivity>> entry : buttonMap.entrySet()) {
+            Button button = findViewById(entry.getKey());
+            if (button != null) {
+                addListener(button, entry.getValue());
+            }
+        }
     }
 }

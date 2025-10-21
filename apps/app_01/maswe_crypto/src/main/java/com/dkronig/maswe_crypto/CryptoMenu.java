@@ -4,21 +4,20 @@ import android.os.Bundle;
 import android.widget.Button;
 import com.dkronig.common.BaseActivityTemplate;
 
+import java.util.Map;
+
 public class CryptoMenu extends BaseActivityTemplate {
-
-    // Define UI elements
-    private Button placeholder;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_menu);
 
-        // Instantiate UI elements
-        placeholder = findViewById(R.id.placeholder_button);
-
-        //addListener(placeholder, MainActivity0001.class);
+        // Map UI buttons, handled in BaseActivityTemplate
+        bindButtons(Map.of(
+                //R.id.placeholder_button, PlaceholderClass.class,
+                // More buttons as more tests are implemented
+        ));
     }
 
 

@@ -1,9 +1,7 @@
 package com.dkronig.maswe_storage.maswe_0001;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
-import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.EditText;
@@ -31,6 +29,12 @@ public class LoginActivity extends BaseActivityTemplate {
 
         // Add a listener to the register button
         login_button.setOnClickListener(v -> loginUser());
+    }
+
+    // Set name for action bar handled in BaseActivityTemplate
+    @Override
+    protected String getScreenTitle() {
+        return "Login";
     }
 
     private void loginUser() {

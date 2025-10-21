@@ -6,12 +6,8 @@ import java.io.IOException;
 import android.os.Bundle;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.content.Intent;
 import android.widget.EditText;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.R;
 
@@ -36,6 +32,12 @@ public class RegisterActivity extends BaseActivityTemplate {
 
         // Add a listener to the register button
         register_button.setOnClickListener(v -> registerUser());
+    }
+
+    // Set name for action bar handled in BaseActivityTemplate
+    @Override
+    protected String getScreenTitle() {
+        return "Register";
     }
 
     private void registerUser(){

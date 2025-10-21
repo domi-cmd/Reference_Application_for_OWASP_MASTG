@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dkronig.storage"
+    namespace = "com.dkronig.maswe_storage"
     compileSdk = 35
 
     defaultConfig {

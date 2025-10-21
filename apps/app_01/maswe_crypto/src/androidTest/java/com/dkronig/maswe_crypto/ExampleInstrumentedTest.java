@@ -1,4 +1,4 @@
-package com.dkronig.storage;
+package com.dkronig.maswe_crypto;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.dkronig.storage.test", appContext.getPackageName());
+        assertEquals("com.dkronig.maswe_crypto.test", appContext.getPackageName());
     }
 }

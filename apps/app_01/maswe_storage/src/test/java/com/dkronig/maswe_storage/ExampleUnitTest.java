@@ -1,4 +1,4 @@
-package com.dkronig.storage;
+package com.dkronig.maswe_storage;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.dkronig.storage.maswe_0001;
+package com.dkronig.maswe_storage.maswe_0001;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 import android.text.TextUtils;
 
-import com.dkronig.storage.R;
+import com.dkronig.maswe_storage.R;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context="com.dkronig.storage.maswe_0001.SettingsActivity">
+    tools:context="com.dkronig.maswe_storage.maswe_0001.SettingsActivity">
 
     <TextView
         android:id="@+id/textView"

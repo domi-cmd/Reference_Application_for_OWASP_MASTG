@@ -1,13 +1,14 @@
-package com.dkronig.launcher;
+package com.dkronig.maswe_crypto;
 
 import android.app.Activity;
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Button;
 import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+import android.app.Activity;
 
-import com.dkronig.maswe_storage.StorageMenu;
-import com.dkronig.maswe_crypto.CryptoMenu;
+
+
 
 /**
  * The {@code MainActivity} class serves as the main entry point of the application.
@@ -28,12 +29,11 @@ import com.dkronig.maswe_crypto.CryptoMenu;
  *
  * @author Dominic Kronig
  */
-public class MainActivity extends AppCompatActivity {
+public class CryptoMenu extends AppCompatActivity {
 
     // Define UI elements
     /** Button to navigate to the Login screen. */
-    private Button storage_button, crypto_button, auth_button, network_button,
-            platform_button, code_button, resilience_button, privacy_button;
+    private Button placeholder;
 
 
 
@@ -51,21 +51,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_crypto_menu);
 
         // Instantiate UI elements
-        storage_button = findViewById(R.id.storage_button);
-        crypto_button = findViewById(R.id.crypto_button);
-        //auth_button = findViewById(R.id.auth_button);
-        //network_button = findViewById(R.id.network_button);
-        //platform_button = findViewById(R.id.platform_button);
-        //code_button = findViewById(R.id.code_button);
-        //resilience_button = findViewById(R.id.resilience_button);
-        //privacy_button = findViewById(R.id.privacy_button);
+        placeholder = findViewById(R.id.placeholder_button);
 
-
-        addListener(storage_button, StorageMenu.class);
-        addListener(crypto_button, CryptoMenu.class);
+        //addListener(placeholder, MainActivity0001.class);
     }
 
 
@@ -82,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void addListener(Button button, Class<? extends Activity> targetActivityClass){
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, targetActivityClass);
+            Intent intent = new Intent(CryptoMenu.this, targetActivityClass);
             startActivity(intent);
         });
     }

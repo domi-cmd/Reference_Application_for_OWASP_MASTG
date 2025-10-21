@@ -1,4 +1,4 @@
-package com.dkronig.storage;
+package com.dkronig.maswe_storage;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
 
-import com.dkronig.storage.R;
-import com.dkronig.storage.maswe_0001.MainActivity0001;
+import com.dkronig.maswe_storage.R;
+import com.dkronig.maswe_storage.maswe_0001.MainActivity0001;
 
 /**
  * The {@code MainActivity} class serves as the main entry point of the application.

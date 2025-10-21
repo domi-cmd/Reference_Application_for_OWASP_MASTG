@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/maswe_crypto" />
             <option value="$PROJECT_DIR$/maswe_storage" />
             <option value="$PROJECT_DIR$/root" />
           </set>

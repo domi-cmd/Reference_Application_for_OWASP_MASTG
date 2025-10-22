@@ -1,11 +1,11 @@
-package com.dkronig.maswe_storage.maswe_0002;
+package com.dkronig.maswe_storage.maswe_0006;
 
 import android.os.Bundle;
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.R;
 import java.util.Map;
 
-public class MainActivity0002 extends BaseActivityTemplate {
+public class MainActivity0006 extends BaseActivityTemplate {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,6 @@ public class MainActivity0002 extends BaseActivityTemplate {
     // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "MASWE_0002";
+        return "MASWE_0006";
     }
 }

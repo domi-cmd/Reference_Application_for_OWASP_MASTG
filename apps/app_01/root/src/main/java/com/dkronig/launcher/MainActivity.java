@@ -1,10 +1,7 @@
 package com.dkronig.launcher;
 
-import android.app.Activity;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Button;
-import android.content.Intent;
+
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.StorageMenu;
 import com.dkronig.maswe_crypto.CryptoMenu;

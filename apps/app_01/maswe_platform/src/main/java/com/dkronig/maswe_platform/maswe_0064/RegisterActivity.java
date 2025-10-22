@@ -44,7 +44,7 @@ public class RegisterActivity extends BaseRegisterActivity {
     @Override
     protected void onRegister(String email, String password) {
         try {
-            storeSensitiveData(this, "login_data_readable.txt",
+            storeSensitiveData(this, "maswe_0064_user_credentials.txt",
                     "Email: " + email + " Password: " + password + "\n");
             Toast.makeText(this, "Data saved insecurely!", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {

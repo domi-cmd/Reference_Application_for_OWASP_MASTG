@@ -50,7 +50,7 @@ public class RegisterActivity extends BaseRegisterActivity {
     protected void onRegister(String email, String password) {
         try {
             // Call the vulnerable function
-            storeSensitiveData(this, "user_login_data.txt",
+            storeSensitiveData(this, "maswe_0002_user_credentials.txt",
                     "Email: " + email + " Password: " + password + "\n");
             Toast.makeText(this, "Data saved insecurely!", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {

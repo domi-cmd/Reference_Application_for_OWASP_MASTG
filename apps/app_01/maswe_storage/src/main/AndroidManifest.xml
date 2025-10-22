@@ -5,6 +5,10 @@
     <!-- Allow all data to be backup up, including sensitive data. -->
     <application>
         <activity
+            android:name="com.dkronig.maswe_storage.StorageMenu"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
             android:name="com.dkronig.maswe_storage.maswe_0001.LoginActivity"
             android:theme="@style/Theme.maswe_storage"/>
 
@@ -18,10 +22,6 @@
 
         <activity
             android:name="com.dkronig.maswe_storage.maswe_0001.MainActivity0001"
-            android:theme="@style/Theme.maswe_storage" />
-
-        <activity
-            android:name="com.dkronig.maswe_storage.StorageMenu"
             android:theme="@style/Theme.maswe_storage" />
 
         <activity
@@ -39,6 +39,22 @@
         <activity
             android:name="com.dkronig.maswe_storage.maswe_0002.MainActivity0002"
             android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0006.MainActivity0006"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0006.LoginActivity"
+            android:theme="@style/Theme.maswe_storage"/>
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0006.RegisterActivity"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0006.ProfileActivity"
+            android:theme="@style/Theme.maswe_storage"/>
 
     </application>
 

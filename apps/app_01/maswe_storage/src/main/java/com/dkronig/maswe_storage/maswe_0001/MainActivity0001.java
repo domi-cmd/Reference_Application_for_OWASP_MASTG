@@ -10,7 +10,7 @@ public class MainActivity0001 extends BaseActivityTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_0001);
+        setContentView(R.layout.activity_main_storage);
 
         // Map UI buttons, handled in BaseActivityTemplate
         bindButtons(Map.of(

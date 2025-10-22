@@ -21,6 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "launcher"
 include(":root")
+include(":common")
 include(":maswe_storage")
 include(":maswe_crypto")
-include(":common")
+include(":maswe_platform")

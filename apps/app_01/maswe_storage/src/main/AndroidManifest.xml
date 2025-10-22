@@ -4,6 +4,13 @@ xmlns:tools="http://schemas.android.com/tools">
 
 <!-- Allow all data to be backup up, including sensitive data. -->
 <application>
+
+    <provider
+        android:name="com.dkronig.maswe_storage.maswe_0002.CustomContentProvider"
+        android:authorities="com.dkronig.root.CustomContentProvider"
+        android:exported="true"
+        android:permission="" />
+
     <activity
         android:name="com.dkronig.maswe_storage.maswe_0001.LoginActivity"
         android:theme="@style/Theme.maswe_storage"/>

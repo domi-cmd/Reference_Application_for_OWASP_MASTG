@@ -49,10 +49,11 @@ public class RegisterActivity extends BaseRegisterActivity {
     @Override
     protected void onRegister(String email, String password) {
         try {
-            storeSensitiveData(this, "login_data_readable.txt",
+            // Call the vulnerable function
+            storeSensitiveData(this, "user_login_data.txt",
                     "Email: " + email + " Password: " + password + "\n");
             Toast.makeText(this, "Data saved insecurely!", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
+        } catch (IOException e) {
             Toast.makeText(this, "Error saving data: " + e.getMessage(), Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
@@ -61,10 +62,12 @@ public class RegisterActivity extends BaseRegisterActivity {
 
     public static void storeSensitiveData(Context context, String filename, String data) throws IOException {
         File file = new File(context.getFilesDir(), filename);
-        try (FileOutputStream fos = new FileOutputStream(file)) {
-            // Store plain text sensitive data
-            fos.write(data.getBytes());
-        }
-        // Note: No setReadable(true, false) needed, as ContentProvider will expose the data
+        FileOutputStream fos = new FileOutputStream(file);
+        fos.write(data.getBytes());  // Store plain text sensitive data
+        fos.close();
+
+        // Intentionally set insecure permissions (world-readable/writable)
+        file.setReadable(true, false);  // Readable by all
+        file.setWritable(true, false);  // Writable by all
     }
 }

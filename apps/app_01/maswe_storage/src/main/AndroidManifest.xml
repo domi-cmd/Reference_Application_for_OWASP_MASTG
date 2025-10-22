@@ -23,6 +23,23 @@ xmlns:tools="http://schemas.android.com/tools">
     <activity
         android:name="com.dkronig.maswe_storage.StorageMenu"
         android:theme="@style/Theme.maswe_storage" />
+
+    <activity
+        android:name="com.dkronig.maswe_storage.maswe_0002.LoginActivity"
+        android:theme="@style/Theme.maswe_storage"/>
+
+    <activity
+        android:name="com.dkronig.maswe_storage.maswe_0002.RegisterActivity"
+        android:theme="@style/Theme.maswe_storage" />
+
+    <activity
+        android:name="com.dkronig.maswe_storage.maswe_0002.ProfileActivity"
+        android:theme="@style/Theme.maswe_storage"/>
+
+    <activity
+        android:name="com.dkronig.maswe_storage.maswe_0002.MainActivity0002"
+        android:theme="@style/Theme.maswe_storage" />
+
 </application>
 
 </manifest>

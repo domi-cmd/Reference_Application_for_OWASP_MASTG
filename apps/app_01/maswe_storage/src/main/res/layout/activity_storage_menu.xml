@@ -19,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <Button
         android:id="@+id/maswe_0001_button"
         android:layout_width="0dp"
@@ -30,5 +29,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="55dp" />
 
+    <Button
+        android:id="@+id/maswe_0002_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="maswe_0002"
+        app:layout_constraintTop_toBottomOf="@+id/maswe_0001_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="55dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

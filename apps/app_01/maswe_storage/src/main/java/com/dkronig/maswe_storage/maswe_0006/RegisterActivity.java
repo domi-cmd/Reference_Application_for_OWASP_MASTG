@@ -1,5 +1,6 @@
 package com.dkronig.maswe_storage.maswe_0006;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -51,9 +52,9 @@ public class RegisterActivity extends BaseRegisterActivity {
         return R.id.register_button;
     }
 
-    // Write sensitive user data so system logs upon registration
     @Override
-    protected void onRegister(String email, String password) {
+    protected void userDataToSharedPreferences(String email, String password){
+        // Encrypt user data
         String encrypted_email;
         String encrypted_password;
         try {
@@ -63,10 +64,16 @@ public class RegisterActivity extends BaseRegisterActivity {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        // Save user data to internal files
+
+        SharedPreferences sharedPrefs = getSharedPreferences("my_app_prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPrefs.edit();
+        editor.putString("user_email", encrypted_email);
+        editor.putString("user_password", encrypted_password);
+        editor.apply();
+
+        // Save encrypted user data to app sandbox
         userDataToAppLogs(encrypted_email, encrypted_password);
     }
-
 
     private void userDataToAppLogs(String user_email, String user_password){
         // Logging sensitive data to a file in app's data directory (App Logs)

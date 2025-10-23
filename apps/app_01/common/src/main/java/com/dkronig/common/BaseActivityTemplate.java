@@ -23,7 +23,8 @@ public abstract class BaseActivityTemplate extends AppCompatActivity {
 
     // Optionally allow each activity to define its own title
     protected String getScreenTitle() {
-        return getClass().getSimpleName(); // Default: class name
+        // Default: class name
+        return getClass().getSimpleName();
     }
 
     @Override

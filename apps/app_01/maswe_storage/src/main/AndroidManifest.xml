@@ -25,6 +25,20 @@
             android:theme="@style/Theme.maswe_storage" />
 
         <activity
+            android:name="com.dkronig.maswe_storage.maswe_0002.MainActivity0002"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.dkronig.root.CustomFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
             android:name="com.dkronig.maswe_storage.maswe_0002.LoginActivity"
             android:theme="@style/Theme.maswe_storage"/>
 
@@ -35,10 +49,6 @@
         <activity
             android:name="com.dkronig.maswe_storage.maswe_0002.ProfileActivity"
             android:theme="@style/Theme.maswe_storage"/>
-
-        <activity
-            android:name="com.dkronig.maswe_storage.maswe_0002.MainActivity0002"
-            android:theme="@style/Theme.maswe_storage" />
 
         <activity
             android:name="com.dkronig.maswe_storage.maswe_0006.MainActivity0006"

@@ -1,6 +1,8 @@
 package com.dkronig.maswe_storage.maswe_0002;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.util.Log;
 
 import com.dkronig.common.BaseRegisterActivity;
@@ -10,6 +12,8 @@ import java.io.File;
 import java.io.File;
 import android.content.Context;
 import android.widget.Toast;
+
+import androidx.core.content.FileProvider;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -57,6 +61,18 @@ public class RegisterActivity extends BaseRegisterActivity {
             Toast.makeText(this, "Error saving data: " + e.getMessage(), Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
+
+        Uri uri = FileProvider.getUriForFile(
+                this,
+                this.getPackageName() + ".CustomFileProvider",
+                new File(this.getFilesDir(), "maswe_0002_user_credentials.txt")
+        );
+
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.putExtra(Intent.EXTRA_STREAM, uri);
+        share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        startActivity(Intent.createChooser(share, "Share file via"));
     }
 
 
@@ -67,7 +83,10 @@ public class RegisterActivity extends BaseRegisterActivity {
         fos.close();
 
         // Intentionally set insecure permissions (world-readable/writable)
-        file.setReadable(true, false);  // Readable by all
-        file.setWritable(true, false);  // Writable by all
+        // This is deprecated and does not work anymore
+        // Readable by all
+        file.setReadable(true, false);
+        // Writable by all
+        file.setWritable(true, false);
     }
 }

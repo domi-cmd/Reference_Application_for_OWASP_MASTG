@@ -77,6 +77,11 @@ file: [A_Comprehensive_Study_on_Static_Application_Security_Testing_SAST_Tools_f
 ### 20 [Enhancing Password Manager Application Security By Root Detection with Usability and Security Evaluation](https://ieeexplore.ieee.org/abstract/document/10382115)
 file: [Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf](https://github.com/user-attachments/files/23166735/Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf)
 
+### 21 [Understanding Hackers’ Work: An Empirical Study of Offensive Security Practitioners](https://ieeexplore.ieee.org/abstract/document/10179474)
+file: [hackers_work_paper.pdf](https://github.com/user-attachments/files/23166800/hackers_work_paper.pdf)
+
+
+
 
 
 

@@ -11,3 +11,7 @@ Goal of paper:
 - SAST (Static Application Security Testing) & DAST (Dynamic Application Security Testing)
 - State of the art datasets for SAST: Ghera, DroidBench
 -> "these datasets **focus on specific categories of vulnerabilities** and **fail to encompass the full range of security controls outlined by standards such as the OWASP MASVS**. For example, while Ghera offers vulnerable apps based on common coding errors, it does not address more advanced security issues, such as complex cryptographic vulnerabilities or multicomponent interactions, which are critical in modern mobile app ecosystems"
+
+
+
+# [Security Assessment for Digital Wallet Payment Partner Applications using the OWASP Method: A Case Study in Indonesia](https://www.researchgate.net/profile/Muhammad-Saifulhakim/publication/378480579_Security_Assessment_for_Digital_Wallet_Payment_Partner_Applications_using_the_OWASP_Method_A_Case_Study_in_Indonesia/links/65dc4147adf2362b6357e589/Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf)

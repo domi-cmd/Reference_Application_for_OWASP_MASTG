@@ -15,3 +15,5 @@ Goal of paper:
 
 
 # [Security Assessment for Digital Wallet Payment Partner Applications using the OWASP Method: A Case Study in Indonesia](https://www.researchgate.net/profile/Muhammad-Saifulhakim/publication/378480579_Security_Assessment_for_Digital_Wallet_Payment_Partner_Applications_using_the_OWASP_Method_A_Case_Study_in_Indonesia/links/65dc4147adf2362b6357e589/Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf)
+
+# [The Application of Mobile Security Framework (MOBSF) and Mobile Application Security Testing Guide to Ensure the Security in Mobile Commerce Applications](https://www.jsisfotek.org/index.php/JSisfotek/article/view/231/153)

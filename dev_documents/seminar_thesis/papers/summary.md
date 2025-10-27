@@ -1,6 +1,8 @@
 Here I'll collect my thoughts and notes on read papers
 
-# 1 The OWApp Benchmark: an OWASP-compliant Vulnerable Android App Dataset
+# Research question - What is OWASP (MASTG) used for in the academic world?
+
+### 1 The OWApp Benchmark: an OWASP-compliant Vulnerable Android App Dataset
 - Published 2024
 
 Goal of paper:
@@ -14,19 +16,19 @@ Goal of paper:
 
 
 
-# 2 [Security Assessment for Digital Wallet Payment Partner Applications using the OWASP Method: A Case Study in Indonesia](https://www.researchgate.net/profile/Muhammad-Saifulhakim/publication/378480579_Security_Assessment_for_Digital_Wallet_Payment_Partner_Applications_using_the_OWASP_Method_A_Case_Study_in_Indonesia/links/65dc4147adf2362b6357e589/Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf)
+### 2 [Security Assessment for Digital Wallet Payment Partner Applications using the OWASP Method: A Case Study in Indonesia](https://www.researchgate.net/profile/Muhammad-Saifulhakim/publication/378480579_Security_Assessment_for_Digital_Wallet_Payment_Partner_Applications_using_the_OWASP_Method_A_Case_Study_in_Indonesia/links/65dc4147adf2362b6357e589/Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf)
 file: [Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf](https://github.com/user-attachments/files/23166032/Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf)
 
 
-# 3 [The Application of Mobile Security Framework (MOBSF) and Mobile Application Security Testing Guide to Ensure the Security in Mobile Commerce Applications](https://www.jsisfotek.org/index.php/JSisfotek/article/view/231/153)
+### 3 [The Application of Mobile Security Framework (MOBSF) and Mobile Application Security Testing Guide to Ensure the Security in Mobile Commerce Applications](https://www.jsisfotek.org/index.php/JSisfotek/article/view/231/153)
 file: [document (1).pdf](https://github.com/user-attachments/files/23166027/document.1.pdf)
 
 
-# 4 [Analysis of Fraud Attacks Using Android Package Kit in Indonesia](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10732435)
+### 4 [Analysis of Fraud Attacks Using Android Package Kit in Indonesia](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10732435)
 file: [Analysis_of_Fraud_Attacks_Using_Android_Package_Kit_in_Indonesia.pdf](https://github.com/user-attachments/files/23166023/Analysis_of_Fraud_Attacks_Using_Android_Package_Kit_in_Indonesia.pdf)
 
 
-# 5 [Evaluating Compliance of of the XYZ Ministry’s Android Messaging Applications with OWASP MASVS: A Comprehensive Case Study](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10859915)
+### 5 [Evaluating Compliance of of the XYZ Ministry’s Android Messaging Applications with OWASP MASVS: A Comprehensive Case Study](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10859915)
 file: [Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applications_with_OWASP_MASVS_A_Comprehensive_Case_Study.pdf](https://github.com/user-attachments/files/23166017/Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applications_with_OWASP_MASVS_A_Comprehensive_Case_Study.pdf)
 
 
@@ -59,6 +61,23 @@ file: [doctor_spying_paper.pdf](https://github.com/user-attachments/files/231663
 
 ### 15 [From Ignition Interlock Servicing to SAST: Effective Taint Analysis for .NET MAUI Blazor Hybrid Applications](https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1966105&dswid=-5022)
 file: [ignition_interlock_paper.pdf](https://github.com/user-attachments/files/23166398/ignition_interlock_paper.pdf)
+
+### 16 [IoT Mobile Applications Pentesting Methodology and Results of Research](https://ieeexplore.ieee.org/abstract/document/10878964)
+file: [IoT_Mobile_Applications_Pentesting_Methodology_and_Results_of_Research.pdf](https://github.com/user-attachments/files/23166551/IoT_Mobile_Applications_Pentesting_Methodology_and_Results_of_Research.pdf)
+
+### 17 [The Study of Improvement and Risk Evaluation for Mobile Application Security Testing](https://link.springer.com/chapter/10.1007/978-3-319-76451-1_23)
+file: no download :)
+
+### 18 [ANALYSIS OF SECURITY VULNERABILITIES IN MOBILE APPLICATIONS](http://ir.ktu.edu.gh:8080/xmlui/bitstream/handle/123456789/74/KWAKU%20TIEKU-DADEY_B203210032_COMPUTER%20SCIENCE%20DEPT.pdf?sequence=1&isAllowed=y)
+file: [analysis_sec_vuln_mob_app_paper.pdf](https://github.com/user-attachments/files/23166692/analysis_sec_vuln_mob_app_paper.pdf)
+
+### 19 [A Comprehensive Study on Static Application Security Testing (SAST) Tools for Android](https://ieeexplore.ieee.org/abstract/document/10738442)
+file: [A_Comprehensive_Study_on_Static_Application_Security_Testing_SAST_Tools_for_Android.pdf](https://github.com/user-attachments/files/23166717/A_Comprehensive_Study_on_Static_Application_Security_Testing_SAST_Tools_for_Android.pdf)
+
+### 20 [Enhancing Password Manager Application Security By Root Detection with Usability and Security Evaluation](https://ieeexplore.ieee.org/abstract/document/10382115)
+file: [Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf](https://github.com/user-attachments/files/23166735/Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf)
+
+
 
 
 

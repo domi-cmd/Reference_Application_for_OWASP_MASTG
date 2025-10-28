@@ -19,6 +19,30 @@ Goal of paper:
 ### 2 [Security Assessment for Digital Wallet Payment Partner Applications using the OWASP Method: A Case Study in Indonesia](https://www.researchgate.net/profile/Muhammad-Saifulhakim/publication/378480579_Security_Assessment_for_Digital_Wallet_Payment_Partner_Applications_using_the_OWASP_Method_A_Case_Study_in_Indonesia/links/65dc4147adf2362b6357e589/Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf)
 file: [Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf](https://github.com/user-attachments/files/23166032/Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf)
 
+#### General
+- Published 2024
+- OWASP areas: MASTG, MASVS, Risk rating methodology, Top 10 Mobile Risks
+
+#### Goal of paper:
+1. Security assessment of a digital wallet app in indonesia using the OWASP framework.
+2. Data retrieval using the OWASP MASTG and MASVS
+3. Use SAST & DAST for finding vulnerabilities, match them to OWASP vulnerabilities.
+4. Use OWASP risk rating methodology to assess the found security risks.
+
+#### Notes
+- 63% android apps exhibit vulnerabilities, on average 39 per app.
+- Gaming and financial apps are particularly vulnerable, financial transaction apps have 80% vulnerability rate.
+- OWASP framework is well suited for security risk assessment.
+- Insecure data storage stands out compared to other vulnerabilities with a vulnerabilit rating of up to 76%.
+- 74% of all google play apps are susceptible to at least one of the OWASP top 10 risks.
+- Multiple literature studies and articles show that OWASP presents a viable solution for security assessment.
+
+#### Study result
+- Of 84 MASVS verification points, 68 were labelled as "pass", 10 were deemed not applicable, 6 were failed (vulnerability found).
+- 1 vulnerability found using SAST.
+- 5 vulnerabilities found using DAST.
+- To avoid "not applicable" results using the OWASP MASVS, Testers need to be able to access and view contents of confidential documentation files, or more secure
+  access rights on the application system need to be implemented.
 
 ### 3 [The Application of Mobile Security Framework (MOBSF) and Mobile Application Security Testing Guide to Ensure the Security in Mobile Commerce Applications](https://www.jsisfotek.org/index.php/JSisfotek/article/view/231/153)
 file: [document (1).pdf](https://github.com/user-attachments/files/23166027/document.1.pdf)

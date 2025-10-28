@@ -53,7 +53,7 @@ file: [document (1).pdf](https://github.com/user-attachments/files/23166027/docu
 - Not published in renowned journal
 - Fishy (repeating sentences, things that arent true "MOBSF encompasses various frameworks, including OWASP")
 - Published 2023
-- OWASP areas: MASTG
+- OWASP areas: MASTG, MASVS
 
 #### Goal of paper:
 1. Evaluate and identify security vulnerabilities in an android application using the MOBSF (Mobile Security Framework) and the OWASP MASTG.
@@ -79,6 +79,52 @@ ___
 file: [Analysis_of_Fraud_Attacks_Using_Android_Package_Kit_in_Indonesia.pdf](https://github.com/user-attachments/files/23166023/Analysis_of_Fraud_Attacks_Using_Android_Package_Kit_in_Indonesia.pdf)
 
 #### General
+- Published 2024
+- OWASP Areas: MASTG (5 Stage pen testing), Mapping vulnerabilities to OWASP Top 10 & MASVS
+
+#### Goal of paper:
+1. "This research carefully dissects the patterns and tactics used in these fraudulent attacks, explaining the common traits of malicious APKs and the strategies used by threat actors to exploit vulnerabilities in Android devices."
+2. "OWASP MASTG was used specifically to test eight malicious applications that have been discovered and utilized by criminals to commit fraud in Indonesia."
+
+#### Notes
+- "This research underscores the importance of more robust security protocols, better user education, and strict regulatory frameworks to mitigate the risks associated with phishing APK attacks"
+- "APK files, the primary packaging format for Android applications, have become the preferred means for criminals to perpetrate scams."
+- Many APKs are malicious because they are:
+1. In a debuggable state
+2. have exported activities and broadcast receivers and
+3. the reccurence of dangerous permissions, such as Android
+- "conducting further analysis, these vulnerabilities can be mapped against several standards such as CWE, OWASP Top 10, and OWASP MASVS. All APK has been joined and analyzed with other standards"
+- Further common exploitations are:
+1. Malicious Code Injection: Embedding harmful code within seemingly benign APKs to execute unauthorized actions.
+2. Abuse of Permissions: Malicious APKs often request excessive permissions that go beyond their functional needs, enabling them to access sensitive data.
+3. Old OTP Verification Exploits: Utilizing outdated onetime password (OTP) methods to gain unauthorized access.
+
+#### Study result
+- "The findings suggest a need for continuous monitoring and updating of security protocols, increased public awareness of digital threats, and stronger collaboration between the governmental and private sectors in Indonesia to effectively combat these evolving cyber threats. Finally, this research provides valuable insights for forensic analysis to trace cybercriminal actors. These insights underscore the broader role of digital forensics in understanding and mitigating the impact of mobile phishing attacks in Indonesia"
+
+___
+
+### 5 [Evaluating Compliance of of the XYZ Ministry’s Android Messaging Applications with OWASP MASVS: A Comprehensive Case Study](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10859915)
+file: [Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applications_with_OWASP_MASVS_A_Comprehensive_Case_Study.pdf](https://github.com/user-attachments/files/23166017/Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applications_with_OWASP_MASVS_A_Comprehensive_Case_Study.pdf)
+
+
+#### General
+- 
+
+#### Goal of paper:
+1.
+
+#### Notes
+-
+
+#### Study result
+-
+
+
+### 6 Penetration Testing with OWASP Mobile for Android Security Optimization
+(Only Download link available, see file [jochac-deco-ok.pdf](https://github.com/user-attachments/files/23165785/jochac-deco-ok.pdf)
+
+#### General
 - 
 
 #### Goal of paper:
@@ -90,18 +136,21 @@ file: [Analysis_of_Fraud_Attacks_Using_Android_Package_Kit_in_Indonesia.pdf](htt
 #### Study result
 - 
 
-___
-
-### 5 [Evaluating Compliance of of the XYZ Ministry’s Android Messaging Applications with OWASP MASVS: A Comprehensive Case Study](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10859915)
-file: [Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applications_with_OWASP_MASVS_A_Comprehensive_Case_Study.pdf](https://github.com/user-attachments/files/23166017/Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applications_with_OWASP_MASVS_A_Comprehensive_Case_Study.pdf)
-
-
-### 6 Penetration Testing with OWASP Mobile for Android Security Optimization
-(Only Download link available, see file [jochac-deco-ok.pdf](https://github.com/user-attachments/files/23165785/jochac-deco-ok.pdf)
-
 ### 7 [Evaluating Mobile Banking Application Security Posture Using the OWASP’s MASVS Framework](https://dl.acm.org/doi/abs/10.1145/3588001.3609367)
 file: [3588001.3609367.pdf](https://github.com/user-attachments/files/23166012/3588001.3609367.pdf)
 
+
+#### General
+- 
+
+#### Goal of paper:
+1.
+
+#### Notes
+-
+
+#### Study result
+- 
 
 ### 8 [Evaluating Penetration Testing Methodologies Formobile Applications: A Comparative Study of Android and Ios Security](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5384360)
 

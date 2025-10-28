@@ -14,7 +14,7 @@ Goal of paper:
 - State of the art datasets for SAST: Ghera, DroidBench
 -> "these datasets **focus on specific categories of vulnerabilities** and **fail to encompass the full range of security controls outlined by standards such as the OWASP MASVS**. For example, while Ghera offers vulnerable apps based on common coding errors, it does not address more advanced security issues, such as complex cryptographic vulnerabilities or multicomponent interactions, which are critical in modern mobile app ecosystems"
 
-
+___
 
 ### 2 [Security Assessment for Digital Wallet Payment Partner Applications using the OWASP Method: A Case Study in Indonesia](https://www.researchgate.net/profile/Muhammad-Saifulhakim/publication/378480579_Security_Assessment_for_Digital_Wallet_Payment_Partner_Applications_using_the_OWASP_Method_A_Case_Study_in_Indonesia/links/65dc4147adf2362b6357e589/Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf)
 file: [Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf](https://github.com/user-attachments/files/23166032/Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using-the-OWASP-Method-A-Case-Study-in-Indonesia.pdf)
@@ -44,13 +44,53 @@ file: [Security-Assessment-for-Digital-Wallet-Payment-Partner-Applications-using
 - To avoid "not applicable" results using the OWASP MASVS, Testers need to be able to access and view contents of confidential documentation files, or more secure
   access rights on the application system need to be implemented.
 
+___
+
 ### 3 [The Application of Mobile Security Framework (MOBSF) and Mobile Application Security Testing Guide to Ensure the Security in Mobile Commerce Applications](https://www.jsisfotek.org/index.php/JSisfotek/article/view/231/153)
 file: [document (1).pdf](https://github.com/user-attachments/files/23166027/document.1.pdf)
 
+#### General
+- Not published in renowned journal
+- Fishy (repeating sentences, things that arent true "MOBSF encompasses various frameworks, including OWASP")
+- Published 2023
+- OWASP areas: MASTG
+
+#### Goal of paper:
+1. Evaluate and identify security vulnerabilities in an android application using the MOBSF (Mobile Security Framework) and the OWASP MASTG.
+2. Focus on data storage and Authentication
+
+#### Notes
+- 43% of Android applications have security vulnerabilities with high risk.
+- Most of them due to "weakness in security mechanisms since apps creation" and "granting privileges that are inappropriately exploited by attackers".
+- Increase in cybercrimes (in indonesia) due to carelessness and weak online technology security systems from mobile commerce applications who often ask for permission regarding personal data from their users. This data is used to support the application's business processes and stolen by cybercriminals.
+- OWASP MASTG and MOBSF "furnish unambiguous security analysis outcomes, which can serve as a basis for security enhancements for Android app developers."
+- The Mobile Security Framework (MobSF) is an automated testing framework for open-source mobile apps (Android, iOS, and Windows).
+- MOBSF performs malware analysis and penetration testing and can identify vulnerabilities that attackers can exploit in mobile apps. In prior research, the MOBSF was employed for static analysis, which yielded a true positive of up to 97%.
+- OWASP MASTG can find more vulnerabilities than when using the AndroBug framework!
+
+#### Study result
+- False positive from automated tests of MOBSF, when compared to MASTG & MASVS
+- A vulnerability in the parameter determining whether sensitive data is sent to third parties was discovered during the exploitation stage based on the findings of the validation test with the OWASP MASTG framework.
+- Apart from that, other security issues were also found in the testing best practices for passwords parameter, where hackers can freely guess passwords by carrying out brute force attacks because existing applications do not implement a strong password creation policy.
+
+___
 
 ### 4 [Analysis of Fraud Attacks Using Android Package Kit in Indonesia](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10732435)
 file: [Analysis_of_Fraud_Attacks_Using_Android_Package_Kit_in_Indonesia.pdf](https://github.com/user-attachments/files/23166023/Analysis_of_Fraud_Attacks_Using_Android_Package_Kit_in_Indonesia.pdf)
 
+#### General
+- 
+
+#### Goal of paper:
+1.
+
+#### Notes
+-
+
+#### Study result
+- 
+
+___
 
 ### 5 [Evaluating Compliance of of the XYZ Ministry’s Android Messaging Applications with OWASP MASVS: A Comprehensive Case Study](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10859915)
 file: [Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applications_with_OWASP_MASVS_A_Comprehensive_Case_Study.pdf](https://github.com/user-attachments/files/23166017/Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applications_with_OWASP_MASVS_A_Comprehensive_Case_Study.pdf)

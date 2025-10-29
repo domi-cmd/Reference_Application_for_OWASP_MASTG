@@ -109,16 +109,32 @@ file: [Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applicati
 
 
 #### General
-- 
+- Published 2024
+- OWASP areas:
+1. Applied MASVS standard to app using manual and automated testing, evaluating the apps compliance to MASVS
+2. Uses MASVS-NETWORK-2 as focus of study
+3. Uses OWASP Top 10 Mobile Risks to help decide on focus of study
+4. Use MASTG to test whether the app adheres to the requirements set by the MASVS standard.
+5. Use the MAS checklist to re-examine the evaluation results from the MASTG tests.
 
 #### Goal of paper:
-1.
+1. Evaluating the compliance of the gov messaging app based on MASVS, using MASTG to test and MAS to verify
+2. identifying common vulnerabilities and compliance gaps
+3. providing actionable recommendations for improving the application's security posture
 
 #### Notes
--
+- study does a case analysis that assesses the compliance of the XYZ Ministry's Android messaging app with MASVS
+- using automated and manual testing approaches
+- concentrated on MASVS-NETWORK-2 security controls
+- insecure communication ranks third in the OWASP Top 10 Mobile Risks 2016
+- 38% of mobile applications are vulnerable to insecure communication
+- MASVS sets the security standards, MSTG provides the testing techniques, and MAS serves as a checklist to ensure all relevant tests are conducted and aligned with MASVS requirements
+- OWASP MASVS was selected as the primary standard for evaluation due to its comprehensive nature and alignment with mobile application security requirements.
+- the tested application failed to meet two of the five test sections in MASVS-NETWORK-2.
 
 #### Study result
--
+- the tested application failed to meet two of the five test sections in MASVS-NETWORK-2.
+- Study recommends to change Network Security Configs as to only accept certificates from the system and not from the user as well.
 
 
 ### 6 Penetration Testing with OWASP Mobile for Android Security Optimization

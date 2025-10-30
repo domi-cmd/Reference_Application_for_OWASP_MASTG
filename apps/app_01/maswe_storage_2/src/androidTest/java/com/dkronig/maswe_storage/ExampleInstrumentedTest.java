@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.dkronig.maswe_storage", appContext.getPackageName());
+        assertEquals("com.dkronig.storage.test", appContext.getPackageName());
     }
 }

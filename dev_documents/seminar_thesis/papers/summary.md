@@ -201,46 +201,239 @@ file: [3588001.3609367.pdf](https://github.com/user-attachments/files/23166012/3
 
 ### 8 [Evaluating Penetration Testing Methodologies Formobile Applications: A Comparative Study of Android and Ios Security](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5384360)
 
+#### General
+- Published AUgust 2025 (on SSRN)
+- OWASP Areas:
+1. Discusses the significant gap between currently used pen-testing tools and the recommended, proactive and secure-by-design approach as defined by OWASP MASVS and MASTG.
+
+#### Goal of paper:
+1. This literature review critically examines penetration testing methodologies applied to mobile applications on Android and iOS platforms, with particular attention to how platform-specific architectures and constraints shape testing practices, tool effectiveness, and security assessment outcomes.
+
+#### Notes
+- there remains a significant gap between these recommended practices by OWASP (MASVS & MASTG) and the capabilities of commonly used penetration testing tools.
+- OWASP is emphasising the need to move beyond automated scanning to include manual testing of complex vulnerabilities, such as those related to authentication, data storage, and inter-process communication
+- This disconnect suggests that current industry tools are misaligned with the proactive security posture promoted by MASTG and MASVS.
+
 ### 9 [Security Analysis of the Lombok Tourism Android Application Using Penetration Testing (Pentesting) Methods Based on the OWASP Mobile Top 10-2024 Framework](https://eprints.unram.ac.id/48862/2/Jurnal_Ida%20Bagus%20Adi%20Surya%20Kemenuh%20%281%29.pdf)
 file: [Jurnal_Ida Bagus Adi Surya Kemenuh (1).pdf](https://github.com/user-attachments/files/23166008/Jurnal_Ida.Bagus.Adi.Surya.Kemenuh.1.pdf)
+
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
 
 ### 10 [Mutation Testing to Support the Security Testing of Android Applications](https://sol.sbc.org.br/index.php/sast/article/view/30213)
 file: [30213-1418-24654-1-10-20240916.pdf](https://github.com/user-attachments/files/23166064/30213-1418-24654-1-10-20240916.pdf)
 
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
+
 ### 11 [Evaluation of Web Vulnerability Scanners Based on OWASP Benchmark](https://ieeexplore.ieee.org/abstract/document/8638176)
 file: [Evaluation_of_Web_Vulnerability_Scanners_Based_on_OWASP_Benchmark.pdf](https://github.com/user-attachments/files/23166180/Evaluation_of_Web_Vulnerability_Scanners_Based_on_OWASP_Benchmark.pdf)
+
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
 
 ### 12 [A Study of the Security and Privacy Risks in Health-Related Mobile Applications in India](https://ieeexplore.ieee.org/abstract/document/10932131)
 file:[A_Study_of_the_Security_and_Privacy_Risks_in_Health-Related_Mobile_Applications_in_India.pdf](https://github.com/user-attachments/files/23166231/A_Study_of_the_Security_and_Privacy_Risks_in_Health-Related_Mobile_Applications_in_India.pdf)
 
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
+
 ### 13 [Mobile Application as a Critical Infrastructure Cyberattack Surface](https://elibrary.kubg.edu.ua/id/eprint/47127/)
 file: [O_Mykhaylova_T_Fedynyshyn_A_Datsiuk, B_Fihol_H_Hulak_CPITS-II-2023_3050.pdf](https://github.com/user-attachments/files/23166288/O_Mykhaylova_T_Fedynyshyn_A_Datsiuk.B_Fihol_H_Hulak_CPITS-II-2023_3050.pdf)
+
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
 
 ### 14 ["Your Doctor is Spying on You": An Analysis of Data Practices in Mobile Healthcare Applications](https://arxiv.org/abs/2510.06015)
 file: [doctor_spying_paper.pdf](https://github.com/user-attachments/files/23166347/doctor_spying_paper.pdf)
 
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
+
 ### 15 [From Ignition Interlock Servicing to SAST: Effective Taint Analysis for .NET MAUI Blazor Hybrid Applications](https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1966105&dswid=-5022)
 file: [ignition_interlock_paper.pdf](https://github.com/user-attachments/files/23166398/ignition_interlock_paper.pdf)
+
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
 
 ### 16 [IoT Mobile Applications Pentesting Methodology and Results of Research](https://ieeexplore.ieee.org/abstract/document/10878964)
 file: [IoT_Mobile_Applications_Pentesting_Methodology_and_Results_of_Research.pdf](https://github.com/user-attachments/files/23166551/IoT_Mobile_Applications_Pentesting_Methodology_and_Results_of_Research.pdf)
 
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
+
 ### 17 [The Study of Improvement and Risk Evaluation for Mobile Application Security Testing](https://link.springer.com/chapter/10.1007/978-3-319-76451-1_23)
 file: no download :)
+
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
 
 ### 18 [ANALYSIS OF SECURITY VULNERABILITIES IN MOBILE APPLICATIONS](http://ir.ktu.edu.gh:8080/xmlui/bitstream/handle/123456789/74/KWAKU%20TIEKU-DADEY_B203210032_COMPUTER%20SCIENCE%20DEPT.pdf?sequence=1&isAllowed=y)
 file: [analysis_sec_vuln_mob_app_paper.pdf](https://github.com/user-attachments/files/23166692/analysis_sec_vuln_mob_app_paper.pdf)
 
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
+
 ### 19 [A Comprehensive Study on Static Application Security Testing (SAST) Tools for Android](https://ieeexplore.ieee.org/abstract/document/10738442)
 file: [A_Comprehensive_Study_on_Static_Application_Security_Testing_SAST_Tools_for_Android.pdf](https://github.com/user-attachments/files/23166717/A_Comprehensive_Study_on_Static_Application_Security_Testing_SAST_Tools_for_Android.pdf)
+
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
 
 ### 20 [Enhancing Password Manager Application Security By Root Detection with Usability and Security Evaluation](https://ieeexplore.ieee.org/abstract/document/10382115)
 file: [Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf](https://github.com/user-attachments/files/23166735/Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf)
 
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
+
 ### 21 [Understanding Hackers’ Work: An Empirical Study of Offensive Security Practitioners](https://ieeexplore.ieee.org/abstract/document/10179474)
 file: [hackers_work_paper.pdf](https://github.com/user-attachments/files/23166800/hackers_work_paper.pdf)
 
+#### General
+- Published 
+- OWASP Areas:
+1. 
 
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
 
 
 

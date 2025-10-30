@@ -1,7 +1,7 @@
 package com.dkronig.maswe_storage;
 
 import android.os.Bundle;
-import android.widget.Button;
+
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.maswe_0001.MainActivity0001;
 import com.dkronig.maswe_storage.maswe_0002.MainActivity0002;

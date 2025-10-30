@@ -36,10 +36,20 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(project(":common"))
-    implementation(project(":maswe_storage_2"))
     implementation(project(":maswe_crypto"))
     implementation(project(":maswe_platform"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+}
+
+// -------------------------
+// Automatically install other apps when running launcher
+// -------------------------
+android.applicationVariants.all { variant ->
+    if (variant.name.equalsIgnoreCase("debug")) {
+        variant.installProvider.dependsOn(
+            project(":maswe_storage").tasks.named("installDebug")
+        )
+    }
 }

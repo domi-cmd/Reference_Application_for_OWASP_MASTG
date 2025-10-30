@@ -7,6 +7,77 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Launcher" />
+        android:theme="@style/Theme.Launcher">
+
+
+        <activity
+            android:name="com.dkronig.maswe_storage.StorageMenu"
+            android:theme="@style/Theme.maswe_storage"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0001.LoginActivity"
+            android:theme="@style/Theme.maswe_storage"/>
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0001.RegisterActivity"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0001.ProfileActivity"
+            android:theme="@style/Theme.maswe_storage"/>
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0001.MainActivity0001"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0002.MainActivity0002"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.dkronig.root.CustomFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0002.LoginActivity"
+            android:theme="@style/Theme.maswe_storage"/>
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0002.RegisterActivity"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0002.ProfileActivity"
+            android:theme="@style/Theme.maswe_storage"/>
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0006.MainActivity0006"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0006.LoginActivity"
+            android:theme="@style/Theme.maswe_storage"/>
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0006.RegisterActivity"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0006.ProfileActivity"
+            android:theme="@style/Theme.maswe_storage"/>
+
+    </application>
 
 </manifest>

@@ -141,16 +141,22 @@ file: [Evaluating_Compliance_of_of_the_XYZ_Ministrys_Android_Messaging_Applicati
 (Only Download link available, see file [jochac-deco-ok.pdf](https://github.com/user-attachments/files/23165785/jochac-deco-ok.pdf)
 
 #### General
-- 
+- Not always clear what is meant by the wording of the study, not the best english translation?
+- Published 2023
+- OWASP Areas:
+1. MASTG 5 Steps guide to penetration testing
 
 #### Goal of paper:
-1.
+1. Carry out a pentesting attack following the MASTG 5 steps laid out for this.
+2. Describe the steps taken to do so
+3. Conclude with the information maliciously obtained, as to allow security parties to patch the respective loopholes and exploits.
 
 #### Notes
--
+- Pure OWASP focus on the 5 MASTG steps described to carry out penetration testing
 
 #### Study result
-- 
+- Study authors managed to extract data on the applications IOC's aswell as contact and SMS data, and audio records.
+- Study shows that the MASTG 5 steps pentesting "guide" is a sensible approach to pentest applications, as well as do so in an academic context.
 
 ### 7 [Evaluating Mobile Banking Application Security Posture Using the OWASP’s MASVS Framework](https://dl.acm.org/doi/abs/10.1145/3588001.3609367)
 file: [3588001.3609367.pdf](https://github.com/user-attachments/files/23166012/3588001.3609367.pdf)

@@ -164,15 +164,40 @@ file: [3588001.3609367.pdf](https://github.com/user-attachments/files/23166012/3
 
 #### General
 - Published 2023, Ruanda
+- OWASP Areas:
+1. OWASP MASVS & MASTG, using their guidelines checks and tests to evaluate their chosen batch of fintech applications.
 
 #### Goal of paper:
-1.
+1. Choose 18 apps belonging to different africa financial institutions, evaluate them for vulnerabilities using OWASP MASVS and MASTG
+2. Document the found vulnerabilities
+3. Give recommendations on fixing the vulnerabilities
+4. Conduct survey to find out cause for the found vulnerabilities (lack of funding, lack of knowledge etc.)
+5. Conclude with statement about importance of proper security with MASVS
 
 #### Notes
--
+- MASVS chosen as testing framework, since it is specifically designed to "be a guide and checklist for evaluating the security of mobile applications".
+- Strictest level of MASVS, L2, was applied
+- authors have chosen to focus solely on unauthenticated client-side testing, following the black-box testing approach. Did not implement all MASVS tests.
 
 #### Study result
-- 
+- Worst outcomes:
+1. All applications allowed for screenshots of sensitive information
+2. 81% of all apps did not enforce in-app updates.
+3. 78% of apps used outdated and thus insecure cryptographic protocols such as MD5, SHA-1 and DES
+4. 10/18 apps use security libraries that are outdated and known to have vulnerabilities.
+5. 8/18 were using insecure random number generation for their cryptographic protocols
+6. 5/18 allowed cleartext traffic to their endpoints
+7. 83% did not enforce proper runtime buffer overflow protection
+8. 33% of apps did not detect running on an emulator, neither running on a rooted/jailbroken device
+9. 50% did not detect an attached debugger
+10. 55% had no code obfuscation in place, none of the apps had any other obfuscation, such as anti-debug obfuscation in place.
+
+- Survey results:
+1. 78% of respondents said they avoided implementing security due to a lack of expertise and knowledge about security.
+2. 63% thought that implementing security measures in applications is too complex or/and time-consuming.
+
+- The authors conclude that its better to ensure security by using MASVS instead of OWASP top 10 risks, since "this approach will yield better results and completeness than simply relying on general web application vulnerabilities such as the OWASP Top 10."
+
 
 ### 8 [Evaluating Penetration Testing Methodologies Formobile Applications: A Comparative Study of Android and Ios Security](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5384360)
 

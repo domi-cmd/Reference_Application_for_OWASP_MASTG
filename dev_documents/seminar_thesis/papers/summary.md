@@ -218,9 +218,9 @@ file: [3588001.3609367.pdf](https://github.com/user-attachments/files/23166012/3
 file: [Jurnal_Ida Bagus Adi Surya Kemenuh (1).pdf](https://github.com/user-attachments/files/23166008/Jurnal_Ida.Bagus.Adi.Surya.Kemenuh.1.pdf)
 
 #### General
-- Published 
+- Published 2024? (Direct filedownload, no publisher?)
 - OWASP Areas:
-1. 
+1. Used the OWASP Top 10 2024 to identify vulnerabilities to pen-test the tourism app on
 
 #### Goal of paper:
 1. 
@@ -237,13 +237,31 @@ file: [30213-1418-24654-1-10-20240916.pdf](https://github.com/user-attachments/f
 #### General
 - Published 
 - OWASP Areas:
-1. 
+1. (Considered using OWASP Top 10 as knowledge base for android vulnerabilities, went with Google's Developers Common Risks instead)
+2. Used 10 intentionally vulnerable MASTG reference apps to test their mutation operators on.
 
 #### Goal of paper:
-1. 
+1. Use mutation testing for android app security testing
+2. Identify common android vulnerabilities
+3. Propose new mutation operators based on these vulnerabilities
+4. Develop mutation tool to support mutant generation
+5. Use this tool on 10 MASTG vulnerable reference apps
+6. Use MobSFScan as a static analysis tool to try and detect the mutants
 
 #### Notes
--
+- Very good explanations and code snippets on the following vulnerabilities:
+1. Improper export of app components
+2. Debuggable app
+3. Implicit pending intent
+4. Hardcoded secrets
+5. Tapjacking attacks
+6. Plaintext HTTP
+- Study shows that mobsfscan is not adequate for thorough vulnerability/security analysis of apps:
+1. Was not able to detect any of the 23 Improper Export mutants
+2. Even failed to detect an already existing, known improper export vulnerability in one of the used MASTG apps
+3. "Nevertheless, due to the semantic nature of this vulnerability and the limitations of our tests, it was impossible to detect improper export mutations as vulnerabilities. Doing so would require different kinds of tests, perhaps involving human analysts"
+4. In 4/10 apps mobsfscan failed to detect any of the hardcoded secret vulnerabilities, despite them having the same pattern as detected hardcoded secret vulnerabilities.
+5. **"The only reasonable explanation we could think of for this result is that there must be a design flaw in mobsfscan which leads to it systematically failing to find hardcoded secrets in some cases."**
 
 #### Study result
 -

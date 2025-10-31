@@ -329,12 +329,14 @@ file: [O_Mykhaylova_T_Fedynyshyn_A_Datsiuk, B_Fihol_H_Hulak_CPITS-II-2023_3050.p
 file: [doctor_spying_paper.pdf](https://github.com/user-attachments/files/23166347/doctor_spying_paper.pdf)
 
 #### General
-- Published 
+- Published 2025 (in arXiv) from USA
 - OWASP Areas:
 1. 
 
 #### Goal of paper:
-1. 
+1.  Analyze Android mHealth apps for systemic security weaknesses
+2.  Use MobSF, RiskInDroid and a OWASP Mobile audit to perform static vuln. analysis, permission forensics and cryptographic inspections
+3.  Pair this with sentiment analysis of 2.5 million user reviews to check for correlation in measurable security weaknesses and user trust&privacy concerns
 
 #### Notes
 -

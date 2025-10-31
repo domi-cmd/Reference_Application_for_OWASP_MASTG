@@ -331,7 +331,7 @@ file: [doctor_spying_paper.pdf](https://github.com/user-attachments/files/231663
 #### General
 - Published 2025 (in arXiv) from USA
 - OWASP Areas:
-1. 
+1. Uses an OWASP Mobile Audit to evaluate apps, comprised of OWASP MASTG & MASVS
 
 #### Goal of paper:
 1.  Analyze Android mHealth apps for systemic security weaknesses
@@ -339,10 +339,30 @@ file: [doctor_spying_paper.pdf](https://github.com/user-attachments/files/231663
 3.  Pair this with sentiment analysis of 2.5 million user reviews to check for correlation in measurable security weaknesses and user trust&privacy concerns
 
 #### Notes
--
+- Almost unbelievable security failure in the mobile health sector for android apps
+- Examined 272 apps in their "multi-fauceted audit"
+- All real apps from google play (this shows that owasp has real world applications, and that the vulnerabilities described there are found irl)
+- "Only" 95 APK's were part of the OWASP Mobile Audit
+- They had **ON AVERAGE:**
+1. 44 critical,
+2. 2'194 high,
+3. 3'728 medium,
+4. 1'735 low, and
+5. 1'469 vulnerabilities with no severity assigned
+- Frequently found vulnerabilities:
+1. insecure storage of authentication tokens,
+2. absence of certificate pinning,
+3. unencrypted PHI transmission, and
+4. reliance on outdated cryptographic primitives
 
 #### Study result
--
+- Devastating security failures
+1. 49.3% of applications still relied on RSA SHA-1 signatures, exposing them to collision-based exploits such as Janus, which permits undetected APK modification and repackaging
+2.  42 apps transmitted PHI (personal health information) in cleartext over HTTP
+3.  2'252 instances of unnecessarily exported broadcast receivers
+4.  1'232 cases of exported permissions without defined protection levels
+5.  22 apps configured to trust all TLS certificates
+- The authors conclude: "Weak enforcement is compounded by insecure development practices. Developers should adopt the OWASP MASVS, embed security linters into IDEs, [...]"
 
 ### 15 [From Ignition Interlock Servicing to SAST: Effective Taint Analysis for .NET MAUI Blazor Hybrid Applications](https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1966105&dswid=-5022)
 file: [ignition_interlock_paper.pdf](https://github.com/user-attachments/files/23166398/ignition_interlock_paper.pdf)

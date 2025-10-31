@@ -272,7 +272,7 @@ file: [Evaluation_of_Web_Vulnerability_Scanners_Based_on_OWASP_Benchmark.pdf](ht
 #### General
 - Published 
 - OWASP Areas:
-1. 
+1. This study is about the owasp benchmark, which differs from owasp masvs and mastg, not sure if this study should be included?
 
 #### Goal of paper:
 1. 
@@ -289,7 +289,7 @@ file:[A_Study_of_the_Security_and_Privacy_Risks_in_Health-Related_Mobile_Applica
 #### General
 - Published 
 - OWASP Areas:
-1. 
+1. Deals with the owasp mobile top 10 risks, which differs from my literary recherche scope
 
 #### Goal of paper:
 1. 
@@ -304,18 +304,26 @@ file:[A_Study_of_the_Security_and_Privacy_Risks_in_Health-Related_Mobile_Applica
 file: [O_Mykhaylova_T_Fedynyshyn_A_Datsiuk, B_Fihol_H_Hulak_CPITS-II-2023_3050.pdf](https://github.com/user-attachments/files/23166288/O_Mykhaylova_T_Fedynyshyn_A_Datsiuk.B_Fihol_H_Hulak_CPITS-II-2023_3050.pdf)
 
 #### General
-- Published 
+- Published 2023 (in CEUR WS, good source I think)
 - OWASP Areas:
-1. 
+1. Using static and dynamic analysis techniques to verify the OWASP MASVS security requirements for a postal service app
 
 #### Goal of paper:
-1. 
+1. Assess the security of a postal service app using MASVS
+2. Evaluate security using static and dynamic analyses techniques
+3. Present the vulnerabilities discovered
 
 #### Notes
--
+- Once again OWASP MASVS is used as guidelines, with MobSF as a tool to do the actual tests.
+- Used dynamic and static techniques.
+- The application analyzed does not use trusted Certificate Authorities to protect user privacy.
 
 #### Study result
--
+- Found vulnerabilities:
+1. absence of usage confirmation
+2. improper authorization for critically important functions
+3. Hardcoded secret strings in source code
+4. usesCleartextTraffic in the Android app’s manifest file is set to true, which means that the use of unencrypted network traffic in the app is permitted.
 
 ### 14 ["Your Doctor is Spying on You": An Analysis of Data Practices in Mobile Healthcare Applications](https://arxiv.org/abs/2510.06015)
 file: [doctor_spying_paper.pdf](https://github.com/user-attachments/files/23166347/doctor_spying_paper.pdf)

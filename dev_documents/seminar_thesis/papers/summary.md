@@ -368,18 +368,8 @@ file: [doctor_spying_paper.pdf](https://github.com/user-attachments/files/231663
 file: [ignition_interlock_paper.pdf](https://github.com/user-attachments/files/23166398/ignition_interlock_paper.pdf)
 
 #### General
-- Published 
-- OWASP Areas:
-1. 
+- 75 Pages long
 
-#### Goal of paper:
-1. 
-
-#### Notes
--
-
-#### Study result
--
 
 ### 16 [IoT Mobile Applications Pentesting Methodology and Results of Research](https://ieeexplore.ieee.org/abstract/document/10878964)
 file: [IoT_Mobile_Applications_Pentesting_Methodology_and_Results_of_Research.pdf](https://github.com/user-attachments/files/23166551/IoT_Mobile_Applications_Pentesting_Methodology_and_Results_of_Research.pdf)
@@ -387,33 +377,12 @@ file: [IoT_Mobile_Applications_Pentesting_Methodology_and_Results_of_Research.pd
 #### General
 - Published 
 - OWASP Areas:
-1. 
+1. Mentions the OWASP MASTG, but doesn't use it as the study focuses on the security of IoT devices and their connection to mobile apps, not the security of mobile apps itself. Hence the study is not of value for my goal
 
-#### Goal of paper:
-1. 
-
-#### Notes
--
-
-#### Study result
--
 
 ### 17 [The Study of Improvement and Risk Evaluation for Mobile Application Security Testing](https://link.springer.com/chapter/10.1007/978-3-319-76451-1_23)
 file: no download :)
 
-#### General
-- Published 
-- OWASP Areas:
-1. 
-
-#### Goal of paper:
-1. 
-
-#### Notes
--
-
-#### Study result
--
 
 ### 18 [ANALYSIS OF SECURITY VULNERABILITIES IN MOBILE APPLICATIONS](http://ir.ktu.edu.gh:8080/xmlui/bitstream/handle/123456789/74/KWAKU%20TIEKU-DADEY_B203210032_COMPUTER%20SCIENCE%20DEPT.pdf?sequence=1&isAllowed=y)
 file: [analysis_sec_vuln_mob_app_paper.pdf](https://github.com/user-attachments/files/23166692/analysis_sec_vuln_mob_app_paper.pdf)
@@ -486,6 +455,21 @@ file: [hackers_work_paper.pdf](https://github.com/user-attachments/files/2316680
 
 
 
+Template used:
+
+#### General
+- Published 
+- OWASP Areas:
+1. 
+
+#### Goal of paper:
+1. 
+
+#### Notes
+-
+
+#### Study result
+-
 
 
 

@@ -405,18 +405,22 @@ file: [analysis_sec_vuln_mob_app_paper.pdf](https://github.com/user-attachments/
 file: [A_Comprehensive_Study_on_Static_Application_Security_Testing_SAST_Tools_for_Android.pdf](https://github.com/user-attachments/files/23166717/A_Comprehensive_Study_on_Static_Application_Security_Testing_SAST_Tools_for_Android.pdf)
 
 #### General
-- Published 
+- Published December 2024 in IEEE TRANSACTIONS ON SOFTWARE ENGINEERING
 - OWASP Areas:
-1. 
+1. Uses the OWASP reference app MASTG-hacking-playground as a benchmark for SAST tools
+2. Uses the OWASP Top 10 Mobile Risks for mapping of their unified taxonomy
 
 #### Goal of paper:
-1. 
-
-#### Notes
--
+1. Choose 11 industry and academy relevant SAST tools
+2. Create a platform to automatically test the SAST tools on
+3. Evaluate the tools on 3 benchmarks, 2 synthetic (GHERA, OWASP&PITA Apps) and a new proposed CVE-based benchmark with real-world vulnerabilities.
 
 #### Study result
--
+- Tools perform better on OWASP app based benchmark than on GHERA benchmark
+- Synthetic benchmarks do quite similarily well compared to CVE benchmark based on real world vulnerabilities.
+- Synthetic vulnerabilities rarely model "logic and context" 
+- Significant gap between the supported vulnerability types of these SAST tools and the types injected in these synthetic benchmarks. The OWASP reference app has a coverage rate of only 50% of the vulnerability types in the SAST tools.
+- "The tools mainly use the method as pattern-matching for vulnerability detection, leaving a notable gap for scenario-related logical vulnerability types found in Android-specific CVEs and GHERA, like input validation vulnerabilities."
 
 ### 20 [Enhancing Password Manager Application Security By Root Detection with Usability and Security Evaluation](https://ieeexplore.ieee.org/abstract/document/10382115)
 file: [Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf](https://github.com/user-attachments/files/23166735/Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf)

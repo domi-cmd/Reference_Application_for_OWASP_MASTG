@@ -426,18 +426,22 @@ file: [A_Comprehensive_Study_on_Static_Application_Security_Testing_SAST_Tools_f
 file: [Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf](https://github.com/user-attachments/files/23166735/Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Usability_and_Security_Evaluation.pdf)
 
 #### General
-- Published 
+- Published 2023 in IEEE
 - OWASP Areas:
-1. 
+1. Uses MASTG as a reference and source
+2. OWASP Risk rating methodology for assesing apps security
+3. ?OWASP Top 10 Mobile Risks
 
 #### Goal of paper:
-1. 
-
-#### Notes
--
+1. Add root detection to a PMA (Password Manager Application)
+2. Add further security measures such as Secure Storage, Proper Key Derivation etc.
+3. Use MobSF for malware scanning and pen testing, evaluate the application for OWASP vulnerabilities
+4. Assess the risk rating of the app using the OWASP risk rating methodology, compare app to known popular PMA's on the playstore
 
 #### Study result
--
+- Root detection is incredibly important
+- Not much else
+
 
 ### 21 [Understanding Hackers’ Work: An Empirical Study of Offensive Security Practitioners](https://ieeexplore.ieee.org/abstract/document/10179474)
 file: [hackers_work_paper.pdf](https://github.com/user-attachments/files/23166800/hackers_work_paper.pdf)
@@ -455,7 +459,6 @@ file: [hackers_work_paper.pdf](https://github.com/user-attachments/files/2316680
 
 #### Study result
 -
-
 
 
 

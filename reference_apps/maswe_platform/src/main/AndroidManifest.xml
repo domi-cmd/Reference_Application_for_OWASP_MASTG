@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.dkronig.maswe_platform">
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.maswe_platform"
+        tools:targetApi="31">
+
+        <provider
+            android:name="com.dkronig.maswe_platform.maswe_0064.CustomContentProvider"
+            android:authorities="com.dkronig.root.CustomContentProvider"
+            android:exported="true"
+            android:permission="" />
+
+        <activity
+            android:name="com.dkronig.maswe_platform.PlatformMenu"
+            android:theme="@style/Theme.maswe_platform"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.dkronig.maswe_platform.maswe_0064.MainActivity0064"
+            android:theme="@style/Theme.maswe_platform" />
+
+        <activity
+            android:name="com.dkronig.maswe_platform.maswe_0064.LoginActivity"
+            android:theme="@style/Theme.maswe_platform"/>
+
+        <activity
+            android:name="com.dkronig.maswe_platform.maswe_0064.RegisterActivity"
+            android:theme="@style/Theme.maswe_platform" />
+
+        <activity
+            android:name="com.dkronig.maswe_platform.maswe_0064.ProfileActivity"
+            android:theme="@style/Theme.maswe_platform"/>
+    </application>
+</manifest>

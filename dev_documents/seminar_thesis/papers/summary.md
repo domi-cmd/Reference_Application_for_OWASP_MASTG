@@ -447,18 +447,19 @@ file: [Enhancing_Password_Manager_Application_Security_By_Root_Detection_with_Us
 file: [hackers_work_paper.pdf](https://github.com/user-attachments/files/23166800/hackers_work_paper.pdf)
 
 #### General
-- Published 
+- Published 2023 in ESEC/FSE
 - OWASP Areas:
-1. 
+1. OWASP MASTG, MASVS and Mobile Top 10 are named by interviewed hackers as base for pen testing checklists
+2. Only mentioned by the interviewees, not part of the study setup or authors plan
 
 #### Goal of paper:
-1. 
+1. Interview Hackers to better understand offensive security testing
+2. "[...] a first data-driven exploratory qualitative study of twelve security professionals, their work and problems occurring therein."
 
 #### Notes
--
+- OWASP MASVS and MASTG used for basis of checklist for pen-testing
+- No further OWASP MASTG relevance in the paper
 
-#### Study result
--
 
 
 

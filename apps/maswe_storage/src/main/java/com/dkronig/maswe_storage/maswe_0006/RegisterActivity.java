@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.util.Map;
 
 public class RegisterActivity extends BaseRegisterActivity {
-
-    private static final String TAG = "[REGISTER ACTIVITY]";
     private EncryptionHandler encryptionHandler;
 
     @Override
@@ -36,7 +34,6 @@ public class RegisterActivity extends BaseRegisterActivity {
         return "Register";
     }
 
-    // Provide IDs for BaseRegisterActivity to find UI elements
     @Override
     protected int getEmailFieldId() {
         return R.id.et_email;
@@ -65,27 +62,11 @@ public class RegisterActivity extends BaseRegisterActivity {
             throw new RuntimeException(e);
         }
 
+        // Save encrypted user data to shared preferences
         SharedPreferences sharedPrefs = getSharedPreferences("my_app_prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString("user_email", encrypted_email);
         editor.putString("user_password", encrypted_password);
         editor.apply();
-
-        // Save encrypted user data to app sandbox
-        userDataToAppLogs(encrypted_email, encrypted_password);
-    }
-
-    private void userDataToAppLogs(String user_email, String user_password){
-        // Logging sensitive data to a file in app's data directory (App Logs)
-        try {
-            File logFile = new File(getFilesDir(), "maswe_0006_user_credentials.txt");
-            FileWriter writer = new FileWriter(logFile, true);
-            writer.append("Login - Username: " + user_email + ", Password: " + user_password + "\n");
-            writer.close();
-            Log.d(TAG, "Logged credentials to app logs");
-        } catch (IOException e) {
-            // System log incase the app logging did not work
-            Log.e(TAG, "Error writing to log file: " + e.getMessage());
-        }
     }
 }

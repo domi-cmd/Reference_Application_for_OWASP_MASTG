@@ -8,17 +8,33 @@ The issues lie in **complete absence of encryption** both **for the cloud backup
 # Inspecting the backup
 To inspect the backup, one can change the backup transporter from cloud to local, run a backup and extract its files as follows:
 ### 1. Switch to local backup instead of cloud backup
+Run in terminal (with adb installed):
+
+``
 adb shell bmgr transport com.android.localtransport/.LocalTransport
+``
 
 (Switch back to cloud backup afterwards:
+Run in terminal:
+
+``
 adb shell bmgr transport com.google.android.gms/.backup.BackupTransportService)
+``
 
 ### 2. To create backup:
+Run in terminal:
+
+``
 adb backup com.dkronig.maswe_storage -f myapp_backup.ab 
+``
 
 ### 3. unpack into a .tar file:
 (get extractor from here: https://github.com/nelenkov/android-backup-extractor/releases/tag/latest)
+Run in terminal:
+
+``
 java -jar C:\Users\Domi\Tools\abe.jar unpack myapp_backup.ab myapp_backup.tar    
+``
 
 output: 
 
@@ -28,7 +44,12 @@ output:
 ``
 
 ### 4. check the contents of the jar file:
+Run in terminal:
+
+``
 tar -tvf myapp_backup.tar
+``
+
 
 output:
 

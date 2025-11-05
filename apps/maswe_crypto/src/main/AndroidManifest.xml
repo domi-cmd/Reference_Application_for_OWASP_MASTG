@@ -2,11 +2,38 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Launcher" />
+        android:theme="@style/Theme.maswe_crypto">
+
+        <activity
+            android:name="com.dkronig.maswe_crypto.CryptoMenu"
+            android:theme="@style/Theme.maswe_crypto"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".maswe_0009.MainActivity0009"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0009.LoginActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0009.RegisterActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0009.ProfileActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+    </application>
 
 </manifest>

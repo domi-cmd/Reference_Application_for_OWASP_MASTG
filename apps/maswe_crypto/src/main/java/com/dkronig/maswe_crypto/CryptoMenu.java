@@ -1,0 +1,28 @@
+package com.dkronig.maswe_crypto;
+
+import android.os.Bundle;
+import com.dkronig.common.BaseActivityTemplate;
+import com.dkronig.maswe_crypto.maswe_0009.MainActivity0009;
+import java.util.Map;
+
+
+public class CryptoMenu extends BaseActivityTemplate {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_crypto_menu);
+
+        // Map UI buttons, handled in BaseActivityTemplate
+        bindButtons(Map.of(
+                R.id.maswe_0009_button, MainActivity0009.class
+                // More buttons as more tests are implemented
+        ));
+    }
+
+
+    // Set name for action bar handled in BaseActivityTemplate
+    @Override
+    protected String getScreenTitle() {
+        return "MASWE Crypto";
+    }
+}

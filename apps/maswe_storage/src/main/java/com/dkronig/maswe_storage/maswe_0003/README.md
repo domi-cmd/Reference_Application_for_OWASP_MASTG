@@ -4,6 +4,21 @@ The relevant code for this vulnerability can be seen in res/xml/backup_rules.xml
 
 The issues lie in **complete absence of encryption** both **for the cloud backup**, as well as **for device to device transfer**.
 
+To fix the vulnerability, the boolean in the [line](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L4):
+
+```xml
+<cloud-backup disableIfNoEncryptionCapabilities="false">
+```
+
+should be set to true. This prevents any backup happening if no encryption is in place.
+
+For [each include](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L6-L7), there should be a
+
+```xml
+<... requireFlags="clientSideEncryption"/>
+```
+
+included.
 
 # Inspecting the backup
 To inspect the backup, one can change the backup transporter from cloud to local, run a backup and extract its files as follows:

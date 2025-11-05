@@ -49,19 +49,10 @@ public class RegisterActivity extends BaseRegisterActivity {
         return R.id.register_button;
     }
 
-    // Write sensitive user data so system logs upon registration
+    // Use an implicit intent with my misconfigured file provider to share credentials
+    // stored in internal storage with other apps
     @Override
     protected void onRegister(String email, String password) {
-        try {
-            // Call the vulnerable function
-            storeSensitiveData(this, "maswe_0002_user_credentials.txt",
-                    "Email: " + email + " Password: " + password + "\n");
-            Toast.makeText(this, "Data saved insecurely!", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Toast.makeText(this, "Error saving data: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        }
-
         Uri uri = FileProvider.getUriForFile(
                 this,
                 this.getPackageName() + ".CustomFileProvider",
@@ -73,32 +64,5 @@ public class RegisterActivity extends BaseRegisterActivity {
         share.putExtra(Intent.EXTRA_STREAM, uri);
         share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(Intent.createChooser(share, "Share file via"));
-    }
-
-
-    public static void storeSensitiveData(Context context, String filename, String data) throws IOException {
-        File file = new File(context.getFilesDir(), filename);
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.write(data.getBytes());  // Store plain text sensitive data
-        fos.close();
-
-        String path = file.getAbsolutePath();
-        try {
-            // set 0644 (owner rw, group r, others r)
-            Process p = Runtime.getRuntime().exec(new String[]{"sh", "-c", "chmod 0644 " + path});
-            int rc = p.waitFor();
-            Log.i("DEBUG", "chmod exit: " + rc);
-            Log.i("INFO", "File permission set to readable successfully.");
-            Log.i("INFO", "Filepath: " + path);
-        } catch (Exception e) {
-            Log.e("DEBUG", "chmod failed", e);
-        }
-
-        // Intentionally set insecure permissions (world-readable/writable)
-        // This is deprecated and does not work anymore
-        // Readable by all
-        //file.setReadable(true, false);
-        // Writable by all
-        //file.setWritable(true, false);
     }
 }

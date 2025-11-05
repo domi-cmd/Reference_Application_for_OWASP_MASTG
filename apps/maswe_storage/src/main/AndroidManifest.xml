@@ -85,6 +85,22 @@
             android:name="com.dkronig.maswe_storage.maswe_0006.ProfileActivity"
             android:theme="@style/Theme.maswe_storage"/>
 
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0007.MainActivity0007"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0007.LoginActivity"
+            android:theme="@style/Theme.maswe_storage"/>
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0007.RegisterActivity"
+            android:theme="@style/Theme.maswe_storage" />
+
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0007.ProfileActivity"
+            android:theme="@style/Theme.maswe_storage"/>
+
     </application>
 
 </manifest>

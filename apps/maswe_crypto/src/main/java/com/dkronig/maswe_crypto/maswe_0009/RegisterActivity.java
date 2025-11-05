@@ -12,7 +12,11 @@ public class RegisterActivity extends BaseRegisterActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        encryptionHandler = new EncryptionHandler();
+        try {
+            encryptionHandler = new EncryptionHandler();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -47,8 +51,8 @@ public class RegisterActivity extends BaseRegisterActivity {
         String encrypted_password;
         try {
             // Encrypt user data
-            encrypted_email = encryptionHandler.encryptData(email);
-            encrypted_password = encryptionHandler.encryptData(password);
+            encrypted_email = encryptionHandler.encryptDataDES(email);
+            encrypted_password = encryptionHandler.encryptDataDES(password);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

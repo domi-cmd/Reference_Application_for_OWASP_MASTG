@@ -10,7 +10,7 @@
 |  | [0003](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0003/) | Backup Unencrypted | ✅ | Placeholder |
 |  | [0004](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0004/) | Sensitive Data Not Excluded From Backup |✅ [Here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/main/apps/app_01/app/src/main/res/xml/backup_rules.xml#L5-L8) [Here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MAST/blob/main/apps/app_01/app/src/main/AndroidManifest.xml#L6-L7) | Beta |
 |  | [0006](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0006/) | Sensitive Data Stored Unencrypted in Private Storage Locations |✅| Beta |
-|  | [0007](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0007/) | Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |❌| Beta |
+|  | [0007](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0007/) | Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |🔜| Beta |
 | CRYPTO |  |  |  |  |
 |  | [0009](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0009/) | Improper Cryptographic Key Generation |❌| Beta |
 |  | [0010](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0010/) | Improper Cryptographic Key Derivation |❌| Placeholder |

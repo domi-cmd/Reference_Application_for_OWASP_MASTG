@@ -44,8 +44,8 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.dkronig.root.CustomFileProvider"
-            android:exported="true"
+            android:authorities="com.dkronig.maswe_storage.CustomFileProvider"
+            android:exported="false"
             android:grantUriPermissions="true"
             android:permission="" >
             <meta-data

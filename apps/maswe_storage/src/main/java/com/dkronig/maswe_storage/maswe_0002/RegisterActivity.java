@@ -82,11 +82,23 @@ public class RegisterActivity extends BaseRegisterActivity {
         fos.write(data.getBytes());  // Store plain text sensitive data
         fos.close();
 
+        String path = file.getAbsolutePath();
+        try {
+            // set 0644 (owner rw, group r, others r)
+            Process p = Runtime.getRuntime().exec(new String[]{"sh", "-c", "chmod 0644 " + path});
+            int rc = p.waitFor();
+            Log.i("DEBUG", "chmod exit: " + rc);
+            Log.i("INFO", "File permission set to readable successfully.");
+            Log.i("INFO", "Filepath: " + path);
+        } catch (Exception e) {
+            Log.e("DEBUG", "chmod failed", e);
+        }
+
         // Intentionally set insecure permissions (world-readable/writable)
         // This is deprecated and does not work anymore
         // Readable by all
-        file.setReadable(true, false);
+        //file.setReadable(true, false);
         // Writable by all
-        file.setWritable(true, false);
+        //file.setWritable(true, false);
     }
 }

@@ -38,7 +38,7 @@ public class RegisterActivity extends BaseRegisterActivity {
         return R.id.register_button;
     }
 
-    // Write sensitive user data so system logs upon registration
+    // Write sensitive user data to system and app logs upon registration
     @Override
     protected void onRegister(String email, String password) {
         userDataToSystemLogs(email, password);

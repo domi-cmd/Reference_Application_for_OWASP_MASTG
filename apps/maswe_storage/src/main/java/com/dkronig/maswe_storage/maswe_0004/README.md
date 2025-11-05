@@ -10,8 +10,8 @@ The relevant code for this vulnerability can be seen in [res/xml/backup_rules.xm
 <cloud-backup disableIfNoEncryptionCapabilities="false">
         <!-- Backup user credentials stored in shared preferences -->
         <include domain="sharedpref" path="."/>
-        <include domain="files" path="maswe_0001_user_credentials.txt"/>
-        <include domain="files" path="maswe_0002_user_credentials.txt"/>
+        <include domain="file" path="maswe_0001_user_credentials.txt"/>
+        <include domain="file" path="maswe_0002_user_credentials.txt"/>
 </cloud-backup>
 ```
 

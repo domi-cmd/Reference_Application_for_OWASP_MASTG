@@ -46,7 +46,7 @@ public class RegisterActivity extends BaseRegisterActivity {
     }
 
     private void userDataToSystemLogs(String user_email, String user_password){
-        // Log user credentials to system logs (unsafe) (System Logs)
+        // Log user credentials to system logs
         Log.d(TAG, "New User registered");
         Log.d(TAG, "User E-Mail: "+ user_email);
         Log.d(TAG, "User Password: " + user_password);

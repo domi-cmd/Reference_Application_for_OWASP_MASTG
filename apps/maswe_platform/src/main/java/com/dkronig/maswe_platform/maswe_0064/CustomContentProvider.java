@@ -10,8 +10,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class CustomContentProvider extends ContentProvider {
-    private static final String AUTHORITY = "com.dkronig.root.CustomContentProvider";
-    private static final String FILE_PATH = "login_data_readable.txt";
+    private static final String AUTHORITY = "com.dkronig.maswe_platform.CustomContentProvider";
+    //private static final String FILE_PATH = "maswe_0064_user_credentials.txt";
 
     @Override
     public boolean onCreate() {
@@ -20,7 +20,13 @@ public class CustomContentProvider extends ContentProvider {
 
     @Override
     public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        File file = new File(getContext().getFilesDir(), FILE_PATH);
+        String fileName = uri.getLastPathSegment(); // extracts "login_data_readable.txt"
+
+        if (fileName == null) {
+            throw new FileNotFoundException("No file name specified in URI");
+        }
+
+        File file = new File(getContext().getFilesDir(), fileName);
         return ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
     }
 

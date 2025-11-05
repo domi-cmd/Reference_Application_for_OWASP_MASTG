@@ -13,7 +13,7 @@
 
         <provider
             android:name="com.dkronig.maswe_platform.maswe_0064.CustomContentProvider"
-            android:authorities="com.dkronig.root.CustomContentProvider"
+            android:authorities="com.dkronig.maswe_platform.CustomContentProvider"
             android:exported="true"
             android:permission="" />
 

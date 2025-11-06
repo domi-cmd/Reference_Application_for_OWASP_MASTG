@@ -36,10 +36,10 @@ public class EncryptionHandler {
         // Get access to the shared preferences of the calling activity
         sharedPreferences = context.getApplicationContext()
                 .getSharedPreferences("maswe_0014_secret_key", Context.MODE_PRIVATE);
-        // Add key and initialization vector to shared preferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
         // Make sure no duplicate or multiple keys are stored
         editor.clear();
+        // Add key and initialization vector to shared preferences
         editor.putString("encryption_key", encodedKey);
         editor.putString("IV", encodedIV);
         editor.apply();

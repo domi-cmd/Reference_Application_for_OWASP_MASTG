@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 7 / 115
+# Vulnerabilities Implemented: 9 / 115
 
 # Checklist
 
@@ -10,14 +10,14 @@
 |  | [0003](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0003/) | Backup Unencrypted |✅| Placeholder |
 |  | [0004](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0004/) | Sensitive Data Not Excluded From Backup |✅| Beta |
 |  | [0006](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0006/) | Sensitive Data Stored Unencrypted in Private Storage Locations |✅| Beta |
-|  | [0007](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0007/) | Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |🔜| Beta |
+|  | [0007](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0007/) | Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |✅| Beta |
 | CRYPTO |  |  |  |  |
 |  | [0009](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0009/) | Improper Cryptographic Key Generation |✅| Beta |
 |  | [0010](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0010/) | Improper Cryptographic Key Derivation |❌| Placeholder |
 |  | [0011](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0011/) | Cryptographic Key Rotation Not Implemented |❌| Placeholder |
 |  | [0012](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0012/) | Insecure or Wrong Usage of Cryptographic Key |❌| Placeholder |
-|  | [0013](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0013/) | Hardcoded Cryptographic Keys in Use |❌| DEPRECATED |
-|  | [0014](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0014/) | Cryptographic Keys Not Properly Protected at Rest |❌| Beta |
+|  | [0013](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0013/) | Hardcoded Cryptographic Keys in Use |🚫| DEPRECATED |
+|  | [0014](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0014/) | Cryptographic Keys Not Properly Protected at Rest |✅| Beta |
 |  | [0015](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0015/) | Deprecated Android KeyStore Implementations |❌| Placeholder |
 |  | [0016](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0016/) | Unsafe Handling of Imported Cryptographic Keys |❌| Placeholder |
 |  | [0017](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0017/) | Cryptographic Keys Not Properly Protected on Export |❌| Placeholder |
@@ -39,7 +39,7 @@
 |  | [0031](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0031/) | Insecure use of Android Protected Confirmation |❌| Placeholder |
 |  | [0032](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0032/) | Platform-provided Authentication APIs Not Used |❌| Placeholder |
 |  | [0033](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0033/) | Authentication or Authorization Protocol Security Best Practices Not Followed |❌| Placeholder |
-|  | [0034](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0034/) | Insecure Implementation of Confirm Credentials |❌| DEPRECATED |
+|  | [0034](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0034/) | Insecure Implementation of Confirm Credentials |🚫| DEPRECATED |
 |  | [0035](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0035/) | Passwordless Authentication Not Implemented |❌| Placeholder |
 |  | [0036](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0036/) | Authentication Material Stored Unencrypted on the Device |❌| Placeholder |
 |  | [0037](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0037/) | Authentication Material Sent over Insecure Connections |❌| Placeholder |

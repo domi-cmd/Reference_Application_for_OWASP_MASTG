@@ -70,6 +70,5 @@ public class RegisterActivity extends BaseRegisterActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

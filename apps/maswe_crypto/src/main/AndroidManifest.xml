@@ -34,6 +34,22 @@
             android:name=".maswe_0009.ProfileActivity"
             android:theme="@style/Theme.maswe_crypto" />
 
+        <activity
+            android:name=".maswe_0014.MainActivity0014"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0014.LoginActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0014.RegisterActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0014.ProfileActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
     </application>
 
 </manifest>

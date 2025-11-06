@@ -1,9 +1,10 @@
-package com.dkronig.maswe_storage.maswe_0006;
+package com.dkronig.maswe_crypto.maswe_0014;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import com.dkronig.common.BaseRegisterActivity;
-import com.dkronig.maswe_storage.R;
+import com.dkronig.maswe_crypto.R;
 
 public class RegisterActivity extends BaseRegisterActivity {
     private EncryptionHandler encryptionHandler;
@@ -12,7 +13,11 @@ public class RegisterActivity extends BaseRegisterActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        encryptionHandler = new EncryptionHandler();
+        try {
+            encryptionHandler = new EncryptionHandler();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -47,8 +52,8 @@ public class RegisterActivity extends BaseRegisterActivity {
         String encrypted_password;
         try {
             // Encrypt user data
-            encrypted_email = encryptionHandler.encryptData(email);
-            encrypted_password = encryptionHandler.encryptData(password);
+            encrypted_email = encryptionHandler.encryptDataDES(email);
+            encrypted_password = encryptionHandler.encryptDataDES(password);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

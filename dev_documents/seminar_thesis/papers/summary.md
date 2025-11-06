@@ -2,11 +2,23 @@ Here I'll collect my thoughts and notes on read papers
 
 # Research question - What is OWASP (MASTG) used for in the academic world?
 
-| Study | MASTG&MASVS for vuln. evaluation of app(s) | Vulnerability Mapping to MASVS | MASTG 5 Steps Pen-testing guide | As reference in discussion | MASTG ref. apps | MAS Security Checklist | Risk rating methodology | OWASP Top 10 Mobile Risks | Mobile audit MASVS&MASTG |
+| Study | MASTG for vulnerability evaluation of app(s) | Vulnerability Mapping to MASVS | MASTG 5 Steps Pen-testing guide | MASTG as reference in discussion | MASTG ref. apps | MAS Security Checklist | Risk rating methodology | Mapping to OWASP Top 10 Mobile Risks | Mobile audit MASVS&MASTG |
 | - | - | - | - | - | - | - | - | - | - | 
-| # | - | - | - | - | - | x | - | - | - | 
-
-
+| 1 | X | X |  |  |  |  |  |  |  | 
+| 2 | X | X |  |  |  |  | X |  |  | 
+| 3 | X | X | X |  |  |  |  |  |  | 
+| 4 | X | X | X |  |  |  |  | X |  | 
+| 5 | X | X |  |  |  | X |  |  |  | 
+| 6 |  |  | X |  |  |  |  |  |  | 
+| 7 | X | X |  |  |  |  |  |  |  | 
+| 8 |  |  |  | X |  |  |  |  |  | 
+| 10 |  |  |  |  | X |  |  |  |  | 
+| 13 | X |  |  |  |  |  |  |  |  | 
+| 14 |  |  |  |  |  |  |  |  | X | 
+| 19 |  |  |  |  | X |  |  | X |  | 
+| 20 |  |  |  | X |  |  | X |  |  | 
+| 21 |  |  |  | X |  |  |  |  |  | 
+| # |  |  |  |  |  |  |  |  |  | 
 ### 1 The OWApp Benchmark: an OWASP-compliant Vulnerable Android App Dataset
 - Published 2024
 
@@ -58,7 +70,7 @@ file: [document (1).pdf](https://github.com/user-attachments/files/23166027/docu
 - Not published in renowned journal
 - Fishy (repeating sentences, things that arent true "MOBSF encompasses various frameworks, including OWASP")
 - Published 2023
-- OWASP areas: MASTG, MASVS
+- OWASP areas: MASTG, MASVS, MASTG 5 Steps pen-testing guide
 
 #### Goal of paper:
 1. Evaluate and identify security vulnerabilities in an android application using the MOBSF (Mobile Security Framework) and the OWASP MASTG.

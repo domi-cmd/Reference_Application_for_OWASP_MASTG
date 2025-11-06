@@ -18,6 +18,7 @@ Here I'll collect my thoughts and notes on read papers
 | 19 |  |  |  |  | X |  |  | X |  | 
 | 20 |  |  |  | X |  |  | X |  |  | 
 | 21 |  |  |  | X |  |  |  |  |  | 
+| 22 |  |  |  | X | X |  |  |  |  | 
 | # |  |  |  |  |  |  |  |  |  | 
 ### 1 The OWApp Benchmark: an OWASP-compliant Vulnerable Android App Dataset
 - Published 2024
@@ -385,6 +386,30 @@ file: [hackers_work_paper.pdf](https://github.com/user-attachments/files/2316680
 #### Notes
 - OWASP MASVS and MASTG used for basis of checklist for pen-testing
 - No further OWASP MASTG relevance in the paper
+
+### 22 [SoK: Hardening Techniques in the Mobile Ecosystem — Are We There Yet?](https://ieeexplore.ieee.org/abstract/document/11129415?casa_token=KChe6DJWagsAAAAA:Jl3A1G_ROojkATXhHK5WcKVrSkKCBUvmaeCCdKAdjJ2-xUXh7pPtVmqrRzBbmr7-UXr5nt7ImhY)
+file: [22.pdf](https://github.com/user-attachments/files/23393627/22.pdf)
+
+
+#### General
+- Published in 2025 in 10th European Symposium on Security and Privacy (EuroS&P)
+- OWASP Areas:
+1. Model own framework to detect 3 resilience categories, similar to OWASP MASVS's 4 resilience categories
+2. Evaluate their framework on 4 OWASP android MASTG reference apps, and 2 OWASP MASTG iOs reference apps
+
+#### Goal of paper:
+1. Systemize knowledge of use and analysis of hardening techniques for both iOs and Android
+2. Present HALY, a framework to analyze the adoption of hardening techniques.
+3. Use HALY's static and dynamic analysis to analyze 2'646 popular apps available on both Android and iOS, and measure the prevalence of hardening techniques
+4. Use HALY to evaluate the same for OWASP iOs and Android MASTG reference apps (Crackmes)
+
+#### Notes
+- **"MASVS is also the standard Android apps are tested against in case apps opt for the independent security review reflected in Google Play’s
+data safety section."**
+
+#### Study result
+- Android apps perform better when evaluated for hardening techniques in security than iOs apps
+- "Apps on iOS significantly underperform in self-protection when compared to the respective Android versions. 73.6% of iOS apps implementing at most 3 of the recommended techniques—opposed to 24.1% on Android; and only 26 Android and 1 iOS app adopting all."
 
 
 # NOT INCLUDED STUDIES

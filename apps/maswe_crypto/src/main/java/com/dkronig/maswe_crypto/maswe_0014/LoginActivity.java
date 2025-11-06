@@ -68,8 +68,8 @@ public class LoginActivity extends BaseLoginActivity {
 
         // Decrypt password and email
         try {
-            decrypted_email = encryptionHandler.decryptDataDES(storedEmail);
-            decrypted_password = encryptionHandler.decryptDataDES(storedPassword);
+            decrypted_email = encryptionHandler.decryptData(storedEmail);
+            decrypted_password = encryptionHandler.decryptData(storedPassword);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

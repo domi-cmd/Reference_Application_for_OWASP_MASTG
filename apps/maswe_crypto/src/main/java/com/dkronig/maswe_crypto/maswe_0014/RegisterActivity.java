@@ -52,8 +52,8 @@ public class RegisterActivity extends BaseRegisterActivity {
         String encrypted_password;
         try {
             // Encrypt user data
-            encrypted_email = encryptionHandler.encryptDataDES(email);
-            encrypted_password = encryptionHandler.encryptDataDES(password);
+            encrypted_email = encryptionHandler.encryptData(email);
+            encrypted_password = encryptionHandler.encryptData(password);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

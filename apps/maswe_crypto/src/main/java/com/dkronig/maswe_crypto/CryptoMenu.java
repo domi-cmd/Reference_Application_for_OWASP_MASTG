@@ -4,6 +4,7 @@ import android.os.Bundle;
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_crypto.maswe_0009.MainActivity0009;
 import com.dkronig.maswe_crypto.maswe_0014.MainActivity0014;
+import com.dkronig.maswe_crypto.maswe_0020.MainActivity0020;
 
 import java.util.Map;
 
@@ -17,7 +18,8 @@ public class CryptoMenu extends BaseActivityTemplate {
         // Map UI buttons, handled in BaseActivityTemplate
         bindButtons(Map.of(
                 R.id.maswe_0009_button, MainActivity0009.class,
-                R.id.maswe_0014_button, MainActivity0014.class
+                R.id.maswe_0014_button, MainActivity0014.class,
+                R.id.maswe_0020_button, MainActivity0020.class
                 // More buttons as more tests are implemented
         ));
     }

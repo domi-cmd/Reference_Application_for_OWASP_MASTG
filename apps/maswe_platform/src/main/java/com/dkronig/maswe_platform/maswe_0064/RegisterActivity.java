@@ -46,7 +46,6 @@ public class RegisterActivity extends BaseRegisterActivity {
         try {
             storeSensitiveData(this, "maswe_0064_user_credentials.txt",
                     "Email: " + email + " Password: " + password + "\n");
-            Toast.makeText(this, "Data saved insecurely!", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(this, "Error saving data: " + e.getMessage(), Toast.LENGTH_LONG).show();
             e.printStackTrace();

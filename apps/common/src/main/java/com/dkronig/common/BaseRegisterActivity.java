@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
@@ -40,6 +41,7 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
     protected void registerUser() {
         String email = et_email.getText().toString().trim();
         String password = et_password.getText().toString().trim();
+        Toast.makeText(this, "User Registered!", Toast.LENGTH_SHORT).show();
 
         userDataToSharedPreferences(email, password);
         onRegister(email, password);

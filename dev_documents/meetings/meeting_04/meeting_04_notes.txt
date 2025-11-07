@@ -1,0 +1,25 @@
+MÖGLICHE LÖSUNGSANSÄTZE FÜR MASWE_0002:
+- maswe 0002 temp file (wäre warscheinlich nicht mehr internal)
+- folder permission ändere (funktioniert eventuell nicht)
+- chmod 7777
+- (sonst einfach so lassen wie es ist)
+
+DOKUMENTIEREN VON EXPLOITS VON VULNERABILITIES:
+- Bei z.B. broken crypto algorthmen oder hardcoded keys nicht nötig im detail zu beschreiben, wie man das exploited
+- Fokus hier auf die Vulnerabilities, die Android spezifisch sind -> z.B. maswe_0001 mit den Logs
+- Kann auch auf guides verweisen/verlinken, die die Exploits dokumentieren
+- (Persönlich Gedanken machen, welche Vulnerabilities sind wirklich an sich Vulnerabilities, etc.)
+
+AUFBAU RELATED WORK
+- 2-3 studien im detail anschauen
+- normalfall 10-20 papers referenzieren, top 5 genauer beschreiben
+- zu viele studien kann man nicht inkludieren
+Ziel dabei ist es:
+- schauen, wie kann man die studien verbessern oder unterstüzen
+- wo passt meine arbeit in die domäne hinein
+
+Overleaf template für BA Thesis:
+https://www.overleaf.com/latex/templates/bachelor-thesis-university-of-bern/tfwgwgwrgfpb
+
+Noch interessant:
+https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator

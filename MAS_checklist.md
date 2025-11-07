@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 10 / 115
+# Vulnerabilities Implemented: 11 / 115
 
 # Checklist
 
@@ -24,7 +24,7 @@
 |  | [0018](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0018/) | Cryptographic Keys Access Not Restricted |❌| Placeholder |
 |  | [0019](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0019/) | Risky Cryptography Implementations |❌| Normal |
 |  | [0020](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0020/) | Improper Encryption |✅| Beta |
-|  | [0021](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0021/) | Improper Hashing |❌| Placeholder |
+|  | [0021](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0021/) | Improper Hashing |✅| Placeholder |
 |  | [0022](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0022/) | Predictable Initialization Vectors (IVs) |❌| Placeholder |
 |  | [0023](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0023/) | Risky Padding |❌| Beta |
 |  | [0024](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0024/) | Improper Use of Message Authentication Code (MAC) |❌| Placeholder |

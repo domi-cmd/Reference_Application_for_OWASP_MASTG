@@ -1,0 +1,93 @@
+% ---------------------------------------------
+% Header
+% ---------------------------------------------
+
+\input{header}
+
+\begin{document}
+\selectlanguage{english}
+
+% ----------------------------------------------
+% Commands
+% ----------------------------------------------
+
+% Cursive Citations
+\let\origquote\quote
+\let\endorigquote\endquote
+\renewenvironment{quote}{
+  \itshape
+  \origquote
+}
+{\endorigquote}
+
+% Abbreviations:
+\include{shortcuts}
+
+% -----------------------------------------------
+% Title
+% -----------------------------------------------
+
+\include{title}
+
+% -----------------------------------------------
+% Abstract
+% -----------------------------------------------
+
+\pagestyle{empty}
+\include{content/abstract}
+\cleardoublepage
+
+% -----------------------------------------------
+% Table of Content
+% -----------------------------------------------
+
+\setcounter{page}{0} 
+\pagenumbering{roman}
+\pagestyle{ihv}
+
+\addtocontents{toc}{\protect\enlargethispage{2\normalbaselineskip}}
+\renewcommand{\baselinestretch}{1.0}
+
+\tableofcontents
+
+\renewcommand{\baselinestretch}{1.2}
+
+\cleardoublepage
+
+% ----------------------------------------------
+% Thesis Content
+% ----------------------------------------------
+
+\pagestyle{normal}
+\pagenumbering{arabic}
+
+\include{content/intro}
+
+% ---------------------------------------------
+% Figure References
+% ---------------------------------------------
+
+\pagestyle{abv}
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\cleardoublepage
+
+% ---------------------------------------------
+% References
+% ---------------------------------------------
+
+\pagestyle{bib}
+\bibliography{database}
+% \bibliographystyle{alphadin}
+\bibliographystyle{IEEEtran}
+\addcontentsline{toc}{chapter}{Bibliography}
+\cleardoublepage
+
+% ---------------------------------------------
+% Decleration of Independence
+% ---------------------------------------------
+
+\input{erklaerung}
+\cleardoublepage
+
+\end{document}

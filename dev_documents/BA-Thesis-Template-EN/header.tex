@@ -1,0 +1,485 @@
+\documentclass[
+	pdftex,				% PDFTex verwenden
+	a4paper,			% A4 Papier
+%	oneside,			% Einseitig
+	twoside,			% Zweiseitig
+%	bibtotocnumbered,	% Literaturverzeichnis nummeriert einfügen
+%	idxtotoc,			% Index ins Verzeichnis einfügen
+%	halfparskip,		% Europäischer Satz mit abstand zwischen Absätzen
+%	chapterprefix,		% Kapitel anschreiben als Kapitel
+	headsepline,		% Linie nach Kopfzeile
+%	footsepline,		% Linie vor Fusszeile
+	11pt,				% Größere Schrift, besser lesbar am Bildschrim
+	openright,			% Anfang immer auf rechter Seite 
+%	smallheadings,		% Kleinere Überschrifen
+	headinclude,		% Header mit zum Satzspiegel rechnen
+  ]{scrreprt}
+
+% ----------------------------------------
+% Sprach Erweiterungen einbinden
+% ----------------------------------------
+
+% Paket für Links und Verweise innerhalb des PDF Dokuments
+\usepackage[
+	pdftitle={}, % e.g. Thesis
+	pdfauthor={}, % Your Name
+	pdfcreator={},
+	pdfsubject={},
+	pdfkeywords={},
+	plainpages=false,
+	pdfpagelabels,
+	bookmarksnumbered=true,
+	bookmarksopen=true,
+	pdfpagemode=UseOutlines
+  ]{hyperref}
+
+% URLs im Dokument einbetten
+\usepackage{url}
+
+% Paket für Deutsche Sprach Unterstützung
+\usepackage[english, ngerman]{babel}
+\selectlanguage{english}
+ 
+% Latex Eingabedateien im UTF8 Format
+\usepackage[utf8x]{inputenc}
+
+% Pakete um Latin1 Zeichnensätze verwenden zu können und die dazu passenden Schriften
+\usepackage[T1]{fontenc}
+
+% Schriftart mit deutschen Umlauten
+\usepackage{lmodern} 
+
+% Sonderzeichen
+\usepackage{textcomp}
+
+% Pakete um Grafiken einbetten zu können
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Zeilenabstand anpassen
+% \onehalfspacing, \doublespacing, \singlespacing
+\usepackage{setspace}
+
+% Paket um Textteile drehen zu können
+\usepackage{rotating}
+
+% Für die Steuerung von Linien in Tabellen
+% \toprule, \midrule, \bottomrule
+\usepackage{booktabs}
+
+% Erlaubt mehrseitige Tabellen
+\usepackage{longtable}
+
+% Erlaubt in einer Tabelle die Felder mehrerer Zeilen zusammenzufassen
+\usepackage{multirow}
+
+% Verbessert einige Fremdpakete und das Zusammenspiel von einigen Paketen mit KOMA-Script
+\usepackage{scrhack}
+
+% Einbinden von Seiten aus PDFs
+\usepackage{pdfpages}
+
+% ------------------------------------------
+% Farben
+% ------------------------------------------
+
+% Package für Farbdefinitionen
+\usepackage{xcolor}
+
+% Link Farbe innerhalb des Dokuments
+\definecolor{LinkColor}{rgb}{0,0,0}
+
+% Code Box
+\definecolor{CodeKeywords}{rgb}{0,0,0}
+\definecolor{CodeComments}{rgb}{0,0.6,0}
+\definecolor{CodeNumbers}{rgb}{0.5,0.5,0.5}
+\definecolor{CodeStrings}{rgb}{0.58,0,0.82}
+\definecolor{CodeBackground}{rgb}{1.0,1.0,1.0}
+
+% Code & Theorem Hintergrund
+\definecolor{BoxBackground}{rgb}{0.95,0.95,0.95}
+
+% -------------------------------------------
+% Dokument Einstellungen
+% -------------------------------------------
+
+% Benutzerdefinierte Größe des Untertitels (Bilder usw.)
+\usepackage[size=normalsize]{caption}
+
+% Zeilenabstand
+\renewcommand{\baselinestretch}{1.2} % -> document.tex -> \tableofcontents
+
+% Schusterjungen und Hurenkinder vermeiden
+\clubpenalty = 10000	% Schusterjunge
+\widowpenalty = 10000	% Hurenkind
+
+% Zeilenumbruch bei Bildbeschreibungen
+\setcapindent{1em}
+
+% Link Farben innerhalb des Dokuments
+\hypersetup{
+	colorlinks=true,
+	linkcolor=LinkColor,
+	citecolor=LinkColor,
+	filecolor=LinkColor,
+	menucolor=LinkColor,
+	urlcolor=LinkColor}
+
+% Bis zu welcher Strukturtiefe soll nummeriert werden
+\setcounter{secnumdepth}{2}
+
+% Fussonotennummerierung durch das gesamte Dokument
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+% Spezielle Schrift verwenden
+\renewcommand{\encodingdefault}{T1}
+%\renewcommand{\familydefault}{pfr}
+%\renewcommand{\sfdefault}{pfr}
+
+% Spezielle Schrift im Koma-Script setzen
+%\setkomafont{llabel}{\normalfont\bfseries}
+%\setkomafont{sectioning}{\sffamily\bfseries}
+%\setkomafont{captionlabel}{\sffamily\bfseries}
+%\setkomafont{pagehead}{\sffamily\small\itshape}
+%\setkomafont{descriptionlabel}{\sffamily\bfseries}
+
+% Nur Punkte in Aufzählungen verwenden (bis Ebene 3)
+\renewcommand*\labelitemii{\textbullet}
+\renewcommand*\labelitemiii{\textbullet}
+
+% -----------------------------------------
+% Seiten Layout Einstellungen
+% -----------------------------------------
+
+% Paket zur einfacheren Manipulation von Kopf- und Fußzeile
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\pagestyle{empty}
+
+% Seitenabmessungen
+\setlength{\topmargin}{0pt}
+\setlength{\voffset}{0cm}
+\setlength{\textheight}{20.5 cm}
+%\setlength{\headsep}{0.7cm}
+\setlength{\evensidemargin}{1.15cm}
+\setlength{\oddsidemargin}{0.2cm}
+\setlength{\textwidth}{14.7cm}
+\setlength{\headwidth}{14.7cm}
+\setlength{\skip\footins}{15mm}
+%\setlength{\footskip}{2cm}
+
+% Kapitel Anzeige im Header
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\thechapter\ #1}}{}}
+
+% Kopf- und Fusszeilen formatieren
+\fancypagestyle{normal}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.4pt}
+  \fancyhead[RE]{\leftmark}
+  \fancyhead[LO]{\rightmark}
+  \fancyhead[RO,LE]{\thepage}
+}
+
+% Anfang eines neuen Kapitels etc.
+\fancypagestyle{plain}{
+  \renewcommand\headrulewidth{0.0pt}
+  \fancyhf{}
+  \fancyfoot[CO]{\thepage}
+}
+
+% Header für das Inhaltsverzeichnis
+\fancypagestyle{ihv}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.4pt}
+  \fancyhead[RE,LO]{CONTENTS}
+  \fancyhead[RO,LE]{\thepage}
+}
+
+% Header für das Abkürzungsverzeichnis
+\fancypagestyle{akv}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.4pt}
+  \fancyhead[RE,LO]{LIST OF ABBREVIATIONS}
+  \fancyhead[RO,LE]{\thepage}
+}
+
+% Header für den Anhang
+\fancypagestyle{app}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.4pt}
+  \fancyhead[RE,LO]{APPENDIX}
+  \fancyhead[RO,LE]{\thepage}
+}
+
+% Header für das Abbildungsverzeichnis
+\fancypagestyle{abv}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.4pt}
+  \fancyhead[RE,LO]{LIST OF FIGURES}
+  \fancyhead[RO,LE]{\thepage}
+}
+
+% Header für das Literaturverzeichnis
+\fancypagestyle{bib}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.4pt}
+  \fancyhead[RE,LO]{BIBLIOGRAPHY}
+  \fancyhead[RO,LE]{\thepage}
+}
+
+% Header für den Index
+\fancypagestyle{swv}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.4pt}
+  \fancyhead[RE,LO]{INDEX}
+  \fancyhead[RO,LE]{\thepage}
+}
+
+% Header für Listings
+\fancypagestyle{lst}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.4pt}
+  \fancyhead[RE,LO]{LISTINGS}
+  \fancyhead[RO,LE]{\thepage}
+}
+
+% -------------------------------------------
+% Mathematik-Einstellungen
+% -------------------------------------------
+
+% Erlaubt Theorem in schattierter Box
+\usepackage{shadethm}
+
+% AMS-LaTeX Erweiterung
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Paket zur Erzeugung von Matrizen
+\usepackage{array}
+
+% Equation Counter
+\numberwithin{equation}{section}
+
+% Definitionen
+\newtheoremstyle{examplestyle}	% Name of the style to be used
+  {10mm}						% Measure of space to leave above the theorem. E.g.: 3pt
+  {10mm}						% Measure of space to leave below the theorem. E.g.: 3pt
+  {}							% Name of font to use in the body of the theorem
+  {}							% Measure of space to indent
+  {\bfseries}					% Name of head font
+  {\newline}					% Punctuation between head and body
+  {10mm}						% Space after theorem head
+  {}							% Manually specify head
+
+\theoremstyle{examplestyle}
+
+\colorlet{shadethmcolor}{BoxBackground}				% Farbe des Hintergrundes
+%\definecolor{shaderulecolor}{rgb}{0.0,0.0,1.0}		% Farbe des Rahmens
+%\setlength{\shadeboxrule}{1pt}						% Breite des Rahmens
+
+\newshadetheorem{lemma}{Lemma}[section]
+\newshadetheorem{requirement}{Requirement}[section]
+\newshadetheorem{example}{Example}[section]
+
+\usepackage{thmtools}
+
+\declaretheoremstyle[
+  spaceabove=3pt, 
+  spacebelow=3pt, 
+  headfont=\bfseries, 
+  bodyfont=\normalfont,
+  postheadspace=3pt,
+  headpunct={\newline}]{definitionstyle}
+
+\declaretheorem[
+  mdframed={linewidth=0mm, backgroundcolor=BoxBackground}, 
+  style=definitionstyle,
+  name=Definition,parent=chapter,
+  Refname={Definition,Definitions}]{definition}
+
+% ------------------------------------------
+% Code Eingabe
+% ------------------------------------------
+
+% Paket für Code Eingabe
+\usepackage{listings}
+
+% Überschrift - Listing X.Y: ...
+\renewcommand{\lstlistingname}{Algorithmus}
+
+% Standard: Java
+\lstset{frame=none,
+  language=Java,
+  aboveskip=0pt,
+  belowskip=0pt,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{CodeNumbers},
+  keywordstyle=\color{CodeKeywords}\bfseries,
+  commentstyle=\color{CodeComments}\itshape,
+  stringstyle=\color{CodeStrings},
+  extendedchars=true,
+  backgroundcolor=\color{CodeBackground},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+
+% Pseudocode
+\lstdefinelanguage{pseudo}{
+	keywords={
+		in, if, endif, else, for, while, endfor, function, 
+		return, break, true, false, when, each, new, boolean, 
+		int, List, Set, Stack}, 
+	sensitive=true,
+	comment=[l]{//}
+}
+
+% -----------------------------------------
+% Hack um doublepages zu löschen
+% -----------------------------------------
+
+\makeatletter
+\def\cleardoublepage{\clearpage\thispagestyle{empty}
+  \if@twoside \ifodd\c@page\else
+  \hbox{}\newpage
+  \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+% -----------------------------------------
+% Abkürzungsverzeichnis
+% ----------------------------------------
+
+\usepackage{nomencl}
+\let\abk\nomenclature							% Befehl umbenennen in abk
+\setlength{\nomlabelwidth}{.20\hsize}			% Punkte zw. Abkürzung und Erklärung
+\renewcommand{\nomlabel}[1]{#1 \dotfill}		%
+\setlength{\nomitemsep}{-\parsep} 				% Zeilenabstände verkleinern
+\makenomenclature
+
+% -------------------------------------
+% Sachregister
+% ------------------------------------
+
+\usepackage{makeidx}
+\makeindex
+
+% -------------------------------------
+% Benutzerdefinierte Kommandos
+% -------------------------------------
+
+% Für selbst definierte Befehle: \newcommand{\zb}{z.\,B.\xspace} 
+% Der Befehl \xspace schaut, was auf den Befehl folgt und fügt ggf. ein Leerzeichen ein.
+\usepackage{xspace}
+
+% Wird statt siehe bspw. die Abk. s. bevorzugt:
+\renewcommand{\seename}{s.}
+
+% Noch zu Erledigen Hinweis
+\newcommand{\todo}[1]{\noindent\begin{small}\textsf{\textcolor{blue}{(\textsc{TODO:} #1)}}\end{small}}
+
+% Für Notizen an der Seite
+\newcommand{\notiz}[1]{\marginpar{\tiny#1}}
+%\setlength{\marginparwidth}{25mm}
+% Gedanken nicht mehr anzeigen
+%\renewcommand{\notiz}[1]{}
+
+% ------------------------------------
+% Kommando Beispiele
+% ------------------------------------
+
+% Schreibe alle Zitate kursiv:
+% Nach \begin{document}
+% \let\origquote\quote
+% \let\endorigquote\endquote
+% \renewenvironment{quote}{
+% \itshape
+% \origquote
+% }
+% {\endorigquote}
+
+% Struktur
+% \chapter{Kapitel}
+% \section{Section}
+% \subsection{SubSection}
+% \subsubsection{SubSubSection}
+% \paragraph{Pragraph}
+% \subparagraph{SubPragraph}
+
+% Seitenumbruch
+% \pagebreak
+
+% Referenz auf z.B. Kapitel
+% \chapter{Einführung}
+% \label{c:einführung}
+% Hier ein Kapitel \ref{c:einführung}
+
+% Einfaches Bild
+%
+% [scale=0.5]
+% [width=1.0\textwidth]
+%
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[scale=0.5]{images/example_model01.png}
+%   \caption{Ein Bild}
+%   \label{fig:model}
+% \end{figure}
+
+% Textumflossenes Bild
+% \begin{wrapfigure}[15]{l}{4,5cm}
+% 	\centering
+% 	\includegraphics[scale=0.8]{images/example_model01.png}
+% 	\caption{Modell}
+% 	\label{fig:example01_model}
+% \end{wrapfigure}
+
+% Referenz auf Bild
+% Hier ein Bild \ref{fig:model}
+
+% Literaturhinweis
+% Hier ein Literaturverweis \cite{Arendt2010}
+
+% List
+% \begin{itemize} 
+%   \item erster Punkt
+%   \item nächster Punkt
+% \end{itemize}
+
+% Aufzählung
+% \begin{enumerate} 
+%   \item erster Eintrag
+%   \item zweiter Eintrag
+% \end{enumerate}
+
+% Sonderzeichen (textcomp)
+% \texteuro, \textcelsius, \textcopyright, \textdoller, \textohm, \textlnot
+
+% Theorem Style
+% \begin{definition} $e=mc^2$ \end{definition}
+% \begin{lemma} $e=mc^2$ \end{lemma}
+% \begin{beweis} $e=mc^2$ \end{beweis}
+% \begin{voraussetzung} $e=mc^2$ \end{voraussetzung}
+% \begin{beispiel} $e=mc^2$ \end{beispiel}
+
+% Java Code
+% \begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=foo, label=bar]   
+%   // Hello.java
+%   import java.awt.Graphics;
+%   public class Hello extends JApplet {}
+% \end{lstlisting}
+
+% Pseudo Code
+% \begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=foo, label=bar, language=pseudo]
+%   function helloWorld(in name) {}
+% \end{lstlisting}
+
+% Noch zu Erledigen Hinweis
+% \todo{Noch zu erledigen!}
+
+% Randnotiz
+% \notiz{Ja genau!}

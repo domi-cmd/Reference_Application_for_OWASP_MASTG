@@ -70,20 +70,26 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
         String email = et_email.getText().toString().trim();
         String password = et_password.getText().toString().trim();
 
-        // Do potential decryption of input
-        email = decrypt(email);
-        password = decrypt(password);
-
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        String storedPassword;
+
+        // Get user password from database
         try {
-            if (verifyLogin(email, password)) {
-                onLoginSuccess(email);
-            } else {
-                onLoginFailure(email);
+            storedPassword = retrieveUserData(email, password);
+            try {
+                assert storedPassword != null;
+                if (verifyLogin(password, storedPassword)) {
+                    onLoginSuccess(email);
+                } else {
+                    onLoginFailure(email);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Login error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,12 +97,13 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
         }
     }
 
-    private boolean verifyLogin(String email, String password) throws Exception {
+    private String retrieveUserData(String email, String password) throws Exception {
         MasterKey masterKey = new MasterKey.Builder(this)
                 .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
                 .build();
 
-        var prefs = EncryptedSharedPreferences.create(
+        EncryptedSharedPreferences prefs = (EncryptedSharedPreferences) EncryptedSharedPreferences
+                .create(
                 this,
                 PREFS_FILE,
                 masterKey,
@@ -107,12 +114,20 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
         String json = prefs.getString(USERS_KEY, "{}");
         JSONObject users = new JSONObject(json);
 
-        if (!users.has(email)) return false; // user not found
+        if (!users.has(email)) return null; // user not found
 
         JSONObject userObj = users.getJSONObject(email);
         String storedPassword = userObj.getString("password");
 
-        return storedPassword.equals(password);
+        // Do potential decryption of password
+        storedPassword = decrypt(storedPassword);
+
+        return storedPassword;
+    }
+
+    // Can be overridden if necessary (for hashing, for example)
+    protected boolean verifyLogin(String inputPassword, String storedPassword){
+        return storedPassword.equals(inputPassword);
     }
 
     // Optional method, which can be overridden to add decryption

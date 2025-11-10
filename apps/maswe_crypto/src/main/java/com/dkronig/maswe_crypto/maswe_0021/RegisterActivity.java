@@ -30,6 +30,12 @@ public class RegisterActivity extends BaseRegisterActivity {
         return "Register";
     }
 
+    // Define name for encrypted file where user credentials are stored
+    @Override
+    protected String getCredentialFileName() {
+        return "maswe_0021_user_credentials";
+    }
+
     @Override
     protected int getEmailFieldId() {
         return R.id.et_email;
@@ -46,22 +52,12 @@ public class RegisterActivity extends BaseRegisterActivity {
     }
 
     @Override
-    protected void userDataToSharedPreferences(String email, String password){
-        String encrypted_email;
-        String encrypted_password;
+    protected String encrypt(String plaintext){
         try {
             // Encrypt (hash) user data
-            encrypted_email = encryptionHandler.hashData(email);
-            encrypted_password = encryptionHandler.hashData(password);
+            return encryptionHandler.hashData(plaintext);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        // Save encrypted user data to shared preferences
-        SharedPreferences sharedPrefs = getSharedPreferences("my_app_prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putString("user_email", encrypted_email);
-        editor.putString("user_password", encrypted_password);
-        editor.apply();
     }
 }

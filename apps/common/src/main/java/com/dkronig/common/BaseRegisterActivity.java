@@ -62,8 +62,7 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
         String email = et_email.getText().toString().trim();
         String password = et_password.getText().toString().trim();
 
-        // Do potential encryption of input
-        email = encrypt(email);
+        // Do potential encryption of password
         password = encrypt(password);
 
         // Check if email or password is empty

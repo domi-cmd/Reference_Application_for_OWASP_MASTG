@@ -25,6 +25,6 @@ public class MainActivity0064 extends BaseActivityTemplate {
     // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "MASWE_0002";
+        return "MASWE_0064";
     }
 }

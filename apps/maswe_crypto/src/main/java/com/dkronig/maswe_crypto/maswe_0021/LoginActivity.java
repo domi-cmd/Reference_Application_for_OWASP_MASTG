@@ -49,36 +49,22 @@ public class LoginActivity extends BaseLoginActivity {
         return "Login";
     }
 
+    // Define name for encrypted file where user credentials are stored
     @Override
-    protected void loginUser(){
-        String email = et_email.getText().toString().trim();
-        String password = et_password.getText().toString().trim();
+    protected String getCredentialFileName() {
+        return "maswe_0021_user_credentials";
+    }
 
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        SharedPreferences prefs = getSharedPreferences("my_app_prefs", MODE_PRIVATE);
-        String storedEmail = prefs.getString("user_email", null);
-        String storedPassword = prefs.getString("user_password", null);
-
-        String hashed_email;
-        String hashed_password;
-
-        // Hash the entered password and email
+    @Override
+    protected boolean verifyLogin(String inputPassword, String storedPassword){
+        // Hash the entered password to compare it to stored hash
+        String hashedInputPassword;
         try {
-            hashed_email = encryptionHandler.hashData(email);
-            hashed_password = encryptionHandler.hashData(password);
+            hashedInputPassword = encryptionHandler.hashData(inputPassword);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        if (hashed_email.equals(storedEmail) && hashed_password.equals(storedPassword)) {
-            onLoginSuccess(email);
-        } else {
-            onLoginFailure(email);
-        }
+        return storedPassword.equals(hashedInputPassword);
     }
 
     @Override

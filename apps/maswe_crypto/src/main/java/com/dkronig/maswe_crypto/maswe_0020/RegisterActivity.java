@@ -54,7 +54,7 @@ public class RegisterActivity extends BaseRegisterActivity {
     @Override
     protected String encrypt(String plaintext){
         try {
-            // Encrypt user data
+            // Encrypt user data by hashing it
             return encryptionHandler.encryptData(plaintext);
         } catch (Exception e) {
             throw new RuntimeException(e);

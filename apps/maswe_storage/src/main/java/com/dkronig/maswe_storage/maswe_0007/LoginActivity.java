@@ -32,6 +32,12 @@ public class LoginActivity extends BaseLoginActivity {
         return "Login";
     }
 
+    // Define name for encrypted file where user credentials are stored
+    @Override
+    protected String getCredentialFileName() {
+        return "maswe_0007_user_credentials";
+    }
+
     @Override
     protected void onLoginSuccess(String email) {
         // Navigate to profile or main screen

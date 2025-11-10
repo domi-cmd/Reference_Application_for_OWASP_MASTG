@@ -31,18 +31,26 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
 
     protected EditText et_email, et_password;
     protected Button login_button;
-    private static final String PREFS_FILE = "secure_users_credentials";
+    private static String PREFS_FILE;
     private static final String USERS_KEY = "users_json";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        PREFS_FILE = getCredentialFileName();
+
         // Child class must set its layout before calling initLoginForm
         setContentView(getLayoutId());
 
         // Initialize login form
         initLoginForm();
+    }
+
+    // Optionally allow for name setting of credentials file
+    protected String getCredentialFileName() {
+        // Default: class name
+        return "secure_users_credentials";
     }
 
     /**
@@ -61,6 +69,10 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
     protected void loginUser() {
         String email = et_email.getText().toString().trim();
         String password = et_password.getText().toString().trim();
+
+        // Do potential decryption of input
+        email = decrypt(email);
+        password = decrypt(password);
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show();
@@ -101,6 +113,12 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
         String storedPassword = userObj.getString("password");
 
         return storedPassword.equals(password);
+    }
+
+    // Optional method, which can be overridden to add decryption
+    protected String decrypt(String encryptedText) {
+        // Default: return the string as passed
+        return encryptedText;
     }
 
     /**

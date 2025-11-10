@@ -38,6 +38,12 @@ public class RegisterActivity extends BaseRegisterActivity {
         return R.id.register_button;
     }
 
+    // Define name for encrypted file where user credentials are stored
+    @Override
+    protected String getCredentialFileName() {
+        return "maswe_0001_user_credentials";
+    }
+
     // Write sensitive user data to system and app logs upon registration
     @Override
     protected void onRegister(String email, String password) {

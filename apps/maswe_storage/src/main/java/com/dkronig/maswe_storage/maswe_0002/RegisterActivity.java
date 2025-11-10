@@ -33,6 +33,12 @@ public class RegisterActivity extends BaseRegisterActivity {
         return "Register";
     }
 
+    // Define name for encrypted file where user credentials are stored
+    @Override
+    protected String getCredentialFileName() {
+        return "maswe_0002_user_credentials";
+    }
+
     // Provide IDs for BaseRegisterActivity to find UI elements
     @Override
     protected int getEmailFieldId() {

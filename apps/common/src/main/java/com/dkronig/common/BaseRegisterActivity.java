@@ -23,21 +23,23 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
 
     protected EditText et_email, et_password;
     protected Button register_button;
-    private static final String PREFS_FILE = "secure_users_credentials";
+    private static String PREFS_FILE;
     private static final String USERS_KEY = "users_json";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        PREFS_FILE = getCredentialFileName();
         
         setContentView(getLayoutId());
         initRegisterForm();
     }
 
-    // Optionally allow each activity to define its own title
-    protected String getFileName() {
+    // Optionally allow for name setting of credentials file
+    protected String getCredentialFileName() {
         // Default: class name
-        return getClass().getSimpleName();
+        return "secure_users_credentials";
     }
 
     /**
@@ -60,6 +62,10 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
         String email = et_email.getText().toString().trim();
         String password = et_password.getText().toString().trim();
 
+        // Do potential encryption of input
+        email = encrypt(email);
+        password = encrypt(password);
+
         // Check if email or password is empty
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show();
@@ -77,6 +83,12 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
             e.printStackTrace();
             Toast.makeText(this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // Optional method, which can be overridden to add encryption
+    protected String encrypt(String plaintext) {
+        // Default: Return the string as passed
+        return plaintext;
     }
 
     private boolean saveUserSecurely(String email, String password)

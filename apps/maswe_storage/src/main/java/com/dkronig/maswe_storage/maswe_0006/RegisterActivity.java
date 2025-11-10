@@ -40,6 +40,7 @@ public class RegisterActivity extends BaseRegisterActivity {
         return R.id.register_button;
     }
 
+    /**
     @Override
     protected void userDataToSharedPreferences(String email, String password){
         // Encrypt user data
@@ -60,4 +61,5 @@ public class RegisterActivity extends BaseRegisterActivity {
         editor.putString("user_password", encrypted_password);
         editor.apply();
     }
+    **/
 }

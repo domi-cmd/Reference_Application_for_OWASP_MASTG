@@ -67,19 +67,18 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
 
         String storedPassword;
 
-        // Get user password from database
         try {
+            // Get user password from database
             storedPassword = retrieveUserData(email, password);
-            try {
-                assert storedPassword != null;
-                if (verifyLogin(password, storedPassword)) {
-                    onLoginSuccess(email);
-                } else {
-                    onLoginFailure(email);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(this, "Login error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+            // Assert it being not null
+            assert storedPassword != null;
+
+            // Check if the stored password matches the users input
+            if (verifyLogin(password, storedPassword)) {
+                onLoginSuccess(email);
+            } else {
+                onLoginFailure(email);
             }
         } catch (Exception e) {
             e.printStackTrace();

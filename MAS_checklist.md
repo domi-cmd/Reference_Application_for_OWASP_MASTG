@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 11 / 115
+# Vulnerabilities Implemented: 12 / 115
 
 # Checklist
 
@@ -30,7 +30,7 @@
 |  | [0024](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0024/) | Improper Use of Message Authentication Code (MAC) |❌| Placeholder |
 |  | [0025](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0025/) | Improper Generation of Cryptographic Signatures |❌| Placeholder |
 |  | [0026](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0026/) | Improper Verification of Cryptographic Signature |❌| Placeholder |
-|  | [0027](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0027/) | Improper Random Number Generation |❌| Beta |
+|  | [0027](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0027/) | Improper Random Number Generation |✅| Beta |
 | AUTH |  |  |  |  |
 |  | [0005](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0005/) | API Keys Hardcoded in the App Package |❌| Beta |
 |  | [0028](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0028/) | MFA Implementation Best Practices Not Followed |❌| Placeholder |

@@ -17,11 +17,6 @@ public class RegisterActivity extends BaseRegisterActivity {
         return R.layout.activity_register;
     }
 
-    @Override
-    protected String getScreenTitle() {
-        return "Register";
-    }
-
     // Provide IDs for BaseRegisterActivity to find UI elements
     @Override
     protected int getEmailFieldId() {
@@ -37,6 +32,12 @@ public class RegisterActivity extends BaseRegisterActivity {
     protected int getRegisterButtonId() {
         return R.id.register_button;
     }
+
+    @Override
+    protected String getScreenTitle() {
+        return "Register";
+    }
+
 
     // Define name for encrypted file where user credentials are stored
     @Override

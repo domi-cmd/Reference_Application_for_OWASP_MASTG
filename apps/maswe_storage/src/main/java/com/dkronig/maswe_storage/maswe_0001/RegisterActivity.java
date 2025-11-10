@@ -1,6 +1,5 @@
 package com.dkronig.maswe_storage.maswe_0001;
 
-import android.os.Bundle;
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_storage.R;
 import java.io.File;

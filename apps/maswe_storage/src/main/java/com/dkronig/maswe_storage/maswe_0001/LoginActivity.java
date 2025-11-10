@@ -1,7 +1,6 @@
 package com.dkronig.maswe_storage.maswe_0001;
 
 import android.content.Intent;
-import android.os.Bundle;
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_storage.R;
 

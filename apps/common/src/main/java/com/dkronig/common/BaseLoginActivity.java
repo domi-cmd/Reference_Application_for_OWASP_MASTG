@@ -1,9 +1,6 @@
 package com.dkronig.common;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,14 +8,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKey;
-
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-
-import androidx.annotation.LayoutRes;
-import androidx.annotation.Nullable;
 
 /**
  * Abstract template for Login-like activities.

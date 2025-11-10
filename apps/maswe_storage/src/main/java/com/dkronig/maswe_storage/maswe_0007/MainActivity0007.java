@@ -1,10 +1,8 @@
 package com.dkronig.maswe_storage.maswe_0007;
 
 import android.os.Bundle;
-
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.R;
-
 import java.util.Map;
 
 public class MainActivity0007 extends BaseActivityTemplate {

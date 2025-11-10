@@ -1,6 +1,5 @@
 package com.dkronig.common;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,15 +8,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.security.crypto.MasterKey;
 import androidx.security.crypto.EncryptedSharedPreferences;
-import org.json.JSONException;
-import java.io.IOException;
 import org.json.JSONObject;
-import java.security.GeneralSecurityException;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
-
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 
 public abstract class BaseRegisterActivity extends BaseActivityTemplate {
 

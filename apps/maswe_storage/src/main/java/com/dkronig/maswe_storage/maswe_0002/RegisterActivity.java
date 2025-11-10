@@ -1,23 +1,11 @@
 package com.dkronig.maswe_storage.maswe_0002;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.util.Log;
-
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_storage.R;
-
 import java.io.File;
-import java.io.File;
-import android.content.Context;
-import android.widget.Toast;
-
 import androidx.core.content.FileProvider;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.IOException;
 
 public class RegisterActivity extends BaseRegisterActivity {
 

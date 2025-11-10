@@ -1,8 +1,6 @@
 package com.dkronig.maswe_crypto.maswe_0014;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_crypto.R;
 

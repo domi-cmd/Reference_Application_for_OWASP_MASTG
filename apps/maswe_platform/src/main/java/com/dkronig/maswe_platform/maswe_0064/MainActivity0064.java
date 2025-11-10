@@ -1,11 +1,8 @@
 package com.dkronig.maswe_platform.maswe_0064;
 
 import android.os.Bundle;
-
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_platform.R;
-import com.dkronig.maswe_platform.maswe_0064.LoginActivity;
-
 import java.util.Map;
 
 public class MainActivity0064 extends BaseActivityTemplate {

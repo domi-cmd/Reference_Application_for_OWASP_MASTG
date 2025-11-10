@@ -1,11 +1,7 @@
 package com.dkronig.maswe_storage.maswe_0006;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Toast;
-
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_storage.R;
 

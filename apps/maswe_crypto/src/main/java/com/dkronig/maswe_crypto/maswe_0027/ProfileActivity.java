@@ -1,7 +1,6 @@
 package com.dkronig.maswe_crypto.maswe_0027;
 
 import android.os.Bundle;
-
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_crypto.R;
 

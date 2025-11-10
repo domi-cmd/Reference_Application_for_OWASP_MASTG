@@ -1,7 +1,6 @@
 package com.dkronig.maswe_platform.maswe_0064;
 
 import android.content.Intent;
-
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_platform.R;
 

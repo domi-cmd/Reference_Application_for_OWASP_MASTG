@@ -1,6 +1,5 @@
 package com.dkronig.maswe_storage.maswe_0006;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_storage.R;

@@ -2,10 +2,8 @@ package com.dkronig.maswe_platform.maswe_0064;
 
 import android.content.Context;
 import android.widget.Toast;
-
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_platform.R;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

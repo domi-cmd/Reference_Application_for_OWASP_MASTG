@@ -7,9 +7,7 @@ import com.dkronig.maswe_crypto.maswe_0014.MainActivity0014;
 import com.dkronig.maswe_crypto.maswe_0020.MainActivity0020;
 import com.dkronig.maswe_crypto.maswe_0021.MainActivity0021;
 import com.dkronig.maswe_crypto.maswe_0027.MainActivity0027;
-
 import java.util.Map;
-
 
 public class CryptoMenu extends BaseActivityTemplate {
     @Override
@@ -27,7 +25,6 @@ public class CryptoMenu extends BaseActivityTemplate {
                 // More buttons as more tests are implemented
         ));
     }
-
 
     // Set name for action bar handled in BaseActivityTemplate
     @Override

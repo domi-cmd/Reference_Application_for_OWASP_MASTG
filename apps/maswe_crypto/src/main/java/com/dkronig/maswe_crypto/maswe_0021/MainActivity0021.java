@@ -1,10 +1,8 @@
 package com.dkronig.maswe_crypto.maswe_0021;
 
 import android.os.Bundle;
-
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_crypto.R;
-
 import java.util.Map;
 
 public class MainActivity0021 extends BaseActivityTemplate {

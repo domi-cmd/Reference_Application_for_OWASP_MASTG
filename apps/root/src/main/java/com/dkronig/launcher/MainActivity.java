@@ -3,14 +3,8 @@ package com.dkronig.launcher;
 import android.content.ComponentName;
 import android.os.Bundle;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.widget.Toast;
-
 import com.dkronig.common.BaseActivityTemplate;
-//import com.dkronig.maswe_storage.StorageMenu;
-//import com.dkronig.maswe_crypto.CryptoMenu;
-//import com.dkronig.maswe_platform.PlatformMenu;
-
 import java.util.Map;
 
 public class MainActivity extends BaseActivityTemplate {
@@ -35,10 +29,7 @@ public class MainActivity extends BaseActivityTemplate {
 
     }
 
-    /**
-     * Launches an external app using a fully qualified ComponentName.
-     * This works even if the app has no LAUNCHER activity.
-     */
+    //Launches an external app using a fully qualified ComponentName
     private void launchApp(String packageName, String activityName) {
         try {
             Intent intent = new Intent();

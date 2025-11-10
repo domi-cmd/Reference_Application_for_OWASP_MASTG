@@ -1,7 +1,6 @@
 package com.dkronig.maswe_platform.maswe_0064;
 
 import android.content.Intent;
-
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_platform.R;
 
@@ -30,6 +29,12 @@ public class LoginActivity extends BaseLoginActivity {
     @Override
     protected String getScreenTitle() {
         return "Login";
+    }
+
+    // Define name for encrypted file where user credentials are stored
+    @Override
+    protected String getCredentialFileName() {
+        return "maswe_0064_user_credentials";
     }
 
     @Override

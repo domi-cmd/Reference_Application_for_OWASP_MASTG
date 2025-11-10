@@ -1,10 +1,7 @@
 package com.dkronig.maswe_crypto.maswe_0009;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Toast;
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_crypto.R;
 
@@ -48,35 +45,19 @@ public class LoginActivity extends BaseLoginActivity {
         return "Login";
     }
 
+    // Define name for encrypted file where user credentials are stored
     @Override
-    protected void loginUser(){
-        String email = et_email.getText().toString().trim();
-        String password = et_password.getText().toString().trim();
+    protected String getCredentialFileName() {
+        return "maswe_0009_user_credentials";
+    }
 
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        SharedPreferences prefs = getSharedPreferences("my_app_prefs", MODE_PRIVATE);
-        String storedEmail = prefs.getString("user_email", null);
-        String storedPassword = prefs.getString("user_password", null);
-
-        String decrypted_email;
-        String decrypted_password;
-
+    @Override
+    protected String decrypt(String encryptedText){
         // Decrypt password and email
         try {
-            decrypted_email = encryptionHandler.decryptDataDES(storedEmail);
-            decrypted_password = encryptionHandler.decryptDataDES(storedPassword);
+            return encryptionHandler.decryptDataDES(encryptedText);
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-
-        if (email.equals(decrypted_email) && password.equals(decrypted_password)) {
-            onLoginSuccess(email);
-        } else {
-            onLoginFailure(email);
         }
     }
 
@@ -89,6 +70,7 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     protected void onLoginFailure(String email) {
-        super.onLoginFailure(email); // default Toast
+        // default Toast
+        super.onLoginFailure(email);
     }
 }

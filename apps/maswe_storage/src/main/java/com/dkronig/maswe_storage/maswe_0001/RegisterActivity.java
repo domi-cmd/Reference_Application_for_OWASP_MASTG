@@ -1,6 +1,5 @@
 package com.dkronig.maswe_storage.maswe_0001;
 
-import android.os.Bundle;
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_storage.R;
 import java.io.File;
@@ -17,11 +16,6 @@ public class RegisterActivity extends BaseRegisterActivity {
         return R.layout.activity_register;
     }
 
-    @Override
-    protected String getScreenTitle() {
-        return "Register";
-    }
-
     // Provide IDs for BaseRegisterActivity to find UI elements
     @Override
     protected int getEmailFieldId() {
@@ -36,6 +30,18 @@ public class RegisterActivity extends BaseRegisterActivity {
     @Override
     protected int getRegisterButtonId() {
         return R.id.register_button;
+    }
+
+    @Override
+    protected String getScreenTitle() {
+        return "Register";
+    }
+
+
+    // Define name for encrypted file where user credentials are stored
+    @Override
+    protected String getCredentialFileName() {
+        return "maswe_0001_user_credentials";
     }
 
     // Write sensitive user data to system and app logs upon registration

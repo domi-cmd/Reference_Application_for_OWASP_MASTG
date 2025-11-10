@@ -1,7 +1,6 @@
 package com.dkronig.maswe_platform.maswe_0064;
 
 import android.os.Bundle;
-
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_platform.R;
 

@@ -1,6 +1,5 @@
 package com.dkronig.maswe_storage.maswe_0006;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_storage.R;
@@ -21,11 +20,6 @@ public class RegisterActivity extends BaseRegisterActivity {
     }
 
     @Override
-    protected String getScreenTitle() {
-        return "Register";
-    }
-
-    @Override
     protected int getEmailFieldId() {
         return R.id.et_email;
     }
@@ -41,23 +35,23 @@ public class RegisterActivity extends BaseRegisterActivity {
     }
 
     @Override
-    protected void userDataToSharedPreferences(String email, String password){
-        // Encrypt user data
-        String encrypted_email;
-        String encrypted_password;
+    protected String getScreenTitle() {
+        return "Register";
+    }
+
+    // Define name for encrypted file where user credentials are stored
+    @Override
+    protected String getCredentialFileName() {
+        return "maswe_0006_user_credentials";
+    }
+
+    @Override
+    protected String encrypt(String plaintext){
         try {
             // Encrypt user data
-            encrypted_email = encryptionHandler.encryptData(email);
-            encrypted_password = encryptionHandler.encryptData(password);
+            return encryptionHandler.encryptData(plaintext);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        // Save encrypted user data to shared preferences
-        SharedPreferences sharedPrefs = getSharedPreferences("my_app_prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putString("user_email", encrypted_email);
-        editor.putString("user_password", encrypted_password);
-        editor.apply();
     }
 }

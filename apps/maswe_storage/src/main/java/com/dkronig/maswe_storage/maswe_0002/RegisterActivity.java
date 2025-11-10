@@ -1,23 +1,11 @@
 package com.dkronig.maswe_storage.maswe_0002;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.util.Log;
-
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_storage.R;
-
 import java.io.File;
-import java.io.File;
-import android.content.Context;
-import android.widget.Toast;
-
 import androidx.core.content.FileProvider;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.IOException;
 
 public class RegisterActivity extends BaseRegisterActivity {
 
@@ -26,11 +14,6 @@ public class RegisterActivity extends BaseRegisterActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register;
-    }
-
-    @Override
-    protected String getScreenTitle() {
-        return "Register";
     }
 
     // Provide IDs for BaseRegisterActivity to find UI elements
@@ -47,6 +30,17 @@ public class RegisterActivity extends BaseRegisterActivity {
     @Override
     protected int getRegisterButtonId() {
         return R.id.register_button;
+    }
+
+    @Override
+    protected String getScreenTitle() {
+        return "Register";
+    }
+
+    // Define name for encrypted file where user credentials are stored
+    @Override
+    protected String getCredentialFileName() {
+        return "maswe_0002_user_credentials";
     }
 
     // Use an implicit intent with my misconfigured file provider to share credentials

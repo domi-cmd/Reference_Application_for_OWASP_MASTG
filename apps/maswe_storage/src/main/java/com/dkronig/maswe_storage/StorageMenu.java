@@ -8,7 +8,6 @@ import com.dkronig.maswe_storage.maswe_0006.MainActivity0006;
 import com.dkronig.maswe_storage.maswe_0007.MainActivity0007;
 import java.util.Map;
 
-
 public class StorageMenu extends BaseActivityTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,6 @@ public class StorageMenu extends BaseActivityTemplate {
                 // More buttons as more tests are implemented
         ));
     }
-
 
     // Set name for action bar handled in BaseActivityTemplate
     @Override

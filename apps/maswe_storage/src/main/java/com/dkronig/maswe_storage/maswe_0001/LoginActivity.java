@@ -1,7 +1,6 @@
 package com.dkronig.maswe_storage.maswe_0001;
 
 import android.content.Intent;
-import android.os.Bundle;
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_storage.R;
 
@@ -30,6 +29,12 @@ public class LoginActivity extends BaseLoginActivity {
     @Override
     protected String getScreenTitle() {
         return "Login";
+    }
+
+    // Define name for encrypted file where user credentials are stored
+    @Override
+    protected String getCredentialFileName() {
+        return "maswe_0001_user_credentials";
     }
 
     @Override

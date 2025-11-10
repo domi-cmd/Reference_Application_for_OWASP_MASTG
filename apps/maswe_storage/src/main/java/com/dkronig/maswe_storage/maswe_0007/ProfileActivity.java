@@ -1,7 +1,6 @@
 package com.dkronig.maswe_storage.maswe_0007;
 
 import android.os.Bundle;
-
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.R;
 

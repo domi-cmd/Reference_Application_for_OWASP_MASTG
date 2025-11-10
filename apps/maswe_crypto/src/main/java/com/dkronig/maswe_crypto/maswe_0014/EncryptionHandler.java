@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;

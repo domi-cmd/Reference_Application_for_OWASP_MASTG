@@ -19,6 +19,10 @@ At the time of writing, there are currently 19 MASTG reference apps listed on th
 \subsection{Findings}
 Across the 8 evaluated OWASP MASTG reference apps, 162 weaknesses where mapped to their respective MASWE counterpart and grouped by their vulnerability category (Storage, Crypto, Auth, etc.).
 
+\subsubsection{Lack of vulnerability documentation}
+A reoccurring issue with many of the reference apps is their documentation of the implemented vulnerabilities. Multiple of the reference apps do not have any documentation of their weaknesses at all, which led to their exclusion from this evaluation. Those apps that do have some form of documentation are often incomplete, and almost always only consist of a single list, naming the implemented weaknesses and leaving it at that. None of the apps map the implemented weaknesses to their OWASP MASWE counterparts, despite them being a MASTG reference app, designed for this very purpose. Only one app \todo{add source and specific names of mentioned apps here, just in general less vague than is now.} actually documents what the weaknesses entail, how they are implemented, and how to fix or exploit them. 
+
+Since these apps are meant by OWASP to be educational, it does not suffice to only implement the weaknesses and leave as is. The app developed in this BA thesis aims to fill this hole by not only documenting all implemented weaknesses, but adding documentation for each specific weakness, consisting of where it is found, what lines of code are of relevancy, how to exploit them, aswell as how to fix them.
 
 \subsubsection{Uneven distribution of vulnerability coverage}
 At the time of writing, there are a total of 117 MASWE vulnerabilities across 8 categories documented by OWASP. Of these 117 vulnerabilities, only 38 are actually covered by any of these reference apps. 
@@ -60,3 +64,7 @@ The remarkably high coverage of Platform vulnerabilities further enforces the fi
 Nevertheless, it can be concluded that the categories are un-evenly covered, with Platform receiving a great deal more of attention than the other categories, and Privacy receiving none. Also, it is clear that the coverage of many categories in these state-of-the-art reference apps is lacking, with only a concerning 10\% of all Crypto and Auth vulnerabilities, as documented by MASWE and tested by MASTG, actually being covered. This despite both of these categories being of great importance, and making up a large part of what mobile security as conducted by OWASP deals with, considering they make up a third (33\%) of all vulnerabilities as documented by MASWE and tested by MASTG.
 
 The reference app developed in this BA thesis aims to solve this issue, by covering the vulnerabilities more broadly, and shifting the focus from over-favoured Categories such as Platform to more neglected ones, such as Crypto and Auth.
+
+% Struktur
+\section{Literature Review - Academic relevance of OWASP MASTG}
+The OWASP MASTG is the industry standard for mobile app security. But what relevancy does it have in the academic world, and what exactly is it used for? To answer this question, a literature review was conducted, to evaluate papers on their use of the OWASP MASTG, as well as related OWASP parts, e.g. the MASTG reference apps, the MASWE and the MASVS.

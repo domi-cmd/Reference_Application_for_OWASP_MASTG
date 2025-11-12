@@ -1,9 +1,0 @@
-Category,total_vulnerabilities,covered_vulnerabilities,coverage_percent
-AUTH,20,0,0.0
-CODE,15,0,0.0
-CRYPTO,19,0,0.0
-NETWORK,6,0,0.0
-PLATFORM,22,0,0.0
-PRIVACY,9,0,0.0
-RESILIENCE,20,0,0.0
-STORAGE,6,0,0.0

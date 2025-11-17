@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 12 / 115
+# Vulnerabilities Implemented: 13 / 115
 
 # Checklist
 
@@ -13,19 +13,19 @@
 |  | [0007](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0007/) | Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |✅| Beta |
 | CRYPTO |  |  |  |  |
 |  | [0009](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0009/) | Improper Cryptographic Key Generation |✅| Beta |
-|  | [0010](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0010/) | Improper Cryptographic Key Derivation |❌| Placeholder |
+|  | [0010](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0010/) | Improper Cryptographic Key Derivation |🛠️| Placeholder |
 |  | [0011](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0011/) | Cryptographic Key Rotation Not Implemented |❌| Placeholder |
 |  | [0012](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0012/) | Insecure or Wrong Usage of Cryptographic Key |❌| Placeholder |
 |  | [0013](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0013/) | Hardcoded Cryptographic Keys in Use |🚫| DEPRECATED |
 |  | [0014](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0014/) | Cryptographic Keys Not Properly Protected at Rest |✅| Beta |
-|  | [0015](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0015/) | Deprecated Android KeyStore Implementations |❌| Placeholder |
+|  | [0015](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0015/) | Deprecated Android KeyStore Implementations |🛠️| Placeholder |
 |  | [0016](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0016/) | Unsafe Handling of Imported Cryptographic Keys |❌| Placeholder |
 |  | [0017](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0017/) | Cryptographic Keys Not Properly Protected on Export |❌| Placeholder |
 |  | [0018](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0018/) | Cryptographic Keys Access Not Restricted |❌| Placeholder |
 |  | [0019](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0019/) | Risky Cryptography Implementations |❌| Normal |
 |  | [0020](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0020/) | Improper Encryption |✅| Beta |
 |  | [0021](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0021/) | Improper Hashing |✅| Placeholder |
-|  | [0022](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0022/) | Predictable Initialization Vectors (IVs) |❌| Placeholder |
+|  | [0022](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0022/) | Predictable Initialization Vectors (IVs) |✅| Placeholder |
 |  | [0023](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0023/) | Risky Padding |❌| Beta |
 |  | [0024](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0024/) | Improper Use of Message Authentication Code (MAC) |❌| Placeholder |
 |  | [0025](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0025/) | Improper Generation of Cryptographic Signatures |❌| Placeholder |

@@ -37,6 +37,12 @@ private void writeToSharedStorage(String content) {
 }
 ```
 
+## The vulnerability can be exploited by:
+1. While running the app, any data stored to the chosen shared storage space can be accessed by running in a terminal:
+```shell
+C:\Users\Domi>adb shell cat /storage/emulated/0/Documents/maswe_0007_user_credentials.txt
+Email: email Password: password
+```
 
 ## The vulnerability can be fixed by:
 Not storing sensitive in such a way. Instead, developers can:

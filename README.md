@@ -46,7 +46,7 @@ This project addresses that gap by providing a **reference Android application**
   - Comparison with existing intentionally vulnerable apps  
   - Design & implementation details  
   - Didactic evaluation and mapping to MASTG test cases  
-- 🎤 **Presentation (& demo?)** of findings  
+- **Presentation** of findings  
   
 ---
 

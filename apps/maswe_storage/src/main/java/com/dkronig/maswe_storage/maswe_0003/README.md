@@ -15,23 +15,7 @@ The relevant code for this vulnerability can be seen in [res/xml/backup_rules.xm
 <[...] requireFlags="clientSideEncryption"/>
 ```
 
-## The vulnerability can be fixed by:
-1. Setting the boolean in the line [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L4) to true:
-
-```xml
-<cloud-backup disableIfNoEncryptionCapabilities="true">
-```
-
-This prevents any backup happening if no encryption is in place.
-
-2. Adding the following flag for [each include](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L6-L7):
-
-```xml
-<[...] requireFlags="clientSideEncryption"/>
-```
-
-
-## How to inspect the backup
+## How to exploit the vulnerability
 To inspect the backup, one can change the backup transporter from cloud to local, run a backup and extract its files as follows:
 ### 1. Switch to local backup instead of cloud backup
 Run in terminal (with adb installed):
@@ -88,3 +72,19 @@ drwx------  0 10225  10225       0 Nov 05 11:20 apps/com.dkronig.maswe_storage/r
 
 ### 5. unzip backup to actually view the contents of the file
 (get 7zip here: https://www.7-zip.org/)
+
+
+## The vulnerability can be fixed by:
+1. Setting the boolean in the line [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L4) to true:
+
+```xml
+<cloud-backup disableIfNoEncryptionCapabilities="true">
+```
+
+This prevents any backup happening if no encryption is in place.
+
+2. Adding the following flag for [each include](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L6-L7):
+
+```xml
+<[...] requireFlags="clientSideEncryption"/>
+```

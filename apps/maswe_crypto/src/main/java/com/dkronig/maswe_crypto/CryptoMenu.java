@@ -6,6 +6,7 @@ import com.dkronig.maswe_crypto.maswe_0009.MainActivity0009;
 import com.dkronig.maswe_crypto.maswe_0014.MainActivity0014;
 import com.dkronig.maswe_crypto.maswe_0020.MainActivity0020;
 import com.dkronig.maswe_crypto.maswe_0021.MainActivity0021;
+import com.dkronig.maswe_crypto.maswe_0022.MainActivity0022;
 import com.dkronig.maswe_crypto.maswe_0027.MainActivity0027;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ public class CryptoMenu extends BaseActivityTemplate {
                 R.id.maswe_0014_button, MainActivity0014.class,
                 R.id.maswe_0020_button, MainActivity0020.class,
                 R.id.maswe_0021_button, MainActivity0021.class,
+                R.id.maswe_0022_button, MainActivity0022.class,
                 R.id.maswe_0027_button, MainActivity0027.class
                 // More buttons as more tests are implemented
         ));

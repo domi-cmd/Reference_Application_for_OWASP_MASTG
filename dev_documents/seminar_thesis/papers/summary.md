@@ -255,7 +255,7 @@ file: [3588001.3609367.pdf](https://github.com/user-attachments/files/23166012/3
 file: [30213-1418-24654-1-10-20240916.pdf](https://github.com/user-attachments/files/23166064/30213-1418-24654-1-10-20240916.pdf)
 
 #### General
-- Published 
+- Published 2024
 - OWASP Areas:
 1. (Considered using OWASP Top 10 as knowledge base for android vulnerabilities, went with Google's Developers Common Risks instead)
 2. Used 10 intentionally vulnerable MASTG reference apps to test their mutation operators on.

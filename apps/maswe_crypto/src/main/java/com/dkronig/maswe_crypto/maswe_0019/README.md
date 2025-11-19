@@ -23,4 +23,4 @@ The relevant code for this vulnerability can be seen in [maswe_0019/EncryptionHa
 
 ## The vulnerability can be exploited by:
 1. Once the apk has been decompiled as described in my wiki [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/wiki/Decompile-apk-file), any attacker will see the risky cryptographic implementation used here.
-2. The sensitive user data is protected by being stored in encrypted shared preferences, but this is only true at rest. By using Frida or similar dynamic instrumentation toolkits, this data can be accessed without having to decrypt the encrypted shared preferences, and then easily read once the bitshift encryption has been reversed.
+2. Since the sensitive user data is stored in a plain shared preferences file, any attacker obtaining access to said file (via exported providers, rooting, etc.) can then easily read any sensitive user data encrypted by this class, once the bitshift encryption has been reversed.

@@ -9,9 +9,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class RegisterActivity extends BaseRegisterActivity {
-
-    private static final String TAG = "[REGISTER ACTIVITY]";
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register_template;

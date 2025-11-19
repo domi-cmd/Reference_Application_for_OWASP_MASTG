@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="email_hint">Enter your email</string>
+    <string name="email_hint">Enter email</string>
+    <string name="password_hint">Enter password</string>
+    <string name="register_button_text">Register</string>
+    <string name="login_button_text">Log in</string>
+    <string name="register_page_title">Registration Page</string>
+    <string name="login_page_title">Login Page</string>
+    <string name="profile_page_title">Profile Page</string>
 </resources>

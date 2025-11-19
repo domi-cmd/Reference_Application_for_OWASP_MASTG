@@ -18,6 +18,11 @@ editor.putString("IV", encodedIV);
 editor.apply();
 ```
 
+## This vulnerability can be exploited by:
+1. First decompiling the apk to get the sourcecode, as described in my wiki [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/wiki/Decompile-apk-file).
+2. After this, any attacker can see that the key and the initialization vector are simply base64 encoded stored in the shared preferences file.
+3. Once an attacker gets access to said xml file, they can easily base64 decode both key and IV, thus obtaining the raw AES key.
+4. This allows them to decrypt anything that is stored within the context of this class.
 
 ## The vulnerability can be fixed by:
 1. Using EncryptedSharedPreferences instead.

@@ -18,11 +18,16 @@ random.setSeed(keySeed);
 keyGenerator.init(56, random);
 secretKey = keyGenerator.generateKey();
 ```
-2. **Using Risky or Broken Algorithms** - Implemented by using DES for encryption, which is heavily outdated and even considered broken by todays standards, seen in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_crypto/src/main/java/com/dkronig/maswe_crypto/maswe_0009/EncryptionHandler.java#L20-L21):
+3. **Using Risky or Broken Algorithms** - Implemented by using DES for encryption, which is heavily outdated and even considered broken by todays standards, seen in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_crypto/src/main/java/com/dkronig/maswe_crypto/maswe_0009/EncryptionHandler.java#L20-L21):
 ```java
 // DES is considered broken
 KeyGenerator keyGenerator = KeyGenerator.getInstance("DES");
 ```
+
+## This vulnerability can be exploited by:
+1. After decompiling the apk as described in my guide [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/wiki/Decompile-apk-file), any attacker will view the sourcecode and realize the incredibly weak encryption used here. DES is considered broken, and can be cracked by a bruteforce attack by any modern computer in a short timespan.
+
+
 
 ## The vulnerability can be fixed by:
 1. Using a modern crypto algorithm, such as AES

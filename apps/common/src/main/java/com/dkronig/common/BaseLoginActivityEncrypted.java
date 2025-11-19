@@ -1,6 +1,5 @@
 package com.dkronig.common;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,7 @@ import org.json.JSONObject;
  *  - Basic input validation
  *  - SharedPreferences check for stored credentials
  */
-public abstract class BaseLoginActivity extends BaseActivityTemplate {
+public abstract class BaseLoginActivityEncrypted extends BaseActivityTemplate {
 
     protected EditText et_email, et_password;
     protected Button login_button;
@@ -88,9 +87,20 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
     }
 
     private String retrieveUserData(String email, String password) throws Exception {
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
+        MasterKey masterKey = new MasterKey.Builder(this)
+                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                .build();
 
-        String json = sharedPreferences.getString(USERS_KEY, "{}");
+        EncryptedSharedPreferences prefs = (EncryptedSharedPreferences) EncryptedSharedPreferences
+                .create(
+                        this,
+                        PREFS_FILE,
+                        masterKey,
+                        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                );
+
+        String json = prefs.getString(USERS_KEY, "{}");
         JSONObject users = new JSONObject(json);
 
         if (!users.has(email)) return null; // user not found

@@ -1,6 +1,5 @@
 package com.dkronig.common;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +10,7 @@ import androidx.security.crypto.MasterKey;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import org.json.JSONObject;
 
-public abstract class BaseRegisterActivity extends BaseActivityTemplate {
+public abstract class BaseRegisterActivityEncrypted extends BaseActivityTemplate {
 
     protected EditText et_email, et_password;
     protected Button register_button;
@@ -84,9 +83,20 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
 
     private boolean saveUserSecurely(String email, String password)
             throws Exception {
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
 
-        String json = sharedPreferences.getString(USERS_KEY, "{}");
+        MasterKey masterKey = new MasterKey.Builder(this)
+                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                .build();
+
+        var prefs = EncryptedSharedPreferences.create(
+                this,
+                PREFS_FILE,
+                masterKey,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        );
+
+        String json = prefs.getString(USERS_KEY, "{}");
         JSONObject users = new JSONObject(json);
 
         // Check if user already exists
@@ -96,7 +106,7 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
         userObj.put("password", password);
 
         users.put(email, userObj);
-        sharedPreferences.edit().putString(USERS_KEY, users.toString()).apply();
+        prefs.edit().putString(USERS_KEY, users.toString()).apply();
         return true;
     }
 

@@ -15,5 +15,6 @@ Random javaRandom = new Random(System.currentTimeMillis());
 ```
 
 ## The vulnerability can be exploited by:
-Using linear congruential formula for random number generation, or LCG for short, is a topic that has been throughly researched and has many studies and other sources of documentation on why they are insecure.
+1. Any attacker can easily see the weak randomness used here once they decompiled the apk, as explained in 3 steps in my wiki [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/wiki/Decompile-apk-file).
+2. Using linear congruential formula for random number generation, or LCG for short, is a topic that has been throughly researched and has many studies and other sources of documentation on why they are insecure.
 For example, [here](https://crypto.stackexchange.com/questions/20495/how-brittle-are-lcg-cracking-techniques) are many papers mentioned on why LCG is insecure and how to exploit it.

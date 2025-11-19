@@ -22,7 +22,7 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_login;
+        return R.layout.activity_login_template;
     }
 
     @Override

@@ -13,7 +13,7 @@ public class RegisterActivity extends BaseRegisterActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_register;
+        return R.layout.activity_register_template;
     }
 
     // Provide IDs for BaseRegisterActivity to find UI elements

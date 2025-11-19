@@ -10,7 +10,7 @@ public class ProfileActivity extends BaseActivityTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile_template);
 
     }
 

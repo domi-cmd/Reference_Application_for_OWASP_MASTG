@@ -10,7 +10,7 @@ public class MainActivity0027 extends BaseActivityTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_crypto);
+        setContentView(R.layout.activity_main_template);
 
         // Generate secret key used for encryption and decryption in login and register activity
         try {

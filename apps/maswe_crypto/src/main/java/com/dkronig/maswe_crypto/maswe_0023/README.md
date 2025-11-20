@@ -34,3 +34,4 @@ for (int i = decryptedBytesWithPadding.length - paddingLength;
 1. An attacker can first discover the vulnerability to oracle attacks by decompiling the apk, as outlined in my wiki [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/wiki/Decompile-apk-file).
 2. Afterwards, they would need to gain access to the encrypted data.
 3. Once they have the encrypted ciphertext, they can start tampering with it, and reconfigure the original plaintext out of the ciphertext, based on the error messages passed based on the tampered ciphertext.
+4. There are many sources and documented oracle attacks that have happened. A possible source is [this](https://www.brunorochamoura.com/posts/cbc-padding-oracle/).

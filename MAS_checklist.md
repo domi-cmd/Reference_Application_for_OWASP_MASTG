@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 14 / 115
+# Vulnerabilities Implemented: 15 / 115
 
 # Checklist
 

@@ -1,0 +1,34 @@
+THEMA ARBEIT PUBLIZIEREN
+- Arxiv publizieren theoretisch maybe möglich? (link geschickt gekriegt)
+- https://arxiv.org/
+
+
+THEMA RELATED WORK
+- nicht angeschaute reference apps beim namen nennen "die sind blackbox mässig aufgebaut/haben keine Vulnerability Dokumentation, deshalb nicht angeschaut)
+- angechaute Apps nennen (Namen von Tool , dann Referenz immer schauen ob es Paper dazu gibt, sonst einfach Referenz zu Github Repo immer Version erwähnen)
+- "at the time of writing this" lieber vermeiden, bei Referenz schreiben welcher commit der letzte war "commit: Nr XX". Falls Version gibt dann lieber das
+- "findings" falsches wort bei literature review, da das platzieren meiner Arbeit der Fokus ist, und nicht "die Funde"
+
+THEMA INTERESSANTE SEITEN
+- https://blog.oversecured.com/
+- https://cryptohack.org/
+
+THEMA CRYPO
+- Bei crypto sind verschienene Klassifikationen möglich
+- Einfach nach MASWE
+- Einmal alles mit AES cipher, dann einmal alles mit weniger bekanntem cipher, etc.
+
+THEMA EXPLOITATIONS
+- Kein wiki nötig, ist auch schnell outdated
+- Generelle Konzepte (wie zb apk decompilen) die viele online quellen haben, muss ich nicht erklären
+- So wie zb bei maswe 0001 logs ist gut
+- Auch schauen, was z.B. bei MASTG tests schon vorhanden ist bzgl. Schwachstellen finden; das muss ich nicht wiederholen, verlinken reicht
+- "Sources and links" Sektion könnte sinnvoll sein, interessante Blogs oder andere Implementationen da verlinken
+
+
+THEMA CRYPTO EXPLOITATIONS
+- frida rooten ist erlaubt
+- binary auf device
+- link über ähnliches tool (medusa) auf frida basierend über microsoft teams
+-> lieber zuerst mit frida probieren, dann medusa
+https://github.com/Ch0pin/medusa

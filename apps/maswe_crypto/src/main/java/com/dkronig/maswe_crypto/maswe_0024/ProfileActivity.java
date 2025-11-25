@@ -12,6 +12,8 @@ import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_crypto.R;
 import com.google.gson.Gson;
 
+import java.util.UUID;
+
 public class ProfileActivity extends BaseActivityTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,13 @@ public class ProfileActivity extends BaseActivityTemplate {
         BankCommand bankCommand = new BankCommand();
         bankCommand.command = command;
         bankCommand.amountEuros = amountEuros;
+        bankCommand.timestamp = System.currentTimeMillis();
+        bankCommand.nonce = UUID.randomUUID().toString();
+
+        // NON-CRYPTOGRAPHIC CHECKSUM → MASWE-0024 TRIGGER
+        String payload = bankCommand.command + bankCommand.amountEuros
+                + bankCommand.timestamp + bankCommand.nonce;
+        bankCommand.hmac = String.valueOf(IntegrityVerifier.crc32(payload));
 
         Intent intent = new Intent(this, BankAccountManagerService.class);
         intent.putExtra("command", new Gson().toJson(bankCommand));

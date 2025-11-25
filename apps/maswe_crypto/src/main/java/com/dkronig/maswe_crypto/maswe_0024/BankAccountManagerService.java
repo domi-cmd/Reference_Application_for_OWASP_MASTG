@@ -34,6 +34,7 @@ public class BankAccountManagerService extends Service {
         String json = intent.getStringExtra("command");
         if (json == null) return;
 
+        // "Restore" the command to its formatting pre sending
         BankCommand cmd = new Gson().fromJson(json, BankCommand.class);
 
         // Check the checksum, to see if the received intent comes from the expected sender
@@ -66,7 +67,8 @@ public class BankAccountManagerService extends Service {
         String payload = cmd.command + cmd.amountEuros + cmd.timestamp + cmd.nonce;
         long expected = IntegrityVerifier.crc32(payload);
         try {
-            long received = Long.parseLong(cmd.hmac);  // we stored CRC32 as String
+            // Need to parse the stored crc32 string to long
+            long received = Long.parseLong(cmd.hmac);
             return expected == received;
         } catch (Exception e) {
             return false;
@@ -74,7 +76,7 @@ public class BankAccountManagerService extends Service {
     }
 
     private void showToast(String msg) {
-        // Toasts from a Service require posting to the main thread
+        // Helper, as toasts from a Service require posting to the main thread
         new Handler(Looper.getMainLooper()).post(() ->
                 Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
         );

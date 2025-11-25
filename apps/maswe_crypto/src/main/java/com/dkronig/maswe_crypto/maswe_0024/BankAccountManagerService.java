@@ -68,6 +68,7 @@ public class BankAccountManagerService extends Service {
     private void sendBalanceUpdate() {
         Intent updateIntent = new Intent("BANK_BALANCE_UPDATED");
         updateIntent.putExtra("balance", bankBalance);
+        updateIntent.setPackage(getPackageName());
         sendBroadcast(updateIntent);  // Local works for SDK < 33; for 33+ use normal broadcast
     }
 }

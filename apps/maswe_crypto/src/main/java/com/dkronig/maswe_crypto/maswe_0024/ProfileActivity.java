@@ -27,7 +27,6 @@ public class ProfileActivity extends BaseActivityTemplate {
     }
 
     protected void init() {
-
         Button sendBankCommandButton = findViewById(R.id.sendBankCommandButton);
 
         if (sendBankCommandButton != null) {
@@ -43,6 +42,7 @@ public class ProfileActivity extends BaseActivityTemplate {
         Intent intent = new Intent(this, BankAccountManagerService.class);
         intent.putExtra("command", new Gson().toJson(bankCommand));
         startService(intent);
+
         Log.d("AAA", "Send intent");
     }
 
@@ -50,13 +50,14 @@ public class ProfileActivity extends BaseActivityTemplate {
         @Override
         public void onReceive(Context context, Intent intent) {
             long balance = intent.getLongExtra("balance", 0);
-            runOnUiThread(() -> { // Ensure UI thread
+            Log.d("AAAAAA", "Trying to change balance");
+
+            //runOnUiThread(() -> { // Ensure UI thread
                 TextView tv = findViewById(R.id.bankBalanceDisplay);
-                Log.d("AAAAAA", "Trying to change balance");
                 if (tv != null) {
                     tv.setText("Balance: " + (balance / 100.0) + " €");
                 }
-            });
+            //});
         }
     };
 

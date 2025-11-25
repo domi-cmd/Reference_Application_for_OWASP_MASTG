@@ -50,7 +50,7 @@ public class ProfileActivity extends BaseActivityTemplate {
         bankCommand.timestamp = System.currentTimeMillis();
         bankCommand.nonce = UUID.randomUUID().toString();
 
-        // NON-CRYPTOGRAPHIC CHECKSUM → MASWE-0024 TRIGGER
+        // Use crc32 as a checksum
         String payload = bankCommand.command + bankCommand.amountEuros
                 + bankCommand.timestamp + bankCommand.nonce;
         bankCommand.hmac = String.valueOf(IntegrityVerifier.crc32(payload));

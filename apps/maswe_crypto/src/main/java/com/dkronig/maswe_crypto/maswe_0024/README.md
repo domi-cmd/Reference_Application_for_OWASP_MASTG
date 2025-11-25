@@ -11,7 +11,7 @@ and [ProfileActivity.java](https://github.com/domi-cmd/Reference_Application_for
 public static long crc32(String data) {
       java.util.zip.CRC32 crc = new java.util.zip.CRC32();
       crc.update(data.getBytes(StandardCharsets.UTF_8));
-      return crc.getValue();               // ← 32-bit non-crypto checksum
+      return crc.getValue();            
 }
 ```
 2. Using said checksum for verifying integrity of sensitive banking information here:
@@ -24,15 +24,15 @@ bankCommand.hmac = String.valueOf(IntegrityVerifier.crc32(payload));
 3. And then also using it for verifying integrity of received data in the bankaccount manager service here:
 ```java
 private boolean verifyChecksum(BankCommand cmd) {
-String payload = cmd.command + cmd.amountEuros + cmd.timestamp + cmd.nonce;
-long expected = IntegrityVerifier.crc32(payload);
-try {
-    // Need to parse the stored crc32 string to long
-    long received = Long.parseLong(cmd.hmac);
-    return expected == received;
-} catch (Exception e) {
-    return false;
-}
+      String payload = cmd.command + cmd.amountEuros + cmd.timestamp + cmd.nonce;
+      long expected = IntegrityVerifier.crc32(payload);
+      try {
+          // Need to parse the stored crc32 string to long
+          long received = Long.parseLong(cmd.hmac);
+          return expected == received;
+      } catch (Exception e) {
+          return false;
+      }
 }
 ```
 

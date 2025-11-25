@@ -5,32 +5,39 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_crypto.R;
 import com.google.gson.Gson;
 
 public class ProfileActivity extends BaseActivityTemplate {
-    private static final String BANK_PACKAGE = "com.dkronig.maswe_crypto.maswe_0024";
-    private static final String BANK_ACTION   = "com.dkronig.maswe_crypto.bank.ACTION_PROCESS_COMMAND";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_banking);
-
         init();
-
     }
 
     protected void init() {
         Button sendBankCommandButton = findViewById(R.id.sendBankCommandButton);
+        EditText amountInput = findViewById(R.id.balanceInput);
 
-        if (sendBankCommandButton != null) {
-            sendBankCommandButton.setOnClickListener(v -> sendCommand("increase", 10));
+        if (sendBankCommandButton != null && amountInput != null) {
+            sendBankCommandButton.setOnClickListener(v -> {
+                String inputText = amountInput.getText().toString().trim();
+                if (!inputText.isEmpty()) {
+                    try {
+                        int amount = Integer.parseInt(inputText);
+                        sendCommand("increase", amount);
+                    } catch (NumberFormatException e) {
+                        amountInput.setError("Please enter a valid number");
+                    }
+                } else {
+                    amountInput.setError("Amount required");
+                }
+            });
         }
     }
 
@@ -42,22 +49,16 @@ public class ProfileActivity extends BaseActivityTemplate {
         Intent intent = new Intent(this, BankAccountManagerService.class);
         intent.putExtra("command", new Gson().toJson(bankCommand));
         startService(intent);
-
-        Log.d("AAA", "Send intent");
     }
 
     private BroadcastReceiver balanceReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             long balance = intent.getLongExtra("balance", 0);
-            Log.d("AAAAAA", "Trying to change balance");
-
-            //runOnUiThread(() -> { // Ensure UI thread
-                TextView tv = findViewById(R.id.bankBalanceDisplay);
-                if (tv != null) {
-                    tv.setText("Balance: " + (balance / 100.0) + " €");
-                }
-            //});
+            TextView tv = findViewById(R.id.bankBalanceDisplay);
+            if (tv != null) {
+                tv.setText("Balance: " + balance + " €");
+            }
         }
     };
 

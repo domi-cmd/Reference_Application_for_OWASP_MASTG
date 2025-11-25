@@ -5,41 +5,38 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
-import com.dkronig.maswe_crypto.R;
 import com.google.gson.Gson;
 
 public class BankAccountManagerService extends Service {
-
-    private long bankBalance = 0; // in cents
+    private long bankBalance = 0;
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        // Not a bound service — we only use startService()
+        // Not a bound service
         return null;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         handleIntent(intent);
-        return START_NOT_STICKY;  // service stops automatically if no more work
+        // This makes the service stop automatically if there is no more work
+        return START_NOT_STICKY;
     }
 
     private void handleIntent(Intent intent) {
+        // Check if intent valid
         if (intent == null) return;
 
+        // Unpack the banking command from the intents extra
         String json = intent.getStringExtra("command");
         if (json == null) return;
 
         BankCommand cmd = new Gson().fromJson(json, BankCommand.class);
 
-        // === PROCESS COMMAND ===
+        // Process the command passed by the intent
         if ("increase".equals(cmd.command)) {
             bankBalance += cmd.amountEuros;
             sendBalanceUpdate();
@@ -54,8 +51,7 @@ public class BankAccountManagerService extends Service {
             }
         }
 
-        showToast("Success! New balance: " + (bankBalance / 100.0) + " €");
-        Log.d("BankService", "Changed balance to: " + bankBalance);
+        showToast("Success! New balance: " + (bankBalance) + " €");
     }
 
     private void showToast(String msg) {
@@ -69,6 +65,6 @@ public class BankAccountManagerService extends Service {
         Intent updateIntent = new Intent("BANK_BALANCE_UPDATED");
         updateIntent.putExtra("balance", bankBalance);
         updateIntent.setPackage(getPackageName());
-        sendBroadcast(updateIntent);  // Local works for SDK < 33; for 33+ use normal broadcast
+        sendBroadcast(updateIntent);
     }
 }

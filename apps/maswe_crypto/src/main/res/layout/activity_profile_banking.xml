@@ -29,14 +29,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView"/>
 
+    <EditText
+        android:id="@+id/balanceInput"
+        android:layout_width="@dimen/action_buttons"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="Amount (+/-) for balance change"
+        app:layout_constraintTop_toBottomOf="@id/bankBalanceDisplay"
+        android:layout_marginTop="24dp"/>
+
     <Button
         android:id="@+id/sendBankCommandButton"
         android:layout_width="@dimen/action_buttons"
         android:layout_height="wrap_content"
         android:text="Send Bank Command"
-        app:layout_constraintTop_toBottomOf="@id/bankBalanceDisplay"
+        app:layout_constraintTop_toBottomOf="@id/balanceInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

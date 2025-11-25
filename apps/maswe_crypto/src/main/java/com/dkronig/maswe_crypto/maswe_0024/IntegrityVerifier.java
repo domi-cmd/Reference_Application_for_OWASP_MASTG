@@ -7,7 +7,7 @@ public final class IntegrityVerifier {
     public static long crc32(String data) {
         java.util.zip.CRC32 crc = new java.util.zip.CRC32();
         crc.update(data.getBytes(StandardCharsets.UTF_8));
-        return crc.getValue();               // ← 32-bit non-crypto checksum
+        return crc.getValue();             
     }
 
     public static long crc32(byte[] data) {

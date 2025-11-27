@@ -40,3 +40,7 @@ private boolean verifyChecksum(BankCommand cmd) {
 1. First decompiling the apk, which allows for anybody to see plainly that a bad non-cryptographic checksum is being used.
 2. 32 bit crc has limited possible values, and is not designed to be safe. Modern computers can easily force collisions as to figure out the checksum, and thus forge
 arbitrary messages to the banking service, without it realizing that the integrity of the commands has been destroyed
+
+## Relevant Ressources
+- [Blog on how to reverse crc encryption](https://voidcomputing.hu/blog/crc-reversing/)
+- [GitHub Repository for tool that cracks crc encryption](https://github.com/resilar/crchack)

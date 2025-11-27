@@ -34,7 +34,7 @@ public class ProfileActivity extends BaseActivityTemplate {
                     try {
                         int amount = Integer.parseInt(inputText);
                         sendCommand("increase", amount);
-                    } catch (NumberFormatException e) {
+                    } catch (Exception e) {
                         amountInput.setError("Please enter a valid number");
                     }
                 } else {
@@ -44,17 +44,16 @@ public class ProfileActivity extends BaseActivityTemplate {
         }
     }
 
-    private void sendCommand(String command, int amountEuros){
+    private void sendCommand(String command, int amountEuros) throws Exception {
         BankCommand bankCommand = new BankCommand();
         bankCommand.command = command;
         bankCommand.amountEuros = amountEuros;
         bankCommand.timestamp = System.currentTimeMillis();
         bankCommand.nonce = UUID.randomUUID().toString();
 
-        // Use crc32 as a checksum
         String payload = bankCommand.command + bankCommand.amountEuros
                 + bankCommand.timestamp + bankCommand.nonce;
-        bankCommand.hmac = String.valueOf(IntegrityVerifier.crc32(payload));
+        bankCommand.signature = EncryptionHandler.sign(payload);
 
         Intent intent = new Intent(this, BankAccountManagerService.class);
         intent.putExtra("command", new Gson().toJson(bankCommand));

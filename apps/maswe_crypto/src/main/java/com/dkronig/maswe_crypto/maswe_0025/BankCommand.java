@@ -5,5 +5,5 @@ public class BankCommand {
     int amountEuros;
     float timestamp;
     String nonce;
-    String hmac;
+    String signature;
 }

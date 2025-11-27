@@ -1,23 +1,16 @@
 package com.dkronig.maswe_crypto.maswe_0025;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.util.Base64;
 import java.security.Signature;
-
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPairGenerator;
-import java.security.SecureRandom;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 
 public class EncryptionHandler {
     private static final String rsaKeyAlias = "maswe_0025_rsa_key";
@@ -74,11 +67,13 @@ public class EncryptionHandler {
         return Base64.encodeToString(sig, Base64.NO_WRAP);
     }
 
-    public static boolean verify(String message, String signatureBase64) throws Exception {
+    public static boolean verify(BankCommand command) throws Exception {
+        String payload = command.command + command.amountEuros + command.timestamp
+                + command.nonce;
         Signature v = Signature.getInstance("SHA1withRSA");
         v.initVerify(getPublicKey());
-        v.update(message.getBytes("UTF-8"));
-        return v.verify(Base64.decode(signatureBase64, Base64.NO_WRAP));
+        v.update(payload.getBytes("UTF-8"));
+        return v.verify(Base64.decode(command.signature, Base64.NO_WRAP));
     }
 
     private static PublicKey getPublicKey() throws Exception {

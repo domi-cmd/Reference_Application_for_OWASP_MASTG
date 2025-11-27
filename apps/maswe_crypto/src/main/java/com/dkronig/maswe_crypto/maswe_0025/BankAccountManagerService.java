@@ -6,9 +6,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.google.gson.Gson;
 
 public class BankAccountManagerService extends Service {
@@ -23,12 +21,16 @@ public class BankAccountManagerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        handleIntent(intent);
+        try {
+            handleIntent(intent);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         // This makes the service stop automatically if there is no more work
         return START_NOT_STICKY;
     }
 
-    private void handleIntent(Intent intent) {
+    private void handleIntent(Intent intent) throws Exception {
         // Check if intent valid
         if (intent == null) return;
 
@@ -40,7 +42,7 @@ public class BankAccountManagerService extends Service {
         BankCommand cmd = new Gson().fromJson(json, BankCommand.class);
 
         // Check the checksum, to see if the received intent comes from the expected sender
-        if (!verifyChecksum(cmd)) {
+        if (!EncryptionHandler.verify(cmd)) {
             showToast("Integrity check failed");
             return;
         }
@@ -63,18 +65,6 @@ public class BankAccountManagerService extends Service {
         updateIntent.putExtra("balance", bankBalance);
         updateIntent.setPackage(getPackageName());
         sendBroadcast(updateIntent);
-    }
-
-    private boolean verifyChecksum(BankCommand cmd) {
-        String payload = cmd.command + cmd.amountEuros + cmd.timestamp + cmd.nonce;
-        long expected = IntegrityVerifier.crc32(payload);
-        try {
-            // Need to parse the stored crc32 string to long
-            long received = Long.parseLong(cmd.hmac);
-            return expected == received;
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     private void showToast(String msg) {

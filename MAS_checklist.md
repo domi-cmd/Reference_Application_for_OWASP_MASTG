@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 17 / 115
+# Vulnerabilities Implemented: 19 / 115
 
 # Checklist
 
@@ -15,7 +15,7 @@
 |  | [0009](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0009/) | Improper Cryptographic Key Generation |✅| Beta |
 |  | [0010](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0010/) | Improper Cryptographic Key Derivation |🛠️| Placeholder |
 |  | [0011](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0011/) | Cryptographic Key Rotation Not Implemented |❌| Placeholder |
-|  | [0012](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0012/) | Insecure or Wrong Usage of Cryptographic Key |❌| Placeholder |
+|  | [0012](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0012/) | Insecure or Wrong Usage of Cryptographic Key |✅| Placeholder |
 |  | [0013](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0013/) | Hardcoded Cryptographic Keys in Use |🚫| DEPRECATED |
 |  | [0014](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0014/) | Cryptographic Keys Not Properly Protected at Rest |✅| Beta |
 |  | [0015](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0015/) | Deprecated Android KeyStore Implementations |🛠️| Placeholder |
@@ -29,7 +29,7 @@
 |  | [0023](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0023/) | Risky Padding |✅| Beta |
 |  | [0024](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0024/) | Improper Use of Message Authentication Code (MAC) |✅| Placeholder |
 |  | [0025](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0025/) | Improper Generation of Cryptographic Signatures |✅| Placeholder |
-|  | [0026](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0026/) | Improper Verification of Cryptographic Signature |❌| Placeholder |
+|  | [0026](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0026/) | Improper Verification of Cryptographic Signature |✅| Placeholder |
 |  | [0027](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0027/) | Improper Random Number Generation |✅| Beta |
 | AUTH |  |  |  |  |
 |  | [0005](https://mas.owasp.org/MASWE/MASVS-AUTH/MASWE-0005/) | API Keys Hardcoded in the App Package |❌| Beta |

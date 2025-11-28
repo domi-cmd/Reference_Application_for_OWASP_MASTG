@@ -35,6 +35,27 @@
             android:theme="@style/Theme.maswe_crypto" />
 
         <activity
+            android:name=".maswe_0012.MainActivity0012"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0012.LoginActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0012.RegisterActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0012.ProfileActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <service
+            android:name=".maswe_0012.BankAccountManagerService"
+            android:exported="false"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
             android:name=".maswe_0014.MainActivity0014"
             android:theme="@style/Theme.maswe_crypto" />
 

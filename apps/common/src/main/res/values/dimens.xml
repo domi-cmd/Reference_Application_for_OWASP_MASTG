@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="action_buttons">300dp</dimen>
-    <dimen name="maswe_button_width">0dp</dimen>
+    <dimen name="maswe_button_width">400dp</dimen>
 </resources>

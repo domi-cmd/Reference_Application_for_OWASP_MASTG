@@ -1,132 +1,138 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context="com.dkronig.maswe_crypto.CryptoMenu">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chose Vulnerability Category"
-        android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="55dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <Button
-        android:id="@+id/maswe_0009_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0009"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="55dp" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chose Vulnerability Category"
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="55dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/maswe_0014_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0014"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0009_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0009_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0009"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="55dp" />
 
-    <Button
-        android:id="@+id/maswe_0019_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0019"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0014_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0014_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0014"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0009_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/maswe_0020_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0020"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0019_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0019_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0019"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0014_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/maswe_0021_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0021"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0020_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0020_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0020"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0019_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/maswe_0022_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0022"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0021_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0021_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="maswe_0021"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0020_button" />
 
-    <Button
-        android:id="@+id/maswe_0023_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0023"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0022_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0022_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0022"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0021_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/maswe_0024_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0024"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0023_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0023_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0023"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0022_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/maswe_0025_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0025"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0024_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0024_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0024"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0023_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/maswe_0026_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0026"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0025_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0025_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0025"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0024_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/maswe_0027_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="maswe_0027"
-        app:layout_constraintTop_toBottomOf="@+id/maswe_0026_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/maswe_0026_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0026"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0025_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/maswe_0027_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0027"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0026_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+</ScrollView>

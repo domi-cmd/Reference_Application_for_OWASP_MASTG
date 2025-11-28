@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context="com.dkronig.maswe_storage.StorageMenu">
+    tools:context="com.dkronig.maswe_platform.PlatformMenu">
 
     <TextView
         android:id="@+id/title"
@@ -21,7 +21,7 @@
 
     <Button
         android:id="@+id/maswe_0064_button"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/maswe_button_width"
         android:layout_height="wrap_content"
         android:text="maswe_0064"
         app:layout_constraintTop_toBottomOf="@+id/title"

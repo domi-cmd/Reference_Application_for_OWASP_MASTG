@@ -13,13 +13,13 @@ import java.security.PublicKey;
 import javax.crypto.Cipher;
 
 public class EncryptionHandler {
-    private static final String rsaKeyAlias = "maswe_0026_rsa_key";
+    private static final String rsaKeyAlias = "maswe_0025_rsa_key";
 
     public static void generateKey(Context context) throws Exception {
         KeyStore ks = KeyStore.getInstance("AndroidKeyStore");
         ks.load(null);
 
-        // Key already exists, do nothing
+        // If key already exists, do nothing
         if (ks.containsAlias(rsaKeyAlias)) {
             return;
         }

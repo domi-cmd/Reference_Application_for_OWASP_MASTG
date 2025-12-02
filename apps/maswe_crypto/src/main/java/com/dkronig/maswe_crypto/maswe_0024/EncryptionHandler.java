@@ -17,6 +17,18 @@ public class EncryptionHandler {
     private static SharedPreferences sharedPreferences;
 
     public static void generateAESKey(Context context) throws Exception {
+        // First check if there is already a key generated. If so, don't generate a new one.
+        // Get access to the shared preferences of the calling activity
+        sharedPreferences = context.getApplicationContext()
+                .getSharedPreferences("maswe_0024_secret_key", Context.MODE_PRIVATE);
+        String prefKey = sharedPreferences.getString("encryption_key", null);
+        String prefIV = sharedPreferences.getString("IV", null);
+
+        // Return if key and IV have already been generated
+        if(prefIV != null && prefKey != null){
+            return;
+        }
+
         // Generate AES key
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         keyGenerator.init(256);
@@ -32,12 +44,7 @@ public class EncryptionHandler {
         // Convert IV to string to store in next to secret key in shared preferences
         String encodedIV = Base64.encodeToString(iv, Base64.DEFAULT);
 
-        // Get access to the shared preferences of the calling activity
-        sharedPreferences = context.getApplicationContext()
-                .getSharedPreferences("maswe_0024_secret_key", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        // Make sure no duplicate or multiple keys are stored
-        editor.clear();
         // Add key and initialization vector to shared preferences
         editor.putString("encryption_key", encodedKey);
         editor.putString("IV", encodedIV);

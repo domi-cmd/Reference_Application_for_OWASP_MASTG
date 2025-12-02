@@ -1,8 +1,12 @@
-package com.dkronig.maswe_crypto.maswe_0015;
+package com.dkronig.maswe_crypto.maswe_0011;
 
-import android.util.Base64;
 import android.content.Context;
+import android.util.Base64;
+
+import com.dkronig.maswe_crypto.maswe_0015.BankCommand;
+
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyStore;
@@ -10,14 +14,15 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Security;
 import java.security.Signature;
+
 import javax.crypto.Cipher;
 
 public class EncryptionHandler {
-    private static final String RSA_KEY_ALIAS = "maswe_0015_rsa_key";
+    private static final String RSA_KEY_ALIAS = "maswe_0011_rsa_key";
     private static final String KEYSTORE_PASSWORD = "Xk9$wR2!dF7pLq4Z";
     private static final String KEY_PASSWORD = "S7v!Tz8#uK2qRj5M";
     // placed in /assets/
-    private static final String KEYSTORE_FILE = "maswe_0015_keystore.bks";
+    private static final String KEYSTORE_FILE = "maswe_0011_keystore.bks";
     private static KeyStore keyStore;
 
     // Load BouncyCastle once
@@ -58,21 +63,6 @@ public class EncryptionHandler {
         return new String(plain, StandardCharsets.UTF_8);
     }
 
-    public static String sign(String message) throws Exception {
-        Signature signature = Signature.getInstance("SHA1withRSA");
-        signature.initSign(getPrivateKey());
-        signature.update(message.getBytes(StandardCharsets.UTF_8));
-        byte[] sigBytes = signature.sign();
-        return Base64.encodeToString(sigBytes, Base64.NO_WRAP);
-    }
-
-    public static boolean verify(BankCommand command) throws Exception {
-        String payload = command.command + command.amountEuros + command.timestamp + command.nonce;
-        Signature signature = Signature.getInstance("SHA1withRSA");
-        signature.initVerify(getPublicKey());
-        signature.update(payload.getBytes(StandardCharsets.UTF_8));
-        return signature.verify(Base64.decode(command.signature, Base64.NO_WRAP));
-    }
 
     private static PublicKey getPublicKey() throws Exception {
         if (keyStore == null) throw new IllegalStateException("Keystore not loaded");

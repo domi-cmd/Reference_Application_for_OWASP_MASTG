@@ -4,6 +4,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_crypto.maswe_0009.MainActivity0009;
+import com.dkronig.maswe_crypto.maswe_0011.MainActivity0011;
 import com.dkronig.maswe_crypto.maswe_0012.MainActivity0012;
 import com.dkronig.maswe_crypto.maswe_0014.MainActivity0014;
 import com.dkronig.maswe_crypto.maswe_0015.MainActivity0015;
@@ -29,6 +30,7 @@ public class CryptoMenu extends BaseActivityTemplate {
         Map<Integer, Class<? extends AppCompatActivity>> buttonMap = new HashMap<>();
 
         buttonMap.put(R.id.maswe_0009_button, MainActivity0009.class);
+        buttonMap.put(R.id.maswe_0011_button, MainActivity0011.class);
         buttonMap.put(R.id.maswe_0012_button, MainActivity0012.class);
         buttonMap.put(R.id.maswe_0014_button, MainActivity0014.class);
         buttonMap.put(R.id.maswe_0015_button, MainActivity0015.class);

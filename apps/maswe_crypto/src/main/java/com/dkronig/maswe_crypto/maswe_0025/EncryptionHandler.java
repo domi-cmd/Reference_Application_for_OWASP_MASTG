@@ -13,7 +13,7 @@ import java.security.PublicKey;
 import javax.crypto.Cipher;
 
 public class EncryptionHandler {
-    private static final String rsaKeyAlias = "maswe_0025_rsa_key";
+    private static final String rsaKeyAlias = "maswe_0026_rsa_key";
 
     public static void generateKey(Context context) throws Exception {
         KeyStore ks = KeyStore.getInstance("AndroidKeyStore");
@@ -33,7 +33,7 @@ public class EncryptionHandler {
                         KeyProperties.PURPOSE_ENCRYPT |
                         KeyProperties.PURPOSE_DECRYPT
         )
-                .setDigests(KeyProperties.DIGEST_SHA1) // or SHA-256
+                .setDigests(KeyProperties.DIGEST_SHA1)
                 .setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PKCS1)
                 .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
                 .setKeySize(2048)

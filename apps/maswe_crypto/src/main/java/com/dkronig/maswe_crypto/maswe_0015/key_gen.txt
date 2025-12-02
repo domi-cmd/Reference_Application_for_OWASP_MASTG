@@ -1,0 +1,11 @@
+keytool -genkeypair ^
+  -alias maswe_0015_rsa_key ^
+  -keyalg RSA ^
+  -keysize 2048 ^
+  -keystore keystore.bks ^
+  -storetype BKS ^
+  -provider org.bouncycastle.jce.provider.BouncyCastleProvider ^
+  -providerpath C:\bc\bcprov-jdk18on-1.83.jar ^
+  -storepass Xk9$wR2!dF7pLq4Z ^
+  -keypass S7v!Tz8#uK2qRj5M ^
+  -dname "CN=MASWE, OU=Security, O=DKronig, L=Unknown, S=Unknown, C=CH"

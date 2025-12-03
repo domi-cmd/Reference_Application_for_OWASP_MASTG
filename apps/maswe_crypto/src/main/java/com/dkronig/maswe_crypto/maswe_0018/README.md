@@ -43,6 +43,8 @@ public static void generateKey() throws Exception {
 - the key remains “authenticated” as long as the device is on-body   
   this is itself a huge vulnerability.
 2. If an attacker would steal or otherwise access the locked device, the key would be fully usable by the attacker, even if the device remains locked.
+  
+### The approach below might not work due to Android sandboxing and per-app restrictions:
 3. Any malicious app on the same device could simply run:
 ```java
 // Attacker's app (no special permissions!)

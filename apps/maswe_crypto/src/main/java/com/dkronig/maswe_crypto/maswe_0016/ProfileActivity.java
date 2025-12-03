@@ -8,7 +8,7 @@ public class ProfileActivity extends BaseActivityTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_banking);
+        setContentView(R.layout.activity_profile_template);
     }
 
     // Set name for action bar handled in BaseActivityTemplate

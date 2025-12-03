@@ -156,6 +156,21 @@
             android:name=".maswe_0017.ProfileActivity"
             android:theme="@style/Theme.maswe_crypto" />
 
+        <activity
+            android:name=".maswe_0018.MainActivity0018"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0018.LoginActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0018.RegisterActivity"
+            android:theme="@style/Theme.maswe_crypto" />
+
+        <activity
+            android:name=".maswe_0018.ProfileActivity"
+            android:theme="@style/Theme.maswe_crypto" />
 
         <activity
             android:name=".maswe_0019.MainActivity0019"

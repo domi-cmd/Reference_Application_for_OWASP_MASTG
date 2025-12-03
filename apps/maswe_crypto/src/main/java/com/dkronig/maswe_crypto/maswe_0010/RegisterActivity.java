@@ -47,7 +47,7 @@ public class RegisterActivity extends BaseRegisterActivity {
     // Define name for encrypted file where user credentials are stored
     @Override
     protected String getCredentialFileName() {
-        return "maswe_0027_user_credentials";
+        return "maswe_0010_user_credentials";
     }
 
     @Override

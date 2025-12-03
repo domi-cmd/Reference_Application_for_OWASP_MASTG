@@ -1,11 +1,9 @@
 package com.dkronig.maswe_crypto.maswe_0010;
 
-import java.security.spec.InvalidKeySpecException;
 import java.util.Base64;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
@@ -13,58 +11,62 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class EncryptionHandler {
-    private static IvParameterSpec ivSpec;
-    private static int encryptionIterations;
-    private static int keyLength;
-    private static byte[] salt;
-    private static SecretKeyFactory secretKeyFactory;
-    private static Cipher cipher;
+    private static final int ENCRYPTION_ITERATIONS = 10;
+    private static final int KEY_LENGTH = 128;
+    private static final byte[] SALT = new byte[16];
+    private static final int IV_LENGTH = 16;
+    private static SecretKey secretKey;
+    private static final String PASSWORD_FOR_KEY_DERIVATION = "password";
 
 
     public static void setupEncryption() throws Exception {
-        // Setup skf and cipher
-        secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-        cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        PBEKeySpec secretKeySpec = new PBEKeySpec(PASSWORD_FOR_KEY_DERIVATION.toCharArray(), SALT,
+                ENCRYPTION_ITERATIONS, KEY_LENGTH);
+        SecretKeyFactory secretKeyFactory = SecretKeyFactory
+                .getInstance("PBKDF2WithHmacSHA256");
+        byte[] keyBytes = secretKeyFactory.generateSecret(secretKeySpec).getEncoded();
 
-        // Specify key length, amount of iterations and salt for encryption
-        keyLength = 128;
-        salt = new byte[0];
-        encryptionIterations = 10;
-
-        // Generate initialization vector for AES with PBKDF2
-        // 16 bytes = 128 bits for AES block size
-        byte[] iv = new byte[16];
-        SecureRandom secureRandom = new SecureRandom();
-        secureRandom.nextBytes(iv);
-
-        // Store it in local variable
-        ivSpec = new IvParameterSpec(iv);
+        // Generate the secret key
+        secretKey = new SecretKeySpec(keyBytes, "AES");
     }
 
     //
     public String encryptData(String plaintext) throws Exception {
-        // Derive the key using PBKDF2 and a helper function
-        SecretKey aesKey = derivePBKDF2Key(plaintext);
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
+        // Generate random IV
+        byte[] iv = new byte[IV_LENGTH];
+        new SecureRandom().nextBytes(iv);
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
 
         // Encrypt the plaintext string
-        cipher.init(Cipher.ENCRYPT_MODE, aesKey, ivSpec);
-        byte[] plainString = "Sensitive Data".getBytes(StandardCharsets.UTF_8);
-        byte[] ciphertext = cipher.doFinal(plainString);
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParameterSpec);
+        byte[] plaintextBytes = plaintext.getBytes(StandardCharsets.UTF_8);
+        byte[] ciphertext = cipher.doFinal(plaintextBytes);
+
+        // Combine both ciphered text and iv for storage
+        byte[] combinedIvCiphertext = new byte[iv.length + ciphertext.length];
+        System.arraycopy(iv, 0, combinedIvCiphertext, 0, iv.length);
+        System.arraycopy(ciphertext, 0, combinedIvCiphertext, iv.length, ciphertext.length);
 
         // Convert ciphertext bytes to a string (Base64) and return it
-        return Base64.getEncoder().encodeToString(ciphertext);
+        return Base64.getEncoder().encodeToString(combinedIvCiphertext);
     }
 
-    //
+
     public String decryptData(String encrypted) throws Exception {
-        // Derive the key using PBKDF2 and a helper function
-        return "";
-    }
+        byte[] combined = Base64.getDecoder().decode(encrypted);
 
-    private SecretKey derivePBKDF2Key(String plaintext) throws InvalidKeySpecException {
-        char[] passwordChars = plaintext.toCharArray();
-        PBEKeySpec keySpec = new PBEKeySpec(passwordChars, salt, encryptionIterations, keyLength);
-        byte[] keyBytes = secretKeyFactory.generateSecret(keySpec).getEncoded();
-        return new SecretKeySpec(keyBytes, "AES");
+        // Extract IV
+        byte[] iv = new byte[IV_LENGTH];
+        byte[] encryptedBytes = new byte[combined.length - IV_LENGTH];
+        System.arraycopy(combined, 0, iv, 0, IV_LENGTH);
+        System.arraycopy(combined, IV_LENGTH, encryptedBytes, 0, encryptedBytes.length);
+
+        // Decrypt ciphertext
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(iv));
+        byte[] decrypted = cipher.doFinal(encryptedBytes);
+        return new String(decrypted, "UTF-8");
     }
 }

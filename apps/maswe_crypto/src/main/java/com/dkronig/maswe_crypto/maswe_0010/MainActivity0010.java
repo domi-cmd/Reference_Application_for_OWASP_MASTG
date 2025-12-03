@@ -15,12 +15,12 @@ public class MainActivity0010 extends BaseActivityTemplate {
         setContentView(R.layout.activity_main_template);
 
         // Generate secret key used for encryption and decryption in login and register activity
-        /**
+
         try {
-            EncryptionHandler.generateAESKey();
+            EncryptionHandler.setupEncryption();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }**/
+        }
 
         // Map UI buttons, handled in BaseActivityTemplate
         bindButtons(Map.of(

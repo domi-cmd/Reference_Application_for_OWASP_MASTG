@@ -3,16 +3,11 @@ package com.dkronig.maswe_crypto.maswe_0018;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.util.Base64;
-
-import com.dkronig.maswe_crypto.maswe_0026.BankCommand;
-
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.Signature;
-
 import javax.crypto.Cipher;
 
 public class EncryptionHandler {

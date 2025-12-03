@@ -143,6 +143,7 @@ public class EncryptionHandler {
                 MediaStore.Files.getContentUri("external"), values);
 
         OutputStream os = encryptionContext.getContentResolver().openOutputStream(uri);
+        // Export the public key without wrapping it in another key, nor signing it
         os.write(keyBytes);
         os.close();
 

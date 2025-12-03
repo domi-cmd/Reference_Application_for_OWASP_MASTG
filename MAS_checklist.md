@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 22 / 115
+# Vulnerabilities Implemented: 23 / 115
 
 # Checklist
 
@@ -20,7 +20,7 @@
 |  | [0014](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0014/) | Cryptographic Keys Not Properly Protected at Rest |✅| Beta |
 |  | [0015](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0015/) | Deprecated Android KeyStore Implementations |✅| Placeholder |
 |  | [0016](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0016/) | Unsafe Handling of Imported Cryptographic Keys |✅| Placeholder |
-|  | [0017](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0017/) | Cryptographic Keys Not Properly Protected on Export |❌| Placeholder |
+|  | [0017](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0017/) | Cryptographic Keys Not Properly Protected on Export |✅| Placeholder |
 |  | [0018](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0018/) | Cryptographic Keys Access Not Restricted |❌| Placeholder |
 |  | [0019](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0019/) | Risky Cryptography Implementations |✅| Normal |
 |  | [0020](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0020/) | Improper Encryption |✅| Beta |

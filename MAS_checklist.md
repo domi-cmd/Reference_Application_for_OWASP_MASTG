@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 23 / 115
+# Vulnerabilities Implemented: 24 / 115
 
 # Checklist
 
@@ -13,7 +13,7 @@
 |  | [0007](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0007/) | Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |✅| Beta |
 | CRYPTO |  |  |  |  |
 |  | [0009](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0009/) | Improper Cryptographic Key Generation |✅| Beta |
-|  | [0010](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0010/) | Improper Cryptographic Key Derivation |🛠️| Placeholder |
+|  | [0010](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0010/) | Improper Cryptographic Key Derivation |✅| Placeholder |
 |  | [0011](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0011/) | Cryptographic Key Rotation Not Implemented |✅| Placeholder |
 |  | [0012](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0012/) | Insecure or Wrong Usage of Cryptographic Key |✅| Placeholder |
 |  | [0013](https://mas.owasp.org/MASWE/MASVS-CRYPTO/MASWE-0013/) | Hardcoded Cryptographic Keys in Use |🚫| DEPRECATED |

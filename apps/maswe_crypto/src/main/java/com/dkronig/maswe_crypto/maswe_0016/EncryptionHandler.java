@@ -9,13 +9,11 @@ import android.provider.MediaStore;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.util.Base64;
-import android.util.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.KeyFactory;
-import java.security.KeyPair;
 import java.security.spec.X509EncodedKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPairGenerator;
@@ -23,28 +21,27 @@ import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import android.content.Context;
-
 import javax.crypto.Cipher;
 
 public class EncryptionHandler {
-    private static final String PRIVATE_KEY_ALIAS = "maswe_0026_rsa_key";
-    private static final String PUBLIC_KEY_FILENAME = "public_key.der";
+    private static final String PRIVATE_KEY_ALIAS = "maswe_0016_rsa_key";
+    private static final String PUBLIC_KEY_FILENAME = "maswe_0016_public_key.der";
     private static Context encryptionContext;
-    private static final String TAG = "MASWE0016";
 
     public static void generateKey(Context context) throws Exception {
         // Set the context
         encryptionContext = context;
 
-        KeyStore ks = KeyStore.getInstance("AndroidKeyStore");
-        ks.load(null);
+        KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
+        keyStore.load(null);
 
         // Key already exists, do nothing
-        if (ks.containsAlias(PRIVATE_KEY_ALIAS)) {
+        if (keyStore.containsAlias(PRIVATE_KEY_ALIAS)) {
             return;
         }
 
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, "AndroidKeyStore");
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator
+                .getInstance(KeyProperties.KEY_ALGORITHM_RSA, "AndroidKeyStore");
 
         KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
                 PRIVATE_KEY_ALIAS,
@@ -75,20 +72,18 @@ public class EncryptionHandler {
     }
 
     private PublicKey getImportedOrCreatePublicKey() throws Exception {
-        // Now set up the imported public key
-        Uri existing = getPublicKeyFromMediaStore();
+        // Check if there is a public key already stored in shared (untrusted) storage
+        Uri existing = getPublicKeyUri();
         if (existing != null) {
-            //Log.d(TAG, "Found public_key.der in MediaStore, importing it");
             // If a key is found in mediastore, it is imported and used without any security checks
             return importKey(existing);
         }
 
-        //Log.d(TAG, "No key found → generating new one and storing in MediaStore (UNSAFE EXPORT)");
         // If no key is found, a new one is generated and exported to untrusted storage
         return generateAndStorePublicKey();
     }
 
-    private static Uri getPublicKeyFromMediaStore(){
+    private static Uri getPublicKeyUri(){
         Uri collection = MediaStore.Files.getContentUri("external");
 
         String selection = MediaStore.Files.FileColumns.DISPLAY_NAME + "=?";
@@ -99,14 +94,12 @@ public class EncryptionHandler {
                 new String[]{MediaStore.Files.FileColumns._ID},
                 selection,
                 args,
-                null
-        );
+                null);
 
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 long id = cursor.getLong(
-                        cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns._ID)
-                );
+                        cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns._ID));
                 cursor.close();
                 return ContentUris.withAppendedId(collection, id);
             }
@@ -147,8 +140,7 @@ public class EncryptionHandler {
         values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOCUMENTS);
 
         Uri uri = encryptionContext.getContentResolver().insert(
-                MediaStore.Files.getContentUri("external"), values
-        );
+                MediaStore.Files.getContentUri("external"), values);
 
         OutputStream os = encryptionContext.getContentResolver().openOutputStream(uri);
         os.write(keyBytes);

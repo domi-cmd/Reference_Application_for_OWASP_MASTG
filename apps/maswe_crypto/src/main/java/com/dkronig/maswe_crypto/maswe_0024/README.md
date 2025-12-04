@@ -14,7 +14,7 @@ public static long crc32(String data) {
       return crc.getValue();            
 }
 ```
-2. Using said checksum for verifying integrity of sensitive banking information here:
+2. Using said checksum for signing integrity of sensitive banking information here:
 ```java
 // Use crc32 as a checksum
 String payload = bankCommand.command + bankCommand.amountEuros

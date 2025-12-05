@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 25 / 115
+# Vulnerabilities Implemented: 26 / 115
 
 # Checklist
 
@@ -62,7 +62,7 @@
 | PLATFORM |  |  |  |  |
 |  | [0053](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0053/) | Sensitive Data Leaked via the User Interface |❌| Placeholder |
 |  | [0054](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0054/) | Sensitive Data Leaked via Notifications |❌| Placeholder |
-|  | [0055](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0055/) | Sensitive Data Leaked via Screenshots |❌| Placeholder |
+|  | [0055](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0055/) | Sensitive Data Leaked via Screenshots |✅| Placeholder |
 |  | [0056](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0056/) | Tapjacking Attacks |❌| Placeholder |
 |  | [0057](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0057/) | StrandHogg Attack / Task Affinity Vulnerability |❌| Placeholder |
 |  | [0058](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0058/) | Insecure Deep Links |❌| Placeholder |

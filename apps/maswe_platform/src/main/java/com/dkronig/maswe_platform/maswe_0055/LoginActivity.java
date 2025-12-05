@@ -2,6 +2,8 @@ package com.dkronig.maswe_platform.maswe_0055;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.WindowManager;
+
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_platform.R;
 
@@ -12,6 +14,12 @@ public class LoginActivity extends BaseLoginActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /**
+         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+         WindowManager.LayoutParams.FLAG_SECURE);
+         **/
+        // Clear any flags set that would prevent screenshots
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
 
         try {
             encryptionHandler = new EncryptionHandler();
@@ -22,7 +30,7 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_login_template;
+        return R.layout.activity_login_maswe0055;
     }
 
     @Override

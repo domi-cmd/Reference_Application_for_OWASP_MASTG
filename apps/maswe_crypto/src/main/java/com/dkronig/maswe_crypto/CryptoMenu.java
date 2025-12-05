@@ -53,7 +53,6 @@ public class CryptoMenu extends BaseActivityTemplate {
         buttonMap.put(R.id.maswe_0027_button, MainActivity0027.class);
 
         bindButtons(buttonMap);
-
     }
 
     // Set name for action bar handled in BaseActivityTemplate

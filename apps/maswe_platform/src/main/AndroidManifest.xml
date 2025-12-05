@@ -11,6 +11,22 @@
         android:theme="@style/Theme.maswe_platform"
         tools:targetApi="31">
 
+        <activity
+            android:name="com.dkronig.maswe_platform.maswe_0055.MainActivity0055"
+            android:theme="@style/Theme.maswe_platform" />
+
+        <activity
+            android:name="com.dkronig.maswe_platform.maswe_0055.LoginActivity"
+            android:theme="@style/Theme.maswe_platform"/>
+
+        <activity
+            android:name="com.dkronig.maswe_platform.maswe_0055.RegisterActivity"
+            android:theme="@style/Theme.maswe_platform" />
+
+        <activity
+            android:name="com.dkronig.maswe_platform.maswe_0055.ProfileActivity"
+            android:theme="@style/Theme.maswe_platform"/>
+
         <provider
             android:name="com.dkronig.maswe_platform.maswe_0064.CustomContentProvider"
             android:authorities="com.dkronig.maswe_platform.CustomContentProvider"

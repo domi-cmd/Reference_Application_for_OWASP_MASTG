@@ -1,0 +1,16 @@
+TOOL FÜR FRIDA EINFACH LAUFEN LASSEN:
+- https://gitlab.com/newbit/rootAVD
+
+
+BEZGÜLICH BA OVERLEAF:
+- Schauen wegen Whitespace bei Bibliography, momentan kein Space delimiter darum so viel Whitespace
+- Überprüfen, dass die bibtex exports stimmen, also dass sie alle Variablen beinhalten, und die Angaben auch stimmen!
+
+
+NEUE KATEGORIE:
+- Kann gerne mit Platform anfangen, wenn mich das interessiert :)
+
+
+MASWE_0026:
+- Anstatt true zurückzugeben, entweder etwas falsch berechnen, dass immer true zurückgibt, oder nur Teil der Verificytion (zb nur Nonce oder so) machen, 
+  oder etwas, dass konstant ist und deshalb exploited werden kann.

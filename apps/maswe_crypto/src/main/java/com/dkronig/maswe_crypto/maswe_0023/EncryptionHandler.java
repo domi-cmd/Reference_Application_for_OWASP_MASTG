@@ -15,7 +15,6 @@ public class EncryptionHandler {
     private static final String TAG = "EncryptionHandler";
     private static SharedPreferences sharedPreferences;
 
-
     public static void generateAESKey(Context context) throws Exception {
         // Check if there is a key already generated
         sharedPreferences = context.getApplicationContext()
@@ -61,7 +60,7 @@ public class EncryptionHandler {
     public String decryptData(String encrypted) throws Exception {
         byte[] encryptedBytes = Base64.decode(encrypted, Base64.DEFAULT);
 
-        // Check for length of the encrypted bytes. They should be padded to a length of atleast 16.
+        // Check for length of the encrypted bytes. They should be padded to a length of at least 16.
         if (encryptedBytes.length < 16) {
             Log.e(TAG, "Invalid ciphertext format or length");
             return null;
@@ -105,6 +104,7 @@ public class EncryptionHandler {
         return new String(plaintext, StandardCharsets.UTF_8);
     }
 
+    // Helper function that retrieves the secret key from its shared preferences file and returns it
     private SecretKey getKey(){
         // Get the key from shared preferences
         String encodedKey = sharedPreferences.getString("encryption_key", null);

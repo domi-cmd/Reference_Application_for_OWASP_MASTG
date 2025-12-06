@@ -1,10 +1,7 @@
 package com.dkronig.maswe_crypto.maswe_0022;
 
 import android.util.Base64;
-
 import java.nio.charset.StandardCharsets;
-import java.util.Random;
-
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -13,7 +10,6 @@ import javax.crypto.spec.IvParameterSpec;
 public class EncryptionHandler {
     private static SecretKey secretKey;
     private static byte[] iv = {47, -98, 3, 120, 14, -55, 89, 6, -12, 33, 9, -44, 63, -1, 77, 22};
-
 
     public static void generateAESKey() throws Exception {
         // Generate AES key

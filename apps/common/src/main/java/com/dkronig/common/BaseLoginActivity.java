@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKey;
 import org.json.JSONObject;
+import java.io.File;
 
 /**
  * Abstract template for Login-like activities.
@@ -72,8 +73,12 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
             // Get user password from database
             storedPassword = retrieveUserData(email, password);
 
-            // Assert it being not null
-            assert storedPassword != null;
+            // If storedPassword is Null, that means there is no corresponding data for the entered
+            // credentials, leading to a failed login
+            if(storedPassword == null){
+                onLoginFailure(email);
+                return;
+            }
 
             // Check if the stored password matches the users input
             if (verifyLogin(password, storedPassword)) {
@@ -88,12 +93,24 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
     }
 
     private String retrieveUserData(String email, String password) throws Exception {
+        // First, check if the shared preferences file exists yet. Else, no user has been registered
+        // yet, which makes trying to log in obsolete.
+        File sharedPreferencesFile = new File(getApplicationContext().getFilesDir().getParent()
+        + "/shared_prefs/" + PREFS_FILE + ".xml");
+        // If the file doesn't exist yet, return null, similar to if the user credentials would be
+        // wrong
+        if(!sharedPreferencesFile.exists()){
+            return null;
+        }
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
 
         String json = sharedPreferences.getString(USERS_KEY, "{}");
         JSONObject users = new JSONObject(json);
 
-        if (!users.has(email)) return null; // user not found
+        // In case user has not been found, return null
+        if(!users.has(email)) {
+            return null;
+        }
 
         JSONObject userObj = users.getJSONObject(email);
         String storedPassword = userObj.getString("password");

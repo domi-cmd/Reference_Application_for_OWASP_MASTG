@@ -14,7 +14,7 @@ public class MainActivity0027 extends BaseActivityTemplate {
 
         // Generate secret key used for encryption and decryption in login and register activity
         try {
-            EncryptionHandler.generateAESKey();
+            EncryptionHandler.generateAESKey(this);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

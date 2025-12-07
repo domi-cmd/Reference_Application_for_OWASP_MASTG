@@ -36,6 +36,8 @@ public class EncryptionHandler {
 
         // Store the key to sharedPreferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        // Make sure no duplicate or multiple keys are stored
+        editor.clear();
         editor.putString("encryption_key", encodedKey);
         editor.apply();
     }

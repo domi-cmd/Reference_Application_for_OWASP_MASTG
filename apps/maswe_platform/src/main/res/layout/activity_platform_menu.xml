@@ -27,14 +27,24 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/maswe_0055_button"
+            android:id="@+id/maswe_0053_button"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:text="maswe_0055"
+            android:text="maswe_0053"
             app:layout_constraintTop_toBottomOf="@+id/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="55dp" />
+
+        <Button
+            android:id="@+id/maswe_0055_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0055"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0053_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
         <Button
             android:id="@+id/maswe_0064_button"

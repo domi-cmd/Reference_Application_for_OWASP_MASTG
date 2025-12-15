@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 26 / 115
+# Vulnerabilities Implemented: 27 / 115
 
 # Checklist
 
@@ -60,7 +60,7 @@
 |  | [0051](https://mas.owasp.org/MASWE/MASVS-NETWORK/MASWE-0051/) | Unprotected Open Ports |❌| Beta |
 |  | [0052](https://mas.owasp.org/MASWE/MASVS-NETWORK/MASWE-0052/) | Insecure Certificate Validation |❌| Beta |
 | PLATFORM |  |  |  |  |
-|  | [0053](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0053/) | Sensitive Data Leaked via the User Interface |❌| Placeholder |
+|  | [0053](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0053/) | Sensitive Data Leaked via the User Interface |✅| Placeholder |
 |  | [0054](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0054/) | Sensitive Data Leaked via Notifications |❌| Placeholder |
 |  | [0055](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0055/) | Sensitive Data Leaked via Screenshots |✅| Placeholder |
 |  | [0056](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0056/) | Tapjacking Attacks |❌| Placeholder |

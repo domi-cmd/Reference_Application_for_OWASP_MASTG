@@ -1,4 +1,4 @@
-# Vulnerabilities Implemented: 27 / 115
+# Vulnerabilities Implemented: 28 / 115
 
 # Checklist
 
@@ -74,7 +74,7 @@
 |  | [0064](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0064/) | Insecure Content Providers |✅| Placeholder |
 |  | [0065](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0065/) | Sensitive Data Permanently Shared with Other Apps |❌| Placeholder |
 |  | [0066](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0066/) | Insecure Intents |❌| Placeholder |
-|  | [0067](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0067/) | Debuggable Flag Not Disabled |❌| Beta |
+|  | [0067](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0067/) | Debuggable Flag Not Disabled |✅| Beta |
 |  | [0068](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0068/) | JavaScript Bridges in WebViews |❌| Placeholder |
 |  | [0069](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0069/) | WebViews Allows Access to Local Resources |❌| Placeholder |
 |  | [0070](https://mas.owasp.org/MASWE/MASVS-PLATFORM/MASWE-0070/) | JavaScript Loaded from Untrusted Sources |❌| Placeholder |

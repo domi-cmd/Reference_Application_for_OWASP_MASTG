@@ -56,5 +56,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="20dp" />
 
+        <Button
+            android:id="@+id/maswe_0067_button"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:text="maswe_0067"
+            app:layout_constraintTop_toBottomOf="@+id/maswe_0064_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
+
     </LinearLayout>
 </ScrollView>

@@ -6,18 +6,18 @@
 
 ---
 
-## 🎓 Bachelor Thesis  
+## Bachelor Thesis  
 **Title:** Development of a Reference Application for the OWASP Mobile Application Security Testing Guide (MASTG)  
 
 **Author:** Dominic Kronig 
 
-**Institution:** University of Bern, Software Engineering Group 
+**Institution:** University of Bern, Software Engineering Group (SEG)
 
 **Year:** 2025  
 
 ---
 
-## 📖 Overview
+## Overview
 The **OWASP Mobile Application Security Testing Guide (MASTG)** is an industry-standard manual for assessing the security of mobile applications.  
 Despite its wide adoption, there is **no unified reference app** that demonstrates its test cases in a practical, hands-on way.  
 
@@ -31,7 +31,7 @@ This project addresses that gap by providing a **reference Android application**
 
 ---
 
-## 🎯 Goals
+## Goals
 - Serve as a **practical companion** to the MASTG  
 - Provide a **safe environment** for mobile penetration testing practice  
 - Support **academic teaching** and **industry training**  
@@ -39,7 +39,7 @@ This project addresses that gap by providing a **reference Android application**
 
 ---
 
-## 📂 Deliverables
+## Deliverables
 - **Open-source Android app(s)** with representative vulnerabilities  
 - **Thesis documentation** including:  
   - State of the art in Android vulnerability detection  
@@ -50,7 +50,7 @@ This project addresses that gap by providing a **reference Android application**
   
 ---
 
-## ⚠️ Disclaimer
+## Disclaimer
 This application is **intentionally insecure** and must **not** be used in production.  
 It is designed **only for research, teaching, and security testing purposes** in controlled environments.  
 

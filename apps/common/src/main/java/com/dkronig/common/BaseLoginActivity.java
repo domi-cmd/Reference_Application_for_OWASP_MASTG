@@ -71,7 +71,7 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
 
         try {
             // Get user password from database
-            storedPassword = retrieveUserData(email, password);
+            storedPassword = retrieveUserData(email);
 
             // If storedPassword is Null, that means there is no corresponding data for the entered
             // credentials, leading to a failed login
@@ -92,7 +92,7 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
         }
     }
 
-    private String retrieveUserData(String email, String password) throws Exception {
+    private String retrieveUserData(String email) throws Exception {
         // First, check if the shared preferences file exists yet. Else, no user has been registered
         // yet, which makes trying to log in obsolete.
         File sharedPreferencesFile = new File(getApplicationContext().getFilesDir().getParent()

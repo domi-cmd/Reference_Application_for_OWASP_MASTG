@@ -24,12 +24,23 @@ import com.dkronig.maswe_crypto.maswe_0027.MainActivity0027;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Main menu activity for MASWE crypto vulnerability cases.
+ * Provides navigation to individual crypto vulnerability activities.
+ */
 public class CryptoMenu extends BaseActivityTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_menu);
 
+        initializeButtons();
+    }
+
+    /**
+     * Initializes and binds navigation buttons to their respective activities.
+     */
+    private void initializeButtons(){
         // Map UI buttons, handled in BaseActivityTemplate
         Map<Integer, Class<? extends AppCompatActivity>> buttonMap = new HashMap<>();
 

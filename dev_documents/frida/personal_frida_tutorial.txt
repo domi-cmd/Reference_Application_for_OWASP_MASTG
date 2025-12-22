@@ -1,0 +1,111 @@
+C:\Users\Domi>adb devices
+List of devices attached
+emulator-5554   device
+
+
+--- Rooting the avd connected to adb ---
+C:\Users\Domi>adb root
+restarting adbd as root
+
+--- Check whether rooting worked by running the following. ---
+C:\Users\Domi>adb shell id
+uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:su:s0
+
+
+--- Check frida client version ---
+C:\Users\Domi>frida --version
+17.5.1
+
+C:\Users\Domi>frida-ps --version
+17.5.1
+
+
+--- Download matching frida server (system image of my avd is x86_64): ---
+frida-server-17.5.1-android-x86_64.xz
+
+--- Extract it (with 7zip just rightclick + extract): ---
+xz -d frida-server-17.5.1-android-x86_64.xz
+
+
+--- Make sure avd is rooted ---
+adb root
+
+--- Push frida server onto avd ---
+C:\Users\Domi\Documents\Bachelor_Comp_Sci\Bachelorarbeit\Damn_Vulnerable_OWASP_MASTG_Reference_App\dev_documents\frida>adb push frida-server-17.5.1-android-x86_64 /data/local/tmp/frida-server
+frida-server-17.5.1-android-x86_64: 1 file pushed, 0 skipped. 48.0 MB/s (110713240 bytes in 2.202s)
+
+
+--- Make frida server file executable on avd ---
+C:\Users\Domi\Documents\Bachelor_Comp_Sci\Bachelorarbeit\Damn_Vulnerable_OWASP_MASTG_Reference_App\dev_documents\frida>adb shell chmod 755 /data/local/tmp/frida-server
+
+
+C:\Users\Domi\Documents\Bachelor_Comp_Sci\Bachelorarbeit\Damn_Vulnerable_OWASP_MASTG_Reference_App\dev_documents\frida>adb shell
+emu64xa:/ # su
+emu64xa:/ # /data/local/tmp/frida-server &
+[1] 17096
+
+--- Check if server is running ---
+C:\Users\Domi>frida-ps -U
+  PID  Name
+-----  -------------------------------------------------------------------------------------------------
+ 3555  Camera
+ 3017  Chrome
+ 2864  Clock
+....... more
+
+
+--- To kill server just run ---
+adb shell pkill frida-server
+
+
+--- Stop app from running, as to spawn it with frida ---
+
+C:\Users\Domi>adb shell ps | findstr maswe_platform
+u0_a227      17273   488   16123956 130308 do_freezer_trap     0 S com.dkronig.maswe_platform
+
+C:\Users\Domi>adb shell am force-stop com.dkronig.maswe_platform
+
+--- Check if app is still running. Nothing should show up here ---
+C:\Users\Domi>adb shell ps | findstr maswe_platform
+
+
+--- Spawn the app using the frida server, then use the avd to interact with the shared prefs ---
+C:\Users\Domi\Documents\Bachelor_Comp_Sci\Bachelorarbeit\Damn_Vulnerable_OWASP_MASTG_Reference_App\dev_documents\frida>frida -U -f com.dkronig.maswe_platform -l prefs.js
+     ____
+    / _  |   Frida 17.5.1 - A world-class dynamic instrumentation toolkit
+   | (_| |
+    > _  |   Commands:
+   /_/ |_|       help      -> Displays the help system
+   . . . .       object?   -> Display information about 'object'
+   . . . .       exit/quit -> Exit
+   . . . .
+   . . . .   More info at https://frida.re/docs/home/
+   . . . .
+   . . . .   Connected to Android Emulator 5554 (id=emulator-5554)
+Spawned `com.dkronig.maswe_platform`. Resuming main thread!
+[Android Emulator 5554::com.dkronig.maswe_platform ]->
+[Android Emulator 5554::com.dkronig.maswe_platform ]-> [*] SharedPreferences hook loaded
+[SP FILE OPENED] name = maswe_0053_user_credentials  mode = 0
+[SP DUMP]
+[!] Failed dumping prefs: TypeError: not a function
+[SP READ] getString: users_json = {"qwertz":{"password":"doVMBwPTG2ISsgy06P\/eJpfWXKT5dOJIO9jYl8FzWhGfmA=="}}
+[SP WRITE] putString: users_json = {"qwertz":{"password":"doVMBwPTG2ISsgy06P\/eJpfWXKT5dOJIO9jYl8FzWhGfmA=="},"my_email":{"password":"5oGMTfew0ZRea91rAR4SCKEhTeGCJlKrbbuLwA0lz4ulW4+oWqmd"}}
+[SP WRITE] apply()
+
+--- To exit spawned app enter exit: ---
+[Android Emulator 5554::com.dkronig.maswe_platform ]-> exit
+
+Thank you for using Frida!
+
+--- Stop app from running ---
+adb shell am force-stop com.dkronig.maswe_platform
+
+--- Verify again that app is no longer running (this should return nothing) ---
+C:\Users\Domi\Documents\Bachelor_Comp_Sci\Bachelorarbeit\Damn_Vulnerable_OWASP_MASTG_Reference_App\dev_documents\frida>adb shell ps | findstr maswe_platform
+
+
+--- Kill frida server and check that it's no longer running (this should return nothing in that case) ---
+C:\Users\Domi\Documents\Bachelor_Comp_Sci\Bachelorarbeit\Damn_Vulnerable_OWASP_MASTG_Reference_App\dev_documents\frida>adb shell pkill frida-server
+
+C:\Users\Domi\Documents\Bachelor_Comp_Sci\Bachelorarbeit\Damn_Vulnerable_OWASP_MASTG_Reference_App\dev_documents\frida>adb shell ps | findstr frida
+

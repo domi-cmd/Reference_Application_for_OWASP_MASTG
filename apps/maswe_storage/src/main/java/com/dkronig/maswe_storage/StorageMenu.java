@@ -1,15 +1,12 @@
 package com.dkronig.maswe_storage;
 
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.maswe_0001.MainActivity0001;
 import com.dkronig.maswe_storage.maswe_0002.MainActivity0002;
 import com.dkronig.maswe_storage.maswe_0006.MainActivity0006;
 import com.dkronig.maswe_storage.maswe_0007.MainActivity0007;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dkronig.maswe_storage">
 
-    <!-- Allow all data to be backup up, including sensitive data. -->
     <application
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,6 +13,7 @@
         android:theme="@style/Theme.maswe_storage"
         tools:targetApi="31">
 
+        <!-- Main Launcher Activity -->
         <activity
             android:name="com.dkronig.maswe_storage.StorageMenu"
             android:theme="@style/Theme.maswe_storage"
@@ -23,6 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MASWE-0001 -->
+        <activity
+            android:name="com.dkronig.maswe_storage.maswe_0001.MainActivity0001"
+            android:theme="@style/Theme.maswe_storage" />
 
         <activity
             android:name="com.dkronig.maswe_storage.maswe_0001.LoginActivity"
@@ -36,16 +41,15 @@
             android:name="com.dkronig.maswe_storage.maswe_0001.ProfileActivity"
             android:theme="@style/Theme.maswe_storage"/>
 
-        <activity
-            android:name="com.dkronig.maswe_storage.maswe_0001.MainActivity0001"
-            android:theme="@style/Theme.maswe_storage" />
-
+        <!-- MASWE-0002 -->
         <activity
             android:name="com.dkronig.maswe_storage.maswe_0002.MainActivity0002"
             android:theme="@style/Theme.maswe_storage" />
 
-        <!-- Misconfigured custom file provider, that grands URI permissions without
-         checking the permissions required. -->
+        <!--
+            Misconfigured custom file provider for MASWE-0002, that grands URI permissions
+            without checking the permissions required.
+        -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.dkronig.maswe_storage.CustomFileProvider"
@@ -69,6 +73,7 @@
             android:name="com.dkronig.maswe_storage.maswe_0002.ProfileActivity"
             android:theme="@style/Theme.maswe_storage"/>
 
+        <!-- MASWE-0006 -->
         <activity
             android:name="com.dkronig.maswe_storage.maswe_0006.MainActivity0006"
             android:theme="@style/Theme.maswe_storage" />
@@ -85,6 +90,7 @@
             android:name="com.dkronig.maswe_storage.maswe_0006.ProfileActivity"
             android:theme="@style/Theme.maswe_storage"/>
 
+        <!-- MASWE-0007 -->
         <activity
             android:name="com.dkronig.maswe_storage.maswe_0007.MainActivity0007"
             android:theme="@style/Theme.maswe_storage" />

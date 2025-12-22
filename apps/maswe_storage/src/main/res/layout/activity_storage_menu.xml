@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,60 +10,52 @@
         android:id="@+id/button_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
-        android:padding="20dp">
+        android:orientation="vertical"
+        android:padding="@dimen/regular_top_spacing">
 
+        <!-- Title -->
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chose Vulnerability Category"
-            android:textSize="24sp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="55dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="@dimen/large_spacing_below_title"
+            android:text="@string/menu_choose_vulnerability"
+            android:textSize="@dimen/text_size_title"
+            tools:text="Choose Vulnerability Category"/>
 
+        <!-- MASWE-0001 Button -->
         <Button
             android:id="@+id/maswe_0001_button"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:text="maswe_0001"
-            app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="55dp" />
+            android:layout_marginTop="55dp"
+            android:text="@string/maswe_0001" />
 
+        <!-- MASWE-0002 Button -->
         <Button
             android:id="@+id/maswe_0002_button"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:text="maswe_0002"
-            app:layout_constraintTop_toBottomOf="@+id/maswe_0001_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="@dimen/regular_top_spacing"
+            android:text="@string/maswe_0002" />
 
+        <!-- MASWE-0006 Button -->
         <Button
             android:id="@+id/maswe_0006_button"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:text="maswe_0006"
-            app:layout_constraintTop_toBottomOf="@+id/maswe_0002_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="@dimen/regular_top_spacing"
+            android:text="@string/maswe_0006" />
 
+        <!-- MASWE-0007 Button -->
         <Button
             android:id="@+id/maswe_0007_button"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:text="maswe_0007"
-            app:layout_constraintTop_toBottomOf="@+id/maswe_0006_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="@dimen/regular_top_spacing"
+            android:text="@string/maswe_0007" />
 
     </LinearLayout>
+
 </ScrollView>

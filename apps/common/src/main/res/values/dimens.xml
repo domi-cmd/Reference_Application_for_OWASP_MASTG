@@ -2,4 +2,7 @@
 <resources>
     <dimen name="action_buttons">300dp</dimen>
     <dimen name="maswe_button_width">400dp</dimen>
+    <dimen name="regular_top_spacing">20dp</dimen>
+    <dimen name="large_spacing_below_title">55dp</dimen>
+    <dimen name="text_size_title">24sp</dimen>
 </resources>

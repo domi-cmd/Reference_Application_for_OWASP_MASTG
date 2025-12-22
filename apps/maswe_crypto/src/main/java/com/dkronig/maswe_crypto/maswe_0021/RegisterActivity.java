@@ -50,7 +50,7 @@ public class RegisterActivity extends BaseRegisterActivity {
     }
 
     @Override
-    protected String encrypt(String plaintext){
+    protected String encryptPassword(String plaintext){
         try {
             // Encrypt (hash) user data
             return encryptionHandler.hashData(plaintext);

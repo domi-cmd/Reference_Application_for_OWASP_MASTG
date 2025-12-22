@@ -52,7 +52,7 @@ public class LoginActivity extends BaseLoginActivity {
     }
 
     @Override
-    protected boolean verifyLogin(String inputPassword, String storedPassword){
+    protected boolean verifyPassword(String inputPassword, String storedPassword){
         // Hash the entered password to compare it to stored hash
         String hashedInputPassword;
         try {

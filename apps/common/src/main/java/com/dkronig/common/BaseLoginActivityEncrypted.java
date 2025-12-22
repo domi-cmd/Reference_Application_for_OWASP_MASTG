@@ -12,7 +12,8 @@ import org.json.JSONObject;
 
 /**
  * Abstract template for Login-like activities.
- * Handles:
+ *
+ * Features:
  *  - Wiring email/password EditTexts and login button
  *  - Basic input validation
  *  - SharedPreferences check for stored credentials

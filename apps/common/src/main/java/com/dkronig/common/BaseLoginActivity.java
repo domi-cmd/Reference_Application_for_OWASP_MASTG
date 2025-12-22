@@ -5,48 +5,63 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
-import androidx.security.crypto.EncryptedSharedPreferences;
-import androidx.security.crypto.MasterKey;
+
 import org.json.JSONObject;
+import org.json.JSONException;
+
 import java.io.File;
 
 /**
- * Abstract template for Login-like activities.
- * Handles:
+ * Abstract template for all Login activities which do not require extra encryption.
+ *
+ * Features:
  *  - Wiring email/password EditTexts and login button
  *  - Basic input validation
- *  - SharedPreferences check for stored credentials
+ *  - SharedPreferences credential storage and retrieval
+ *  - Optional password encryption/decryption hooks
+ *  - Customizable login success/failure behavior
+ *
+ * Subclasses must implement abstract methods to provide:
+ *  - Layout resource ID
+ *  - View resource IDs for email, password, and login button
+ *  - Login success behavior
  */
 public abstract class BaseLoginActivity extends BaseActivityTemplate {
-
-    protected EditText et_email, et_password;
-    protected Button login_button;
-    private static String PREFS_FILE;
     private static final String USERS_KEY = "users_json";
+    private static final String DEFAULT_CREDENTIALS_FILE = "secure_users_credentials";
+    private static final String SHARED_PREFERENCES_PATH = "/shared_prefs/";
+    private static final String XML_EXTENSION = ".xml";
+
+    protected EditText et_email;
+    protected EditText et_password;
+    protected Button login_button;
+
+    private String credentials_file;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        PREFS_FILE = getCredentialFileName();
-
-        // Child class must set its layout before calling initLoginForm
+        credentials_file = getCredentialFileName();
         setContentView(getLayoutId());
-
-        // Initialize login form
         initLoginForm();
     }
 
-    // Optionally allow for name setting of credentials file
+    /**
+     * Returns the SharedPreferences file in which the user credentials are to be stored.
+     * Hook method that can be overridden to provide custom filename.
+     *
+     * @return The preferences file name (default: "secure_users_credentials")
+     */
     protected String getCredentialFileName() {
-        // Default: class name
-        return "secure_users_credentials";
+        return DEFAULT_CREDENTIALS_FILE;
     }
 
     /**
-     * Initialize UI elements and wire login button
+     * Initializes the UI elements and sets the login button click listener.
      */
     protected void initLoginForm() {
         et_email = findViewById(getEmailFieldId());
@@ -54,60 +69,70 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
         login_button = findViewById(getLoginButtonId());
 
         if (login_button != null) {
-            login_button.setOnClickListener(v -> loginUser());
+            login_button.setOnClickListener(v -> handleLogin());
         }
     }
 
-    protected void loginUser() {
+    /**
+     * Handles the login process: validates input, retrieves stored credentials,
+     * and verifies the password.
+     */
+    protected void handleLogin() {
         String email = et_email.getText().toString().trim();
         String password = et_password.getText().toString().trim();
-
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show();
+        if (!validateInput(email, password)){
             return;
         }
 
-        String storedPassword;
-
         try {
-            // Get user password from database
-            storedPassword = retrieveUserData(email);
+            String storedPassword = retrieveUserPassword(email);
 
-            // If storedPassword is Null, that means there is no corresponding data for the entered
-            // credentials, leading to a failed login
             if(storedPassword == null){
                 onLoginFailure(email);
                 return;
             }
 
-            // Check if the stored password matches the users input
-            if (verifyLogin(password, storedPassword)) {
+            if (verifyPassword(password, storedPassword)) {
                 onLoginSuccess(email);
             } else {
                 onLoginFailure(email);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Login error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            handleLoginError(e);
         }
     }
 
-    private String retrieveUserData(String email) throws Exception {
-        // First, check if the shared preferences file exists yet. Else, no user has been registered
-        // yet, which makes trying to log in obsolete.
-        File sharedPreferencesFile = new File(getApplicationContext().getFilesDir().getParent()
-        + "/shared_prefs/" + PREFS_FILE + ".xml");
-        // If the file doesn't exist yet, return null, similar to if the user credentials would be
-        // wrong
-        if(!sharedPreferencesFile.exists()){
+    /**
+     * Validates that email and password fields are not empty.
+     *
+     * @param email The email input
+     * @param password The password input
+     * @return true if both fields are non-empty, false otherwise
+     */
+    private boolean validateInput(String email, String password) {
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Retrieves the stored password for the given email from SharedPreferences.
+     *
+     * @param email The user's email address
+     * @return The stored password (decrypted if applicable), or null if user not found
+     * @throws JSONException If JSON parsing fails
+     */
+    private String retrieveUserPassword(String email) throws Exception {
+        if(!preferencesFileExists()){
             return null;
         }
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
 
+        SharedPreferences sharedPreferences = getSharedPreferences(credentials_file, MODE_PRIVATE);
         String json = sharedPreferences.getString(USERS_KEY, "{}");
         JSONObject users = new JSONObject(json);
 
-        // In case user has not been found, return null
         if(!users.has(email)) {
             return null;
         }
@@ -115,38 +140,101 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
         JSONObject userObj = users.getJSONObject(email);
         String storedPassword = userObj.getString("password");
 
-        // Do potential decryption of password
-        storedPassword = decrypt(storedPassword);
-
-        return storedPassword;
-    }
-
-    // Can be overridden if necessary (for hashing, for example)
-    protected boolean verifyLogin(String inputPassword, String storedPassword){
-        return storedPassword.equals(inputPassword);
-    }
-
-    // Optional method, which can be overridden to add decryption
-    protected String decrypt(String encryptedText) {
-        // Default: return the string as passed
-        return encryptedText;
+        return decryptPassword(storedPassword);
     }
 
     /**
-     * Called when login succeeds. Child classes define navigation/behavior.
+     * Checks if the SharedPreferences file exists.
+     *
+     * @return true if the preferences file exists, false otherwise
+     */
+    private boolean preferencesFileExists() {
+        String prefsPath = getApplicationContext().getFilesDir().getParent()
+                + SHARED_PREFERENCES_PATH
+                + credentials_file
+                + XML_EXTENSION;
+        File prefsFile = new File(prefsPath);
+        return prefsFile.exists();
+    }
+
+    /**
+     * Verifies that the input password matches the stored password.
+     * Override this method to implement custom verification logic (e.g., hashing).
+     *
+     * @param inputPassword The password entered by the user
+     * @param storedPassword The stored password to verify against
+     * @return true if passwords match, false otherwise
+     */
+    protected boolean verifyPassword(String inputPassword, String storedPassword){
+        return storedPassword.equals(inputPassword);
+    }
+
+    /**
+     * Decrypts the stored password.
+     * Override this method to implement custom decryption logic.
+     *
+     * @param encryptedPassword The encrypted password from storage
+     * @return The decrypted password (default: returns password as-is)
+     */
+    protected String decryptPassword(String encryptedPassword) {
+        // Default: return the string as passed
+        return encryptedPassword;
+    }
+
+    /**
+     * Handles errors that occur during the login process.
+     *
+     * @param e The exception that occurred
+     */
+    private void handleLoginError(Exception e) {
+        e.printStackTrace();
+        Toast.makeText(this, "Login error: " + e.getMessage(),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Called when login succeeds.
+     * Subclasses must implement this to define post-login navigation/behavior.
+     *
+     * @param email The email of the successfully logged-in user
      */
     protected abstract void onLoginSuccess(String email);
 
     /**
-     * Called when login fails. Child classes can override for custom behavior.
+     * Called when login fails due to invalid credentials.
+     * Override to customize failure behavior.
+     *
+     * @param email The email that failed to authenticate
      */
     protected void onLoginFailure(String email) {
         Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
     }
 
-    // Abstract methods to provide UI IDs
+    /**
+     * Returns the layout resource ID for this activity.
+     *
+     * @return The layout resource ID
+     */
     protected abstract @LayoutRes int getLayoutId();
+
+    /**
+     * Returns the resource ID for the email input field.
+     *
+     * @return The email EditText resource ID
+     */
     protected abstract int getEmailFieldId();
+
+    /**
+     * Returns the resource ID for the password input field.
+     *
+     * @return The password EditText resource ID
+     */
     protected abstract int getPasswordFieldId();
+
+    /**
+     * Returns the resource ID for the login button.
+     *
+     * @return The login Button resource ID
+     */
     protected abstract int getLoginButtonId();
 }

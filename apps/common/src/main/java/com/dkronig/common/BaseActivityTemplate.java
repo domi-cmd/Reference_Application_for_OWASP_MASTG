@@ -12,14 +12,17 @@ import java.util.Map;
 
 /**
  * Base activity template for common functionalities by all activities.
- * - Automatic action bar setup, which allows for "go back" navigation and displays app name
- * - Customizable screen title with default value
- * - Handling of button-to-activity binding
+ *
+ * Features:
+ *  - Automatic action bar setup, which allows for "go back" navigation and displays app name
+ *  - Customizable screen title with default value
+ *  - Handling of button-to-activity binding
  */
 public abstract class BaseActivityTemplate extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setupActionBar();
     }
 

@@ -53,7 +53,7 @@ public class LoginActivity extends BaseLoginActivity {
     }
 
     @Override
-    protected String decrypt(String encryptedText){
+    protected String decryptPassword(String encryptedText){
         // Decrypt password and email
         try {
             return encryptionHandler.decryptData(encryptedText);

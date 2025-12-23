@@ -10,8 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.maswe_platform"
         android:debuggable="true"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        tools:ignore="HardcodedDebugMode">
 
+        <!-- Main Launcher Activity -->
+        <activity
+            android:name="com.dkronig.maswe_platform.PlatformMenu"
+            android:theme="@style/Theme.maswe_platform"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MASWE:0053 -->
         <activity
             android:name="com.dkronig.maswe_platform.maswe_0053.MainActivity0053"
             android:theme="@style/Theme.maswe_platform" />
@@ -28,6 +41,7 @@
             android:name="com.dkronig.maswe_platform.maswe_0053.ProfileActivity"
             android:theme="@style/Theme.maswe_platform"/>
 
+        <!-- MASWE:0055 -->
         <activity
             android:name="com.dkronig.maswe_platform.maswe_0055.MainActivity0055"
             android:theme="@style/Theme.maswe_platform" />
@@ -44,25 +58,16 @@
             android:name="com.dkronig.maswe_platform.maswe_0055.ProfileActivity"
             android:theme="@style/Theme.maswe_platform"/>
 
+        <!-- MASWE:0064 -->
+        <activity
+            android:name="com.dkronig.maswe_platform.maswe_0064.MainActivity0064"
+            android:theme="@style/Theme.maswe_platform" />
+
         <provider
             android:name="com.dkronig.maswe_platform.maswe_0064.CustomContentProvider"
             android:authorities="com.dkronig.maswe_platform.CustomContentProvider"
             android:exported="true"
             android:permission="" />
-
-        <activity
-            android:name="com.dkronig.maswe_platform.PlatformMenu"
-            android:theme="@style/Theme.maswe_platform"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name="com.dkronig.maswe_platform.maswe_0064.MainActivity0064"
-            android:theme="@style/Theme.maswe_platform" />
 
         <activity
             android:name="com.dkronig.maswe_platform.maswe_0064.LoginActivity"
@@ -76,6 +81,7 @@
             android:name="com.dkronig.maswe_platform.maswe_0064.ProfileActivity"
             android:theme="@style/Theme.maswe_platform"/>
 
+        <!-- MASWE:0067 -->
         <activity
             android:name="com.dkronig.maswe_platform.maswe_0067.MainActivity0067"
             android:theme="@style/Theme.maswe_platform" />

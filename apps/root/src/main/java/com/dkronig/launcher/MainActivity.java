@@ -93,7 +93,7 @@ public class MainActivity extends BaseActivityTemplate {
         String errorMessage = "Cannot launch app: " + packageName;
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
-    
+
     @Override
     protected String getScreenTitle() {
         return SCREEN_TITLE;

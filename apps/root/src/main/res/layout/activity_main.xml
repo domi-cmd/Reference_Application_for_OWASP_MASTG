@@ -2,12 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context=".MainActivity">
 
+    <!-- Title TextView -->
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -18,7 +17,6 @@
         android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <Button
         android:id="@+id/storage_button"
@@ -43,73 +41,14 @@
         android:backgroundTint="@color/maswe_crypto" />
 
     <Button
-        android:id="@+id/auth_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Authentication"
-        app:layout_constraintTop_toBottomOf="@+id/crypto_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/maswe_auth" />
-
-    <Button
-        android:id="@+id/network_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Network"
-        app:layout_constraintTop_toBottomOf="@+id/auth_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/maswe_network" />
-
-    <Button
         android:id="@+id/platform_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Platform"
-        app:layout_constraintTop_toBottomOf="@+id/network_button"
+        app:layout_constraintTop_toBottomOf="@+id/crypto_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/maswe_platform" />
-
-    <Button
-        android:id="@+id/code_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Code"
-        app:layout_constraintTop_toBottomOf="@+id/platform_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/maswe_code" />
-
-    <Button
-        android:id="@+id/resilience_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Resilience"
-        app:layout_constraintTop_toBottomOf="@+id/code_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/maswe_resilience" />
-
-    <Button
-        android:id="@+id/privacy_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Privacy"
-        app:layout_constraintTop_toBottomOf="@+id/resilience_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/maswe_privacy" />
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

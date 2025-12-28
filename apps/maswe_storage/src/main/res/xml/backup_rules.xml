@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
+
     <!-- Allow cloud backup even if there are no encryption capabilities -->
     <cloud-backup disableIfNoEncryptionCapabilities="false">
         <!-- Backup user credentials stored in shared preferences -->
@@ -10,4 +11,5 @@
     <device-transfer>
         <include domain="sharedpref" path="."/>
     </device-transfer>
+
 </data-extraction-rules>

@@ -5,13 +5,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import com.dkronig.common.BaseRegisterActivity;
-import com.dkronig.maswe_storage.R;
+
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class RegisterActivity extends BaseRegisterActivity {
+import com.dkronig.common.BaseRegisterActivity;
+import com.dkronig.maswe_storage.R;
 
+public class RegisterActivity extends BaseRegisterActivity {
+    private static final String SCREEN_TITLE = "Register Page";
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0007_user_credentials";
     private static final String FILENAME = "maswe_0007_user_credentials.txt";
     private Uri fileUri;
 
@@ -19,22 +22,14 @@ public class RegisterActivity extends BaseRegisterActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Create a new MediaStore entry in shared documents directory to store user credentials in
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.MediaColumns.DISPLAY_NAME, FILENAME);
-        values.put(MediaStore.MediaColumns.MIME_TYPE, "text/plain");
-        values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOCUMENTS);
-
-        fileUri = getContentResolver().insert(MediaStore.Files.
-                getContentUri("external"), values);
+        createMediaStoreEntry();
     }
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register_template;
     }
-
-    // Provide IDs for BaseRegisterActivity to find UI elements
+    
     @Override
     protected int getEmailFieldId() {
         return R.id.et_email;
@@ -47,28 +42,44 @@ public class RegisterActivity extends BaseRegisterActivity {
 
     @Override
     protected int getRegisterButtonId() {
-        return R.id.register_button;
+        return R.id.btn_register;
     }
 
     @Override
     protected String getScreenTitle() {
-        return "Register";
+        return SCREEN_TITLE;
     }
 
-    // Define name for encrypted file where user credentials are stored
     @Override
     protected String getCredentialFileName() {
-        return "maswe_0007_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
-    // Write sensitive user data to system shared storage
     @Override
     protected void onRegister(String email, String password) {
        writeToSharedStorage("Email: " + email + " Password: " + password);
     }
 
+    /**
+     * Creates a new MediaStore entry in shared documents directory to store user credentials in.
+     */
+    private void createMediaStoreEntry(){
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.MediaColumns.DISPLAY_NAME, FILENAME);
+        values.put(MediaStore.MediaColumns.MIME_TYPE, "text/plain");
+        values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOCUMENTS);
+
+        fileUri = getContentResolver().insert(MediaStore.Files.
+                getContentUri("external"), values);
+    }
+
+    /**
+     * Saves user credentials to shared storage (MediaStore)
+     * Writes content using OutputStream wrapped in BufferedWriter.
+     *
+     * @param content Consists of the user email and password.
+     */
     private void writeToSharedStorage(String content) {
-        // Write content using OutputStream wrapped in BufferedWriter
         try (OutputStream out = getContentResolver().openOutputStream(fileUri)) {
             assert out != null;
             out.write(content.getBytes());

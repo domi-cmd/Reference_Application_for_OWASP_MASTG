@@ -2,21 +2,26 @@ package com.dkronig.maswe_storage.maswe_0002;
 
 import android.content.Intent;
 import android.net.Uri;
-import com.dkronig.common.BaseRegisterActivity;
-import com.dkronig.maswe_storage.R;
-import java.io.File;
+
 import androidx.core.content.FileProvider;
 
-public class RegisterActivity extends BaseRegisterActivity {
+import java.io.File;
 
-    private static final String TAG = "[REGISTER ACTIVITY]";
+import com.dkronig.common.BaseRegisterActivity;
+import com.dkronig.maswe_storage.R;
+
+/**
+ * Register Activity for MASWE-0002
+ */
+public class RegisterActivity extends BaseRegisterActivity {
+    private static final String SCREEN_TITLE = "Register Page";
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0002_user_credentials";
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register_template;
     }
 
-    // Provide IDs for BaseRegisterActivity to find UI elements
     @Override
     protected int getEmailFieldId() {
         return R.id.et_email;
@@ -29,29 +34,32 @@ public class RegisterActivity extends BaseRegisterActivity {
 
     @Override
     protected int getRegisterButtonId() {
-        return R.id.register_button;
+        return R.id.btn_register;
     }
 
     @Override
     protected String getScreenTitle() {
-        return "Register";
+        return SCREEN_TITLE;
     }
 
-    // Define name for encrypted file where user credentials are stored
     @Override
     protected String getCredentialFileName() {
-        return "maswe_0002_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
-    // Use an implicit intent with my misconfigured file provider to share credentials
-    // stored in internal storage with other apps
+    /**
+     * Uses an implicit intent with custom file provider to share credentials
+     * stored in internal storage with other apps.
+     *
+     * @param email The registered email address
+     * @param password The password (before encryption)
+     */
     @Override
     protected void onRegister(String email, String password) {
         Uri uri = FileProvider.getUriForFile(
                 this,
                 this.getPackageName() + ".CustomFileProvider",
-                new File(this.getFilesDir(), "maswe_0002_user_credentials.txt")
-        );
+                new File(this.getFilesDir(), "maswe_0002_user_credentials.txt"));
 
         Intent share = new Intent(Intent.ACTION_SEND);
         share.setType("text/plain");

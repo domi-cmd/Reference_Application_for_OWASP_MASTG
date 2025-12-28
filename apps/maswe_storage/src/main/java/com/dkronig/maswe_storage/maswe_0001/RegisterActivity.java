@@ -1,22 +1,27 @@
 package com.dkronig.maswe_storage.maswe_0001;
 
-import com.dkronig.common.BaseRegisterActivity;
-import com.dkronig.maswe_storage.R;
+import android.util.Log;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import android.util.Log;
 
+import com.dkronig.common.BaseRegisterActivity;
+import com.dkronig.maswe_storage.R;
+
+/**
+ * Register Activity for MASWE-0001
+ */
 public class RegisterActivity extends BaseRegisterActivity {
-
-    private static final String TAG = "[REGISTER ACTIVITY]";
+    private static final String SCREEN_TITLE = "Register Page";
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0001_user_credentials";
+    private static final String LOG_TAG = "[REGISTER ACTIVITY]";
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register_template;
     }
 
-    // Provide IDs for BaseRegisterActivity to find UI elements
     @Override
     protected int getEmailFieldId() {
         return R.id.et_email;
@@ -29,46 +34,64 @@ public class RegisterActivity extends BaseRegisterActivity {
 
     @Override
     protected int getRegisterButtonId() {
-        return R.id.register_button;
+        return R.id.btn_register;
     }
 
     @Override
     protected String getScreenTitle() {
-        return "Register";
+        return SCREEN_TITLE;
     }
 
-
-    // Define name for encrypted file where user credentials are stored
     @Override
     protected String getCredentialFileName() {
-        return "maswe_0001_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
-    // Write sensitive user data to system and app logs upon registration
+
+    /**
+     * Called after successful user registration.
+     * Writes user data to system and app logs upon registration
+     *
+     * @param email The registered email address
+     * @param password The password
+     */
     @Override
     protected void onRegister(String email, String password) {
         userDataToSystemLogs(email, password);
         userDataToAppLogs(email, password);
     }
 
-    private void userDataToSystemLogs(String user_email, String user_password){
-        // Log user credentials to system logs
-        Log.d(TAG, "New User registered");
-        Log.d(TAG, "User E-Mail: "+ user_email);
-        Log.d(TAG, "User Password: " + user_password);
+    /**
+     * Logs user credentials to Android system logs Logcat.
+     *
+     * @param email The user's email address
+     * @param password The user's plaintext password
+     */
+    private void userDataToSystemLogs(String email, String password){
+        Log.d(LOG_TAG, "New User registered");
+        Log.d(LOG_TAG, "User E-Mail: "+ email);
+        Log.d(LOG_TAG, "User Password: " + password);
     }
 
-    private void userDataToAppLogs(String user_email, String user_password){
-        // Logging sensitive data to a file in app's data directory (App Logs)
+    /**
+     * Writes user credentials to a log file in app's private directory (App logs).
+     *
+     * @param email The user's email address
+     * @param password The user's password
+     */
+    private void userDataToAppLogs(String email, String password){
         try {
-            File logFile = new File(getFilesDir(), "maswe_0001_user_credentials.txt");
+            File logFile = new File(getFilesDir(), CREDENTIALS_FILE_NAME + ".txt");
             FileWriter writer = new FileWriter(logFile, true);
-            writer.append("Login - Username: " + user_email + ", Password: " + user_password + "\n");
+            writer.append("Login - Username: ")
+                    .append(email)
+                    .append(", Password: ")
+                    .append(password)
+                    .append("\n");
             writer.close();
-            Log.d(TAG, "Logged credentials to app logs");
+            Log.d(LOG_TAG, "Logged credentials to app logs");
         } catch (IOException e) {
-            // System log incase the app logging did not work
-            Log.e(TAG, "Error writing to log file: " + e.getMessage());
+            Log.e(LOG_TAG, "Error writing to log file: " + e.getMessage());
         }
     }
 }

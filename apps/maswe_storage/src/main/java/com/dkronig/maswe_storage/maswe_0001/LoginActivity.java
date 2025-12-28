@@ -5,10 +5,13 @@ import android.content.Intent;
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_storage.R;
 
+/**
+ * Login Activity for MASWE-0001.
+ */
 public class LoginActivity extends BaseLoginActivity {
     private static final String SCREEN_TITLE = "Login Page";
     private static final String CREDENTIALS_FILE_NAME = "maswe_0001_user_credentials";
-    
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login_template;

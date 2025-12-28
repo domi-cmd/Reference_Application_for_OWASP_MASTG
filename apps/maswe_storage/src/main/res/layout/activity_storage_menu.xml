@@ -7,16 +7,16 @@
     tools:context="com.dkronig.maswe_storage.StorageMenu">
 
     <LinearLayout
-        android:id="@+id/button_container"
+        android:id="@+id/ll_button_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/regular_top_spacing">
 
-        <!-- Title -->
+        <!-- Storage Menu Title -->
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_spacing_below_title"
@@ -26,15 +26,15 @@
 
         <!-- MASWE-0001 Button -->
         <Button
-            android:id="@+id/maswe_0001_button"
+            android:id="@+id/btn_maswe_0001"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="@dimen/large_spacing_below_title"
             android:text="@string/maswe_0001" />
 
         <!-- MASWE-0002 Button -->
         <Button
-            android:id="@+id/maswe_0002_button"
+            android:id="@+id/btn_maswe_0002"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/regular_top_spacing"
@@ -42,7 +42,7 @@
 
         <!-- MASWE-0006 Button -->
         <Button
-            android:id="@+id/maswe_0006_button"
+            android:id="@+id/btn_maswe_0006"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/regular_top_spacing"
@@ -50,7 +50,7 @@
 
         <!-- MASWE-0007 Button -->
         <Button
-            android:id="@+id/maswe_0007_button"
+            android:id="@+id/btn_maswe_0007"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/regular_top_spacing"

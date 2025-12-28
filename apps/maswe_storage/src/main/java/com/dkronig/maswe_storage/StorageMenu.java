@@ -29,10 +29,10 @@ public class StorageMenu extends BaseActivityTemplate {
     private void initializeButtons(){
         Map<Integer, Class<? extends AppCompatActivity>> buttonMap = new HashMap<>();
 
-        buttonMap.put(R.id.maswe_0001_button, MainActivity0001.class);
-        buttonMap.put(R.id.maswe_0002_button, MainActivity0002.class);
-        buttonMap.put(R.id.maswe_0006_button, MainActivity0006.class);
-        buttonMap.put(R.id.maswe_0007_button, MainActivity0007.class);
+        buttonMap.put(R.id.btn_maswe_0001, MainActivity0001.class);
+        buttonMap.put(R.id.btn_maswe_0002, MainActivity0002.class);
+        buttonMap.put(R.id.btn_maswe_0006, MainActivity0006.class);
+        buttonMap.put(R.id.btn_maswe_0007, MainActivity0007.class);
         // More buttons as more vulnerabilities are implemented
 
         bindButtons(buttonMap);

@@ -1,11 +1,14 @@
 package com.dkronig.maswe_storage.maswe_0001;
 
 import android.content.Intent;
+
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_storage.R;
 
 public class LoginActivity extends BaseLoginActivity {
-
+    private static final String SCREEN_TITLE = "Login Page";
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0001_user_credentials";
+    
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login_template;
@@ -23,29 +26,23 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     protected int getLoginButtonId() {
-        return R.id.login_button;
+        return R.id.btn_login;
     }
 
     @Override
     protected String getScreenTitle() {
-        return "Login";
+        return SCREEN_TITLE;
     }
 
-    // Define name for encrypted file where user credentials are stored
     @Override
     protected String getCredentialFileName() {
-        return "maswe_0001_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
     @Override
     protected void onLoginSuccess(String email) {
-        // Navigate to profile or main screen
-        startActivity(new Intent(this, ProfileActivity.class));
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
         finish();
-    }
-
-    @Override
-    protected void onLoginFailure(String email) {
-        super.onLoginFailure(email); // default Toast
     }
 }

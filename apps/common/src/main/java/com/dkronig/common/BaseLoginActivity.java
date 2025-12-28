@@ -37,15 +37,15 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
 
     protected EditText et_email;
     protected EditText et_password;
-    protected Button login_button;
+    protected Button btn_login;
 
-    private String credentials_file;
+    private String credentialsFile;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        credentials_file = getCredentialFileName();
+        credentialsFile = getCredentialFileName();
         setContentView(getLayoutId());
         initLoginForm();
     }
@@ -66,10 +66,10 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
     protected void initLoginForm() {
         et_email = findViewById(getEmailFieldId());
         et_password = findViewById(getPasswordFieldId());
-        login_button = findViewById(getLoginButtonId());
+        btn_login = findViewById(getLoginButtonId());
 
-        if (login_button != null) {
-            login_button.setOnClickListener(v -> handleLogin());
+        if (btn_login != null) {
+            btn_login.setOnClickListener(v -> handleLogin());
         }
     }
 
@@ -111,7 +111,8 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
      */
     private boolean validateInput(String email, String password) {
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Email and password cannot be empty",
+                    Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -129,7 +130,7 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
             return null;
         }
 
-        SharedPreferences sharedPreferences = getSharedPreferences(credentials_file, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(credentialsFile, MODE_PRIVATE);
         String json = sharedPreferences.getString(USERS_KEY, "{}");
         JSONObject users = new JSONObject(json);
 
@@ -151,7 +152,7 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
     private boolean preferencesFileExists() {
         String prefsPath = getApplicationContext().getFilesDir().getParent()
                 + SHARED_PREFERENCES_PATH
-                + credentials_file
+                + credentialsFile
                 + XML_EXTENSION;
         File prefsFile = new File(prefsPath);
         return prefsFile.exists();

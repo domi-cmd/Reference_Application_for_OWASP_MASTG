@@ -7,7 +7,7 @@
 
     <!-- Login Page Button -->
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/btn_login"
         android:layout_width="@dimen/action_buttons"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/regular_top_spacing"
@@ -20,12 +20,12 @@
 
     <!-- Register Page Button -->
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/btn_register"
         android:layout_width="@dimen/action_buttons"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/regular_top_spacing"
         android:text="@string/register_page_title"
-        app:layout_constraintTop_toBottomOf="@id/login_button"
+        app:layout_constraintTop_toBottomOf="@id/btn_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Registration Page"/>

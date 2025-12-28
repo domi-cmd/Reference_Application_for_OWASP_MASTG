@@ -50,9 +50,9 @@ public class MainActivity extends BaseActivityTemplate {
      */
     private void initializeAppMap() {
         appMap = new HashMap<>();
-        appMap.put(R.id.storage_button, new String[]{STORAGE_PACKAGE, STORAGE_LAUNCHER_ACTIVITY});
-        appMap.put(R.id.crypto_button, new String[]{CRYPTO_PACKAGE, CRYPTO_LAUNCHER_ACTIVITY});
-        appMap.put(R.id.platform_button, new String[]{PLATFORM_PACKAGE, PLATFORM_LAUNCHER_ACTIVITY});
+        appMap.put(R.id.btn_storage, new String[]{STORAGE_PACKAGE, STORAGE_LAUNCHER_ACTIVITY});
+        appMap.put(R.id.btn_crypto, new String[]{CRYPTO_PACKAGE, CRYPTO_LAUNCHER_ACTIVITY});
+        appMap.put(R.id.btn_platform, new String[]{PLATFORM_PACKAGE, PLATFORM_LAUNCHER_ACTIVITY});
     }
 
     /**

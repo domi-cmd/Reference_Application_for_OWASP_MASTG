@@ -18,6 +18,14 @@
       </SelectionState>
       <SelectionState runConfigName="root">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-12-28T15:31:20.124899700Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Domi\.android\avd\Pixel_9_Pro.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="maswe_crypto">
         <option name="selectionMode" value="DROPDOWN" />

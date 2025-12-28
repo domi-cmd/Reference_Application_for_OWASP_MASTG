@@ -8,7 +8,7 @@
 
     <!-- Title TextView -->
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chose Vulnerability Category"
@@ -18,37 +18,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- MASWE-STORAGE Button -->
     <Button
-        android:id="@+id/storage_button"
+        android:id="@+id/btn_storage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Storage"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:text="@string/storage_app_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="@dimen/large_spacing_below_title"
         android:backgroundTint="@color/maswe_storage"/>
 
+    <!-- MASWE-CRYPTO Button -->
     <Button
-        android:id="@+id/crypto_button"
+        android:id="@+id/btn_crypto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Crypto"
-        app:layout_constraintTop_toBottomOf="@+id/storage_button"
+        android:text="@string/crypto_app_name"
+        app:layout_constraintTop_toBottomOf="@+id/btn_storage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/regular_top_spacing"
         android:backgroundTint="@color/maswe_crypto" />
 
+    <!-- MASWE-PLATFORM Button -->
     <Button
-        android:id="@+id/platform_button"
+        android:id="@+id/btn_platform"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Platform"
-        app:layout_constraintTop_toBottomOf="@+id/crypto_button"
+        android:text="@string/platform_app_name"
+        app:layout_constraintTop_toBottomOf="@+id/btn_crypto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/regular_top_spacing"
         android:backgroundTint="@color/maswe_platform" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

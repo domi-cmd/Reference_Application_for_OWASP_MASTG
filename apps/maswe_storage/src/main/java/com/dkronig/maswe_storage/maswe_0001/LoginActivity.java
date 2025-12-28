@@ -6,11 +6,18 @@ import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_storage.R;
 
 /**
- * Login Activity for MASWE-0001.
+ * Login Activity for MASWE-0001
  */
 public class LoginActivity extends BaseLoginActivity {
     private static final String SCREEN_TITLE = "Login Page";
     private static final String CREDENTIALS_FILE_NAME = "maswe_0001_user_credentials";
+
+    @Override
+    protected void onLoginSuccess(String email) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     protected int getLayoutId() {
@@ -40,12 +47,5 @@ public class LoginActivity extends BaseLoginActivity {
     @Override
     protected String getCredentialFileName() {
         return CREDENTIALS_FILE_NAME;
-    }
-
-    @Override
-    protected void onLoginSuccess(String email) {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
-        finish();
     }
 }

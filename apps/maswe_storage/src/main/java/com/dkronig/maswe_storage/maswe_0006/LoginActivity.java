@@ -2,11 +2,19 @@ package com.dkronig.maswe_storage.maswe_0006;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_storage.R;
 
+/**
+ * Login Activity for MASWE-0006
+ *
+ * Features:
+ *  - Uses a custom encryption handler to decrypt passwords before logging in.
+ */
 public class LoginActivity extends BaseLoginActivity {
-
+    private static final String SCREEN_TITLE = "Login Page";
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0006_user_credentials";
     private EncryptionHandler encryptionHandler;
 
     @Override
@@ -14,6 +22,22 @@ public class LoginActivity extends BaseLoginActivity {
         super.onCreate(savedInstanceState);
 
         encryptionHandler = new EncryptionHandler();
+    }
+
+    @Override
+    protected String decryptPassword(String encryptedText){
+        try {
+            return encryptionHandler.decryptData(encryptedText);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void onLoginSuccess(String email) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -33,39 +57,16 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     protected int getLoginButtonId() {
-        return R.id.login_button;
+        return R.id.btn_login;
     }
 
     @Override
     protected String getScreenTitle() {
-        return "Login";
+        return SCREEN_TITLE;
     }
 
-    // Define name for encrypted file where user credentials are stored
     @Override
     protected String getCredentialFileName() {
-        return "maswe_0006_user_credentials";
-    }
-
-    @Override
-    protected String decryptPassword(String encryptedText){
-        // Decrypt password
-        try {
-            return encryptionHandler.decryptData(encryptedText);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    protected void onLoginSuccess(String email) {
-        // Navigate to profile or main screen
-        startActivity(new Intent(this, ProfileActivity.class));
-        finish();
-    }
-
-    @Override
-    protected void onLoginFailure(String email) {
-        super.onLoginFailure(email); // default Toast
+        return CREDENTIALS_FILE_NAME;
     }
 }

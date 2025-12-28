@@ -33,15 +33,15 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
 
     protected EditText et_email;
     protected EditText et_password;
-    protected Button register_button;
+    protected Button btn_register;
 
-    private String credentials_file;
+    private String credentialsFile;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        credentials_file = getCredentialFileName();
+        credentialsFile = getCredentialFileName();
         setContentView(getLayoutId());
         initRegisterForm();
     }
@@ -62,10 +62,10 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
     protected void initRegisterForm() {
         et_email = findViewById(getEmailFieldId());
         et_password = findViewById(getPasswordFieldId());
-        register_button = findViewById(getRegisterButtonId());
+        btn_register = findViewById(getRegisterButtonId());
 
-        if (register_button != null) {
-            register_button.setOnClickListener(v -> handleRegistration());
+        if (btn_register != null) {
+            btn_register.setOnClickListener(v -> handleRegistration());
         }
     }
 
@@ -130,7 +130,7 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
      */
     private boolean saveUser(String email, String password)
             throws Exception {
-        SharedPreferences sharedPreferences = getSharedPreferences(credentials_file, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(credentialsFile, MODE_PRIVATE);
 
         String json = sharedPreferences.getString(USERS_KEY, "{}");
         JSONObject users = new JSONObject(json);
@@ -174,7 +174,8 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
      */
     private void handleRegistrationError(Exception e) {
         e.printStackTrace();
-        Toast.makeText(this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Registration failed: " + e.getMessage(),
+                Toast.LENGTH_SHORT).show();
     }
 
     /**

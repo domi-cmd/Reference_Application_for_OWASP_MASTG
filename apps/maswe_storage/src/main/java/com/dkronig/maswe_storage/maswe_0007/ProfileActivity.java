@@ -1,21 +1,23 @@
 package com.dkronig.maswe_storage.maswe_0007;
 
 import android.os.Bundle;
+
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_storage.R;
 
+/**
+ * Profile Activity for MASWE-0007
+ */
 public class ProfileActivity extends BaseActivityTemplate {
-
+    private static final String SCREEN_TITLE = "Profile Page";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_template);
-
     }
 
-    // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "Profile";
+        return SCREEN_TITLE;
     }
 }

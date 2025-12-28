@@ -29,7 +29,7 @@ public class RegisterActivity extends BaseRegisterActivity {
     protected int getLayoutId() {
         return R.layout.activity_register_template;
     }
-    
+
     @Override
     protected int getEmailFieldId() {
         return R.id.et_email;

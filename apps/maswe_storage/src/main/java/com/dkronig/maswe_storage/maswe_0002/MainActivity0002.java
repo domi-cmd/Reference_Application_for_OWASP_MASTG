@@ -23,8 +23,7 @@ public class MainActivity0002 extends BaseActivityTemplate {
 
         bindButtons(Map.of(
                 R.id.btn_login, LoginActivity.class,
-                R.id.btn_register, RegisterActivity.class
-        ));
+                R.id.btn_register, RegisterActivity.class));
     }
 
     @Override

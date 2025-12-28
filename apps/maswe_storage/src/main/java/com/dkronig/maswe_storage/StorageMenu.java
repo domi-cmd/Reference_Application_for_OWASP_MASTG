@@ -17,6 +17,8 @@ import com.dkronig.maswe_storage.maswe_0007.MainActivity0007;
  * vulnerabilities in the form of buttons, which lead to the designated vulnerability.
  */
 public class StorageMenu extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "MASWE Storage";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +42,8 @@ public class StorageMenu extends BaseActivityTemplate {
         bindButtons(buttonMap);
     }
 
-    // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "MASWE Storage";
+        return SCREEN_TITLE;
     }
 }

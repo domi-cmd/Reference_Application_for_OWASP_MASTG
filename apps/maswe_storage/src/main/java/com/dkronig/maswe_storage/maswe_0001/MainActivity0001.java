@@ -11,7 +11,7 @@ import com.dkronig.maswe_storage.R;
  * Main Activity of MASWE-0001
  *
  * Features:
- *  - Buttons to navigate to both Register and Login Activity of MASWE-0001
+ *  - Buttons to navigate to both Register and Login Activity of MASWE-0001.
  */
 public class MainActivity0001 extends BaseActivityTemplate {
     private static final String SCREEN_TITLE = "MASWE_0001";

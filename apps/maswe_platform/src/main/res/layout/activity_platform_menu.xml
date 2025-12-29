@@ -8,63 +8,69 @@
     tools:context="com.dkronig.maswe_platform.PlatformMenu">
 
     <LinearLayout
-        android:id="@+id/button_container"
+        android:id="@+id/ll_button_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="20dp">
+        android:padding="@dimen/regular_top_spacing">
 
+        <!-- Platform Menu Title Textview -->
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chose Vulnerability Category"
-            android:textSize="24sp"
+            android:layout_marginTop="@dimen/large_spacing_below_title"
+            android:text="@string/menu_choose_vulnerability"
+            android:textSize="@dimen/text_size_title"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="55dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <!-- MASWE-0053 Button -->
         <Button
-            android:id="@+id/maswe_0053_button"
+            android:id="@+id/btn_maswe_0053"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:text="maswe_0053"
-            app:layout_constraintTop_toBottomOf="@+id/title"
+            android:layout_marginTop="@dimen/large_spacing_below_title"
+            android:text="@string/maswe_0053"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="55dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- MASWE-0055 Button -->
         <Button
-            android:id="@+id/maswe_0055_button"
+            android:id="@+id/btn_maswe_0055"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:text="maswe_0055"
-            app:layout_constraintTop_toBottomOf="@+id/maswe_0053_button"
+            android:layout_marginTop="@dimen/regular_top_spacing"
+            android:text="@string/maswe_0055"
+            app:layout_constraintTop_toBottomOf="@+id/btn_maswe_0053"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- MASWE-0064 Button -->
         <Button
-            android:id="@+id/maswe_0064_button"
+            android:id="@+id/btn_maswe_0064"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:text="maswe_0064"
-            app:layout_constraintTop_toBottomOf="@+id/maswe_0055_button"
+            android:layout_marginTop="@dimen/regular_top_spacing"
+            android:text="@string/maswe_0064"
+            app:layout_constraintTop_toBottomOf="@+id/btn_maswe_0055"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- MASWE-0067 Button -->
         <Button
-            android:id="@+id/maswe_0067_button"
+            android:id="@+id/btn_maswe_0067"
             android:layout_width="@dimen/maswe_button_width"
             android:layout_height="wrap_content"
-            android:text="maswe_0067"
-            app:layout_constraintTop_toBottomOf="@+id/maswe_0064_button"
+            android:layout_marginTop="@dimen/regular_top_spacing"
+            android:text="@string/maswe_0067"
+            app:layout_constraintTop_toBottomOf="@+id/btn_maswe_0064"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </LinearLayout>
+
 </ScrollView>

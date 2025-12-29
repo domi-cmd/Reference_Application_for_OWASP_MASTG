@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
+
+    <!-- maswe_platform theme -->
     <style name="Theme.maswe_platform" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
+
+        <!-- Primary color. -->
         <item name="colorPrimary">@color/maswe_platform</item>
         <item name="colorOnPrimary">@color/white</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
-        <!-- Customize your theme here. -->
+
     </style>
+
 </resources>
 

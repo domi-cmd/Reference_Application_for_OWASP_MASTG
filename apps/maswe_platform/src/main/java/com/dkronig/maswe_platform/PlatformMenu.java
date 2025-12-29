@@ -2,35 +2,47 @@ package com.dkronig.maswe_platform;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import com.dkronig.maswe_platform.maswe_0053.MainActivity0053;
-import com.dkronig.maswe_platform.maswe_0055.MainActivity0055;
-import com.dkronig.maswe_platform.maswe_0064.MainActivity0064;
-import com.dkronig.common.BaseActivityTemplate;
-import com.dkronig.maswe_platform.maswe_0067.MainActivity0067;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import com.dkronig.common.BaseActivityTemplate;
+import com.dkronig.maswe_platform.maswe_0053.MainActivity0053;
+import com.dkronig.maswe_platform.maswe_0055.MainActivity0055;
+import com.dkronig.maswe_platform.maswe_0064.MainActivity0064;
+import com.dkronig.maswe_platform.maswe_0067.MainActivity0067;
+
+/**
+ * Starting activity of the maswe platform app, displays all implemented maswe platform
+ * vulnerabilities in the form of buttons, which lead to the designated vulnerability.
+ */
 public class PlatformMenu extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "MASWE Platform";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_platform_menu);
 
-        // Map UI buttons, handled in BaseActivityTemplate
+        initializeButtons();
+    }
+
+    /**
+     * Initializes and binds navigation buttons to their respective activities.
+     */
+    private void initializeButtons(){
         Map<Integer, Class<? extends AppCompatActivity>> buttonMap = new HashMap<>();
 
-        buttonMap.put(R.id.maswe_0053_button, MainActivity0053.class);
-        buttonMap.put(R.id.maswe_0055_button, MainActivity0055.class);
-        buttonMap.put(R.id.maswe_0064_button, MainActivity0064.class);
-        buttonMap.put(R.id.maswe_0067_button, MainActivity0067.class);
+        buttonMap.put(R.id.btn_maswe_0053, MainActivity0053.class);
+        buttonMap.put(R.id.btn_maswe_0055, MainActivity0055.class);
+        buttonMap.put(R.id.btn_maswe_0064, MainActivity0064.class);
+        buttonMap.put(R.id.btn_maswe_0067, MainActivity0067.class);
         // More buttons as more vulnerabilities are implemented
 
         bindButtons(buttonMap);
     }
 
-    // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "MASWE Platform";
+        return SCREEN_TITLE;
     }
 }

@@ -21,8 +21,8 @@ public class MainActivity0009 extends BaseActivityTemplate {
 
         // Map UI buttons, handled in BaseActivityTemplate
         bindButtons(Map.of(
-                R.id.login_button, LoginActivity.class,
-                R.id.register_button, RegisterActivity.class
+                R.id.btn_login, LoginActivity.class,
+                R.id.btn_register, RegisterActivity.class
         ));
     }
 

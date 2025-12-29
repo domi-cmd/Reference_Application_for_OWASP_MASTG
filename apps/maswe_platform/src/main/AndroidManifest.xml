@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.maswe_platform"
         android:debuggable="true"
-        tools:targetApi="31"
         tools:ignore="HardcodedDebugMode">
 
         <!-- Main Launcher Activity -->
@@ -67,7 +66,8 @@
             android:name="com.dkronig.maswe_platform.maswe_0064.CustomContentProvider"
             android:authorities="com.dkronig.maswe_platform.CustomContentProvider"
             android:exported="true"
-            android:permission="" />
+            android:permission=""
+            tools:ignore="ExportedContentProvider" />
 
         <activity
             android:name="com.dkronig.maswe_platform.maswe_0064.LoginActivity"
@@ -97,5 +97,7 @@
         <activity
             android:name="com.dkronig.maswe_platform.maswe_0067.ProfileActivity"
             android:theme="@style/Theme.maswe_platform"/>
+
     </application>
+
 </manifest>

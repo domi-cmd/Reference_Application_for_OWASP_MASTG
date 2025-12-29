@@ -2,6 +2,10 @@ package com.dkronig.maswe_crypto;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_crypto.maswe_0009.MainActivity0009;
 import com.dkronig.maswe_crypto.maswe_0010.MainActivity0010;
@@ -21,14 +25,14 @@ import com.dkronig.maswe_crypto.maswe_0024.MainActivity0024;
 import com.dkronig.maswe_crypto.maswe_0025.MainActivity0025;
 import com.dkronig.maswe_crypto.maswe_0026.MainActivity0026;
 import com.dkronig.maswe_crypto.maswe_0027.MainActivity0027;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Main menu activity for MASWE crypto vulnerability cases.
  * Provides navigation to individual crypto vulnerability activities.
  */
 public class CryptoMenu extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "MASWE Crypto";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +45,6 @@ public class CryptoMenu extends BaseActivityTemplate {
      * Initializes and binds navigation buttons to their respective activities.
      */
     private void initializeButtons(){
-        // Map UI buttons, handled in BaseActivityTemplate
         Map<Integer, Class<? extends AppCompatActivity>> buttonMap = new HashMap<>();
 
         buttonMap.put(R.id.maswe_0009_button, MainActivity0009.class);
@@ -66,9 +69,8 @@ public class CryptoMenu extends BaseActivityTemplate {
         bindButtons(buttonMap);
     }
 
-    // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "MASWE Crypto";
+        return SCREEN_TITLE;
     }
 }

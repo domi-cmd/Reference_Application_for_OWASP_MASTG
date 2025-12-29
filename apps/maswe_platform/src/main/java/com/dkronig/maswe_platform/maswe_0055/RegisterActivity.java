@@ -2,21 +2,25 @@ package com.dkronig.maswe_platform.maswe_0055;
 
 import android.os.Bundle;
 import android.view.WindowManager;
+
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_platform.R;
 
+/**
+ * Register Activity for MASWE-0055
+ *
+ * Features:
+ *  - Uses a custom encryption handler for decrypting user passwords.
+ */
 public class RegisterActivity extends BaseRegisterActivity {
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0055_user_credentials";
     private EncryptionHandler encryptionHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /**
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-                WindowManager.LayoutParams.FLAG_SECURE);
-        **/
-        // Clear any flags set that would prevent screenshots
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+
+        clearScreenshotFlags();
 
         try {
             encryptionHandler = new EncryptionHandler();
@@ -25,20 +29,25 @@ public class RegisterActivity extends BaseRegisterActivity {
         }
     }
 
+    /**
+     * Clears any flags set that would prevent screenshots
+     */
+    private void clearScreenshotFlags(){
+        /**
+         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+         WindowManager.LayoutParams.FLAG_SECURE);
+         **/
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    }
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register_maswe0055;
     }
 
     @Override
-    protected String getScreenTitle() {
-        return "Register";
-    }
-
-    // Define name for encrypted file where user credentials are stored
-    @Override
     protected String getCredentialFileName() {
-        return "maswe_0055_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
     @Override
@@ -59,7 +68,6 @@ public class RegisterActivity extends BaseRegisterActivity {
     @Override
     protected String encryptPassword(String plaintext){
         try {
-            // Encrypt user data
             return encryptionHandler.encryptData(plaintext);
         } catch (Exception e) {
             throw new RuntimeException(e);

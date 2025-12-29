@@ -2,30 +2,30 @@ package com.dkronig.maswe_platform.maswe_0064;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.dkronig.common.BaseRegisterActivity;
-import com.dkronig.maswe_platform.R;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import com.dkronig.common.BaseRegisterActivity;
+import com.dkronig.maswe_platform.R;
+
+/**
+ * Register Activity for MASWE-0064
+ */
 public class RegisterActivity extends BaseRegisterActivity {
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0064_user_credentials";
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register_template;
     }
 
     @Override
-    protected String getScreenTitle() {
-        return "Register";
-    }
-
-    // Define name for encrypted file where user credentials are stored
-    @Override
     protected String getCredentialFileName() {
-        return "maswe_0064_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
-    // Provide IDs for BaseRegisterActivity to find UI elements
     @Override
     protected int getEmailFieldId() {
         return R.id.et_email;
@@ -47,18 +47,16 @@ public class RegisterActivity extends BaseRegisterActivity {
             storeSensitiveData(this, "maswe_0064_user_credentials.txt",
                     "Email: " + email + " Password: " + password + "\n");
         } catch (Exception e) {
-            Toast.makeText(this, "Error saving data: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error saving data: " + e.getMessage(),
+                    Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
 
-
     public static void storeSensitiveData(Context context, String filename, String data) throws IOException {
         File file = new File(context.getFilesDir(), filename);
         try (FileOutputStream fos = new FileOutputStream(file)) {
-            // Store plain text sensitive data
             fos.write(data.getBytes());
         }
-        // Note: No setReadable(true, false) needed, as ContentProvider will expose the data
     }
 }

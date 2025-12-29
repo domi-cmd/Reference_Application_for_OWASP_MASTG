@@ -1,13 +1,18 @@
 package com.dkronig.maswe_platform.maswe_0067;
 
 import android.os.Bundle;
-import android.text.InputType;
-import android.widget.EditText;
 
 import com.dkronig.common.BaseRegisterActivity;
 import com.dkronig.maswe_platform.R;
 
+/**
+ * Register Activity for MASWE-0067
+ *
+ * Features:
+ *  - Uses a custom encryption handler for decrypting user passwords.
+ */
 public class RegisterActivity extends BaseRegisterActivity {
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0067_user_credentials";
     private EncryptionHandler encryptionHandler;
 
     @Override
@@ -26,14 +31,8 @@ public class RegisterActivity extends BaseRegisterActivity {
     }
 
     @Override
-    protected String getScreenTitle() {
-        return "Register";
-    }
-
-    // Define name for encrypted file where user credentials are stored
-    @Override
     protected String getCredentialFileName() {
-        return "maswe_0067_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
     @Override
@@ -54,7 +53,6 @@ public class RegisterActivity extends BaseRegisterActivity {
     @Override
     protected String encryptPassword(String plaintext){
         try {
-            // Encrypt user data
             return encryptionHandler.encryptData(plaintext);
         } catch (Exception e) {
             throw new RuntimeException(e);

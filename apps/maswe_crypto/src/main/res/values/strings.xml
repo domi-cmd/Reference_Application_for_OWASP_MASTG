@@ -18,4 +18,7 @@
     <string name="maswe_0025">maswe_0025</string>
     <string name="maswe_0026">maswe_0026</string>
     <string name="maswe_0027">maswe_0027</string>
+    <string name="send_bank_command">Send Bank Command</string>
+    <string name="bank_balance_input">Amount (+/-) for balance change</string>
+    <string name="bank_balance_display">Balance: </string>
 </resources>

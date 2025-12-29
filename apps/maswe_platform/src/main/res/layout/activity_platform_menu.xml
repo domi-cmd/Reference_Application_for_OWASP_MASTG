@@ -15,7 +15,7 @@
         android:gravity="center"
         android:padding="@dimen/regular_top_spacing">
 
-        <!-- Platform Menu Title Textview -->
+        <!-- Platform Menu Title -->
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"

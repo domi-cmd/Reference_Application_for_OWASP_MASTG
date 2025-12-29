@@ -45,7 +45,7 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     protected int getLoginButtonId() {
-        return R.id.login_button;
+        return R.id.btn_login;
     }
 
     @Override

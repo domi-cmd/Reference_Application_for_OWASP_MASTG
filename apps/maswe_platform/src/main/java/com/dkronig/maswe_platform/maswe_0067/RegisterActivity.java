@@ -48,7 +48,7 @@ public class RegisterActivity extends BaseRegisterActivity {
 
     @Override
     protected int getRegisterButtonId() {
-        return R.id.register_button;
+        return R.id.btn_register;
     }
 
     @Override

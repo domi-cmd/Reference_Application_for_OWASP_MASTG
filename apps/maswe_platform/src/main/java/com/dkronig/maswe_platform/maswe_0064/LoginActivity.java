@@ -1,10 +1,15 @@
 package com.dkronig.maswe_platform.maswe_0064;
 
 import android.content.Intent;
+
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_platform.R;
 
+/**
+ * Login Activity for MASWE-0064
+ */
 public class LoginActivity extends BaseLoginActivity {
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0064_user_credentials";
 
     @Override
     protected int getLayoutId() {
@@ -27,25 +32,13 @@ public class LoginActivity extends BaseLoginActivity {
     }
 
     @Override
-    protected String getScreenTitle() {
-        return "Login";
-    }
-
-    // Define name for encrypted file where user credentials are stored
-    @Override
     protected String getCredentialFileName() {
-        return "maswe_0064_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
     @Override
     protected void onLoginSuccess(String email) {
-        // Navigate to profile or main screen
         startActivity(new Intent(this, ProfileActivity.class));
         finish();
-    }
-
-    @Override
-    protected void onLoginFailure(String email) {
-        super.onLoginFailure(email); // default Toast
     }
 }

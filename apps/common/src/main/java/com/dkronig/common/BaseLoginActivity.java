@@ -30,6 +30,7 @@ import java.io.File;
  *  - Login success behavior
  */
 public abstract class BaseLoginActivity extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "Login Page";
     private static final String USERS_KEY = "users_json";
     private static final String DEFAULT_CREDENTIALS_FILE = "secure_users_credentials";
     private static final String SHARED_PREFERENCES_PATH = "/shared_prefs/";
@@ -48,6 +49,11 @@ public abstract class BaseLoginActivity extends BaseActivityTemplate {
         credentialsFile = getCredentialFileName();
         setContentView(getLayoutId());
         initLoginForm();
+    }
+
+    @Override
+    protected String getScreenTitle(){
+        return SCREEN_TITLE;
     }
 
     /**

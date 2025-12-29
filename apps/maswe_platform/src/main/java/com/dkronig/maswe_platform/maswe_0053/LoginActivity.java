@@ -8,7 +8,14 @@ import android.widget.EditText;
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_platform.R;
 
+/**
+ * Login Activity for MASWE-0053
+ *
+ * Features:
+ *  - Uses a custom encryption handler to decrypt passwords before logging in.
+ */
 public class LoginActivity extends BaseLoginActivity {
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0053_user_credentials";
 
     private EncryptionHandler encryptionHandler;
 
@@ -16,26 +23,34 @@ public class LoginActivity extends BaseLoginActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        EditText email_field = findViewById(R.id.et_email);
-        EditText password_field = findViewById(R.id.et_password);
-
-        // Remove password obfuscation, enable auto complete and auto correct
-        password_field.setInputType(InputType.TYPE_CLASS_TEXT |
-                InputType.TYPE_TEXT_FLAG_AUTO_COMPLETE |
-                InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
-
-        // Same for email
-        email_field.setInputType(InputType.TYPE_TEXT_FLAG_AUTO_COMPLETE |
-                InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
-
-        // Enable copy and paste functionality by setting it to null (default)
-        password_field.setCustomSelectionActionModeCallback(null);
+        removeObfuscation();
         
         try {
             encryptionHandler = new EncryptionHandler();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Removes any obfuscation of the email and password fields.
+     *
+     * Removes obfuscation, enables auto complete and auto correct for password edit text.
+     * Removes obfuscation, enables auto complete and auto correct for email edit text.
+     * Enables copy and paste functionality for the password edit text.
+     */
+    private void removeObfuscation(){
+        EditText email_field = findViewById(R.id.et_email);
+        EditText password_field = findViewById(R.id.et_password);
+
+        password_field.setInputType(InputType.TYPE_CLASS_TEXT |
+                InputType.TYPE_TEXT_FLAG_AUTO_COMPLETE |
+                InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
+
+        email_field.setInputType(InputType.TYPE_TEXT_FLAG_AUTO_COMPLETE |
+                InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
+
+        password_field.setCustomSelectionActionModeCallback(null);
     }
 
     @Override
@@ -59,19 +74,12 @@ public class LoginActivity extends BaseLoginActivity {
     }
 
     @Override
-    protected String getScreenTitle() {
-        return "Login";
-    }
-
-    // Define name for encrypted file where user credentials are stored
-    @Override
     protected String getCredentialFileName() {
-        return "maswe_0053_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
     @Override
     protected String decryptPassword(String encryptedText){
-        // Decrypt password and email
         try {
             return encryptionHandler.decryptData(encryptedText);
         } catch (Exception e) {
@@ -81,14 +89,7 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     protected void onLoginSuccess(String email) {
-        // Navigate to profile or main screen
         startActivity(new Intent(this, ProfileActivity.class));
         finish();
-    }
-
-    @Override
-    protected void onLoginFailure(String email) {
-        // default Toast
-        super.onLoginFailure(email);
     }
 }

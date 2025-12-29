@@ -8,24 +8,31 @@ import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_platform.R;
 
 public class LoginActivity extends BaseLoginActivity {
-
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0055_user_credentials";
     private EncryptionHandler encryptionHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /**
-         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-         WindowManager.LayoutParams.FLAG_SECURE);
-         **/
-        // Clear any flags set that would prevent screenshots
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+
+        clearScreenshotFlags();
 
         try {
             encryptionHandler = new EncryptionHandler();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Clears any flags set that would prevent screenshots
+     */
+    private void clearScreenshotFlags(){
+        /**
+         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+         WindowManager.LayoutParams.FLAG_SECURE);
+         **/
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override
@@ -49,19 +56,12 @@ public class LoginActivity extends BaseLoginActivity {
     }
 
     @Override
-    protected String getScreenTitle() {
-        return "Login";
-    }
-
-    // Define name for encrypted file where user credentials are stored
-    @Override
     protected String getCredentialFileName() {
-        return "maswe_0055_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
     @Override
     protected String decryptPassword(String encryptedText){
-        // Decrypt password and email
         try {
             return encryptionHandler.decryptData(encryptedText);
         } catch (Exception e) {
@@ -71,14 +71,7 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     protected void onLoginSuccess(String email) {
-        // Navigate to profile or main screen
         startActivity(new Intent(this, ProfileActivity.class));
         finish();
-    }
-
-    @Override
-    protected void onLoginFailure(String email) {
-        // default Toast
-        super.onLoginFailure(email);
     }
 }

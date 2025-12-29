@@ -28,6 +28,7 @@ import org.json.JSONObject;
  *  - View resource IDs for email, password, and register button
  */
 public abstract class BaseRegisterActivity extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "Register Page";
     private static final String USERS_KEY = "users_json";
     private static final String DEFAULT_SHARED_PREFERENCES_FILE = "secure_users_credentials";
 
@@ -44,6 +45,11 @@ public abstract class BaseRegisterActivity extends BaseActivityTemplate {
         credentialsFile = getCredentialFileName();
         setContentView(getLayoutId());
         initRegisterForm();
+    }
+
+    @Override
+    protected String getScreenTitle(){
+        return SCREEN_TITLE;
     }
 
     /**

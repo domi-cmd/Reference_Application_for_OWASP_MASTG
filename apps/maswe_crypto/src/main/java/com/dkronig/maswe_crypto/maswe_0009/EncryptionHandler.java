@@ -11,6 +11,9 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+/**
+ * Encryption Handler for MASWE-0009
+ */
 public class EncryptionHandler {
     private static final String PREFS_NAME = "maswe_0009_secret_key";
     private static final String KEY_ENCRYPTION_KEY = "encryption_key";

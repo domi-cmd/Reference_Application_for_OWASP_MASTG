@@ -13,6 +13,9 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
+/**
+ * Encryption Handler for MASWE-0010
+ */
 public class EncryptionHandler {
     private static final String PREFS_NAME = "maswe_0010_secret_key";
     private static final String KEY_ENCRYPTION_KEY = "encryption_key";

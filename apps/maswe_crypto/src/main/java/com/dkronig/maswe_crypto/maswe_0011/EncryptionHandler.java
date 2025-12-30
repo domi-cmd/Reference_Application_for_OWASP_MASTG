@@ -13,6 +13,9 @@ import java.security.PublicKey;
 import java.security.Security;
 import javax.crypto.Cipher;
 
+/**
+ * Encryption Handler for MASWE-0011
+ */
 public class EncryptionHandler {
     private static final String RSA_KEY_ALIAS = "maswe_0011_rsa_key";
     private static final String KEYSTORE_PASSWORD = "Xk9$wR2!dF7pLq4Z";

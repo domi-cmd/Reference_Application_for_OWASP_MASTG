@@ -13,82 +13,172 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+/**
+ * Encryption Handler for MASWE-0024
+ */
 public class EncryptionHandler {
+    private static final String SECRET_KEY_ALIAS = "maswe_0024_secret_key";
+    private static final String ENCRYPTION_ALGORITHM = "AES";
+    private static final String CIPHER_TRANSFORMATION = "AES/CBC/PKCS5PADDING";
+    private static final String ENCRYPTION_KEY = "encryption_key";
+    private static final String IV = "IV";
+    private static final int KEY_SIZE = 256;
+
     private static SharedPreferences sharedPreferences;
 
+    /**
+     * Loads the SharedPreferences where crypto key is stored. Checks if a key already exists,
+     * generates a new one otherwise.
+     * Stores the key and initialization vector in the SharedPreferences file.
+     *
+     * @param context Application context for accessing SharedPreferences
+     * @throws Exception If key or IV generation fails
+     */
     public static void generateAESKey(Context context) throws Exception {
-        // First check if there is already a key generated. If so, don't generate a new one.
-        // Get access to the shared preferences of the calling activity
-        sharedPreferences = context.getApplicationContext()
-                .getSharedPreferences("maswe_0024_secret_key", Context.MODE_PRIVATE);
-        String prefKey = sharedPreferences.getString("encryption_key", null);
-        String prefIV = sharedPreferences.getString("IV", null);
+        initializeSharedPreferences(context);
 
-        // Return if key and IV have already been generated
-        if(prefIV != null && prefKey != null){
+        if(keyAlreadyExists()){
             return;
         }
 
-        // Generate AES key
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-        keyGenerator.init(256);
-        SecretKey secretKey = keyGenerator.generateKey();
-        // Convert to string, as to enable storing it in shared preferences (only takes primitives)
-        String encodedKey = Base64.encodeToString(secretKey.getEncoded(), Base64.DEFAULT);
+        String encodedKey = createKey();
+        String encodedIV = createIV();
 
-        // Generate initialization vector for using AES with CBC
-        // 16 bytes = 128 bits for AES block size
+        storeKeyAndIV(encodedKey, encodedIV);
+    }
+
+    /**
+     * Initializes SharedPreferences instance. Used for storing the secret key and the IV.
+     *
+     * @param context Application context
+     */
+    private static void initializeSharedPreferences(Context context){
+        sharedPreferences = context.getApplicationContext()
+                .getSharedPreferences(SECRET_KEY_ALIAS, Context.MODE_PRIVATE);
+    }
+
+    /**
+     * Checks if an encryption key and initialization vector already exist in SharedPreferences.
+     *
+     * @return true if key and iv exists, false otherwise
+     */
+    private static boolean keyAlreadyExists() {
+        String prefKey = sharedPreferences.getString(ENCRYPTION_KEY, null);
+        String prefIV = sharedPreferences.getString(IV, null);
+
+        if(prefIV != null && prefKey != null){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Generates AES key to use.
+     * Converts key to string, as to enable storing it in shared preferences (only takes primitives).
+     *
+     * @return The Base64-encoded Secret Key
+     * @throws Exception If key generation fails
+     */
+    private static String createKey() throws Exception{
+        KeyGenerator keyGenerator = KeyGenerator.getInstance(ENCRYPTION_ALGORITHM);
+        keyGenerator.init(KEY_SIZE);
+        SecretKey secretKey = keyGenerator.generateKey();
+
+        String encodedKey = Base64.encodeToString(secretKey.getEncoded(), Base64.DEFAULT);
+        return encodedKey;
+    }
+
+    /**
+     * Generate initialization vector for using AES.
+     * Use 16 bytes = 128 bits for AES block size
+     * Convert IV to string to store in next to secret key in shared preferences
+     *
+     * @return The Base64-encoded initialization vector.
+     */
+    private static String createIV(){
         byte[] iv = new byte[16];
         SecureRandom secureRandom = new SecureRandom();
         secureRandom.nextBytes(iv);
-        // Convert IV to string to store in next to secret key in shared preferences
-        String encodedIV = Base64.encodeToString(iv, Base64.DEFAULT);
 
+        String encodedIV = Base64.encodeToString(iv, Base64.DEFAULT);
+        return encodedIV;
+    }
+
+    /**
+     * Takes the encoded secret key and initialization vector and stores them in SharedPreferences.
+     * Gets access to the shared preferences of the calling activity
+     *
+     * @param encodedKey The crypto key to be stored to SharedPreferences
+     * @param encodedIV The initialization vector to be stored to SharedPreferences
+     */
+    private static void storeKeyAndIV(String encodedKey, String encodedIV){
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        // Add key and initialization vector to shared preferences
-        editor.putString("encryption_key", encodedKey);
-        editor.putString("IV", encodedIV);
+
+        editor.putString(ENCRYPTION_KEY, encodedKey);
+        editor.putString(IV, encodedIV);
         editor.apply();
     }
 
-    // Method for encrypting a string using strong AES with CBC
+    /**
+     * Method for encrypting a string using strong AES with CBC.
+     * Gets the key and iv from shared preferences using helper functions.
+     *
+     * @param plaintext The string to be encrypted (user password)
+     * @return The encrypted plaintext
+     * @throws Exception If encryption fails
+     */
     public String encryptData(String plaintext) throws Exception {
-        // Get the key and iv from shared preferences using helper functions
         SecretKey secretKey = getKey();
         IvParameterSpec ivSpec = getIvSpec();
 
-        // USE AES in CBC mode for safe and modern encryption
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivSpec);
+
         byte[] encryptedBytes = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
         return Base64.encodeToString(encryptedBytes, Base64.DEFAULT);
     }
 
-    // Method for decrypting a string using strong AES with CBC
-    public String decryptData(String encrypted) throws Exception {
-        // Get the key and iv from shared preferences using helper functions
+    /**
+     * Method for decrypting a string using strong AES with CBC.
+     * Gets the key and iv from shared preferences using helper functions.
+     *
+     * @param encryptedData The string to be decrypted (user password)
+     * @return The decrypted text
+     * @throws Exception If decryption fails
+     */
+    public String decryptData(String encryptedData) throws Exception {
         SecretKey secretKey = getKey();
         IvParameterSpec ivSpec = getIvSpec();
 
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
         cipher.init(Cipher.DECRYPT_MODE, secretKey, ivSpec);
-        byte[] decryptedBytes = cipher.doFinal(Base64.decode(encrypted, Base64.DEFAULT));
+
+        byte[] decryptedBytes = cipher.doFinal(Base64.decode(encryptedData, Base64.DEFAULT));
         return new String(decryptedBytes, StandardCharsets.UTF_8);
     }
 
+    /**
+     * Helper method that retrieves the AES key from shared preferences.
+     * Decodes the key from string to byte format.
+     *
+     * @return The newly generated SecretKey
+     */
     private SecretKey getKey(){
-        // Get the key from shared preferences
-        String encodedKey = sharedPreferences.getString("encryption_key", null);
-        // Regenerate SecretKey from retrieved encodedKey string
+        String encodedKey = sharedPreferences.getString(ENCRYPTION_KEY, null);
+
         byte[] decodedKey = Base64.decode(encodedKey, Base64.DEFAULT);
-        return new SecretKeySpec(decodedKey, 0, decodedKey.length,
-                "AES");
+        return new SecretKeySpec(decodedKey, 0, decodedKey.length, ENCRYPTION_ALGORITHM);
     }
 
+    /**
+     * Helper method that retrieves the IV from shared preferences and returns the IVSpec.
+     * Decodes the initialization vector (IV) from string to byte format.
+     *
+     * @return The newly generated IvParameterSpec
+     */
     private IvParameterSpec getIvSpec(){
-        // Get the iv from shared preferences
-        String encodedIV = sharedPreferences.getString("IV", null);
-        // Regenerate initialization vector from retrieved encodedIV string
+        String encodedIV = sharedPreferences.getString(IV, null);
+
         byte[] iv = Base64.decode(encodedIV, Base64.DEFAULT);
         return new IvParameterSpec(iv);
     }

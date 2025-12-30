@@ -47,7 +47,7 @@ public class EncryptionHandler {
     }
 
     /**
-     * Initializes SharedPreferences instance.
+     * Initializes SharedPreferences instance. Used for storing the secret key and the IV.
      *
      * @param context Application context
      */
@@ -107,8 +107,7 @@ public class EncryptionHandler {
 
     /**
      * Takes the encoded secret key and initialization vector and stores them in SharedPreferences.
-     *
-     * Get access to the shared preferences of the calling activity
+     * Gets access to the shared preferences of the calling activity.
      *
      * @param encodedKey The crypto key to be stored to SharedPreferences
      * @param encodedIV The initialization vector to be stored to SharedPreferences

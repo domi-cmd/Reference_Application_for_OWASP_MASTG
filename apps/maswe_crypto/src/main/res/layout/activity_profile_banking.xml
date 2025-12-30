@@ -31,23 +31,24 @@
 
     <!-- Bank Balance Input Field -->
     <EditText
-        android:id="@+id/et_balanceInput"
+        android:id="@+id/et_bankBalanceInput"
         android:layout_width="@dimen/action_buttons"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/regular_top_spacing"
         android:hint="@string/bank_balance_input"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_bankBalanceDisplay" />
 
     <!-- Send Bank Command Button -->
     <Button
-        android:id="@+id/btn_sendBankCommandButton"
+        android:id="@+id/btn_sendBankCommand"
         android:layout_width="@dimen/action_buttons"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/regular_top_spacing"
         android:text="@string/send_bank_command"
-        app:layout_constraintTop_toBottomOf="@id/et_balanceInput"
+        app:layout_constraintTop_toBottomOf="@id/et_bankBalanceInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

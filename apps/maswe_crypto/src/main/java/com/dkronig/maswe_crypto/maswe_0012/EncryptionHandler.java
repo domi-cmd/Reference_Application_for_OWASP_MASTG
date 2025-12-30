@@ -12,6 +12,9 @@ import java.security.PublicKey;
 import java.security.Signature;
 import javax.crypto.Cipher;
 
+/**
+ * Encryption Handler for MASWE-0012
+ */
 public class EncryptionHandler {
     private static final String rsaKeyAlias = "maswe_0012_rsa_key";
     private static final String CIPHER_TRANSFORMATION = "RSA/ECB/PKCS1Padding";

@@ -121,7 +121,7 @@ public class EncryptionHandler {
 
     /**
      * Method for encrypting a string using strong AES with CBC.
-     * Gets the key and iv from shared preferences using helper functions.
+     * Gets the key and iv from shared preferences using helper method.
      *
      * @param plaintext The string to be encrypted (user password)
      * @return The encrypted plaintext
@@ -140,7 +140,7 @@ public class EncryptionHandler {
 
     /**
      * Method for decrypting a string using strong AES with CBC.
-     * Gets the key and iv from shared preferences using helper functions.
+     * Gets the key and iv from shared preferences using helper method.
      *
      * @param encryptedData The string to be decrypted (user password)
      * @return The decrypted text
@@ -158,8 +158,9 @@ public class EncryptionHandler {
     }
 
     /**
-     * Helper method that retrieves the AES key from shared preferences.
+     * Helper method that retrieves the AES key from shared preferences and returns it.
      * Decodes the key from string to byte format.
+     * Returns it in SecretKey form.
      *
      * @return The newly generated SecretKey
      */

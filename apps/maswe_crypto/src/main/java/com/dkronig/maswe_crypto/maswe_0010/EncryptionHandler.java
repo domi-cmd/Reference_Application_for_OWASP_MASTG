@@ -2,6 +2,7 @@ package com.dkronig.maswe_crypto.maswe_0010;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import java.util.Base64;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
@@ -13,45 +14,51 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class EncryptionHandler {
+    private static final String PREFS_NAME = "maswe_0010_secret_key";
+    private static final String KEY_ENCRYPTION_KEY = "encryption_key";
+    private static final String ALGORITHM_PBKDF2 = "PBKDF2WithHmacSHA256";
+    private static final String CIPHER_TRANSFORMATION = "AES/CBC/PKCS5Padding";
     private static final int ENCRYPTION_ITERATIONS = 10;
     private static final int KEY_LENGTH = 128;
     private static final byte[] SALT = new byte[16];
     private static final int IV_LENGTH = 16;
     private static final String PASSWORD_FOR_KEY_DERIVATION = "password";
+
     private static SharedPreferences sharedPreferences;
 
-
+    /**
+     * Generates and stores a AES encryption key if one doesn't already exist.
+     * The key is seeded with a fixed value and stored in SharedPreferences.
+     *
+     * Implementation notes:
+     * - Uses PBKDF2 algorithm for secret key generation
+     * - Generates a 128-bit AES key
+     * - Key is Base64-encoded for storage
+     * - Skips generation if key already exists
+     *
+     * @param context Application context for accessing SharedPreferences
+     * @throws Exception If key generation fails
+     */
     public static void setupEncryption(Context context) throws Exception {
-        // Check if there is a key already generated
-        sharedPreferences = context.getApplicationContext()
-                .getSharedPreferences("maswe_0010_secret_key", Context.MODE_PRIVATE);
-        String prefKey = sharedPreferences.getString("encryption_key", null);
+        initializeSharedPreferences(context);
 
-        // If a key already exists, do not create a new one
-        if(prefKey != null){
+        if(keyAlreadyExists()){
             return;
         }
 
-        PBEKeySpec secretKeySpec = new PBEKeySpec(PASSWORD_FOR_KEY_DERIVATION.toCharArray(), SALT,
-                ENCRYPTION_ITERATIONS, KEY_LENGTH);
-        SecretKeyFactory secretKeyFactory = SecretKeyFactory
-                .getInstance("PBKDF2WithHmacSHA256");
-        byte[] keyBytes = secretKeyFactory.generateSecret(secretKeySpec).getEncoded();
-
-        // Generate the secret key
-        SecretKey secretKey = new SecretKeySpec(keyBytes, "AES");
-        // Convert to string, as to enable storing it in shared preferences (only takes primitives)
-        String encodedKey = android.util.Base64.encodeToString(secretKey.getEncoded(), android.util.Base64.DEFAULT);
-
-        // Store the key to sharedPreferences
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("encryption_key", encodedKey);
-        editor.apply();
+        SecretKey secretKey = generateKey();
+        storeKey(secretKey);
     }
 
-    //
+    /**
+     * Encrypts plaintext data using AES encryption in CBC mode.
+     *
+     * @param plaintext The data to encrypt
+     * @return Base64-encoded encrypted data
+     * @throws Exception If encryption fails
+     */
     public String encryptData(String plaintext) throws Exception {
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
 
         // Generate random IV
         byte[] iv = new byte[IV_LENGTH];
@@ -72,9 +79,15 @@ public class EncryptionHandler {
         return Base64.getEncoder().encodeToString(combinedIvCiphertext);
     }
 
-
-    public String decryptData(String encrypted) throws Exception {
-        byte[] combined = Base64.getDecoder().decode(encrypted);
+    /**
+     * Decrypts Base64-encoded encrypted data using AES decryption.
+     *
+     * @param encryptedData Base64-encoded encrypted data
+     * @return Decrypted plaintext
+     * @throws Exception If decryption fails
+     */
+    public String decryptData(String encryptedData) throws Exception {
+        byte[] combined = Base64.getDecoder().decode(encryptedData);
 
         // Extract IV
         byte[] iv = new byte[IV_LENGTH];
@@ -83,19 +96,67 @@ public class EncryptionHandler {
         System.arraycopy(combined, IV_LENGTH, encryptedBytes, 0, encryptedBytes.length);
 
         // Decrypt ciphertext
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
         cipher.init(Cipher.DECRYPT_MODE, getKey(), new IvParameterSpec(iv));
         byte[] decrypted = cipher.doFinal(encryptedBytes);
         return new String(decrypted, "UTF-8");
     }
 
-    // Helper function that retrieves the secret key from its shared preferences file and returns it
+    /**
+     * Initializes SharedPreferences instance.
+     *
+     * @param context Application context
+     */
+    private static void initializeSharedPreferences(Context context) {
+        sharedPreferences = context.getApplicationContext()
+                .getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    }
+
+    /**
+     * Checks if an encryption key already exists in SharedPreferences.
+     *
+     * @return true if key exists, false otherwise
+     */
+    private static boolean keyAlreadyExists() {
+        String existingKey = sharedPreferences.getString(KEY_ENCRYPTION_KEY, null);
+        return existingKey != null;
+    }
+
+    private static SecretKey generateKey() throws Exception {
+        PBEKeySpec secretKeySpec = new PBEKeySpec(PASSWORD_FOR_KEY_DERIVATION.toCharArray(), SALT,
+                ENCRYPTION_ITERATIONS, KEY_LENGTH);
+
+        SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance(ALGORITHM_PBKDF2);
+
+        byte[] keyBytes = secretKeyFactory.generateSecret(secretKeySpec).getEncoded();
+        SecretKey secretKey = new SecretKeySpec(keyBytes, "AES");
+
+        return secretKey;
+    }
+
+    private static void storeKey(SecretKey secretKey){
+        String encodedKey = android.util.Base64.encodeToString(
+                secretKey.getEncoded(),
+                android.util.Base64.DEFAULT);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_ENCRYPTION_KEY, encodedKey);
+        editor.apply();
+    }
+
+    /**
+     * Retrieves the stored encryption key from SharedPreferences.
+     *
+     * Note: The method specifies "AES" algorithm in SecretKeySpec constructor,
+     * but the key is actually a DES key. This demonstrates algorithm mismatch
+     * in key specification.
+     *
+     * @return The stored SecretKey
+     */
     private SecretKey getKey(){
-        // Get the key from shared preferences
         String encodedKey = sharedPreferences.getString("encryption_key", null);
-        // Regenerate SecretKey from retrieved encodedKey string
+
         byte[] decodedKey = android.util.Base64.decode(encodedKey, android.util.Base64.DEFAULT);
-        return new SecretKeySpec(decodedKey, 0, decodedKey.length,
-                "AES");
+        return new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
     }
 }

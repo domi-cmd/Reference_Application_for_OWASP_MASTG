@@ -97,8 +97,7 @@ public class EncryptionHandler {
     private static void storeKey(SecretKey secretKey) {
         String encodedKey = android.util.Base64.encodeToString(
                 secretKey.getEncoded(),
-                android.util.Base64.DEFAULT
-        );
+                android.util.Base64.DEFAULT);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_ENCRYPTION_KEY, encodedKey);

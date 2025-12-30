@@ -24,7 +24,7 @@ public class MainActivity0025 extends BaseActivityTemplate {
         setContentView(R.layout.activity_main_template);
 
         try {
-            EncryptionHandler.generateKey(this);
+            EncryptionHandler.generateKey();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

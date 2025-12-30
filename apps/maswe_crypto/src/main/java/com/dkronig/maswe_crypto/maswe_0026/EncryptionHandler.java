@@ -22,7 +22,7 @@ public class EncryptionHandler {
     private static final String KEYSTORE = "AndroidKeyStore";
 
     /**
-     * Loads AndroidKeystore to manage RSA Key used for encryption and decryption.
+     * Loads AndroidKeyStore to manage RSA Key used for encryption and decryption.
      * Creates and stores said key in AndroidKeystore.
      *
      * Features:
@@ -38,7 +38,6 @@ public class EncryptionHandler {
         if (keyStore.containsAlias(RSA_KEY_ALIAS)) {
             return;
         }
-        
         createAndStoreKey();
     }
 

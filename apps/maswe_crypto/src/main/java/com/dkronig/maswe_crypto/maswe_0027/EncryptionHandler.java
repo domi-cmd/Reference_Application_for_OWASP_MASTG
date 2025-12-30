@@ -42,7 +42,7 @@ public class EncryptionHandler {
 
         String encodedKey = createKey();
         String encodedIV = createIV();
-        
+
         storeKeyAndIV(encodedKey, encodedIV);
     }
 

@@ -35,7 +35,6 @@ public class EncryptionHandler {
         KeyStore keyStore = KeyStore.getInstance(KEYSTORE);
         keyStore.load(null);
 
-        // Key already exists, do nothing
         if (keyStore.containsAlias(RSA_KEY_ALIAS)) {
             return;
         }

@@ -6,7 +6,14 @@ import android.os.Bundle;
 import com.dkronig.common.BaseLoginActivity;
 import com.dkronig.maswe_crypto.R;
 
+/**
+ * Login Activity for MASWE-0019
+ *
+ * Features:
+ *  - Uses a custom encryption handler to decrypt passwords before logging in.
+ */
 public class LoginActivity extends BaseLoginActivity {
+    private static final String CREDENTIALS_FILE_NAME = "maswe_0019_user_credentials";
 
     private EncryptionHandler encryptionHandler;
 
@@ -42,14 +49,8 @@ public class LoginActivity extends BaseLoginActivity {
     }
 
     @Override
-    protected String getScreenTitle() {
-        return "Login";
-    }
-
-    // Define name for encrypted file where user credentials are stored
-    @Override
     protected String getCredentialFileName() {
-        return "maswe_0019_user_credentials";
+        return CREDENTIALS_FILE_NAME;
     }
 
     @Override
@@ -63,14 +64,7 @@ public class LoginActivity extends BaseLoginActivity {
 
     @Override
     protected void onLoginSuccess(String email) {
-        // Navigate to profile or main screen
         startActivity(new Intent(this, ProfileActivity.class));
         finish();
-    }
-
-    @Override
-    // default Toast
-    protected void onLoginFailure(String email) {
-        super.onLoginFailure(email);
     }
 }

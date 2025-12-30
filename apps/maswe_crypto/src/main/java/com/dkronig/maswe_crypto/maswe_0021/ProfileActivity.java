@@ -4,6 +4,9 @@ import android.os.Bundle;
 import com.dkronig.common.BaseActivityTemplate;
 import com.dkronig.maswe_crypto.R;
 
+/**
+ * Profile Activity for MASWE-0021
+ */
 public class ProfileActivity extends BaseActivityTemplate {
 
     @Override

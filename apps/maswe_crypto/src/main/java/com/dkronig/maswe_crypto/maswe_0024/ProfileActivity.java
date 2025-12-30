@@ -14,6 +14,16 @@ import com.google.gson.Gson;
 
 import java.util.UUID;
 
+/**
+ * Profile Activity for MASWE-0024
+ * This activity provides a banking interface for users. It includes command signing
+ * and service communication patterns in a simulated banking environment.
+ *
+ * Features:
+ *  - View current account balance
+ *  - Send signed commands to increase balance
+ *  - Receive real-time balance updates via broadcasts
+ */
 public class ProfileActivity extends BaseActivityTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

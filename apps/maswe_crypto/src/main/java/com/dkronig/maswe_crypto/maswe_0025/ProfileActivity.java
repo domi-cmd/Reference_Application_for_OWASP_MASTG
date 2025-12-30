@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import java.util.UUID;
 
 /**
- * Profile Activity for MASWE-0012
+ * Profile Activity for MASWE-0025
  * This activity provides a banking interface for users. It includes command signing
  * and service communication patterns in a simulated banking environment.
  *
@@ -26,6 +26,8 @@ import java.util.UUID;
  *  - Receive real-time balance updates via broadcasts
  */
 public class ProfileActivity extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "Profile Page";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,8 +89,7 @@ public class ProfileActivity extends BaseActivityTemplate {
         registerReceiver(
                 balanceReceiver,
                 new IntentFilter("BANK_BALANCE_UPDATED"),
-                Context.RECEIVER_NOT_EXPORTED
-        );
+                Context.RECEIVER_NOT_EXPORTED);
     }
 
     @Override
@@ -97,9 +98,8 @@ public class ProfileActivity extends BaseActivityTemplate {
         unregisterReceiver(balanceReceiver);
     }
 
-    // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "Profile";
+        return SCREEN_TITLE;
     }
 }

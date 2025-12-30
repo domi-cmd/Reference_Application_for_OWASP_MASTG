@@ -8,6 +8,7 @@ import com.dkronig.maswe_crypto.R;
  * Profile Activity for MASWE-0020
  */
 public class ProfileActivity extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "Profile Page";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +17,8 @@ public class ProfileActivity extends BaseActivityTemplate {
 
     }
 
-    // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "Profile";
+        return SCREEN_TITLE;
     }
 }

@@ -26,6 +26,8 @@ import java.util.UUID;
  *  - Receive real-time balance updates via broadcasts
  */
 public class ProfileActivity extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "Profile Page";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,9 +99,8 @@ public class ProfileActivity extends BaseActivityTemplate {
         unregisterReceiver(balanceReceiver);
     }
 
-    // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "Profile";
+        return SCREEN_TITLE;
     }
 }

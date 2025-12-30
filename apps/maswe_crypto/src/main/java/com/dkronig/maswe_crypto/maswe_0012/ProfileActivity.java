@@ -162,8 +162,7 @@ public class ProfileActivity extends BaseActivityTemplate {
         registerReceiver(
                 balanceReceiver,
                 new IntentFilter(BROADCAST_ACTION_BALANCE_UPDATED),
-                Context.RECEIVER_NOT_EXPORTED
-        );
+                Context.RECEIVER_NOT_EXPORTED);
     }
 
     @Override

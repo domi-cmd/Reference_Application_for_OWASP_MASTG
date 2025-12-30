@@ -9,6 +9,8 @@ import android.provider.MediaStore;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.util.Base64;
+import android.content.Context;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,19 +22,31 @@ import java.security.KeyPairGenerator;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import android.content.Context;
 import javax.crypto.Cipher;
 
 public class EncryptionHandler {
     private static final String PRIVATE_KEY_ALIAS = "maswe_0016_rsa_key";
     private static final String PUBLIC_KEY_FILENAME = "maswe_0016_public_key.der";
+    private static final String CIPHER_TRANSFORMATION = "RSA/ECB/PKCS1Padding";
+    private static final String KEYSTORE = "AndroidKeyStore";
+
     private static Context encryptionContext;
 
+    /**
+     * Loads AndroidKeystore to manage RSA Key used for encryption and decryption.
+     * Creates and stores said key in AndroidKeystore.
+     *
+     * Features:
+     *  - Generates an RSA key
+     *  - Skips generation if key already exists in keystore
+     *
+     * @throws Exception If key generation fails
+     */
     public static void generateKey(Context context) throws Exception {
         // Set the context
         encryptionContext = context;
 
-        KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
+        KeyStore keyStore = KeyStore.getInstance(KEYSTORE);
         keyStore.load(null);
 
         // Key already exists, do nothing
@@ -40,12 +54,23 @@ public class EncryptionHandler {
             return;
         }
 
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator
-                .getInstance(KeyProperties.KEY_ALGORITHM_RSA, "AndroidKeyStore");
+        generateAndStoreKeyPair();
+    }
 
-        KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
-                PRIVATE_KEY_ALIAS,
-                        KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+    /**
+     * Creates an RSA key pair for encryption and decryption.
+     * Key is stored in android keystore.
+     *
+     * @throws Exception If key generation fails
+     */
+    private static void generateAndStoreKeyPair() throws Exception{
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator
+                .getInstance(KeyProperties.KEY_ALGORITHM_RSA, KEYSTORE);
+
+        KeyGenParameterSpec spec = new KeyGenParameterSpec
+                .Builder(PRIVATE_KEY_ALIAS,
+                KeyProperties.PURPOSE_ENCRYPT |
+                        KeyProperties.PURPOSE_DECRYPT)
                 .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
                 .setKeySize(2048)
                 .build();
@@ -54,35 +79,58 @@ public class EncryptionHandler {
         keyPairGenerator.generateKeyPair();
     }
 
+    /**
+     * Encrypts plaintext data using RSA encryption.
+     *
+     * @param plaintext The data to encrypt
+     * @return Base64-encoded encrypted data
+     * @throws Exception If encryption fails
+     */
     public String encryptData(String plaintext) throws Exception {
-        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-
-        // The vulnerability: use an attacker-controlled imported public key
+        Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
         cipher.init(Cipher.ENCRYPT_MODE, getImportedOrCreatePublicKey());
 
         byte[] encrypted = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
         return Base64.encodeToString(encrypted, Base64.NO_WRAP);
     }
 
-    public String decryptData(String encrypted) throws Exception {
-        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+    /**
+     * Decrypts data (user password) using RSA.
+     *
+     * @param encryptedData The data to decrypt
+     * @return The decrypted plaintext
+     * @throws Exception If decryption fails
+     */
+    public String decryptData(String encryptedData) throws Exception {
+        Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
         cipher.init(Cipher.DECRYPT_MODE, getPrivateKey());
-        byte[] plaintext = cipher.doFinal(Base64.decode(encrypted, Base64.NO_WRAP));
+
+        byte[] plaintext = cipher.doFinal(Base64.decode(encryptedData, Base64.NO_WRAP));
         return new String(plaintext, StandardCharsets.UTF_8);
     }
 
+    /**
+     * Checks if there is a public key already stored in shared storage.
+     * If a key is found in MediaStore, it is imported and used.
+     * Creates and stored a public key in shared storage otherwise.
+     *
+     * @return The either imported or generated public key
+     * @throws Exception If import or generating of key fails
+     */
     private PublicKey getImportedOrCreatePublicKey() throws Exception {
-        // Check if there is a public key already stored in shared (untrusted) storage
-        Uri existing = getPublicKeyUri();
-        if (existing != null) {
-            // If a key is found in mediastore, it is imported and used without any security checks
-            return importKey(existing);
+        Uri existingPublicKeyLocation = getPublicKeyUri();
+        if (existingPublicKeyLocation != null) {
+            return importKey(existingPublicKeyLocation);
         }
 
-        // If no key is found, a new one is generated and exported to untrusted storage
         return generateAndStorePublicKey();
     }
 
+    /**
+     * Get the URI of the potentially existing public key.
+     *
+     * @return Either the URI or null if no key is found
+     */
     private static Uri getPublicKeyUri(){
         Uri collection = MediaStore.Files.getContentUri("external");
 
@@ -106,31 +154,51 @@ public class EncryptionHandler {
             cursor.close();
         }
 
-        // Return null if no key is found
         return null;
     }
 
+    /**
+     * Helper method that imports a public key given its URI. Reads the key as bytes and regenerates
+     * it using X509 Encoding.
+     *
+     * @param keyUri The URI of the public key to be imported
+     * @return The imported public key.
+     * @throws Exception If imported or regeneration of key fails
+     */
     private static PublicKey importKey(Uri keyUri) throws Exception {
-        InputStream is = encryptionContext.getContentResolver().openInputStream(keyUri);
-        byte[] keyBytes = readAllBytes(is);
+        InputStream inputStream = encryptionContext.getContentResolver().openInputStream(keyUri);
+        byte[] keyBytes = readAllBytes(inputStream);
 
-        // This is unsafe, as we do no signature/identity/integrity checks
         X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
         return KeyFactory.getInstance("RSA").generatePublic(spec);
     }
 
-    private static byte[] readAllBytes(InputStream is) throws IOException {
+    /**
+     * Helper method for reading bytes from input stream. Used for reading key bytes from shared
+     * storage.
+     *
+     * @param inputStream The stream from which the bytes are read
+     * @return The bytes of the read key
+     * @throws IOException In case reading of bytes fails
+     */
+    private static byte[] readAllBytes(InputStream inputStream) throws IOException {
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         byte[] data = new byte[4096];
         int n;
-        while ((n = is.read(data)) != -1) {
+        while ((n = inputStream.read(data)) != -1) {
             buffer.write(data, 0, n);
         }
         return buffer.toByteArray();
     }
 
+    /**
+     * Helper method that takes the AndroidKeystore public key and stores it in shared Storage.
+     * Reads the existing, trusted public key from Android Keystore and stores it in MediaStore.
+     *
+     * @return The public key that is stored
+     * @throws Exception In case storing of key in MediaStore fails
+     */
     private PublicKey generateAndStorePublicKey() throws Exception {
-        // Read the existing, trusted public key from Android Keystore:
         PublicKey publicKey = getKeystorePublicKey();
         byte[] keyBytes = publicKey.getEncoded();
 
@@ -142,24 +210,34 @@ public class EncryptionHandler {
         Uri uri = encryptionContext.getContentResolver().insert(
                 MediaStore.Files.getContentUri("external"), values);
 
-        OutputStream os = encryptionContext.getContentResolver().openOutputStream(uri);
-        // Export the public key without wrapping it in another key, nor signing it
-        os.write(keyBytes);
-        os.close();
+        OutputStream outputStream = encryptionContext.getContentResolver().openOutputStream(uri);
+        outputStream.write(keyBytes);
+        outputStream.close();
 
         return publicKey;
     }
 
-
+    /**
+     * Helper method that retrieves the public key from AndroidKeystore.
+     *
+     * @return The public key
+     * @throws Exception If retrieval of key fails
+     */
     private PublicKey getKeystorePublicKey() throws Exception {
-        KeyStore ks = KeyStore.getInstance("AndroidKeyStore");
-        ks.load(null);
-        return ks.getCertificate(PRIVATE_KEY_ALIAS).getPublicKey();
+        KeyStore keyStore = KeyStore.getInstance(KEYSTORE);
+        keyStore.load(null);
+        return keyStore.getCertificate(PRIVATE_KEY_ALIAS).getPublicKey();
     }
 
+    /**
+     * Helper method that retrieves the private key from AndroidKeystore.
+     *
+     * @return The private key
+     * @throws Exception If retrieval of key fails
+     */
     private PrivateKey getPrivateKey() throws Exception {
-        KeyStore ks = KeyStore.getInstance("AndroidKeyStore");
-        ks.load(null);
-        return (PrivateKey) ks.getKey(PRIVATE_KEY_ALIAS, null);
+        KeyStore keyStore = KeyStore.getInstance(KEYSTORE);
+        keyStore.load(null);
+        return (PrivateKey) keyStore.getKey(PRIVATE_KEY_ALIAS, null);
     }
 }

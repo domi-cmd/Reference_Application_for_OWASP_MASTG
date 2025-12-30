@@ -16,7 +16,7 @@ import javax.crypto.Cipher;
  * Encryption Handler for MASWE-0012
  */
 public class EncryptionHandler {
-    private static final String rsaKeyAlias = "maswe_0012_rsa_key";
+    private static final String RSA_KEY_ALIAS = "maswe_0012_rsa_key";
     private static final String CIPHER_TRANSFORMATION = "RSA/ECB/PKCS1Padding";
     private static final String SIGNING_ALGORITHM = "SHA1withRSA";
     private static final String KEYSTORE = "AndroidKeyStore";
@@ -27,8 +27,7 @@ public class EncryptionHandler {
      *
      * Features:
      *  - Generates an RSA key
-     *  - Key is Base64-encoded for storage
-     *  - Skips generation if keystore is already loaded
+     *  - Skips generation if key already exists in keystore
      *
      * @throws Exception If key generation fails
      */
@@ -37,7 +36,7 @@ public class EncryptionHandler {
         keyStore.load(null);
 
         // Key already exists, do nothing
-        if (keyStore.containsAlias(rsaKeyAlias)) {
+        if (keyStore.containsAlias(RSA_KEY_ALIAS)) {
             return;
         }
 
@@ -119,7 +118,7 @@ public class EncryptionHandler {
                 .getInstance(KeyProperties.KEY_ALGORITHM_RSA, KEYSTORE);
 
         KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
-                rsaKeyAlias,
+                RSA_KEY_ALIAS,
                 KeyProperties.PURPOSE_SIGN |
                         KeyProperties.PURPOSE_VERIFY |
                         KeyProperties.PURPOSE_ENCRYPT |
@@ -141,10 +140,10 @@ public class EncryptionHandler {
      * @throws Exception If retrieval of key fails
      */
     private static PublicKey getPublicKey() throws Exception {
-        KeyStore ks = KeyStore.getInstance(KEYSTORE);
-        ks.load(null);
+        KeyStore keyStore = KeyStore.getInstance(KEYSTORE);
+        keyStore.load(null);
 
-        return ks.getCertificate(rsaKeyAlias).getPublicKey();
+        return keyStore.getCertificate(RSA_KEY_ALIAS).getPublicKey();
     }
 
     /**
@@ -154,9 +153,9 @@ public class EncryptionHandler {
      * @throws Exception If retrieval of key fails
      */
     private static PrivateKey getPrivateKey() throws Exception {
-        KeyStore ks = KeyStore.getInstance(KEYSTORE);
-        ks.load(null);
+        KeyStore keyStore = KeyStore.getInstance(KEYSTORE);
+        keyStore.load(null);
 
-        return (PrivateKey) ks.getKey(rsaKeyAlias, null);
+        return (PrivateKey) keyStore.getKey(RSA_KEY_ALIAS, null);
     }
 }

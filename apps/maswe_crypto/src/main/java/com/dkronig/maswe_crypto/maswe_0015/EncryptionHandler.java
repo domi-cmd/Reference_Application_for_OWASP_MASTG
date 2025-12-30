@@ -142,5 +142,4 @@ public class EncryptionHandler {
         if (keyStore == null) throw new IllegalStateException("Keystore not loaded");
         return (PrivateKey) keyStore.getKey(RSA_KEY_ALIAS, KEY_PASSWORD.toCharArray());
     }
-
 }

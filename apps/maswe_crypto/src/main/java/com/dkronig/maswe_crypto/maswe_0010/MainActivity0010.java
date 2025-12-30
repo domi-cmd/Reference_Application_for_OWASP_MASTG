@@ -7,14 +7,21 @@ import com.dkronig.maswe_crypto.R;
 
 import java.util.Map;
 
+/**
+ * Main Activity of MASWE-0010
+ *
+ * Features:
+ *  - Generates a new encryption key if none exists yet. Used for encryption and decryption in
+ *  - login and register activity.
+ *  - Buttons to navigate to both Register and Login Activity of MASWE-0010.
+ */
 public class MainActivity0010 extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "MASWE_0010";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_template);
-
-        // Generate secret key used for encryption and decryption in login and register activity
 
         try {
             EncryptionHandler.setupEncryption(this);
@@ -22,16 +29,13 @@ public class MainActivity0010 extends BaseActivityTemplate {
             throw new RuntimeException(e);
         }
 
-        // Map UI buttons, handled in BaseActivityTemplate
         bindButtons(Map.of(
                 R.id.btn_login, LoginActivity.class,
-                R.id.btn_register, RegisterActivity.class
-        ));
+                R.id.btn_register, RegisterActivity.class));
     }
 
-    // Set name for action bar handled in BaseActivityTemplate
     @Override
     protected String getScreenTitle() {
-        return "MASWE_0010";
+        return SCREEN_TITLE;
     }
 }

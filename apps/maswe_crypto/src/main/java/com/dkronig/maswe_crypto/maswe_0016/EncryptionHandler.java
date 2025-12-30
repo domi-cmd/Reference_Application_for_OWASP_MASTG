@@ -24,6 +24,9 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import javax.crypto.Cipher;
 
+/**
+ * Encryption Handler for MASWE-0016
+ */
 public class EncryptionHandler {
     private static final String PRIVATE_KEY_ALIAS = "maswe_0016_rsa_key";
     private static final String PUBLIC_KEY_FILENAME = "maswe_0016_public_key.der";
@@ -37,23 +40,21 @@ public class EncryptionHandler {
      * Creates and stores said key in AndroidKeystore.
      *
      * Features:
+     *  - Sets the applications context, which is needed for accessing shared storage.
      *  - Generates an RSA key
      *  - Skips generation if key already exists in keystore
      *
      * @throws Exception If key generation fails
      */
     public static void generateKey(Context context) throws Exception {
-        // Set the context
         encryptionContext = context;
 
         KeyStore keyStore = KeyStore.getInstance(KEYSTORE);
         keyStore.load(null);
 
-        // Key already exists, do nothing
         if (keyStore.containsAlias(PRIVATE_KEY_ALIAS)) {
             return;
         }
-
         generateAndStoreKeyPair();
     }
 
@@ -153,7 +154,6 @@ public class EncryptionHandler {
             }
             cursor.close();
         }
-
         return null;
     }
 
@@ -226,6 +226,7 @@ public class EncryptionHandler {
     private PublicKey getKeystorePublicKey() throws Exception {
         KeyStore keyStore = KeyStore.getInstance(KEYSTORE);
         keyStore.load(null);
+
         return keyStore.getCertificate(PRIVATE_KEY_ALIAS).getPublicKey();
     }
 
@@ -238,6 +239,7 @@ public class EncryptionHandler {
     private PrivateKey getPrivateKey() throws Exception {
         KeyStore keyStore = KeyStore.getInstance(KEYSTORE);
         keyStore.load(null);
+
         return (PrivateKey) keyStore.getKey(PRIVATE_KEY_ALIAS, null);
     }
 }

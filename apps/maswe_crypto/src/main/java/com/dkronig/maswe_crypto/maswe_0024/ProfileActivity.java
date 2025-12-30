@@ -23,8 +23,8 @@ public class ProfileActivity extends BaseActivityTemplate {
     }
 
     protected void init() {
-        Button sendBankCommandButton = findViewById(R.id.sendBankCommandButton);
-        EditText amountInput = findViewById(R.id.balanceInput);
+        Button sendBankCommandButton = findViewById(R.id.btn_sendBankCommand);
+        EditText amountInput = findViewById(R.id.et_bankBalanceInput);
 
         if (sendBankCommandButton != null && amountInput != null) {
             sendBankCommandButton.setOnClickListener(v -> {
@@ -64,7 +64,7 @@ public class ProfileActivity extends BaseActivityTemplate {
         @Override
         public void onReceive(Context context, Intent intent) {
             long balance = intent.getLongExtra("balance", 0);
-            TextView tv = findViewById(R.id.bankBalanceDisplay);
+            TextView tv = findViewById(R.id.tv_bankBalanceDisplay);
             if (tv != null) {
                 tv.setText("Balance: " + balance + " €");
             }

@@ -161,7 +161,7 @@ public class EncryptionHandler {
     }
 
     /**
-     * Helper method that retrieves the rsa key from shared preferences.
+     * Helper method that retrieves the AES key from shared preferences.
      * Decodes the key from string to byte format.
      *
      * @return The newly generated SecretKey

@@ -140,16 +140,12 @@ public class EncryptionHandler {
     /**
      * Retrieves the stored encryption key from SharedPreferences.
      *
-     * Note: The method specifies "AES" algorithm in SecretKeySpec constructor,
-     * but the key is actually a DES key. This demonstrates algorithm mismatch
-     * in key specification.
-     *
      * @return The stored SecretKey
      */
     private SecretKey getKey(){
         String encodedKey = sharedPreferences.getString(KEY_ENCRYPTION_KEY, null);
         byte[] decodedKey = android.util.Base64.decode(encodedKey, android.util.Base64.DEFAULT);
 
-        return new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
+        return new SecretKeySpec(decodedKey, 0, decodedKey.length, ALGORITHM_DES);
     }
 }

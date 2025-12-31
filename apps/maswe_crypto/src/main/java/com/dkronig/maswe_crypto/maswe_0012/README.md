@@ -8,13 +8,11 @@ The relevant code for this vulnerability can be seen in maswe_0012/EncryptionHan
 ```java
 KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, "AndroidKeyStore");
 
-KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
-        rsaKeyAlias,
+KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(rsaKeyAlias,
         KeyProperties.PURPOSE_SIGN |
                 KeyProperties.PURPOSE_VERIFY |
                 KeyProperties.PURPOSE_ENCRYPT |
-                KeyProperties.PURPOSE_DECRYPT
-)
+                KeyProperties.PURPOSE_DECRYPT)
         .setDigests(KeyProperties.DIGEST_SHA1)
         .setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PKCS1)
         .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
@@ -47,7 +45,7 @@ public static String sign(String message) throws Exception {
    very easy for an attacker to produce two different messages with the same SHA1 hash, meaning the digital signature would be valid for both of them. Source on this is
    linked below [3].
 
-## Sources
-1. [Android dev site itself discussing SHA1 as weak.](https://developer.android.com/privacy-and-security/risks/broken-cryptographic-algorithm)
-2. [Huge pre-computed lookup table for cracking passwords hashed unsalted with SHA1.](https://crackstation.net/)
-3. [Chosen-prefix-collision tool for SHA1](https://sha-mbles.github.io/)
+## Interesting links and sources:
+- [Android dev site itself discussing SHA1 as weak.](https://developer.android.com/privacy-and-security/risks/broken-cryptographic-algorithm)
+- [Huge pre-computed lookup table for cracking passwords hashed unsalted with SHA1.](https://crackstation.net/)
+- [Chosen-prefix-collision tool for SHA1](https://sha-mbles.github.io/)

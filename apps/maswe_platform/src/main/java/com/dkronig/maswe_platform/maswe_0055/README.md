@@ -35,5 +35,5 @@ protected void onCreate(Bundle savedInstanceState) {
 1. The primary issue is that the user himself can accidentally leak his credentials, either through screenshots containing sensitive data, or screensharing of such.
 2. An attacker can use tools such as Scrcpy to record the screen of the device via usb connection [1].
 
-## Sources
-- [Srcpy tool for screenrecording](https://github.com/Genymobile/scrcpy)
+## Interesting links and sources
+- [[1] Srcpy tool for screenrecording](https://github.com/Genymobile/scrcpy)

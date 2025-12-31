@@ -76,6 +76,6 @@ Java.perform(function() {
 3. Once a second message resulting in a collision has been found, this can then be used to send "illegitimate" commands to the banking service, since signing this second message will result in the same valid hash as the first "legitimate" one. This is a big security vulnerability.
 
 ## Interesting Links and Sources
-[1] [The SHAttered project](https://shattered.io/)  
-[2] [HashClash GitHub Repository](https://github.com/cr-marcstevens/hashclash)  
-[Reddit Discussion on SHA-1 broken](https://www.reddit.com/r/linux/comments/eqy1kh/sha1_is_now_fully_broken/)
+- [1] [The SHAttered project](https://shattered.io/)  
+- [2] [HashClash GitHub Repository](https://github.com/cr-marcstevens/hashclash)  
+- [Reddit Discussion on SHA-1 broken](https://www.reddit.com/r/linux/comments/eqy1kh/sha1_is_now_fully_broken/)

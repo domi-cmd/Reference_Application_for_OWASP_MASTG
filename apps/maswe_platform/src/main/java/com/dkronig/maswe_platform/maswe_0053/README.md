@@ -83,10 +83,7 @@ public class ClipboardStealer extends Service {
 2. This can give attackers access to any user credentials being copied during login or registration process, which poses a great security threat.
 
 ## Interesting links and sources:
-[1] [Android Developer on clipboard vulnerabilities and safe handling](https://developer.android.com/privacy-and-security/risks/secure-clipboard-handling)
-
-[Paper discussing different Android clipboard attack angles](https://www.researchgate.net/publication/300578051_Attacks_on_Android_Clipboard)
-
-[GitHub Repository for app that implements clipboard attack in detail](https://github.com/grepx/android-clipboard-security)
-
-[Guardsquare on the topic of clipboard attacks](https://www.guardsquare.com/mobile-app-security-research-center/malware/clipboard-hijacking)
+- [1] [Android Developer on clipboard vulnerabilities and safe handling](https://developer.android.com/privacy-and-security/risks/secure-clipboard-handling)
+- [Paper discussing different Android clipboard attack angles](https://www.researchgate.net/publication/300578051_Attacks_on_Android_Clipboard)
+- [GitHub Repository for app that implements clipboard attack in detail](https://github.com/grepx/android-clipboard-security)
+- [Guardsquare on the topic of clipboard attacks](https://www.guardsquare.com/mobile-app-security-research-center/malware/clipboard-hijacking)

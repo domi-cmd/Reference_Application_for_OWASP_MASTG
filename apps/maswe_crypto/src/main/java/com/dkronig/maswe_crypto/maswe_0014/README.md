@@ -4,7 +4,7 @@ The relevant code for this vulnerability can be seen in [maswe_0014/EncryptionHa
 
 ## The vulnerability consists of:
 
-1. Storing unencrypted secret key and initialization vector in shared preferences in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_crypto/src/main/java/com/dkronig/maswe_crypto/maswe_0014/EncryptionHandler.java#L36-L45):
+1. Storing unencrypted secret key and initialization vector in shared preferences in the lines here:
 ```java
 // Get access to the shared preferences of the calling activity
 sharedPreferences = context.getApplicationContext()

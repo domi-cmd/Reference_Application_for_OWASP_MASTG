@@ -5,7 +5,7 @@ The relevant code for this vulnerability can be seen in maswe_0010/EncryptionHan
 ## The vulnerability consists of:
 
 1. Using PBKDF2 for deriving the AES key, but using insufficient salt (16 zero-bytes), a hardcoded, readable string as source for PBKDF2 derivation, and using only 10
-   PBKDF2 iterations for deriving the AES key, which is way to small and easily brute-forceable: 
+   PBKDF2 iterations for deriving the AES key, which is way too small and easily brute-forceable: 
 ```java
 private static final int ENCRYPTION_ITERATIONS = 10;
 private static final int KEY_LENGTH = 128;
@@ -28,6 +28,7 @@ public static void setupEncryption() throws Exception {
 ```
 
 ## The vulnerability can be exploited by:
-1. After decompiling the apk, any attacker will see the bad cryptographic key derivation used here. Since the source string, the salt and the amount of iterations is plainly
-   readable, anybody can then easily recreate the key derivation with the same parameters, thus recreating the secret AES key themselves. This grants any attacker the
-   ability to read all encrypted user data at free will, granted that they get hold of the encrypted user data, which is stored as such in Shared Preferences.
+- After decompiling the apk, any attacker will see the bad cryptographic key derivation used here. 
+- Since the source string, the salt and the amount of iterations is plainly readable, anybody can then easily recreate the 
+key derivation with the same parameters, thus recreating the secret AES key themselves. 
+- This grants any attacker the ability to read all encrypted user data at free will, granted that they get hold of the encrypted user data, which is stored as such in Shared Preferences.

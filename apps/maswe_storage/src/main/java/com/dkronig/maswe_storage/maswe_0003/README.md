@@ -4,7 +4,7 @@ The relevant code for this vulnerability can be seen in [res/xml/backup_rules.xm
 
 ## The vulnerability consists of:
 
-1. Enabling backups to be made even if no encryption of said backups is in place, by setting the flag to false in the line [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L4):
+1. Enabling backups to be made even if no encryption of said backups is in place, by setting the flag to false in the line here:
 
 ```xml
 <cloud-backup disableIfNoEncryptionCapabilities="false">
@@ -29,7 +29,7 @@ drwx------  0 10225  10225       0 Nov 05 11:20 apps/com.dkronig.maswe_storage/r
 
 
 ## The vulnerability can be fixed by:
-1. Setting the boolean in the line [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L4) to true:
+1. Setting the boolean in the line here to true:
 
 ```xml
 <cloud-backup disableIfNoEncryptionCapabilities="true">
@@ -37,7 +37,7 @@ drwx------  0 10225  10225       0 Nov 05 11:20 apps/com.dkronig.maswe_storage/r
 
 This prevents any backup happening if no encryption is in place.
 
-2. Adding the following flag for [each include](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L6-L7):
+2. Adding the following flag for each include:
 
 ```xml
 <[...] requireFlags="clientSideEncryption"/>

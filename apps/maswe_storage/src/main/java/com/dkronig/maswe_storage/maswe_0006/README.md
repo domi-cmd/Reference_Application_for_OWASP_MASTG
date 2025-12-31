@@ -3,19 +3,19 @@
 The relevant code for this vulnerability can be seen in [maswe_0006/EncryptionHandler.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/java/com/dkronig/maswe_storage/maswe_0006/EncryptionHandler.java).
 
 ## The vulnerability consists of:
-1. Utilizing a hardcoded encryption key in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/java/com/dkronig/maswe_storage/maswe_0006/EncryptionHandler.java#L11):
+1. Utilizing a hardcoded encryption key in the lines here:
 
 ```java
 private static final String ENCRYPTION_KEY = "EncryptK";
 ```
 
-2. Specifying the encryption algorithm to be DES, which is considered outdated and even broken, in the line [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/java/com/dkronig/maswe_storage/maswe_0006/EncryptionHandler.java#L12C5-L12C68):
+2. Specifying the encryption algorithm to be DES, which is considered outdated and even broken, in the line here:
 
 ```java
 private static final String ALGORITHM = "DES/ECB/PKCS5Padding";
 ```
 
-3. Using the hardcoded key and broken algorithm to handle the encryption and decryption of sensitive user data in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/java/com/dkronig/maswe_storage/maswe_0006/EncryptionHandler.java#L15-L20):
+3. Using the hardcoded key and broken algorithm to handle the encryption and decryption of sensitive user data in the lines here:
 
 ```java
 SecretKeySpec keySpec = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), ALGORITHM);

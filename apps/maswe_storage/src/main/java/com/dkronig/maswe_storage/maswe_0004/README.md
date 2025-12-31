@@ -4,7 +4,7 @@ The relevant code for this vulnerability can be seen in [res/xml/backup_rules.xm
 
 ## The vulnerability consists of:
 
-1. Explicitly including sensitive user data in the cloud backup in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L6-L7):
+1. Explicitly including sensitive user data in the cloud backup in the lines here:
 
 ```xml
 <cloud-backup disableIfNoEncryptionCapabilities="false">
@@ -14,7 +14,7 @@ The relevant code for this vulnerability can be seen in [res/xml/backup_rules.xm
 </cloud-backup>
 ```
 
-2. Explicitly including saved user credentials in device to device transfers in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml#L11-L13):
+2. Explicitly including saved user credentials in device to device transfers in the lines here:
 
 ```xml
 <device-transfer>

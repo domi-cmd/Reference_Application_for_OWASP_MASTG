@@ -4,7 +4,7 @@ The relevant code for this vulnerability can be seen in [maswe_0007/RegisterActi
 
 ## The vulnerability consists of:
 Using MediaStore to store user credentials upon user registration in shared storage space requiring no user interaction.
-1. The Mediastore entry is created in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/java/com/dkronig/maswe_storage/maswe_0007/RegisterActivity.java#L22-L29):
+1. The Mediastore entry is created in the lines here:
 ```java
 private static final String FILENAME = "maswe_0007_user_credentials.txt";
 private Uri fileUri;
@@ -23,7 +23,7 @@ protected void onCreate(Bundle savedInstanceState) {
             getContentUri("external"), values);
 }
 ```
-2. Upon user registration, this function writing user credentials to shared storage is called in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/java/com/dkronig/maswe_storage/maswe_0007/RegisterActivity.java#L64-L73):
+2. Upon user registration, this function writing user credentials to shared storage is called in the lines here:
 ```java
 private void writeToSharedStorage(String content) {
     // Write content using OutputStream wrapped in BufferedWriter

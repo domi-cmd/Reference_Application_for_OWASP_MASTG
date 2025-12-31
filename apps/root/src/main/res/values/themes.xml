@@ -2,7 +2,7 @@
     <!-- Root app theme -->
     <style name="Theme.launcher" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary colors. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/root_app</item>
         <item name="colorOnPrimary">@color/white</item>
 
         <!-- Status bar color. -->

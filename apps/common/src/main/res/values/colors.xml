@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Color palette as used by OWASP MAS -->
+    <color name="root_app">#FF6200EE</color>
     <color name="maswe_storage">#df5c8d</color>
     <color name="maswe_crypto">#f65928</color>
     <color name="maswe_auth">#f09236</color>

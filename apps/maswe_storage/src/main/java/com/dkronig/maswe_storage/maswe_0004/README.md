@@ -41,3 +41,7 @@ drwx------  0 10225  10225       0 Nov 05 11:20 apps/com.dkronig.maswe_storage/r
         <exclude domain="sharedpref" path="."/>
 </device-transfer>
 ```
+
+## Interesting links and sources:
+- [Medium Article discussing backup vulnerabilities](https://bevijaygupta.medium.com/backup-vulnerabilities-in-android-mobile-applications-fd1e7f79617c)
+- [Android Developers discussing backup vulnerabilities and best practices](https://developer.android.com/privacy-and-security/risks/backup-best-practices)

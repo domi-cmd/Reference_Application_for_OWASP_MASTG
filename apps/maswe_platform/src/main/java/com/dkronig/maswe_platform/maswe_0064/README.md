@@ -27,3 +27,6 @@ The relevant code for this vulnerability can be seen in [maswe_0064/CustomConten
 adb shell content read --uri content://com.dkronig.root.CustomContentProvider/maswe_0064_user_credentials.txt
 ```
 in a terminal with adb installed, and the content provider will provide you with the sensitive user credentials.
+
+## Interesting links and sources:
+- [Medium Articles discussing a real-world data leak due to content provider](https://cyberweapons.medium.com/critical-android-bug-insecure-exported-components-content-leak-a-real-world-writeup-dada800f7ee6)

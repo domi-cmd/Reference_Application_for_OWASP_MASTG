@@ -100,4 +100,9 @@ C:\Users\Domi>adb logcat | findstr /I "password email token jwt"
 ```
 
 ## The vulnerability can be fixed by:
-1. Removing any logging whatsoever when deploying/publishing it. Using logs should only be used in the apps closed development.
+Removing any logging whatsoever when deploying/publishing it. Using logs should only be used in the apps closed development.
+
+## Interesting links and sources
+- [Android Developers discussing this type of vulnerability](https://developer.android.com/privacy-and-security/risks/log-info-disclosure)
+- [Article on how to exploit insecure logs](https://medium.com/@princeoffl/exploring-common-vulnerabilities-in-android-insecure-logging-hardcoded-credentials-insecure-data-a3c9e0cb2611)
+- [OWASP's Mobile Top 10 Security Risks discussing unprotected logging](https://owasp.org/www-project-mobile-top-10/2023-risks/m9-insecure-data-storage)

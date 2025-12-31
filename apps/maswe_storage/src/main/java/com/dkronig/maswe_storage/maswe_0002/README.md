@@ -46,3 +46,7 @@ The relevant code for this vulnerability can be seen in maswe_storage's [Android
 ## Further explanation for the reasoning behind how the vulnerability was implemented
 
 Since setting read and write permissions to world is deprecated and impossible in newer Android versions and setting file permissions with runtime system commands does not allow for file access due to unchangable filedirectoy permissions, the approach shown here demonstrates a misconfigured FileProvider, which hands out URI permissions without checking the permissions of the receivers. 
+
+## Interesting links and sources:
+- [Android Developers discussing internal storage access restrictions](https://developer.android.com/privacy-and-security/security-tips#internal-storage)
+- [Android Developers discussing deprecated insecure file reading permissions](https://developer.android.com/about/versions/nougat/android-7.0-changes#permfilesys)

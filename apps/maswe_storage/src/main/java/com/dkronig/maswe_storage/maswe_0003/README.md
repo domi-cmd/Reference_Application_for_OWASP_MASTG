@@ -42,3 +42,7 @@ This prevents any backup happening if no encryption is in place.
 ```xml
 <[...] requireFlags="clientSideEncryption"/>
 ```
+
+## Interesting links and sources:
+- [Medium Article discussing backup vulnerabilities](https://bevijaygupta.medium.com/backup-vulnerabilities-in-android-mobile-applications-fd1e7f79617c)
+- [Android Developers discussing backup vulnerabilities and best practices](https://developer.android.com/privacy-and-security/risks/backup-best-practices)

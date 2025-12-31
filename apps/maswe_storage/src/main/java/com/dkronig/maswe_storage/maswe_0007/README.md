@@ -49,3 +49,6 @@ Not storing sensitive in such a way. Instead, developers can:
 1. Save data in internal storage.
 2. Make use of app specific external storage, which is sandboxed per-app.
 3. Instead of MediaStore use SAF, which requires user interacion to access.
+
+## Interestings links and sources:
+- [Android Developers discussing importante of encrypting shared storage data](https://developer.android.com/privacy-and-security/risks/sensitive-data-external-storage)

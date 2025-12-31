@@ -21,13 +21,16 @@
 The **OWASP Mobile Application Security Testing Guide (MASTG)** is an industry-standard manual for assessing the security of mobile applications.  
 Despite its wide adoption, there is **no unified reference app** that demonstrates its test cases in a practical, hands-on way.  
 
-This project addresses that gap by providing a **reference Android application** that intentionally includes a (hopefully) diverse set of vulnerabilities and misconfigurations corresponding to the categories outlined in the MASTG, such as:  
+This project addresses that gap by providing a **reference Android application** that intentionally includes a diverse set of vulnerabilities and misconfigurations corresponding to the categories outlined in the MASTG, such as:  
 
 - Insecure data storage  
 - Weak authentication  
-- Insecure communication  
-- Reverse engineering issues  
+- Insecure cryptographic implementations  
 - Runtime and static vulnerabilities  
+
+To contribute to this project, please refer the [contributing guide](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/.github/CONTRIBUTING.md).
+
+To view the current status and progress of the project, take a look at the [vulnerability checklist](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/MAS_checklist.md)!
 
 ---
 

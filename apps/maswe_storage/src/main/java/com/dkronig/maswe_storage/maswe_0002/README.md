@@ -4,7 +4,7 @@ The relevant code for this vulnerability can be seen in maswe_storage's [Android
 
 ## The vulnerability consists of:
 
-1. Using a FileProvider which grants URI permission without checking permissions of the requesting party in the lines [here](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/AndroidManifest.xml#L47-L58) in the manifest:
+1. Using a FileProvider which grants URI permission without checking permissions of the requesting party in the lines here in the manifest:
 ```xml
 <provider
     android:name="androidx.core.content.FileProvider"

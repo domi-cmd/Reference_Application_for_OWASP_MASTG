@@ -1,6 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
+    id("com.android.application")
 }
+
 
 android {
     namespace = "com.dkronig.launcher"
@@ -29,10 +30,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    dynamicFeatures += setOf(
+        ":maswe_storage",
+        ":maswe_crypto",
+        ":maswe_platform",
+    )
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(project(":common"))

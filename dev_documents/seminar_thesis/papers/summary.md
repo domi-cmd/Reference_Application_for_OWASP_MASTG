@@ -5,7 +5,7 @@ Here I'll collect my thoughts and notes on read papers
 # Answer
 
 Of 15 papers dealing with OWASP MASTG:
-- 7 use MASTG (and MASVS) for evaluating realworld apps, checking if they adhere to the security standard set by OWASP MASVS
+- 8 use MASTG (and MASVS) for evaluating realworld apps, checking if they adhere to the security standard set by OWASP MASVS
 - 6 use it to map (found) vulnerabilities to known MASVS vulnerabilities
 - 3 follow the MASTG 5 step pen-testing guide to conduct pen-testing on mobile apps
 - 3 use the MASTG reference apps to evaluate tools on, often against realworld apps
@@ -16,24 +16,24 @@ Of 15 papers dealing with OWASP MASTG:
 - 1 uses the OWASP Mobile audit, which is built upon MASTG & MASVS and used to evaluate apps for security vulnerabilities.
 
 
-| Study | MASTG for vulnerability evaluation of app(s) | Vulnerability Mapping to MASVS | MASTG 5 Steps Pen-testing guide | MASTG as reference in discussion | MASTG ref. apps | MAS Security Checklist | Risk rating methodology | Mapping to OWASP Top 10 Mobile Risks | Mobile audit MASVS&MASTG |
-| - | - | - | - | - | - | - | - | - | - | 
-| 1 | X | X |  |  |  |  |  |  |  | 
-| 2 | X | X |  |  |  |  | X |  |  | 
-| 3 | X | X | X |  |  |  |  |  |  | 
-| 4 | X | X | X |  |  |  |  | X |  | 
-| 5 | X | X |  |  |  | X |  |  |  | 
-| 6 |  |  | X |  |  |  |  |  |  | 
-| 7 | X | X |  |  |  |  |  |  |  | 
-| 8 |  |  |  | X |  |  |  |  |  | 
-| 10 |  |  |  |  | X |  |  |  |  | 
-| 13 | X |  |  |  |  |  |  |  |  | 
-| 14 |  |  |  |  |  |  |  |  | X | 
-| 19 |  |  |  |  | X |  |  | X |  | 
-| 20 |  |  |  | X |  |  | X |  |  | 
-| 21 |  |  |  | X |  |  |  |  |  | 
-| 22 |  |  |  | X | X |  |  |  |  | 
-| # |  |  |  |  |  |  |  |  |  | 
+| Study | MASTG for vulnerability evaluation of app(s) | Vulnerability Mapping to MASVS | MASTG 5 Steps Pen-testing guide | MASTG as reference in discussion | MASTG ref. apps | MAS Security Checklist | Risk rating methodology | Mapping to OWASP Top 10 Mobile Risks |
+| - | - | - | - | - | - | - | - | - |
+| 1 | X | X |  |  |  |  |  |  |
+| 2 | X | X |  |  |  |  | X |  |  
+| 3 | X | X | X |  |  |  |  |  | 
+| 4 | X | X | X |  |  |  |  | X | 
+| 5 | X | X |  |  |  | X |  |  |  
+| 6 |  |  | X |  |  |  |  |  | 
+| 7 | X | X |  |  |  |  |  |  | 
+| 8 |  |  |  | X |  |  |  |  |  
+| 10 |  |  |  |  | X |  |  |  | 
+| 13 | X |  |  |  |  |  |  |  | 
+| 14 | X |  |  |  |  |  |  |  | 
+| 19 |  |  |  |  | X |  |  | X | 
+| 20 |  |  |  | X |  |  | X |  | 
+| 21 |  |  |  | X |  |  |  |  |  
+| 22 |  |  |  | X | X |  |  |  | 
+| # |  |  |  |  |  |  |  |  |  
 
 
 

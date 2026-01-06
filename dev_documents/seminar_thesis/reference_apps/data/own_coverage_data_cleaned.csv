@@ -1,0 +1,29 @@
+Category,Vulnerability
+STORAGE,MASWE-0001: Insertion of Sensitive Data into Logs
+STORAGE,MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations
+STORAGE,MASWE-0003: Backup Unencrypted
+STORAGE,MASWE-0004: Sensitive Data Not Excluded From Backup
+STORAGE,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
+STORAGE,MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction
+CRYPTO,MASWE-0009: Improper Cryptographic Key Generation
+CRYPTO,MASWE-0010: Improper Cryptographic Key Derivation
+CRYPTO,MASWE-0011: Cryptographic Key Rotation Not Implemented
+CRYPTO,MASWE-0012: Insecure or Wrong Usage of Cryptographic Key
+CRYPTO,MASWE-0014: Cryptographic Keys Not Properly Protected at Rest
+CRYPTO,MASWE-0015: Deprecated Android KeyStore Implementations
+CRYPTO,MASWE-0016: Unsafe Handling of Imported Cryptographic Keys
+CRYPTO,MASWE-0017: Cryptographic Keys Not Properly Protected on Export
+CRYPTO,MASWE-0018: Cryptographic Keys Access Not Restricted
+CRYPTO,MASWE-0019: Risky Cryptography Implementations
+CRYPTO,MASWE-0020: Improper Encryption
+CRYPTO,MASWE-0021: Improper Hashing
+CRYPTO,MASWE-0022: Predictable Initialization Vectors (IVs)
+CRYPTO,MASWE-0023: Risky Padding
+CRYPTO,MASWE-0024: Improper Use of Message Authentication Code (MAC)
+CRYPTO,MASWE-0025: Improper Generation of Cryptographic Signatures
+CRYPTO,MASWE-0026: Improper Verification of Cryptographic Signature
+CRYPTO,MASWE-0027: Improper Random Number Generation
+PLATFORM,MASWE-0053: Sensitive Data Leaked via the User Interface
+PLATFORM,MASWE-0055: Sensitive Data Leaked via Screenshots
+PLATFORM,MASWE-0064: Insecure Content Providers
+PLATFORM,MASWE-0067: Debuggable Flag Not Disabled

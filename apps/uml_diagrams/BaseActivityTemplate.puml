@@ -1,0 +1,63 @@
+@startuml
+title BaseActivityTemplate Flow
+
+skinparam conditionStyle diamond
+skinparam partitionMinWidth 300
+skinparam dpi 300
+
+start
+
+partition "Initialization" {
+  :onCreate();
+  :setupActionBar();
+
+  if (ActionBar exists?) then (yes)
+    :Enable back navigation;
+    :Set title = getScreenTitle();
+    note right: Can be overridden\nfor custom title
+  else (no)
+    :Skip ActionBar setup;
+  endif
+}
+
+:User interacts with UI;
+
+partition "Navigation Handling" {
+    note left
+      **Hook Methods**
+      Subclasses may override:
+      - getScreenTitle()
+      **Reusable Methods**
+      - addListener()
+      - bindButtons()
+    end note
+
+  if (Options item selected?) then (yes)
+    if (Item is HOME?) then (yes)
+      :onBackPressed();
+      stop
+    else (no)
+      :Delegate to super;
+      stop
+    endif
+  endif
+}
+
+partition "Button Binding" {
+  :bindButtons(buttonMap);
+
+  while (More entries?) is (yes)
+    :findViewById(buttonId);
+
+    if (Button exists?) then (yes)
+      :addListener(button, targetActivity);
+      note right: Starts target activity\non click
+    else (no)
+      :Skip binding;
+    endif
+  endwhile (no)
+}
+
+stop
+
+@enduml

@@ -1,0 +1,79 @@
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+title MASWE Storage App – MASWE_0001
+
+' ========= Base Classes =========
+package "com.dkronig.common" {
+    abstract class BaseActivityTemplate <<abstract>>
+    abstract class BaseLoginActivity <<abstract>>
+    abstract class BaseRegisterActivity <<abstract>>
+}
+
+' ========= App Package =========
+package "com.dkronig.maswe_storage" {
+  class StorageMenu <<Activity>> {
+      - SCREEN_TITLE : String
+      + onCreate(Bundle)
+      - initializeButtons()
+      # getScreenTitle() : String
+  }
+}
+
+' ========= MASWE-0001 Package =========
+package "com.dkronig.maswe_storage.maswe_0001" {
+
+  class MainActivity0001 <<Activity>> {
+      - SCREEN_TITLE : String
+      + onCreate(Bundle)
+      # getScreenTitle() : String
+  }
+
+  class LoginActivity <<Activity>> {
+      - SCREEN_TITLE : String
+      - CREDENTIALS_FILE_NAME : String
+      + onLoginSuccess(email : String)
+      # getLayoutId() : int
+      # getEmailFieldId() : int
+      # getPasswordFieldId() : int
+      # getLoginButtonId() : int
+      # getScreenTitle() : String
+      # getCredentialFileName() : String
+  }
+
+  class ProfileActivity <<Activity>> {
+      - SCREEN_TITLE : String
+      + onCreate(Bundle)
+      # getScreenTitle() : String
+  }
+
+  class RegisterActivity <<Activity>> {
+      - SCREEN_TITLE : String
+      - CREDENTIALS_FILE_NAME : String
+      - LOG_TAG : String
+      # getLayoutId() : int
+      # getEmailFieldId() : int
+      # getPasswordFieldId() : int
+      # getRegisterButtonId() : int
+      # getScreenTitle() : String
+      # getCredentialFileName() : String
+      # onRegister(email : String, password : String)
+      - userDataToSystemLogs(email : String, password : String)
+      - userDataToAppLogs(email : String, password : String)
+  }
+}
+
+' ========= Inheritance =========
+StorageMenu --|> BaseActivityTemplate
+MainActivity0001 --|> BaseActivityTemplate
+ProfileActivity --|> BaseActivityTemplate
+LoginActivity --|> BaseLoginActivity
+RegisterActivity --|> BaseRegisterActivity
+
+' ========= Navigation / Usage =========
+StorageMenu --> MainActivity0001 : opens
+MainActivity0001 --> LoginActivity : navigates
+MainActivity0001 --> RegisterActivity : navigates
+LoginActivity --> ProfileActivity : onLoginSuccess()
+
+@enduml

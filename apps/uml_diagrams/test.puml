@@ -1,0 +1,19 @@
+@startuml
+package "maswe_storage" {
+  class StorageMenu extends BaseActivityTemplate{
+    onCreate()
+    initializeButtons()
+  }
+
+  class MainActivity0001
+  class LoginActivity extends BaseLoginActivity
+  class ProfileActivity extends BaseActivityTemplate
+  class RegisterActivity extends BaseRegisterActivity
+}
+
+LoginActivity --> MainActivity0001
+ProfileActivity --> MainActivity0001
+RegisterActivity --> MainActivity0001
+
+MainActivity0001 --> StorageMenu
+@enduml

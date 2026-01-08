@@ -7,6 +7,48 @@ Hier beschreibst du die konkrete technische Umsetzung aller Vulnerabilities. Kei
 \section{MASVS-STORAGE}
 
 \subsection{MASWE-0001}
+According to OWASP MASWE description of "MASWE-0001 Insertion of Sensitive Data into Logs", this vulnerability can be introduced into an app in two ways: system logs and app logs. To do so, we use the onRegister hook to call two methods, which write the unencrypted user credentials that have just been registered with to both system and app logs respectively:
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=\todo{add caption}, label=bar]
+@Override
+protected void onRegister(String email, String password) {
+    userDataToSystemLogs(email, password);
+    userDataToAppLogs(email, password);
+}
+\end{lstlisting}
+
+
+For system logs, we make use of the commandline tool "Logcat":
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=\todo{add caption}, label=bar]
+private void userDataToSystemLogs(String email, String password){
+    Log.d(LOG_TAG, "New User registered");
+    Log.d(LOG_TAG, "User E-Mail: "+ email);
+    Log.d(LOG_TAG, "User Password: " + password);
+}
+\end{lstlisting}
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=\todo{add caption}, label=bar]
+private void userDataToAppLogs(String email, String password){
+    try {
+        File logFile = new File(getFilesDir(), CREDENTIALS_FILE_NAME + ".txt");
+        FileWriter writer = new FileWriter(logFile, true);
+        writer.append("Login - Username: ")
+                .append(email)
+                .append(", Password: ")
+                .append(password)
+                .append("\n");
+        writer.close();
+        Log.d(LOG_TAG, "Logged credentials to app logs");
+    } catch (IOException e) {
+        Log.e(LOG_TAG, "Error writing to log file: " + e.getMessage());
+    }
+}
+\end{lstlisting}
+
 \subsubsection{Technologies, Frameworks and Programming Languages}
 Text
 \subsubsection{Key Components}

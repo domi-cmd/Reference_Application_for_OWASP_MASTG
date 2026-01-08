@@ -1,0 +1,75 @@
+@startuml
+title BaseLoginActivity Template Flow
+skinparam dpi 300
+skinparam conditionStyle diamond
+
+start
+
+partition "Initialization" {
+  :onCreate();
+  note left: Get credential file name\nSet content view
+  :initLoginForm();
+  note left: Wire UI elements\nSet click listener
+}
+
+:User clicks Login button;
+
+partition "Login Process" {
+  :handleLogin();
+  :Get & trim email/password;
+
+  note left
+    **Abstract Methods**
+    Subclasses must implement:
+    - getLayoutId()
+    - getEmailFieldId()
+    - getPasswordFieldId()
+    - getLoginButtonId()
+    - onLoginSuccess()
+  end note
+
+  note right
+   **Hook Methods**
+      Subclasses can override:
+      - getCredentialFileName()
+      - decryptPassword()
+      - verifyPassword()
+      - onLoginFailure()
+      - getScreenTitle()
+   end note
+
+  if (validateInput()?) then (valid)
+
+    partition "Retrieve User" {
+      if (Prefs file exists?) then (yes)
+        :Load users JSON;
+
+        if (Email exists?) then (yes)
+          :Extract stored password;
+          :decryptPassword() <<HOOK>>;
+          note left: Override for\ncustom decryption
+
+          if (verifyPassword() <<HOOK>>?) then (match)
+            :onLoginSuccess() **ABSTRACT**;
+            note right: Navigate to\nnext activity
+            stop
+          else (no match)
+            :Show "Invalid credentials" toast;
+            stop
+          endif
+        else (no)
+          :Show "Invalid credentials" toast;
+          stop
+        endif
+      else (no)
+        :Show "Invalid credentials" toast;
+        stop
+      endif
+    }
+  else (invalid)
+    :Show "Cannot be empty" toast;
+    stop
+  endif
+}
+
+@enduml

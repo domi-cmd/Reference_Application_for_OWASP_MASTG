@@ -1,0 +1,83 @@
+@startuml
+title BaseRegisterActivity Template Flow
+skinparam dpi 300
+skinparam conditionStyle diamond
+
+start
+
+partition "Initialization" {
+  :onCreate();
+  note left: Get credential file name\nSet content view
+  :initRegisterForm();
+  note left: Wire UI elements\nSet click listener
+}
+
+:User clicks Register button;
+
+partition "Registration Process" {
+  :handleRegistration();
+  :Get & trim email/password;
+
+  if (validateInput()?) then (valid)
+    :encryptPassword() <<HOOK>>;
+    note left: Override for\ncustom encryption
+
+    partition "Save to Storage" {
+      :Load existing users JSON;
+
+      if (User exists?) then (no)
+        :Create user object;
+        :Add to JSON;
+        :Save to SharedPreferences;
+        :Show "Registered!" toast;
+        :onRegister() <<HOOK>>;
+        note right: Override for\npost-registration\nbehavior
+        stop
+      else (yes)
+        :Show "User exists!" toast;
+        stop
+      endif
+    }
+  else (invalid)
+    :Show "Cannot be empty" toast;
+    stop
+  endif
+}
+
+note left
+  **Hook Methods**
+  Subclasses can override:
+  - getCredentialFileName()
+  - encryptPassword()
+  - onRegister()
+  - getScreenTitle()
+end note
+
+note right
+  **Abstract Methods**
+  Subclasses must implement:
+  - getLayoutId()
+  - getEmailFieldId()
+  - getPasswordFieldId()
+  - getRegisterButtonId()
+end note
+
+@enduml
+
+note left
+  **Abstract Methods**
+  Subclasses must implement:
+  - getLayoutId()
+  - getEmailFieldId()
+  - getPasswordFieldId()
+  - getRegisterButtonId()
+
+  **Hook Methods**
+  Subclasses can override:
+  - getCredentialFileName()
+  - encryptPassword()
+  - onRegister()
+  - getScreenTitle()
+end note
+
+@enduml

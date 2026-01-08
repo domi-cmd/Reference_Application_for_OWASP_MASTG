@@ -1,0 +1,45 @@
+Introduction
+- Motivation: Warum ist das Thema wichtig?
+- Problemstellung
+- Zielsetzung der Arbeit
+- Forschungsfragen / Hypothesen
+- Vorgehensweise und Struktur der Arbeit
+
+Related Work
+- The state of the art in vulnerability detection for Android
+
+Background
+- Android Internals
+- OWASP MAS
+
+Design: Hier beschreibst du High-Level deine Ideen und begründest die Auswahl der implementierten Vulnerabilities. Das kann zum Beispiel so aussehen:
+- Systemarchitektur
+- Modelle:
+	- UML-Diagramme oder Datenmodelle
+	- Use-Cases oder Flow-Diagramme
+	- ...
+- Designentscheidungen und Begründungen
+- Alternativen & warum verworfen
+
+Implementation: Hier beschreibst du die konkrete technische Umsetzung aller Vulnerabilities. Kein kompletter Quellcode – nur relevante Ausschnitte und Architektur.
+- Alle implementierten Vulnerabilities beschreiben
+	- Beschreibung der Vuln mit Detail Infos. Also zum Beispiel:
+		- Kategorie
+		- Technologien, Frameworks, Programmiersprachen
+		- Wichtige Komponenten
+		- Herausforderungen bei der Umsetzung
+		- ...
+
+Results: In diesem Kapitel sollest du den Vergleich deiner Implementation mit den bestehenden Apps machen und deine Arbeit zusammenfassen.
+- Hier dann die "Comparison with existing intentional vulnerable Android apps”, weil du vergleichst deine Implementierung mit existierenden Arbeiten. Somit ist das ein Teil der Resultate deiner Arbeit und nicht Teil der Related Work.
+- Beantwortung der Forschungsfragen / Hypothesen
+
+Discussion
+- Threads to Validity
+- Open Problems
+
+Future Work
+
+Conclusion
+
+Appendix

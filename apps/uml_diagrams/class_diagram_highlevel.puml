@@ -3,6 +3,7 @@
 title High level class diagram of app functionality
 top to bottom direction
 skinparam classAttributeIconSize 0
+skinparam dpi 300
 skinparam linetype ortho
 
 package root {

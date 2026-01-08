@@ -3,7 +3,7 @@ title BaseActivityTemplate Flow
 
 skinparam conditionStyle diamond
 skinparam partitionMinWidth 300
-skinparam dpi 300
+skinparam dpi 260
 
 start
 

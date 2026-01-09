@@ -1,0 +1,58 @@
+PROBLEMSTELLUNG:
+- statische Fehler-analyse tools müssen getestet werden, und dafür braucht man Vulnerabilities.
+- Kann echte Apps verwenden, aber dort sind die Vulnerabilities nicht dokumentiert.
+-> Extra vulnerable apps verwenden, damit man sie als ground truth in einem benchmarking approach verwenden kann.
+- wie kann man Apps bauen als ground truth für benchmarking approach?
+
+
+HYPOTHESE:
+- nicht nötig damit meine Arbeit "legitim" ist
+- Meine Arbeit ist mehr technisch und weniger eine Forschungsarbeit.
+- Würde sowieso keinen Sinn ergeben, jetzt noch eine Hypothese zu formulieren, wo die Arbeit fertig ist.
+
+BACKGROUND:
+- Background sollte keine riesen Arbeit sein, nicht unnötig Zeit darauf verschwenden.
+- Einfach die grossen, wichtigen Konzepte erklären.
+- Annehmen, dass der Leser sich nicht mit Android auskennt.
+- Kleinere Konzepte, wie zum Beispiel MediaStore, dass nur in einer Vulnerability verwendet wird, muss nicht erklärt werden.
+- Auch der OWASP MAS - Teil muss/soll nicht riesig gross sein, 4-5 sätze reichen vielleicht sogar aus.
+
+DESIGN:
+- Wirklich nur highlevel meine Entscheidungen begründen: Welche Programmiersprache und wieso, welche Frameworks, welche Architekturen (meine UMl Diagramme),
+welche Vulnerability-Gruppen (die und die Vulnerability passt gut zu meinem Stack), weshalb so und so implementiert (insecure via xor-Encryption), 
+was fehlt noch.
+- Meine Diagramme reichen (NICHT ZU VIEL ZEIT AUF DIAGRAMME VERSCHWENDEN)
+- Keine low level Diagramme
+
+IMPLEMENTATION:
+- Eine Tabelle am Anfang, die jeweils (nummer?) Name, ein zwei Kommentare über die Vulnerability gibt. Dann noch Verlinkung zu OWASP MASWE Beitrag zur 
+Vulnerability. Aber dann im Text nur über meine Implementation, nicht noch erklären was die Vulnerability ist (nicht OWASP Paraphrasieren).
+-> Idee: die Leser können bei Bedarf und Interesse noch mehr bei Link nachlesen gehen, aber nicht Fokus/Sinn meiner Arbeit.
+
+
+choice (was war mit dieser Notiz gemeint??) 
+
+
+APK PROBLEM:
+- Einfach root App entfernen.
+
+
+DISCUSSION:
+- Überlegen, was genau meine Graphen überhaupt aussagen. 
+-> Die Vulnerabilities kann man auf x arten abdecken, heisst, dass mehrfache Abdeckung nicht in der gleichen Vulnerabilities resultiert.
+-> Was würde es bedeuten, alle Kategorien 100% abzudecken?
+-> Okay wir haben mehr Vulnerabilities abgedeckt (nun insgesamt 58 statt 28) aber grundsätzlich Anzahl ist immernoch sehr klein ("nur" 28 Neue), 
+vielleicht pro Kategorie 10 von milllionen möglichen Vulnerabilities implementiert.
+-> Wie kann man das messbar machen, wenn alles auf 100% wäre? Welche Metrik um das dann noch sinnvoll weiter zu entwickeln?
+
+- Ich soll mich fokussieren auf das, was ich gemacht habe, und dass in Relation setzen, und was ist überhaupt sinnvoll und was sagen meine Resultate aus.
+
+- "unique" ist das falsche Wort, da alle Implementationen einzigartig sind, auch wenn sie die gleiche Vulnerability abdecken.
+- Es geht mehr um "unique Kategorie", weil Vulnerabilities sind trotzdem immer unterschiedlich.
+
+ABGABETERMIN ARBEIT:
+31.1.2026
+
+TERMIN VORTRAG;
+9-14 februar oder
+16-21 februar

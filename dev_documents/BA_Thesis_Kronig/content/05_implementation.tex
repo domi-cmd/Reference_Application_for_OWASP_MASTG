@@ -8,19 +8,17 @@ Hier beschreibst du die konkrete technische Umsetzung aller Vulnerabilities. Kei
 
 \subsection{MASWE-0001}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{ | p{5cm} | p{8cm} | } 
-  \hline
-  Name & Insertion of Sensitive Data into Logs \\ 
-  \hline
-  Key Topics & App Logs, System Logs \\ 
-  \hline
-  Key Components & RegisterActivity.java \\
-  \hline
-  Programming Languages & Java \\ 
-  \hline
+\begin{tabular}{p{5cm} p{8cm} } 
+\toprule
+Name & Insertion of Sensitive Data into Logs \\ 
+\midrule
+Key Topics & App Logs, System Logs \\ 
+Key Components & RegisterActivity.java \\
+Programming Languages & Java \\ 
+\bottomrule
 \end{tabular}
 \caption{MASWE-0001}
 \label{tab:maswe-0001}
@@ -74,150 +72,223 @@ private void userDataToAppLogs(String email, String password){
 
 \subsection{MASWE-0002}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{ | p{5cm} | p{8cm} | } 
-  \hline
-  Name & Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations \\ 
-  \hline
-  Key Topics & FileProvider, File Permissions \\ 
-  \hline
-  Key Components & AndroidManifest.xml, RegisterActivity.java \\
-  \hline
-  Programming Languages & Java, XML \\ 
-  \hline
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations \\ 
+\midrule
+Key Topics & FileProvider, File Permissions \\ 
+Key Components & AndroidManifest.xml, RegisterActivity.java \\
+Programming Languages & Java, XML \\ 
+\bottomrule
 \end{tabular}
 \caption{MASWE-0002}
 \label{tab:maswe-0002}
 \end{table}
 
-\subsubsection{Technologies, Frameworks and Programming Languages}
-Text
-\subsubsection{Key Components}
-Text
-\subsubsection{Implementation Challenges}
-Text
-\subsubsection{...}
-Text
+The challenge of implementing this vulnerability stemmed from the fact that global file permissions are not allowed by Android in newer versions \todo{Add here after which versions this is the case exactly}. For example, setting the permissions of any file, even using modern syntax, as seen in \ref{lst:Maswe0002SettingFilePermissions}, will be ignored by built-in Android security checks.
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Setting a files permissions to world read and writeable}, label=lst:Maswe0002SettingFilePermissions]
+file.setReadable(true, false);  
+file.setWritable(true, false);
+\end{lstlisting}
+
+To still implement this vulnerability, we made use of an custom FileProvider which attempts to share access to the file with anybody, without checking their permissions to do so, as seen in \ref{lst:Maswe0002FileProvider}.
+
+% XML Code
+\begin{lstlisting}[float=tbh, language=XML, mathescape=true, captionpos=b, caption={Custom FileProvider that grants Uri permissions without checking access permissions}, label=lst:Maswe0002FileProvider]
+<provider
+    android:name="androidx.core.content.FileProvider"
+    android:authorities="com.dkronig.maswe_storage.CustomFileProvider"
+    android:exported="false"
+    android:grantUriPermissions="true"
+    android:permission="" >
+    <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/file_paths" />
+</provider>
+\end{lstlisting}
+
+This FileProvider is then called every time a new user registers by hooking into the onRegister method. We first create a new Uri for accessing the file storing the user credentials. It then creates a new intent for sharing, attaches the file in plaintext and prompts the user to share it with any app of his/her \todo{Figure out how to gender properly} choosing. This can be seen in \ref{lst:Maswe0002PromptingUserShareCredentials}.
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Prompting the user to share a plaintext file containing user credentials}, label=lst:Maswe0002PromptingUserShareCredentials]
+@Override
+protected void onRegister(String email, String password) {
+    Uri uri = FileProvider.getUriForFile(
+            this,
+            this.getPackageName() + ".CustomFileProvider",
+            new File(this.getFilesDir(), "maswe_0002_user_credentials.txt"));
+
+    Intent share = new Intent(Intent.ACTION_SEND);
+    share.setType("text/plain");
+    share.putExtra(Intent.EXTRA_STREAM, uri);
+    share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+    startActivity(Intent.createChooser(share, "Share file via"));
+}
+\end{lstlisting}
+
+This approach is less dangerous than setting file permissions directly, since it makes the user aware of the issue, and can only cause a breach of sensitive user data if the user him/herself \todo{gender this properly} chooses to do so. We decided to settle on this approach, since it appeared impossible to implement this vulnerability more directly on new Android versions.
+
 
 \subsection{MASWE-0003}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{ | p{5cm} | p{8cm} | } 
-  \hline
-  Name & Backup Unencrypted \\ 
-  \hline
-  Key Topics & Backup device conditions (clientSideEncryption) and backup device flags (disableIfNoEncryptionCapabilities) \\
-  \hline
-  Key Components & backup\_rules.xml \\
-  \hline
-  Programming Languages & XML \\ 
-  \hline
+\begin{tabular}{p{5cm} p{8cm}}
+\toprule
+Name & Backup Unencrypted \\
+\midrule
+Key Topics & Backup device conditions (clientSideEncryption) and backup device flags (disableIfNoEncryptionCapabilities) \\
+Key Components & \texttt{backup\_rules.xml} \\
+Programming Languages & XML \\
+\bottomrule
 \end{tabular}
-\caption{MASWE-0003}
+\caption{Backup settings and unencrypted backup configuration (MASWE-0003)}
 \label{tab:maswe-0003}
 \end{table}
 
-\subsubsection{Technologies, Frameworks and Programming Languages}
-Text
-\subsubsection{Key Components}
-Text
-\subsubsection{Implementation Challenges}
-Text
-\subsubsection{...}
-Text
+Android does not enforce any default encryption of backups made by Android applications. To counter this, Android, by default, checks whether the backup is encrypted and only proceeds with the backup process if this is the case. To counter this and implement the vulnerability, we specifically set the flag seen in \ref{lst:xmlbackup} to false.
+
+\begin{lstlisting}[float=tbh, language=XML, mathescape=true, captionpos=b, caption={Backup rules for maswe\_0003}, label=lst:xmlbackup]
+<cloud-backup disableIfNoEncryptionCapabilities="false">
+    <include domain="sharedpref" path="."/>
+    <include domain="file" path="maswe_0003_user_credentials.txt"/>
+</cloud-backup>
+\end{lstlisting}
+
+We further make sure that client side encryption of the backup is not enforced by excluding the following flag for each include statement for both cloud backup as well as device to device transfer, as seen here \todo{Add proper pseudocode for this}.
+
+<[...] requireFlags="clientSideEncryption"/>
+
 
 \subsection{MASWE-0004}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{ | p{5cm} | p{8cm} | } 
-  \hline
-  Name & Sensitive Data Not Excluded From Backup \\ 
-  \hline
-  Key Topics & Cloud backup flags, device-transfer \\ 
-  \hline
-  Key Components & backup\_rules.xml \\ 
-  \hline
-  Programming Languages & XML \\ 
-  \hline
+\begin{tabular}{p{5cm} p{8cm} } 
+\toprule  
+Name & Sensitive Data Not Excluded From Backup \\ 
+\midrule  
+Key Topics & Cloud backup flags, device-transfer \\ 
+Key Components & backup\_rules.xml \\ 
+Programming Languages & XML \\ 
+\bottomrule
 \end{tabular}
 \caption{MASWE-0004}
 \label{tab:maswe-0004}
 \end{table}
 
-\subsubsection{Technologies, Frameworks and Programming Languages}
-Text
-\subsubsection{Key Components}
-Text
-\subsubsection{Implementation Challenges}
-Text
-\subsubsection{...}
-Text
+\todo{check the logic here. why again do i have sharedprefs AND the txt file?} To ensure that user credentials are included in the backup, we explicitly include every SharedPreferences file in which the user credentials are stored by all our apps by default. We go a step further and explicitly include the file that stores the user credentials text file for this app. We do this for both the cloud backup, as seen in \ref{lst:sensitivedatacloudbackup}, and for device-to-device transfer, as seen here \ref{lst:sensitivedatadevicetransfer}.
+
+\begin{lstlisting}[float=tbh, language=XML, mathescape=true, captionpos=b, caption={Cloud backup rules for maswe\_0004 app}, label=lst:sensitivedatacloudbackup]
+<cloud-backup disableIfNoEncryptionCapabilities="false">
+        <include domain="sharedpref" path="."/>
+        <include domain="file" path="maswe_0004_user_credentials.txt"/>
+</cloud-backup>
+\end{lstlisting}
+
+\begin{lstlisting}[float=tbh, language=XML, mathescape=true, captionpos=b, caption={Device-to-device transfer rules for maswe\_0004 app}, label=lst:sensitivedatadevicetransfer]
+<device-transfer>
+        <include domain="sharedpref" path="."/>
+</device-transfer>
+\end{lstlisting}
 
 \subsection{MASWE-0006}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{ | p{5cm} | p{8cm} | } 
-  \hline
-  Name & Sensitive Data Stored Unencrypted in Private Storage Locations \\ 
-  \hline
-  Key Topics & Hard-coded Encryption Key, Insufficient and Outdated Encryption (DES) \\
-  \hline
-  Key Components & EncryptionHandler.java \\
-  \hline
-  Programming Languages & Java \\ 
-  \hline
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Sensitive Data Stored Unencrypted in Private Storage Locations \\ 
+\midrule
+Key Topics & Hard-coded Encryption Key, Broken Outdated Encryption (DES), Encryption Key stored on Filesystem \\
+Key Components & EncryptionHandler.java \\
+Programming Languages & Java \\ 
+\bottomrule
 \end{tabular}
 \caption{MASWE-0006}
 \label{tab:maswe-0006}
 \end{table}
 
-\subsubsection{Technologies, Frameworks and Programming Languages}
-Text
-\subsubsection{Key Components}
-Text
-\subsubsection{Implementation Challenges}
-Text
-\subsubsection{...}
-Text
+We implemented this vulnerability by not only using a hard-coded key, which is stored in the same file where it is used, but also by using it in combination with DES (Data Encryption Standard), which is considered a broken and outdated encryption algorithm. This can be seen in the code snippet here \ref{lst:maswe0006brokenalgorithm}.
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=Setting up hard-coded encryption key and DES for cryptographic operations, label=lst:maswe0006brokenalgorithm]
+public class EncryptionHandler {
+    private static final String ENCRYPTION_KEY = "EncryptK";
+    private static final String ALGORITHM = "DES/ECB/PKCS5Padding";
+    private static final String KEY_ALGORITHM = "DES";
+    ...
+\end{lstlisting}
+
+We then use this weak encryption on user credentials upon registration and save this sensitive data in SharedPreferences (internal storage) \ref{lst:maswe0006brokenencryption}.
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=Using DES and a hard-coded encryption key for weak encryption, label=lst:maswe0006brokenencryption]
+SecretKeySpec keySpec = new SecretKeySpec(
+            ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8),
+            KEY_ALGORITHM);
+            
+Cipher cipher = Cipher.getInstance(ALGORITHM);
+cipher.init(Cipher.ENCRYPT_MODE, keySpec);
+\end{lstlisting}
 
 
 \subsection{MASWE-0007}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{ | p{5cm} | p{8cm} | } 
-  \hline
-  Name & Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction \\ 
-  \hline
-  Key Topics & MediaStore, Unencrypted User Data, External Storage \\
-  \hline
-  Key Components & RegisterActivity.java \\
-  \hline
-  Programming Languages & Java \\ 
-  \hline
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction \\ 
+\midrule
+Key Topics & MediaStore, Unencrypted User Data, External Storage \\
+Key Components & RegisterActivity.java \\
+Programming Languages & Java \\ 
+\bottomrule
 \end{tabular}
 \caption{MASWE-0007}
 \label{tab:maswe-0007}
 \end{table}
 
-Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction
-\subsubsection{Technologies, Frameworks and Programming Languages}
-Text
-\subsubsection{Key Components}
-Text
-\subsubsection{Implementation Challenges}
-Text
-\subsubsection{...}
-Text
+Writing to shared storage without user interaction has become increasingly difficult in newer Android versions. However, it is still possible to do so using MediaStore.  MediaStore files are not part of the sand-boxed app environment and can be accessed by any other app without restrictions. To implement this vulnerability, we first create a new MediaStore entry to store future user credentials in \ref{lst:Maswe0007CreateMediaStoreEntry}.
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Creating a new MediaStore entry for storing user credentials}, label=lst:Maswe0007CreateMediaStoreEntry]
+private void createMediaStoreEntry(){
+    ContentValues values = new ContentValues();
+    values.put(MediaStore.MediaColumns.DISPLAY_NAME, FILENAME);
+    values.put(MediaStore.MediaColumns.MIME_TYPE, "text/plain");
+    values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOCUMENTS);
+
+    fileUri = getContentResolver().insert(MediaStore.Files.
+            getContentUri("external"), values);
+}
+\end{lstlisting}
+
+We then write new user credentials to this entry whenever a new user registers, as seen in \ref{lst:Maswe0007WriteToMediaStore}.
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Writing credentials of new users to MediaStore}, label=lst:Maswe0007WriteToMediaStore]
+private void writeToSharedStorage(String content) {
+    try (OutputStream out = getContentResolver().openOutputStream(fileUri)) {
+        assert out != null;
+        out.write(content.getBytes());
+        out.flush();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+\end{lstlisting}
+
 
 % Start of MASVS Crypto section
 \section{MASVS-CRYPTO}

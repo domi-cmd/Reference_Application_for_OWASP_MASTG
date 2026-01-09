@@ -22,6 +22,8 @@
 % Custom Paket für saubere verweise
 \usepackage[numbers,sort&compress]{natbib}
 
+\usepackage{float}
+
 % Paket für Links und Verweise innerhalb des PDF Dokuments
 \usepackage[
 	pdftitle={}, % e.g. Thesis
@@ -310,11 +312,31 @@
 \usepackage{listings}
 
 % Überschrift - Listing X.Y: ...
-\renewcommand{\lstlistingname}{Algorithmus}
+\renewcommand{\lstlistingname}{Algorithm}
 
 % Standard: Java
 \lstset{frame=none,
   language=Java,
+  aboveskip=0pt,
+  belowskip=0pt,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{CodeNumbers},
+  keywordstyle=\color{CodeKeywords}\bfseries,
+  commentstyle=\color{CodeComments}\itshape,
+  stringstyle=\color{CodeStrings},
+  extendedchars=true,
+  backgroundcolor=\color{CodeBackground},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+
+% New: XML
+\lstset{frame=none,
+  language=XML,
   aboveskip=0pt,
   belowskip=0pt,
   showstringspaces=false,
@@ -341,6 +363,7 @@
 	sensitive=true,
 	comment=[l]{//}
 }
+
 
 % -----------------------------------------
 % Hack um doublepages zu löschen

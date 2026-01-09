@@ -1,16 +1,21 @@
 \chapter{Introduction}
 \label{c:introduction}
 
-Start writing here \ref{c:introduction}...
-
 % Struktur
 \section{Motivation}
-Warum ist das Thema  wichtig?
+Mobile applications (apps) can have a variety of vulnerabilities. Modern Android apps have on average a surprisingly large number of vulnerabilities, which greatly impact their security and usage \todo{Add any of the papers read here that say this}. Because of this, it is of great importance to have tools that can detect vulnerabilities, both statically by inspecting the code and dynamically by executing the code and inspecting it at runtime. But how can the effectiveness of these tools be measured and compared to one another? 
+To measure the effectiveness of the tool, it is just as important to know how many vulnerabilities a tool was not able to detect, as it is important to find vulnerabilities themselves. Since most real-world mobile apps are closed source \todo{Probably add source for this}, there is no ground truth against which the performance of a vulnerability analysis tool on such apps can be evaluated, making it impossible to use them for measuring the effectiveness of such tools. To measure and compare the effectiveness of existing analysis tools, they have to be evaluated on intentionally vulnerable apps, of which the existing vulnerabilities are known to the person conducting the tests. 
+
+One such dataset of intentionally vulnerable apps is maintained by OWASP MASTG \cite{owasp_reference_app_website}. The issue with many of these apps is either a lack of source code and/or a lack of documentation of the implemented vulnerabilities, making them unfit for benchmarking vulnerability assessment tools. The goal of this BA thesis is to develop our own intentionally vulnerable OWASP MASTG reference apps, which can then be used for evaluating and benchmarking DAST (Dynamic Application Security Testing) and SAST (Static Application Security Testing) tools.
 
 \section{Problem statement}
+To make the apps fit for benchmarking both DAST (Dynamic Application Security Testing) and SAST (Static Application Security testing) \todo{explain and introduce these acronyms earlier} tools, the apps will include an overview of every implemented vulnerability. To make the apps a valuable resource for learning about OWASP MAS as well as penetration testing, the apps will include a detailed description of each implemented vulnerability, including what it consists of, where it can be found, how it can be exploited, and, depending on the vulnerability, how it can be fixed. These vulnerabilities are then mapped to their OWASP MASWE \todo{check if acronyms need to be explained here?} counterparts.
 
 \section{Objectives of the Thesis}
+The objectives of this thesis largely concern multiple developing open-source OWASP MASTG reference apps that include both static and dynamic security vulnerabilities. The goal is to cover multiple OWASP MASVS vulnerability categories, focusing on vulnerabilities that have seen little to no coverage in existing OWASP MASTG reference apps. The documentation of the implemented vulnerabilities should be thorough and include: the overall list of implemented vulnerabilities, the mapping to their respective OWASP MASWE counterparts, and a detailed explanation for each vulnerability, documenting where it can be found, how it has been implemented, and how it can be exploited.
 
-\section{Research Questions and Hypotheses}
+The thesis will include an analysis of existing OWASP MASTG reference apps, as to figure out the state-of-the-art in intentionally vulnerable Android app design. This allows us to \todo{figure out how to word this nicely} have the same standard for our own apps, as well as know which vulnerabilities have so far seen little to no coverage, and are of interest for our implementation. Once the apps have been developed, we will include \todo{properly reference results comparison section} a comparison of our app to existing apps, as well as evaluate the contribution our app makes to the OWASP MASTG reference app landscape.
+
+This thesis will also include literature review, detailing how OWASP MASTG, its reference app as well as other related components are used in the academic world. \todo{more here}
 
 \section{Methodology and Structure of the Thesis}

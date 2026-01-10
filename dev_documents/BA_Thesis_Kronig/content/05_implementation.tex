@@ -28,7 +28,7 @@ Programming Languages & Java \\
 To implement this vulnerability, we make use of the \texttt{onRegister} hook to call two methods whenever a new user registers. The first method writes the user credentials to system logs, while the second writes them to app logs, as shown in \ref{lst:onregister}.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=User registration hook invoking logging of sensitive credentials, label=lst:onregister]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption=User registration hook invoking logging of sensitive credentials, label=lst:onregister]
 @Override
 protected void onRegister(String email, String password) {
     userDataToSystemLogs(email, password);
@@ -40,7 +40,7 @@ protected void onRegister(String email, String password) {
 For system logs, we make use of the command-line tool \texttt{Logcat}, as shown in \ref{lst:systemlogs}.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=Writing user credentials to system logs using logcat, label=lst:systemlogs]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption=Writing user credentials to system logs using logcat, label=lst:systemlogs]
 private void userDataToSystemLogs(String email, String password){
     Log.d(LOG_TAG, "New User registered");
     Log.d(LOG_TAG, "User E-Mail: "+ email);
@@ -52,7 +52,7 @@ private void userDataToSystemLogs(String email, String password){
 \ref{lst:applogs} shows the second method, takes the user credentials and writes them to the apps internal file system, which are part of its app logs.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=Writing user credentials to application log files, label=lst:applogs]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption=Writing user credentials to application log files, label=lst:applogs]
 private void userDataToAppLogs(String email, String password){
     try {
         File logFile = new File(getFilesDir(), CREDENTIALS_FILE_NAME + ".txt");
@@ -91,7 +91,7 @@ Programming Languages & Java, XML \\
 The challenge of implementing this vulnerability stemmed from the fact that global file permissions are not allowed by Android in newer versions \todo{Add here after which versions this is the case exactly}. For example, setting the permissions of any file, even using modern syntax, as seen in \ref{lst:Maswe0002SettingFilePermissions}, will be ignored by built-in Android security checks.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Setting a files permissions to world read and writeable}, label=lst:Maswe0002SettingFilePermissions]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Setting a files permissions to world read and writeable}, label=lst:Maswe0002SettingFilePermissions]
 file.setReadable(true, false);  
 file.setWritable(true, false);
 \end{lstlisting}
@@ -99,7 +99,7 @@ file.setWritable(true, false);
 To still implement this vulnerability, we made use of an custom FileProvider which attempts to share access to the file with anybody, without checking their permissions to do so, as seen in \ref{lst:Maswe0002FileProvider}.
 
 % XML Code
-\begin{lstlisting}[float=tbh, language=XML, mathescape=true, captionpos=b, caption={Custom FileProvider that grants Uri permissions without checking access permissions}, label=lst:Maswe0002FileProvider]
+\begin{lstlisting}[float=tbh, style=XMLStyle, mathescape=true, captionpos=b, caption={Custom FileProvider that grants Uri permissions without checking access permissions}, label=lst:Maswe0002FileProvider]
 <provider
     android:name="androidx.core.content.FileProvider"
     android:authorities="com.dkronig.maswe_storage.CustomFileProvider"
@@ -115,7 +115,7 @@ To still implement this vulnerability, we made use of an custom FileProvider whi
 This FileProvider is then called every time a new user registers by hooking into the onRegister method. We first create a new Uri for accessing the file storing the user credentials. It then creates a new intent for sharing, attaches the file in plaintext and prompts the user to share it with any app of his/her \todo{Figure out how to gender properly} choosing. This can be seen in \ref{lst:Maswe0002PromptingUserShareCredentials}.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Prompting the user to share a plaintext file containing user credentials}, label=lst:Maswe0002PromptingUserShareCredentials]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Prompting the user to share a plaintext file containing user credentials}, label=lst:Maswe0002PromptingUserShareCredentials]
 @Override
 protected void onRegister(String email, String password) {
     Uri uri = FileProvider.getUriForFile(
@@ -154,7 +154,7 @@ Programming Languages & XML \\
 
 Android does not enforce any default encryption of backups made by Android applications. To counter this, Android, by default, checks whether the backup is encrypted and only proceeds with the backup process if this is the case. To counter this and implement the vulnerability, we specifically set the flag seen in \ref{lst:xmlbackup} to false.
 
-\begin{lstlisting}[float=tbh, language=XML, mathescape=true, captionpos=b, caption={Backup rules for maswe\_0003}, label=lst:xmlbackup]
+\begin{lstlisting}[float=tbh, style=XMLStyle, mathescape=true, captionpos=b, caption={Backup rules for maswe\_0003}, label=lst:xmlbackup]
 <cloud-backup disableIfNoEncryptionCapabilities="false">
     <include domain="sharedpref" path="."/>
     <include domain="file" path="maswe_0003_user_credentials.txt"/>
@@ -186,14 +186,14 @@ Programming Languages & XML \\
 
 \todo{check the logic here. why again do i have sharedprefs AND the txt file?} To ensure that user credentials are included in the backup, we explicitly include every SharedPreferences file in which the user credentials are stored by all our apps by default. We go a step further and explicitly include the file that stores the user credentials text file for this app. We do this for both the cloud backup, as seen in \ref{lst:sensitivedatacloudbackup}, and for device-to-device transfer, as seen here \ref{lst:sensitivedatadevicetransfer}.
 
-\begin{lstlisting}[float=tbh, language=XML, mathescape=true, captionpos=b, caption={Cloud backup rules for maswe\_0004 app}, label=lst:sensitivedatacloudbackup]
+\begin{lstlisting}[float=tbh, style=XMLStyle, mathescape=true, captionpos=b, caption={Cloud backup rules for maswe\_0004 app}, label=lst:sensitivedatacloudbackup]
 <cloud-backup disableIfNoEncryptionCapabilities="false">
         <include domain="sharedpref" path="."/>
         <include domain="file" path="maswe_0004_user_credentials.txt"/>
 </cloud-backup>
 \end{lstlisting}
 
-\begin{lstlisting}[float=tbh, language=XML, mathescape=true, captionpos=b, caption={Device-to-device transfer rules for maswe\_0004 app}, label=lst:sensitivedatadevicetransfer]
+\begin{lstlisting}[float=tbh, style=XMLStyle, mathescape=true, captionpos=b, caption={Device-to-device transfer rules for maswe\_0004 app}, label=lst:sensitivedatadevicetransfer]
 <device-transfer>
         <include domain="sharedpref" path="."/>
 </device-transfer>
@@ -220,7 +220,7 @@ Programming Languages & Java \\
 We implemented this vulnerability by not only using a hard-coded key, which is stored in the same file where it is used, but also by using it in combination with DES (Data Encryption Standard), which is considered a broken and outdated encryption algorithm. This can be seen in the code snippet here \ref{lst:maswe0006brokenalgorithm}.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=Setting up hard-coded encryption key and DES for cryptographic operations, label=lst:maswe0006brokenalgorithm]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption=Setting up hard-coded encryption key and DES for cryptographic operations, label=lst:maswe0006brokenalgorithm]
 public class EncryptionHandler {
     private static final String ENCRYPTION_KEY = "EncryptK";
     private static final String ALGORITHM = "DES/ECB/PKCS5Padding";
@@ -231,7 +231,7 @@ public class EncryptionHandler {
 We then use this weak encryption on user credentials upon registration and save this sensitive data in SharedPreferences (internal storage) \ref{lst:maswe0006brokenencryption}.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption=Using DES and a hard-coded encryption key for weak encryption, label=lst:maswe0006brokenencryption]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption=Using DES and a hard-coded encryption key for weak encryption, label=lst:maswe0006brokenencryption]
 SecretKeySpec keySpec = new SecretKeySpec(
             ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8),
             KEY_ALGORITHM);
@@ -262,7 +262,7 @@ Programming Languages & Java \\
 Writing to shared storage without user interaction has become increasingly difficult in newer Android versions. However, it is still possible to do so using MediaStore.  MediaStore files are not part of the sand-boxed app environment and can be accessed by any other app without restrictions. To implement this vulnerability, we first create a new MediaStore entry to store future user credentials in \ref{lst:Maswe0007CreateMediaStoreEntry}.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Creating a new MediaStore entry for storing user credentials}, label=lst:Maswe0007CreateMediaStoreEntry]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Creating a new MediaStore entry for storing user credentials}, label=lst:Maswe0007CreateMediaStoreEntry]
 private void createMediaStoreEntry(){
     ContentValues values = new ContentValues();
     values.put(MediaStore.MediaColumns.DISPLAY_NAME, FILENAME);
@@ -277,7 +277,7 @@ private void createMediaStoreEntry(){
 We then write new user credentials to this entry whenever a new user registers, as seen in \ref{lst:Maswe0007WriteToMediaStore}.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Writing credentials of new users to MediaStore}, label=lst:Maswe0007WriteToMediaStore]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Writing credentials of new users to MediaStore}, label=lst:Maswe0007WriteToMediaStore]
 private void writeToSharedStorage(String content) {
     try (OutputStream out = getContentResolver().openOutputStream(fileUri)) {
         assert out != null;
@@ -316,7 +316,7 @@ We implement this vulnerability in three different ways. Generating the cryptogr
 For generating our encryption key, we use a custom source of randomness, as seen in \ref{lst:Maswe0009RandomGeneration}. For this, we use a very predictable seed that is hard-coded into the \texttt{EncryptionHandler.java} file, which manages the entire encryption process. For generating pseudo-random numbers from this seed, we then use SHA1PRNG, which is extremely outdated.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Custom source of pseudo-random numbers using a predictable, hard-coded seed and outdated PRNG algorithm}, label=lst:Maswe0009RandomGeneration]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Custom source of pseudo-random numbers using a predictable, hard-coded seed and outdated PRNG algorithm}, label=lst:Maswe0009RandomGeneration]
 // Very predictable seed for key generation, very low entropy
 byte[] keySeed = "01234567".getBytes(StandardCharsets.UTF_8);
 
@@ -328,7 +328,7 @@ random.setSeed(keySeed);
 This predictable source of pseudo-random numbers is then used to generate our cryptographic key, as seen in \ref{lst:Maswe0009KeyGeneration}. For the cryptographic algorithm, we chose DES (Data Encryption Standard), which is an old and broken cryptographic algorithm. Broken here means that the encryption created by DES can be cracked by modern devices, rendering it obsolete. In addition to this, we specify the DES key to be of 56-bit length. This, together with our not so random source of pseudo-random numbers, poses a great threat to the functionality of the encryption used here, even if a modern cryptographic algorithm had been chosen in place of DES.
 
 % Java Code
-\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Generating a DES cryptographic key of bit-length 56 using the source of randomness created above}, label=lst:Maswe0009KeyGeneration]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Generating a DES cryptographic key of bit-length 56 using the source of randomness created above}, label=lst:Maswe0009KeyGeneration]
 keyGenerator.init(56, random);
 secretKey = keyGenerator.generateKey();
 
@@ -342,6 +342,56 @@ KeyGenerator keyGenerator = KeyGenerator.getInstance("DES");
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
+Name & Improper Cryptographic Key Derivation \\ 
+\midrule
+Key Topics & PBKDF2, AES, Insufficient Salting and Iterations \\
+Key Components & \texttt{EncryptionHandler.java} \\
+Programming Languages & Java \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-0010}
+\label{tab:maswe-0010}
+\end{table}
+
+For this vulnerability, we decided to use PBKDF2 (Password-Based Key Derivation Function 2) to derive an AES (Advanced Encryption Standard) key, which is then used for encrypting and decrypting user credentials of the app. Both PBKDF2 and AES are considered secure if used properly. Since this vulnerability is about improper derivation of the cryptographic key, we focused on making the derivation process as exploitable and vulnerable as possible.
+
+The idea behind PBKDF2 is to repeatedly hash a password into a strong cryptographic key. Adding a salt, which is a random and unique value added to the initial password, and repeating the hash process for a large number of iterations are required to make PBKDF2 cryptographically secure.
+
+For our PBKDF2 key derivation, we use a combination of vulnerable parameters, as seen in \ref{lst:Maswe0010KeyDerivation}. We use only 10 hashing iterations, whereas the recommended amount of iterations for secure usage in 2025 is 300,000 or more. For the salt, we use a hard-coded, static 16 byte array of 0's, making the salting process useless. Combining this with the use of a weak, hard-coded password for the hashing process means that the PBKDF2 key derivation implemented here is completely insecure, making the AES key used for encrypting user credentials easily retrievable for any attacker.
+
+% Java Code
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Derivation of AES key using PBKDF2}, label=lst:Maswe0010KeyDerivation]
+private static final int ENCRYPTION_ITERATIONS = 10;
+private static final int KEY_LENGTH = 128;
+private static final byte[] SALT = new byte[16];
+private static SecretKey secretKey;
+private static final String PASSWORD_FOR_KEY_DERIVATION = "password";
+
+
+public static void setupEncryption() throws Exception {
+    PBEKeySpec secretKeySpec = new PBEKeySpec(
+        PASSWORD_FOR_KEY_DERIVATION.toCharArray(), 
+        SALT,
+        ENCRYPTION_ITERATIONS, 
+        KEY_LENGTH);
+    SecretKeyFactory secretKeyFactory = SecretKeyFactory
+            .getInstance("PBKDF2WithHmacSHA256");
+    byte[] keyBytes = secretKeyFactory.generateSecret(secretKeySpec).getEncoded();
+
+    // Generate the secret key
+    secretKey = new SecretKeySpec(keyBytes, "AES");
+}
+\end{lstlisting}
+
+
+
+\subsection{MASWE-001XXX}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
 Name &  \\ 
 \midrule
 Key Topics &  \\
@@ -349,18 +399,189 @@ Key Components & \texttt{} \\
 Programming Languages &  \\ 
 \bottomrule
 \end{tabular}
-\caption{MASWE-000}
-\label{tab:maswe-000}
+\caption{MASWE-001}
+\label{tab:maswe-001}
 \end{table}
 
-\subsubsection{Technologies, Frameworks and Programming Languages}
-Text
-\subsubsection{Key Components}
-Text
-\subsubsection{Implementation Challenges}
-Text
-\subsubsection{...}
-Text
+
+
+\subsection{MASWE-0012}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Insecure or Wrong Usage of Cryptographic Key \\ 
+\midrule
+Key Topics & Overloaded Cryptographic Key, Broken Cryptographic Algorithm \\
+Key Components & \texttt{EncryptionHandler.java} \\
+Programming Languages & Java \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-0012}
+\label{tab:maswe-0012}
+\end{table}
+
+We implement this vulnerability by using the same cryptographic key for multiple different purposes, namely encryption and decryption of user credentials, as well as for signing and verifying messages. RSA \todo{probably add a link to the algos wikipedia everytime I mention a new one} (Rivest–Shamir–Adleman) is chosen as the cryptographic algorithm because it is a long-lived key that typically remains valid and in use for an extended duration. This makes it even worse if our overloaded key falls into the hands of an attacker.
+
+As seen in \ref{lst:Maswe0012CreatingKey}, we ensure that only SHA-1 is used for message digests involved in the signing and verification process of signatures. This adds to the vulnerability, as SHA-1 is considered broken and insecure for signatures since collisions are feasible. Using SHA-1 with PKCS1 padding for the encryption makes it vulnerable to oracle attacks, such as the Bleichenbacher attack \todo{add source and stuff here}. If this key were to fall into an attackers hands, he would be able to decrypt all existing user credentials and otherwise encrypted data, as well as forge message signatures and feed malicious data to the app.
+
+% Java Code
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Creating an RSA key with multiple functionalities}, label=lst:Maswe0012CreatingKey]
+KeyPairGenerator keyPairGenerator = KeyPairGenerator
+    .getInstance(KeyProperties.KEY_ALGORITHM_RSA, "AndroidKeyStore");
+
+KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(rsaKeyAlias,
+        KeyProperties.PURPOSE_SIGN |
+                KeyProperties.PURPOSE_VERIFY |
+                KeyProperties.PURPOSE_ENCRYPT |
+                KeyProperties.PURPOSE_DECRYPT)
+        .setDigests(KeyProperties.DIGEST_SHA1)
+        .setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PKCS1)
+        .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
+        .setKeySize(2048)
+        .build();
+
+keyPairGenerator.initialize(spec);
+keyPairGenerator.generateKeyPair();
+\end{lstlisting}
+
+
+\subsection{MASWE-0014}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Cryptographic Keys Not Properly Protected at Rest \\ 
+\midrule
+Key Topics & Lack of Encryption, Shared Preferences \\
+Key Components & \texttt{EncryptionHandler.java} \\
+Programming Languages & Java \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-0014}
+\label{tab:maswe-0014}
+\end{table}
+
+For this vulnerability, we chose to use a modern and safe cryptographic algorithm, but storing its key and IV (initialization vector) \todo{add explanation of what iv is?} completely unencrypted in the devices' shared preferences. This means that anybody who has access to the devices files can retrieve the cryptographic key, making it completely unprotected at rest. Once the key has been retrieved, the encryptions made by using it become obsolete. The relevant code for this can be seen in \ref{lst:Maswe0014StoringIvAndKeyInSharedPrefs}.
+
+% Java Code
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Storing cryptographic key and initialization vector unencrypted in shared preferences}, label=lst:Maswe0014StoringIvAndKeyInSharedPrefs]
+    private static void storeKeyAndIV(Context context, String encodedKey, String encodedIV){
+        sharedPreferences = context
+                .getApplicationContext()
+                .getSharedPreferences(KEY_ALIAS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(ENCRYPTION_KEY, encodedKey);
+        editor.putString(IV, encodedIV);
+        editor.apply();
+    }
+\end{lstlisting}
+
+
+\subsection{MASWE-0015}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Deprecated Android KeyStore Implementations \\ 
+\midrule
+Key Topics & Bouncy Castle Keystore (BKS), Bouncy Castle Provider (BC), Filebased Keystore \\
+Key Components & \texttt{EncryptionHandler.java} \\
+Programming Languages & Java \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-0015}
+\label{tab:maswe-0015}
+\end{table}
+
+Our implementation of this vulnerability makes use of the BKS (Bouncy Castle Keystore) and the BC (Bouncy Castle Provider) for storing and managing the RSA key used for encrypting user credentials. The relevant code for this can be seen in \ref{lst:Maswe0015UsingBcAndBks}.
+
+% Java Code
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Loading BC and using BKS for managing cryptographic keys}, label=lst:Maswe0015UsingBcAndBks]
+// Load BouncyCastle once
+static {
+    if (Security.getProvider("BC") == null) {
+        Security.addProvider(new BouncyCastleProvider());
+    }
+}
+
+public static void loadBksKeystore(Context context) throws Exception {
+    // If keystore has already been loaded, do nothing and return
+    if(keyStore != null){
+        return;
+    }
+
+    keyStore = KeyStore.getInstance("BKS", "BC");
+
+    try(InputStream inputStream = context.getAssets().open(KEYSTORE_FILE)) {
+        keyStore.load(inputStream, KEYSTORE_PASSWORD.toCharArray());
+    }
+}
+\end{lstlisting}
+
+Android considers BKS to be a deprecated keystore. A significant issue with BKS is that it is a file-based keystore, meaning that the keystore stores the keys in the \texttt{maswe\_0015\_keystore.bks} file, which is bundled with the APK and is easily extractable. Because of this, anybody who downloads the app has a copy of the keystore.
+
+The second part of this vulnerability consists of having both the keystore and the private key password hard-coded into the \texttt{EncryptionHandler.java} file, as seen here \ref{lst:Maswe0015HardCodedPasswords}. This means that an attacker who decompiles the APK has access to the file containing the private RSA encryption key used for encrypting user credentials, the password \texttt{KEYSTORE\_PASSWORD} needed for opening the keystore file, as well as the \texttt{KEY\_PASSWORD} needed for extracting the private RSA key. This makes it extremely easy for an attacker to gain access to decrypted user credentials.
+
+% Java Code
+\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Hard-coded passwords for the keystore and private key stored in keystore}, label=lst:Maswe0015HardCodedPasswords]
+public class EncryptionHandler {
+    private static final String RSA_KEY_ALIAS = "maswe_0015_rsa_key";
+    private static final String SIGNING_ALGORITHM = "SHA1withRSA";
+    private static final String CIPHER_TRANSFORMATION = "RSA/ECB/PKCS1Padding";
+    private static final String KEYSTORE_PASSWORD = "Xk9$wR2!dF7pLq4Z";
+    private static final String KEY_PASSWORD = "S7v!Tz8#uK2qRj5M";
+    // placed in /assets/
+    private static final String KEYSTORE_FILE = "maswe_0015_keystore.bks";
+    ...
+\end{lstlisting}
+
+
+\subsection{MASWE-0011}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name &  \\ 
+\midrule
+Key Topics &  \\
+Key Components & \texttt{} \\
+Programming Languages &  \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-001}
+\label{tab:maswe-001}
+\end{table}
+
+
+
+\subsection{MASWE-0011}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name &  \\ 
+\midrule
+Key Topics &  \\
+Key Components & \texttt{} \\
+Programming Languages &  \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-001}
+\label{tab:maswe-001}
+\end{table}
+
 
 % Start of MASVS Platform section
 \section{MASVS-PLATFORM}

@@ -95,7 +95,7 @@
 \definecolor{LinkColor}{rgb}{0,0,0}
 
 % Code Box
-\definecolor{CodeKeywords}{rgb}{0,0,0}
+\definecolor{CodeKeywords}{rgb}{0.5,0,0.5}
 \definecolor{CodeComments}{rgb}{0,0.6,0}
 \definecolor{CodeNumbers}{rgb}{0.5,0.5,0.5}
 \definecolor{CodeStrings}{rgb}{0.58,0,0.82}
@@ -314,9 +314,13 @@
 % Überschrift - Listing X.Y: ...
 \renewcommand{\lstlistingname}{Algorithm}
 
-% Standard: Java
-\lstset{frame=none,
-  language=Java,
+% Define additional colors for Java syntax
+\definecolor{CodeTypes}{rgb}{0,0.4,0.6}
+\definecolor{CodeAnnotations}{rgb}{0.6,0.6,0}
+
+% Default settings for all languages
+\lstset{
+  frame=none,
   aboveskip=0pt,
   belowskip=0pt,
   showstringspaces=false,
@@ -330,29 +334,39 @@
   extendedchars=true,
   backgroundcolor=\color{CodeBackground},
   breaklines=true,
-  breakatwhitespace=true
+  breakatwhitespace=true,
   tabsize=3
 }
 
-% New: XML
-\lstset{frame=none,
+% Java-specific settings
+\lstdefinestyle{JavaStyle}{
+  language=Java,
+  keywordstyle=\color{CodeKeywords}\bfseries,
+  keywordstyle=[2]\color{CodeTypes}\bfseries,
+  keywordstyle=[3]\color{CodeAnnotations},
+  morekeywords=[2]{String,Integer,Boolean,Long,Double,Float,Character,Byte,Short,void,int,long,double,float,char,byte,short,boolean,Context,KeyStore,InputStream,Exception},
+  morekeywords=[3]{@Override,@Deprecated,@SuppressWarnings,@FunctionalInterface,@SafeVarargs}
+}
+
+% XML-specific settings
+\lstdefinestyle{XMLStyle}{
   language=XML,
-  aboveskip=0pt,
-  belowskip=0pt,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=left,
-  numberstyle=\tiny\color{CodeNumbers},
   keywordstyle=\color{CodeKeywords}\bfseries,
   commentstyle=\color{CodeComments}\itshape,
   stringstyle=\color{CodeStrings},
-  extendedchars=true,
-  backgroundcolor=\color{CodeBackground},
-  breaklines=true,
-  breakatwhitespace=true
-  tabsize=3
+  identifierstyle=\color{CodeTypes},
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  morecomment=[s]{<!--}{-->},
+  moredelim=[s][\color{CodeTypes}]{<}{\ },
+  moredelim=[s][\color{CodeTypes}]{</}{>},
+  moredelim=[l][\color{CodeTypes}]{/>},
+  moredelim=[l][\color{CodeTypes}]{>}
 }
+
+% Set Java as default
+\lstset{style=JavaStyle}
 
 % Pseudocode
 \lstdefinelanguage{pseudo}{

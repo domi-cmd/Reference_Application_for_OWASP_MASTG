@@ -294,16 +294,65 @@ private void writeToSharedStorage(String content) {
 \section{MASVS-CRYPTO}
 
 \subsection{MASWE-0009}
-\subsubsection{Technologies, Frameworks and Programming Languages}
-Text
-\subsubsection{Key Components}
-Text
-\subsubsection{Implementation Challenges}
-Text
-\subsubsection{...}
-Text
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Improper Cryptographic Key Generation \\ 
+\midrule
+Key Topics & Insufficient Entropy, Insufficient Key length, Broken Encryption \\
+Key Components & \texttt{EncryptionHandler.java} \\
+Programming Languages & Java \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-0009}
+\label{tab:maswe-0009}
+\end{table}
+
+We implement this vulnerability in three different ways. Generating the cryptographic key used for encryption and decryption of user credentials is done using pseudo-random numbers with very little randomness. The cryptographic key that is generated is of insufficient length and is used for a broken encryption algorithm.
+
+For generating our encryption key, we use a custom source of randomness, as seen in \ref{lst:Maswe0009RandomGeneration}. For this, we use a very predictable seed that is hard-coded into the \texttt{EncryptionHandler.java} file, which manages the entire encryption process. For generating pseudo-random numbers from this seed, we then use SHA1PRNG, which is extremely outdated.
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Custom source of pseudo-random numbers using a predictable, hard-coded seed and outdated PRNG algorithm}, label=lst:Maswe0009RandomGeneration]
+// Very predictable seed for key generation, very low entropy
+byte[] keySeed = "01234567".getBytes(StandardCharsets.UTF_8);
+
+// SHA1PRNG is a very old pseudorandom number generator
+SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+random.setSeed(keySeed);
+\end{lstlisting}
+
+This predictable source of pseudo-random numbers is then used to generate our cryptographic key, as seen in \ref{lst:Maswe0009KeyGeneration}. For the cryptographic algorithm, we chose DES (Data Encryption Standard), which is an old and broken cryptographic algorithm. Broken here means that the encryption created by DES can be cracked by modern devices, rendering it obsolete. In addition to this, we specify the DES key to be of 56-bit length. This, together with our not so random source of pseudo-random numbers, poses a great threat to the functionality of the encryption used here, even if a modern cryptographic algorithm had been chosen in place of DES.
+
+% Java Code
+\begin{lstlisting}[float=tbh, mathescape=true, captionpos=b, caption={Generating a DES cryptographic key of bit-length 56 using the source of randomness created above}, label=lst:Maswe0009KeyGeneration]
+keyGenerator.init(56, random);
+secretKey = keyGenerator.generateKey();
+
+KeyGenerator keyGenerator = KeyGenerator.getInstance("DES");
+\end{lstlisting}
 
 \subsection{MASWE-0010}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name &  \\ 
+\midrule
+Key Topics &  \\
+Key Components & \texttt{} \\
+Programming Languages &  \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-000}
+\label{tab:maswe-000}
+\end{table}
+
 \subsubsection{Technologies, Frameworks and Programming Languages}
 Text
 \subsubsection{Key Components}
@@ -317,6 +366,23 @@ Text
 \section{MASVS-PLATFORM}
 
 \subsection{MASWE-0053}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name &  \\ 
+\midrule
+Key Topics &  \\
+Key Components & \texttt{} \\
+Programming Languages &  \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-000}
+\label{tab:maswe-000}
+\end{table}
+
 \subsubsection{Technologies, Frameworks and Programming Languages}
 Text
 \subsubsection{Key Components}

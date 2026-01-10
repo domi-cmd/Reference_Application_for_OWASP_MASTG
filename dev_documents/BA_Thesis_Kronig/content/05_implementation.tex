@@ -16,7 +16,7 @@ Hier beschreibst du die konkrete technische Umsetzung aller Vulnerabilities. Kei
 Name & Insertion of Sensitive Data into Logs \\ 
 \midrule
 Key Topics & App Logs, System Logs \\ 
-Key Components & RegisterActivity.java \\
+Key Components & \texttt{RegisterActivity.java} \\
 Programming Languages & Java \\ 
 \bottomrule
 \end{tabular}
@@ -80,7 +80,7 @@ private void userDataToAppLogs(String email, String password){
 Name & Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations \\ 
 \midrule
 Key Topics & FileProvider, File Permissions \\ 
-Key Components & AndroidManifest.xml, RegisterActivity.java \\
+Key Components & \texttt{AndroidManifest.xml}, \texttt{RegisterActivity.java}\\
 Programming Languages & Java, XML \\ 
 \bottomrule
 \end{tabular}
@@ -176,7 +176,7 @@ We further make sure that client side encryption of the backup is not enforced b
 Name & Sensitive Data Not Excluded From Backup \\ 
 \midrule  
 Key Topics & Cloud backup flags, device-transfer \\ 
-Key Components & backup\_rules.xml \\ 
+Key Components & \texttt{backup\_rules.xml} \\ 
 Programming Languages & XML \\ 
 \bottomrule
 \end{tabular}
@@ -209,7 +209,7 @@ Programming Languages & XML \\
 Name & Sensitive Data Stored Unencrypted in Private Storage Locations \\ 
 \midrule
 Key Topics & Hard-coded Encryption Key, Broken Outdated Encryption (DES), Encryption Key stored on Filesystem \\
-Key Components & EncryptionHandler.java \\
+Key Components & \texttt{EncryptionHandler.java} \\
 Programming Languages & Java \\ 
 \bottomrule
 \end{tabular}
@@ -251,7 +251,7 @@ cipher.init(Cipher.ENCRYPT_MODE, keySpec);
 Name & Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction \\ 
 \midrule
 Key Topics & MediaStore, Unencrypted User Data, External Storage \\
-Key Components & RegisterActivity.java \\
+Key Components & \texttt{RegisterActivity.java} \\
 Programming Languages & Java \\ 
 \bottomrule
 \end{tabular}

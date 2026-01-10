@@ -49,7 +49,7 @@ private void userDataToSystemLogs(String email, String password){
 \end{lstlisting}
 
 \noindent
-\ref{lst:applogs} shows the second method, takes the user credentials and writes them to the apps internal file system, which are part of its app logs.
+\ref{lst:applogs} shows the second method, which takes the user credentials and writes them to the apps internal file system, which is part of its app logs.
 
 % Java Code
 \begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption=Writing user credentials to application log files, label=lst:applogs]
@@ -131,7 +131,7 @@ protected void onRegister(String email, String password) {
 }
 \end{lstlisting}
 
-This approach is less dangerous than setting file permissions directly, since it makes the user aware of the issue, and can only cause a breach of sensitive user data if the user him/herself \todo{gender this properly} chooses to do so. We decided to settle on this approach, since it appeared impossible to implement this vulnerability more directly on new Android versions.
+This approach is less dangerous than setting file permissions directly, as it makes the user aware of the issue and can only cause a breach of sensitive user data if the user him/herself \todo{gender this properly} chooses to do so. We decided to settle on this approach since it did not appear feasible to implement this vulnerability more directly on new Android versions.
 
 
 \subsection{MASWE-0003}
@@ -544,7 +544,130 @@ public class EncryptionHandler {
 \end{lstlisting}
 
 
-\subsection{MASWE-0011}
+\subsection{MASWE-0019}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Risky Cryptography Implementations \\ 
+\midrule
+Key Topics & Non-Cryptographic Functions, XOR Encryption, Use of low-level Mathematical Operations \\
+Key Components & \texttt{EncryptionHandler.java} \\
+Programming Languages & Java \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-0019}
+\label{tab:maswe-0019}
+\end{table}
+
+This vulnerability has been implemented using low-level mathematical operations for the encryption and decryption of user credentials instead of any proper cryptographic operations.
+
+We use a circular bit-shifting approach for encrypting and decrypting data, as seen in \ref{lst:Maswe0019Encryption}. For encryption, the string to be encrypted is turned into bytes. After shifting all bytes to the left by 2 bytes, we add any lost bytes back onto the right end and convert the bytes back to string format. The same operation, in reverse, is used for decryption. 
+
+An attacker will quickly spot the extremely weak vulnerability used here upon decompiling the app's APK and can decrypt any user credentials by applying the decryption operation found in the code to the user credentials stored in shared preferences.
+% Java Code
+\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Circular byte-shifting for low-level encryption of user data}, label=lst:Maswe0019Encryption]
+public String encryptData(String plaintext) throws Exception {
+    byte[] textBytes = plaintext.getBytes();
+
+    for(int i = 0; i < textBytes.length; i++){
+        // & 0xFF is to make sure the byte is unsigned
+        // Only keep the first 8 bits
+        // Use xor to add the 2 bytes lost on the left back on to the right end
+        textBytes[i] = (byte)((textBytes[i] << 2) 
+                                | ((textBytes[i] & 0xFF) >>> (6)));
+    }
+
+    return Base64.encodeToString(textBytes, Base64.DEFAULT);
+}
+\end{lstlisting}
+
+
+\subsection{MASWE-0020}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Improper Encryption \\ 
+\midrule
+Key Topics & Non-Cryptographic Operations, Base64 Encoding \\
+Key Components & \texttt{EncryptionHandler.java} \\
+Programming Languages & Java \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-0020}
+\label{tab:maswe-0020}
+\end{table}
+
+We decided to use plain Base64 string encoding for our implementation of improper encryption, as seen here \ref{lst:Maswe0020Base64}. The idea is to convert the plaintext string to bytes, which are then converted back to string format using Base64 encoding. For decryption, this process is simply reversed. An attacker will see the weak encryption used here upon decompiling the APK, and be able to decrypt any user credentials which are stored in the shared preferences file \texttt{maswe\_0020\_user\_credentials.xml} with ease.
+
+% Java Code
+\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Base64 for encrypting and decrypting user credentials}, label=lst:Maswe0020Base64]
+// Method for encrypting a string by using Base64 encoding
+public String encryptData(String plaintext) throws Exception {
+    return Base64.encodeToString(plaintext.getBytes(), Base64.DEFAULT);
+}
+
+// Method for decrypting a string by using Base64 decoding
+public String decryptData(String encrypted) throws Exception {
+    return new String(Base64.decode(encrypted, Base64.DEFAULT));
+}
+\end{lstlisting}
+
+
+\subsection{MASWE-0021}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{8cm}} 
+\toprule
+Name & Improper Hashing \\ 
+\midrule
+Key Topics & SHA-1, Broken Cryptographic Algorithm \\
+Key Components & \texttt{EncryptionHandler.java} \\
+Programming Languages & Java \\ 
+\bottomrule
+\end{tabular}
+\caption{MASWE-0021}
+\label{tab:maswe-0021}
+\end{table}
+
+We used SHA-1 for encrypting and decrypting user credentials to implement this vulnerability, as seen here \ref{lst:Maswe0021Sha1}. The idea is to hash the user's password upon registration using SHA-1, then hash the attempted password during login again using SHA-1 and compare it to the existing password hashes. If there is a match of both the email and the hashed password, the user login is successful.
+
+The vulnerability stems from the fact that SHA-1 is considered cryptographically broken, since collision attacks are practical. Google demonstrated this with the "SHAttered" \todo{Add source for this here} project in 2017. SHA-1 is also optimized for speed, which makes brute-force attacks extremely fast.
+
+% Java Code
+\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={SHA-1 hashing for user credentials}, label={lst:Maswe0021Sha1}]
+ public String hashData(String plaintext) throws Exception {
+    // Get the algorithm used for hashing (SHA-1)
+    MessageDigest digestAlgorithm = MessageDigest.getInstance("SHA-1");
+
+    // Calculate the message digest of the plaintext String
+    byte[] messageDigest = digestAlgorithm
+                                .digest(plaintext.getBytes(StandardCharsets.UTF_8));
+
+    // Convert it to signum representation
+    BigInteger no = new BigInteger(1, messageDigest);
+
+    // Convert it to hex value
+    StringBuilder hashText = new StringBuilder(no.toString(16));
+
+    // Add preceding 0s to make it 40 digits long
+    while (hashText.length() < 40) {
+        hashText.insert(0, "0");
+    }
+
+    // return the HashText
+    return hashText.toString();
+}
+\end{lstlisting}
+
+\subsection{MASWE-00XX}
 
 \begin{table}[H]
 \centering
@@ -558,30 +681,9 @@ Key Components & \texttt{} \\
 Programming Languages &  \\ 
 \bottomrule
 \end{tabular}
-\caption{MASWE-001}
-\label{tab:maswe-001}
+\caption{MASWE-00}
+\label{tab:maswe-00}
 \end{table}
-
-
-
-\subsection{MASWE-0011}
-
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{p{5cm} p{8cm}} 
-\toprule
-Name &  \\ 
-\midrule
-Key Topics &  \\
-Key Components & \texttt{} \\
-Programming Languages &  \\ 
-\bottomrule
-\end{tabular}
-\caption{MASWE-001}
-\label{tab:maswe-001}
-\end{table}
-
 
 % Start of MASVS Platform section
 \section{MASVS-PLATFORM}

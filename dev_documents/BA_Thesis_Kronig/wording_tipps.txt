@@ -1,0 +1,9 @@
+Instead of	Use
+------------------------------------------------------
+we discuss	this thesis discusses
+we analyze	an analysis is conducted
+we design	the design is presented
+we implement	the implementation is described
+we compare	a comparison is performed
+our apps	the developed applications
+our work	this work / this thesis

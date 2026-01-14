@@ -1112,25 +1112,161 @@ private void removeObfuscation(){
 By enabling copy and paste functionalities for the password field, any text that is copied or cut from the input field will be stored in the clipboard. Data stored in the clipboard is not sandboxed and acccessible by all apps running in the foreground, even on newer Android versions. This means that an attacker can run a service from a malicious app installed on the device that reads the data from the clipboard, potentially reading and stealing sensitive user data.
 
 
-\subsection{MASWE-00XX}
-\label{subsec:maswe-00xx}
+\subsection{MASWE-0055}
+\label{subsec:maswe-0055}
 
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name &  \\ 
+        Name & Sensitive Data Leaked via Screenshots or Screen Recordings \\ 
         \midrule
-        Key Topics &  \\
-        Key Components & \texttt{} \\
-        Programming Languages &  \\ 
+        Key Topics & Missing password obfuscation, Missing screenshot protection \\
+        Key Components & \texttt{LoginActivity.java} \texttt{RegisterActivity.java}, \texttt{activity\_login\_maswe0055.xml}, \texttt{activity\_register\_maswe0055.xml} \\
+        Programming Languages & Java, XML \\ 
         \bottomrule
         \end{tabular}
-    \caption{MASWE-00}
-    \label{tab:maswe-00}
+    \caption{MASWE-0055}
+    \label{tab:maswe-0055}
 \end{table}
 
-\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={}, label={lst:}]
+To implement this vulnerability, we need to make sure that both the password is not obfuscated, and that screenshots or screen recordings of the activities where the password is visible are possible. To make things different from the previous vulnerabilities implementation \ref{subsec:maswe-0053}, the password obfuscation is removed in the layout itself, instead of changing the passwords type to plain text at runtime. This can be seen in \ref{lst:Maswe0055RemovePasswordObfuscation}.
 
+\begin{lstlisting}[style=XMLStyle, float=tbh, captionpos=b, caption={Setting the password EditText to visible password as to remove text obfuscation}, label={lst:Maswe0055RemovePasswordObfuscation}]
+<EditText
+    android:id="@+id/et_password"
+    // ...
+    
+    android:hint="@string/password_hint"
+    android:inputType="textVisiblePassword" />
+\end{lstlisting}
+
+We furthermore disable and clear any lingering any flags that would prevent screenshots and screenrecordings from happening, as can be seen in \ref{lst:Maswe0055RemoveScreenshotFlags}.
+
+\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Disabling and clearing security flags that prevent screenshots and screenrecordings from login and register activities}, label={lst:Maswe0055RemoveScreenshotFlags}]
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    /**
+    getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE); **/
+            
+    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+\end{lstlisting}
+
+This implementation introduces the security risk of the user themselves leaking sensitive data via accidental screenshots and screenrecordings. There are also tools that allow an attacker to record the device's screen via USB connection, such as SCRPY \todo{add source here?}.
+
+
+\subsection{MASWE-0064}
+\label{subsec:maswe-0064}
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+        \begin{tabular}{p{5cm} p{8cm}} 
+        \toprule
+        Name & Insecure Content Providers \\ 
+        \midrule
+        Key Topics & Exported content provider, Insecure file reading permissions, Unsanitized path construction, Missing access control \\
+        Key Components & \texttt{CustomContentProvider.java}, \texttt{RegisterActivity.java}, \texttt{AndroidManifest.xml} \\
+        Programming Languages & Java, XML \\ 
+        \bottomrule
+        \end{tabular}
+    \caption{MASWE-0064}
+    \label{tab:maswe-0064}
+\end{table}
+
+The core of this vulnerability's implementation comes from this code snippet of the custom content provider \ref{lst:Maswe0064GrantingFilePermissions}. The issue is that \texttt{uri.getLastPathSegment()} extracts the user-given file URI without any validation in place. The content provider tries to find the file, construct its full path and return a file descriptor granting reading permissions to said file. For all of this, the content provider directly uses the unsanitized user input.
+
+\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Custom content provider granting reading permission to user-requested file without path traversal checks or sanitizing the input}, label={lst:Maswe0064GrantingFilePermissions}]
+@Override
+public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
+    String fileName = uri.getLastPathSegment();
+
+    if (fileName == null) {
+        throw new FileNotFoundException("No file name specified in URI");
+    }
+
+    File file = new File(getContext().getFilesDir(), fileName);
+    return ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+}
+\end{lstlisting}
+
+This allows for path traversal attacks by using path traversal sequences such as \texttt{../}. Without it, the content provider would only be able to provide access to files stored within the \texttt{/files/*} directory. This way, an attacker can access and read any of the app's files, given that they have access to the custom content provider.
+To ensure this is the case and further extend the impact of this vulnerability, the content provider is set to be exported in the \texttt{AndroidManifest.xml} of this app, as seen in \ref{lst:Maswe0064ExportedProvider}. By leaving the permission parameter empty, we enforce that no permissions are required by other apps to access this app's content provider.
+
+\begin{lstlisting}[style=XMLStyle, float=tbh, captionpos=b, caption={Exporting the custom content provider, making it accessible to other apps without enforcing permissions}, label={lst:Maswe0064ExportedProvider}]
+<provider
+    android:name="com.dkronig.maswe_platform.maswe_0064.CustomContentProvider"
+    android:authorities="com.dkronig.maswe_platform.CustomContentProvider"
+    android:exported="true"
+    android:permission=""
+    tools:ignore="ExportedContentProvider" />
+\end{lstlisting}
+
+This, in combination with the unsanitized content provider, means that any malicious app installed on the same device can trivially access any of the apps files, either directly or via path traversal. This is demonstrated in the code snippet \ref{lst:Maswe0064AccessingFilesExample}.
+
+\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Accessing and reading files containing sensitive user data from malicious apps, both directly and using path traversal}, label={lst:Maswe0064AccessingFilesExample}]
+// Direct file access 
+Uri.parse("content://com.dkronig.maswe_platform.CustomContentProvider
+    /maswe_0064_user_credentials.txt"); 
+InputStream in = getContentResolver().openInputStream(uri); 
+
+// Read files via path traversal
+Uri uri = Uri.parse("content://com.dkronig.maswe_platform.CustomContentProvider
+    /../databases/app.db"); 
+InputStream in = getContentResolver().openInputStream(uri);
+\end{lstlisting}
+
+
+\subsection{MASWE-0067}
+\label{subsec:maswe-0067}
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+        \begin{tabular}{p{5cm} p{8cm}} 
+        \toprule
+        Name & Debuggable Flag Not Disabled \\ 
+        \midrule
+        Key Topics & Memory inspection, Cryptographic key access,  \\
+        Key Components & \texttt{AndroidManifest.xml} \\
+        Programming Languages & XML \\ 
+        \bottomrule
+        \end{tabular}
+    \caption{MASWE-0067}
+    \label{tab:maswe-0067}
+\end{table}
+
+The implementation of this vulnerability is rather straightforward, as only one flag has to be set to true in the \texttt{AndroidManifest.xml} for the app to be debuggable, as seen in \ref{lst:Maswe0067SettingAppDebuggable}.
+
+\begin{lstlisting}[style=XMLStyle, float=tbh, captionpos=b, caption={Setting the app to debuggable}, label={lst:Maswe0067SettingAppDebuggable}]
+<application
+    android:theme="@style/Theme.maswe_platform"
+    // ...
+    
+    android:debuggable="true"
+    tools:ignore="HardcodedDebugMode">
+\end{lstlisting}
+
+The issue with setting the app to debuggable is that it directly weakens the apps protection. It allows an attacker to inspect, set breakpoints, control, and modify the app at runtime. An attacker can furthermore access the apps private system directory \texttt{/data/data} by using the \texttt{run-as} command. Using this command, an attacker can inspect the apps shared preferences, SQLite databases, and internal storage at run-time. An attacker can, for example, learn more about the encryption in place for user credentials by creating new user profiles and analyzing the resulting ciphertexts. An example of how an attacker can access the user credentials stored in Shared Preferences is shown in \ref{lst:Maswe0067ReadingSharedPreferences}.
+
+\todo{Add terminal style for code snippets if i have too much time}.
+
+\todo{figure out why some \& are lighted blue and some are not?}
+
+\begin{lstlisting}[style=XMLStyle, float=tbh, captionpos=b, caption={Listing and reading Shared Preferences files containing user credentials}, label={lst:Maswe0067ReadingSharedPreferences}]
+C:\Users\Domi>adb shell run-as com.dkronig.maswe_platform ls shared_prefs
+maswe_0053_user_credentials.xml
+maswe_0055_user_credentials.xml
+maswe_0064_user_credentials.xml
+maswe_0067_user_credentials.xml
+
+C:\Users\Domi>adb shell run-as com.dkronig.maswe_platform cat shared_prefs/maswe_0053_user_credentials.xml
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="users_json">{&quot;qwertz&quot;:{&quot;password&quot;
+        :&quot;doVMBwPTG2ISsgy06P\/eJpfWXKT5dOJIO9jYl8FzWhGfmA==&quot;}}</string>
+</map>
 \end{lstlisting}

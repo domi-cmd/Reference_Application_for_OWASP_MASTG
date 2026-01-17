@@ -39,9 +39,9 @@ This architecture further reinforces the clean separation and structure of the A
 
 
 \subsection{Template Based Activity-Architecture}
-We make use of templates to heavily reduce the amount of boilerplate code. All of our vulnerability implementations require a starting as well as a register, login and profile activity, which differ in code logic but are (almost all) identical in layout. Because of this, the \texttt{common} library module includes four layout templates fitted with uniform styling and the basic navigating buttons and user input fields expected of them.  
+We make use of templates to heavily reduce the amount of boilerplate code. All of our vulnerability implementations require a starting activity, as well as a register, login and profile activity. Between the different vulnerabilities these differ in code logic but are (almost all) identical in layout. Because of this, the \texttt{common} library module includes four layout templates fitted with uniform styling and the basic navigating buttons and user input fields expected of them.  
 
-The activities themselves share a lot of similarities and thus boilerplacte code as well. For example, many of the MASVS-CRYPTO vulnerabilities only differ in the concrete implementation of cryptographic operations, but are otherwise identical with each other as well as with vulnerabilities of other categories. To make use of these shared pieces of logic and remove redundancies, the \texttt{common} module includes three abstract activity templates that all activities make use of. The first is \texttt{BaseActivityTemplate.java} that all activities use, and the other two templates build on. The other two are \texttt{BaseRegisterActivity.java} \todo{fix spacing out of bounds here}and \texttt{BaseLoginActivity.java}.
+The activities themselves share a lot of similarities and thus boilerplacte code as well. For example, many of the MASVS-CRYPTO vulnerabilities only differ in the concrete implementation of cryptographic operations, but are otherwise identical with each other as well as with vulnerabilities of other categories. To make use of these shared pieces of logic and remove redundancies, the \texttt{common} module includes three abstract activity templates that all activities make use of. The first is \texttt{BaseActivityTemplate.java} that all activities use, and the other two templates build on. The other two activity templates used are \texttt{BaseRegisterActivity.java} \todo{fix spacing out of bounds here}and \texttt{BaseLoginActivity.java}.
 
 \begin{figure}[htbp]
   \centering
@@ -51,39 +51,47 @@ The activities themselves share a lot of similarities and thus boilerplacte code
 \end{figure}
 
 \subsubsection{Base Activity Template}
-
-\section{Models}
-\subsection{UML Diagrams and Data Models}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/diagrams/high_level_class_diagram_multiapp.png}
-  \caption{ \todo{Add image caption} }
-  \label{fig:label}
-\end{figure}
-
-\subsection{Use-Cases and Flow Diagrams}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/diagrams/BaseLoginActivity_Template_Flow.png}
-  \caption{ \todo{Add image caption} }
-  \label{fig:label}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/diagrams/BaseRegisterActivity_Template_Flow.png}
-  \caption{ \todo{Add image caption} }
-  \label{fig:label}
-\end{figure}
+This template reduces redundant code by implementing the functionalities shared by all activities in our Android project. A flow diagram of it can be seen in \ref{fig:baseActivityTemplateFlowDiagram}. It provides a hook that can be used by inheriting activity subclasses to set the screen title of the activity. It also provides methods to be used for adding and mapping navigation buttons to the activity classes they link to.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth, height=0.9\textheight, keepaspectratio]{dev_documents/BA_Thesis_Kronig/figures/diagrams/BaseActivityTemplate_Flow.png}
   \caption{ \todo{Add image caption} }
-  \label{fig:label}
+  \label{fig:baseActivityTemplateFlowDiagram}
 \end{figure}
+
+\subsubsection{Base Register Activity}
+\texttt{BaseRegisterActivity.java} builds upon the \texttt{BaseActivityTemplate.java} and extends it with the register code logic shared by all vulnerability implementations. This logic consists of handling and sanitizing user inputs, potentially encrypting the user password, and saving the newly registered user credentials in JSON format to a designated Shared Preferences file. A flow diagram of this template can be seen in \ref{fig:baseRegisterActivityTemplateFlowDiagram}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/diagrams/BaseRegisterActivity_Template_Flow.png}
+  \caption{ \todo{Add image caption} }
+  \label{fig:baseRegisterActivityTemplateFlowDiagram}
+\end{figure}
+
+Any inheriting register activity only has to implement the abstract getters for the concrete layout id and UI buttons. All other code is handled by the abstract class. The advantage of this is clear, as it greatly reduces boilerplate code. The template provides two different hooks. The first allows the inheriting register activity to add custom encryption to the user credentials before storing them. This hook is where different MASVS-CRYPTO vulnerabilities add their vulnerable encryption methods. The second allows for custom post-registration process.
+
+
+\subsubsection{Base Login Activity}
+\texttt{BaseLoginActivity.java} builds upon \texttt{BaseActivityTemplate.java} in a similar fashion to \texttt{BaseRegisterActivity.java}, as can be seen in its flow diagram here \ref{fig:baseLoginActivityTemplateFlowDiagram}. It requires the inheriting activity class to set the same getters as the login activity template, which are specific to each login activity implementation. It deals with setting up the activity and its UI elements, sanitizing the user input, and loading the stored user credentials. It goes on to possibly decrypting the stored credentials, before comparing them to the user input and directing the user to the specified target activity if the login attempt is successful.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/diagrams/BaseLoginActivity_Template_Flow.png}
+  \caption{ \todo{Add image caption} }
+  \label{fig:baseLoginActivityTemplateFlowDiagram}
+\end{figure}
+
+It provides five different hook methods. They allow the inheriting login activity classes to specify the path of the file containing the user credentials and adding custom decryption to the stored credentials. The subclasses can furthermore customize how the password verification process looks like and what the activity should do upon a login attempt failing. 
+
+
+
+\section{Models}
+\subsection{UML Diagrams and Data Models}
+
+\subsection{Use-Cases and Flow Diagrams}
+
 
 \section{Vulnerabilities Selection Process}
 

@@ -86,11 +86,14 @@ Any inheriting register activity only has to implement the abstract getters for 
 It provides five different hook methods. They allow the inheriting login activity classes to specify the path of the file containing the user credentials and adding custom decryption to the stored credentials. The subclasses can furthermore customize how the password verification process looks like and what the activity should do upon a login attempt failing. 
 
 
+\section{Frameworks and Technologies}
+The apps are developed using native Android development in Java 11 and targeting API level 35, which translates to Android 15. The project uses Gradle with Kotlin DSL as its build automation tool. The core frameworks include:
 
-\section{Models}
-\subsection{UML Diagrams and Data Models}
+\subsubsection{Android Framework}
+We use Activities and Services as our tool \todo{find a better word here than "tool"} for User Interface logic and background processing. By default, user credentials are stored within SharedPreferences, that allow for a simple and native Android way to persistently store data. Intents are used for handling inter-component communication (ICC) \todo{maybe remove this acronym?}. Android Keystore provides a modern, safe and easy way for storing and managing cryptographic keys.
 
-\subsection{Use-Cases and Flow Diagrams}
+\subsubsection{APIs for Cryptography}
+For cryptographic algorithms and operations we use both Java Cryptography Architecture (JCA) and Android-specific cryptography APIs. JCA is often used as a less secure alternative to Android-specific APIs, which makes sense for designing security vulnerabilities. Besides operations such as key generation, encryption and signature, JCA is also useful for implementing cryptographic features deemed deprecated and insecure by Android-specific APIs, such as older Key Stores.
 
 
 \section{Vulnerabilities Selection Process}

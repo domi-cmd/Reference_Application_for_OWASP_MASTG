@@ -97,8 +97,15 @@ For cryptographic algorithms and operations we use both Java Cryptography Archit
 
 
 \section{Vulnerabilities Selection Process}
+At the time of writing, there are 117 vulnerabilities documented by OWASP MASWE, with two of them classified as deprecated. 
+
+Of these 115 viable vulnerabilities, we decided to focus on those that have received little to no coverage in existing MASTG reference apps. Adding more variations of the same vulnerabilities that have already been covered by other apps can add value to the existing reference app dataset, but only if these variations differ sufficiently from existing implementations. By focusing on vulnerabilities with little to no previous coverage, we can ensure that the vulnerabilities implemented in our apps are unique and add to both the educational value of the MASTG reference apps and the usefulness of the reference apps for benchmarking mobile application security analysis tools.
+
+We decided to work on one category at a time, since it appears more sensible for both educational and tool testing reasons to have a few categories covered completely instead of touching on many categories but only to little extend. Because the apps are standalone units that can be run, analyzed and tested independently, it makes sense to have a few apps entailing an implementation for each of the app specific vulnerabilities, instead of many apps which individually provide little value.
+
+In terms of which categories to start with, we decided to first focus on MASVS-STORAGE. With six storage vulnerabilities described by OWASP, it has the smallest amount of vulnerabilities to implement, making it a good starting place. MASVS-STORAGE exclusively deals with Android-native features, which creates a useful environment for getting more familiar with the Android ecosystem and functionalities. 
+
+Afterwards, we shift our focus to categories that fit our system architecture and existing implementations the most, while still having a large amount of vulnerabilities with little to no previous coverage by other apps. Because of these criteria, we decided to implement MASVS-CRYPTO next, as it fits nicely into our template approach without adding much boilerplate code, and has one of the worst covered to possible vulnerability ratios, with only 2 of 19 possible MASVS-CRYPTO vulnerabilities having seen previous coverage.
 
 
-\section{Design Decisions and Rationale}
-
-\section{Considered Alternatives and Reasons for Rejection}
+\section{Considered Design Alternatives and Reasons for Rejection}

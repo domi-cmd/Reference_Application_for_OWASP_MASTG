@@ -8,54 +8,70 @@ We developed three separate apps, which are named \texttt{maswe\_storage}, \text
 
 The code for our apps is entirely open source and available on GitHub \todo{Add source+reference to my GitHub repo here}. It contains a checklist \todo{add ref to the checklist} of all vulnerabilities as described by OWASP MASWE, which gives an overview for which vulnerabilities are implemented, which are being worked on, and which are thus far not worked on. Every vulnerability in this overview has an indicator of its status in OWASP MASWE, showing whether the vulnerability is still in beta and lacks proper documentation by OWASP, is fully detailed, or already being considered deprecated and should not to be considered anymore. This benefits people using the apps and the GitHub repository for educational purposes by allowing them to better see the complete picture of the OWASP vulnerability landscape. It further helps developers aiming to contribute to this project, as it points them to which vulnerabilities are yet to be worked on, and which should be ignored. To further enable future work on this project, the repository is complete with documentation on how developers can contribute, what the expected coding styles are, and what templates should be used for commiting to the project. This enforces a clean and uniform coding style across the project, which further improves its usefulness as an educational tool by not confusing people aiming to learn security principles or penetration testing through confusing and inconsistent code.
 
-For the documentation and the vulnerabilities themselves to stay relevant and for the apps as a whole to be a valid reference resource for the OWASP MASTG, constant maintenance and updating of the Android project is necessary. Without it, our apps develop the same issues as some of the existing MASTG reference apps of becoming outdated and not accurately reflecting the standard set by the OWASP MAS project anymore.
+For the documentation and the vulnerabilities themselves to stay relevant and for the apps as a whole to be a valid reference resource for the OWASP MASTG, constant maintenance and updating of the Android project is necessary. Without it, our apps develop the same issues as some of the existing MASTG reference apps of becoming outdated and not accurately reflecting the standard set by the OWASP MAS project anymore. \todo{Maybe move this section to future work}
 
 % Struktur
 \section{Comparison with Existing Intentionally Vulnerable Android Applications}
 
+\subsection{Total Vulnerability Coverage}
+
+It is important to compare the apps we developed to the existing pool of MASTG reference apps, and evaluate the contribution and value generated through the addition of our apps to the MASTG reference apps dataset. An intuitive way to do so is comparing the total coverage of different MASWE vulnerabilities by all apps together, with and without the addition of our apps. The graph \ref{fig:vulnerability_coverage_percentage_with_own_apps} shows the percentage-wise coverage of different MASWE vulnerabilities by all apps, including our own. Comparing this with the graph \ref{fig:vulnerability_coverage_percentage_without_own_apps}, which displays the same but excludes our own graph, we can see the contribution made in terms of vulnerability-categories coverage. The difference made by including our apps is visualized in the graph \ref{fig:vulnerability_coverage_percentage_comparison}. 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/vulnerability_coverage_percentage_with_own_app.png}
+  \caption{Relative coverage of MASWE vulnerabilities including our own apps}
+  \label{fig:vulnerability_coverage_percentage_with_own_apps}
+\end{figure}
+
+The biggest contribution of our apps is to the MASVS-CRYPTO category. The amount of MASVS-CRYPTO vulnerabilities that are described by MASWE but lack a practical reference implementation in the MASTG reference apps has been reduced from 89.5\% to 0\%. This makes sense, as 18 of our 28 implemented vulnerabilities are intended to reflect MASVS-CRYPTO vulnerabilities. In a similar fashion, the coverage of MASVS-STORAGE vulnerabilities has gone up from 66.7\% to 100\%. And lastly, the amount of MASVS-PLATFORM vulnerabilities that are reflected in a vulnerability has been increased from 72.7\% to 77.3\%. This concentrated effect of contribution \todo{phrase this better} clearly reflects the vulnerability selection criteria we set ourselves to focus on a few categories and implement their vulnerabilities thoroughly instead of a more evened out coverage of all categories. This has achieved the desired effect of making our \texttt{maswe\_crypto} and \texttt{maswe\_storage} apps valuable and useful standalone apps, both for evaluating security analysis tools and for learning purposes.
+
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/vulnerability_coverage_percentage_comparison.png}
-  \caption{ \todo{Add image caption} }
-  \label{fig:}
+  \caption{Contribution of our apps to the relative coverage of MASWE vulnerabilities}
+  \label{fig:vulnerability_coverage_percentage_comparison}
 \end{figure}
+
+The graph \ref{fig:vulnerability_coverage_absolute_with_own_apps} reflects the same coverage of MASWE vulnerabilities by all apps, including our own, but uses absolute values instead of percentages. \todo{figure out if absolute/percentage go together, or whether it should be absolute/relative or something?} By comparing it to the same graph \ref{fig:vulnerability_coverage_absolute_without_own_apps}, which shows the same results but excludes our own apps, we can again see the signifcantly improved and complete coverage of both MASVS-STORAGE and MASVS-CRYPTO vulnerabilities. Complete coverage here does not mean that all possible implementations of these vulnerabilities have been created, and that further such implementations would hold no value. It simply means that all theoretical vulnerabilities in the categories MASVS-STORAGE and MASVS-CRYPTO now have at least one vulnerability implementation representing them in a practical context. The graph further shows that although both categories have now a coverage of 100\%, the contribution to MASVS-CRYPTO is significantly greater than the one to MASVS-STORAGE, since there are only 6 storage vulnerabilities required to for covering them all as compared to the 18 (excluding one which is considered deprecated by OWASP) cryptographic vulnerabilities to be implemented by MASVS-CRYPTO.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/total_vs_implemented_vulnerability_counts_with_own_app.png}
-  \caption{ \todo{Add image caption} }
-  \label{fig:}
+  \caption{MASWE vulnerabilities and their absolute coverage by reference apps}
+  \label{fig:vulnerability_coverage_absolute_with_own_apps}
 \end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/total_vs_unique_with_own_app.png}
-  \caption{ \todo{Add image caption} }
-  \label{fig:}
-\end{figure}
+
+
+\subsection{Unique Vulnerability Coverage per App}
+
+One of our criteria defined for the selection of vulnerabilities was to focus on vulnerabilities which have seen little to no coverage in existing MASTG reference apps. Of our 28 implemented vulnerabilities, 20 have not been implemented in any way by the existing reference apps. This means that in terms of broadening the pool of MASWE vulnerabilities with practical reference implementations, our apps have "unique vulnerability coverage" of 71.4\%. This is not to imply that the other vulnerabilities implemented are not unique in their own right. Even if two implementations address the same vulnerability, they will most likely still differ greatly in logic and design. It does mean however that 71.4\% of the vulnerabilities we included in our apps have not seen any coverage in any of the existing MASTG reference apps. This approach was intended to even out the coverage of vulnerabilities, since half of the vulnerabilities implemented are a reference to only eight OWASP MASWE categories \todo{varify the numbers, improve phrasing and move this into selection process of design section}. Without our apps, the MASTG dataset includes 164 vulnerability implementations, which can be mapped to only 38 different MASWE vulnerabilities. This means that the existing dataset had a MASWE-vulnerability-to-implemented-vulnerability ratio of 23\%, which stands in stark contrast to our ratio of 71.4\%. The graph ref illustrates this by showing the total amount of MASWE vulnerabilities covered per app, which do not see coverage in any of the other existing apps of the dataset.
 
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/unique_without_own_app.png}
-  \caption{ \todo{Add image caption} }
-  \label{fig:}
+  \caption{Amount of MASWE vulnerabilities covered per app which are not implemented by other MASTG reference apps}
+  \label{fig:maswe_vulnerabilities_covered_per_app_without_own_apps}
 \end{figure}
 
+This furthermore means that our own apps improve the total coverage of OWASP MASWE vulnerabilities from 38 to 58 out of 117, resulting in an increase of coverage from 32.5\% to 49.6\%. The MASWE-vulnerability-to-implemented-vulnerability ratio is increased from from 23\% to 30\%.
+
+If we add our own apps to the previous graph, as done in \ref{fig:maswe_vulnerabilities_covered_per_app_with_own_apps}, the difference in magnitude when it comes to MASWE-vulnerability-to-implemented-vulnerability ratios becomes more clear. The graph seen in \ref{fig:maswe_vulnerabilities_to_implemented_vulnerabilities_ratio} better illustrates this ratio by adding the total amount of implemented vulnerabilities to each app.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/unique_with_own_app.png}
-  \caption{ \todo{Add image caption} }
-  \label{fig:}
+  \caption{Amount of MASWE vulnerabilities covered per app which are not implemented by other MASTG reference apps, including our own apps}
+  \label{fig:maswe_vulnerabilities_covered_per_app_with_own_apps}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/vulnerability_coverage_percentage_with_own_app.png}
-  \caption{ \todo{Add image caption} }
-  \label{fig:}
+  \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/total_vs_unique_with_own_app.png}
+  \caption{Ratio of MASWE vulnerabilities to amount of vulnerabilities implemented per app}
+  \label{fig:maswe_vulnerabilities_to_implemented_vulnerabilities_ratio}
 \end{figure}
 
-
-\section{Answers to Research Questions / Hypotheses}
+\section{Usability for Benchmarking SAST and DAST Tools}

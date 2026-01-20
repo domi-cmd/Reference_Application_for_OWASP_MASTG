@@ -1,31 +1,34 @@
 \chapter{Background}
 \label{c:background}
 
-Start writing here \ref{c:background}...
-
 % Struktur
 \section{Android Internals}
-- Keystores (Android, Bouncy Castle)
-- Intents
-- Services
-- Activities (Also talk about launcher activity)
-- Background processes
-- FBE (File-Based-Encryption), Android 7.0
-- Clipboard (copy and paste functionality)
-- AndroidManifext
-- ContentProvider
-- URI
-- run-time
-- ICC?
-- SDK?
 
-\section{Cryptography}
-- RSA
-- SHA1
-- DES
-- AES
-- CBC
+\subsubsection{Core Android Components}
+Android \texttt{Activities} \cite{android_concepts_activities} are the entry point for an Android app's interaction with the user. Android apps are also launched from an activity with special privileges that is called a launcher activity. An activity provides the screen in which the app displays its UI. An app needs to have an activity for each screen it wants to display. Activities call each other in order to perform the different actions that the app provides. For an app with login functionality, this might include a main activity which is the starting point of the app, a registration activity, a login activity and a profile activity.
 
+An Android \texttt{Service} \cite{android_concepts_services} is an Android application component designed for long running background processes. In contrast to Activities, Services do not provide any form of User Interface. When a service runs in the foreground, it means that they execute a process noticeable to the user, such as playing an audio. Otherwise they run in the background where the user won't notice them, for example when dealing with app storage management. 
+
+\texttt{Content providers} \cite{android_concepts_content_providers} are the standard Android interface used by an app to access data stored by itself or other apps on the device. They can furthermore be used to grant other apps permissions to certain files while protecting others. They encapsulate data and allow the app to specify which app has which permissions on which files and directories. This way, other apps cannot directly access and meddle with data stored internally within an app, and have to use the proper and app-defined way of requesting file permissions. 
+
+The \texttt{AndroidManifest.xml} \cite{android_concepts_android_manifest} is the heart of every Android mobile application, and every app is required to have one. It has many functions, one of which is declaring all components that are part of the app. This includes all activities, services, and content providers. It furthermore defines the permissions other apps need to access the components of the app. The android manifest goes on to define the apps settings on concepts such as backup-creation and whether the app is debuggable or not.
+
+
+\subsubsection{Inter-Component Communication (ICC)}
+\texttt{Intents} \cite{android_concepts_intents} are the standard way for the components of an Android app to communicate with one another. Activities make use of intents to call one another, as well as for starting services.
+
+\texttt{URIs} \cite{android_concepts_uri}, short for Uniform Resource Identifier, are strings in Android that are used to identify something in an apps internal storage, such as an image or a file. They share similarities with common file paths, but can also include permissions on who can read what resource. When a content provider gives an entity permission to read a certain file, it does so by returning the designated \texttt{File URI}.
+
+\subsubsection{Data Storage}
+\texttt{SharedPreferences} \cite{android_concepts_shared_preferences} is an Android specific API that allows apps to store data persistently across user sessions. It is designed for storing small amounts of data in a dictionary-like key-value format. The data placed in shared preferences is stored in the apps private directory on internal storage.
+
+\todo{Maybe include MediaStore and Clipboard (copy and paste functionality)}
+
+\texttt{Keystores} are a system designed for safely storing cryptographic keys, making them hard to extract but easy to use. Once a key is stored within a keystore, it can be used for cryptographic operations, but is hard if not impossible to extract. Modern keystores such as the \texttt{Android Keystore system} \cite{android_concepts_android_keystore_system} allow for clearly defining what the key can and cannot do, as well as under what circumstances it can be used and what user authentication is required to do so. It is the modern and secure Android way of storing and managing cryptographic keys.
+
+\todo{- run-time Sandboxing - FBE (File-Based-Encryption), Android 7.0}
+
+\todo{Maybe include section Cryptography: - RSA - SHA1 - DES - AES - CBC}
 
 \section{OWASP MAS}
 

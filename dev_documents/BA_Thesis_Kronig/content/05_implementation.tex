@@ -1,7 +1,7 @@
 \chapter{Implementation}
 \label{c:implementation}
 
-Hier beschreibst du die konkrete technische Umsetzung aller Vulnerabilities. Kein kompletter Quellcode – nur relevante Ausschnitte und Architektur.
+This chapter describes the concrete technical implementations of the selected MASWE vulnerability types. For each implementation, only code excerpts and architectural ideas relevant to the vulnerability are discussed instead of showing and going over the complete source code. The chapter is structured according to the MASVS categories, and the vulnerabilities are sorted in the same way as done by OWASP MASWE.
 
 % Struktur
 \section{MASVS-STORAGE}
@@ -131,7 +131,7 @@ protected void onRegister(String email, String password) {
 }
 \end{lstlisting}
 
-This approach is less dangerous than setting file permissions directly, as it makes the user aware of the issue and can only cause a breach of sensitive user data if the user him/herself \todo{gender this properly} chooses to do so. We decided to settle on this approach since it did not appear feasible to implement this vulnerability more directly on new Android versions.
+This approach is less dangerous than setting file permissions directly, as it makes the user aware of the issue and can only cause a breach of sensitive user data if the user themselves chooses to do so. We decided to settle on this approach since it did not appear feasible to implement this vulnerability more directly on new Android versions.
 
 
 \subsection{MASWE-0003}

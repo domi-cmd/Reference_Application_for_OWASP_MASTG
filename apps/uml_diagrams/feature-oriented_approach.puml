@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/class-diagram
+' title High level class diagram of app inheritance
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam dpi 300
+skinparam linetype poly
+
+package "apps"{
+    package maswe_storage{
+        class storage_menu
+
+        package maswe_0001{
+            class MainActivity0001
+            class RegisterActivity
+            class LoginActivity
+            class ProfileActivity
+        }
+
+        package maswe_0002{
+            class MainActivity0002
+            class regist2 as "RegisterActivity"
+            class login2 as "LoginActivity"
+            class profile2 as "ProfileActivity"
+        }
+
+        package maswe_0002{
+           class MainActivity0002
+           class regist2 as "RegisterActivity"
+           class login2 as "LoginActivity"
+           class profile2 as "ProfileActivity"
+        }
+
+        package maswe_0002{
+           class MainActivity0002
+           class regist2 as "RegisterActivity"
+           class login2 as "LoginActivity"
+           class profile2 as "ProfileActivity"
+        }
+    }
+}
+
+
+' Usage
+MainActivity0001 <--- storage_menu
+RegisterActivity <-- MainActivity0001
+LoginActivity <-- MainActivity0001
+ProfileActivity <-- LoginActivity
+
+MainActivity0002 <--- storage_menu
+regist2 <-- MainActivity0002
+login2 <-- MainActivity0002
+profile2 <-- login2
+
+
+' Inheritance
+
+@enduml

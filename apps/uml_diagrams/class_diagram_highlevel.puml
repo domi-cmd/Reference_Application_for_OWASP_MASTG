@@ -1,94 +1,90 @@
 @startuml
 'https://plantuml.com/class-diagram
-title High level class diagram of app functionality
+' title "High level view of system architecture"
 top to bottom direction
 skinparam classAttributeIconSize 0
 skinparam dpi 300
 skinparam linetype ortho
 
-package root {
-    rectangle MainActivity
-}
-
-package maswe_storage {
-    rectangle storage_menu
-
-    together {
-           package maswe_0001 {
-               rectangle MainActivity0001
-           }
-
-           package maswe_0002 {
-               rectangle MainActivity0002
-           }
-
-           rectangle "..." as skipped
-
-           package maswe_0007 {
-               rectangle MainActivity0007
-           }
+package "apps" {
+    package common {
+        rectangle "..." as empty
     }
-}
 
-package maswe_crypto {
-    rectangle crypto_menu
+    package maswe_storage {
+        rectangle storage_menu
 
-    together {
+        together {
+               package maswe_0001 {
+                   rectangle MainActivity0001
+               }
 
-        package maswe_0009 {
-            rectangle MainActivity0009
-        }
+               package maswe_0002 {
+                   rectangle MainActivity0002
+               }
 
-        package maswe_00010 {
-            rectangle MainActivity0010
-        }
+               rectangle "..." as skipped
 
-        rectangle "..." as skipped2
-
-        package maswe_00025 {
-            rectangle MainActivity0025
+               package maswe_0007 {
+                   rectangle MainActivity0007
+               }
         }
     }
-}
 
-package maswe_platform {
-    rectangle platform_menu
+    package maswe_crypto {
+        rectangle crypto_menu
 
-    together {
-        package maswe_0053 {
-            rectangle MainActivity0053
+        together {
+
+            package maswe_0009 {
+                rectangle MainActivity0009
+            }
+
+            package maswe_00010 {
+                rectangle MainActivity0010
+            }
+
+            rectangle "..." as skipped2
+
+            package maswe_00025 {
+                rectangle MainActivity0025
+            }
         }
+    }
 
-         package maswe_0055 {
-            rectangle MainActivity0055
-         }
+    package maswe_platform {
+        rectangle platform_menu
 
-            rectangle "..." as skipped3
+        together {
+            package maswe_0053 {
+                rectangle MainActivity0053
+            }
 
-        package maswe_00067 {
-            rectangle MainActivity0067
+             package maswe_0055 {
+                rectangle MainActivity0055
+             }
+
+                rectangle "..." as skipped3
+
+            package maswe_00067 {
+                rectangle MainActivity0067
+            }
         }
     }
 }
 
 ' Usage
-storage_menu <-- MainActivity
-
 MainActivity0001 <-- storage_menu
 MainActivity0002 <-- storage_menu
 skipped <-- storage_menu
 MainActivity0007 <-- storage_menu
 
 
-crypto_menu <-- MainActivity
-
 MainActivity0009 <-- crypto_menu
 MainActivity0010 <-- crypto_menu
 skipped2 <-- crypto_menu
 MainActivity0025 <-- crypto_menu
 
-
-platform_menu <-- MainActivity
 
 MainActivity0053 <-- platform_menu
 MainActivity0055 <-- platform_menu
@@ -108,9 +104,14 @@ MainActivity0053 -[hidden]down- MainActivity0055
 MainActivity0055 -[hidden]down- skipped3
 skipped3 -[hidden]down- MainActivity0067
 
-' Hidden links to enforce vertical hierarchy
-MainActivity -[hidden]down- maswe_storage
-MainActivity -[hidden]down- maswe_crypto
-MainActivity -[hidden]down- maswe_platform
+' layouts -[hidden]down- "abstract activities"
+
+
+' Inhertiance
+common <|-- maswe_storage
+common <|-- maswe_crypto
+common <|-- maswe_platform
+
+
 
 @enduml

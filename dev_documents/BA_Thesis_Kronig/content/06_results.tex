@@ -47,7 +47,7 @@ The graph \ref{fig:vulnerability_coverage_absolute_with_own_apps} reflects the s
 
 \subsection{Unique Vulnerability Coverage per App}
 
-One of our criteria defined for the selection of vulnerabilities was to focus on vulnerabilities which have seen little to no coverage in existing MASTG reference apps. Of our 28 implemented vulnerabilities, 20 have not been implemented in any way by the existing reference apps. This means that in terms of broadening the pool of MASWE vulnerabilities with practical reference implementations, our apps have "unique vulnerability coverage" of 71.4\%. This is not to imply that the other vulnerabilities implemented are not unique in their own right. Even if two implementations address the same vulnerability, they will most likely still differ greatly in logic and design. It does mean however that 71.4\% of the vulnerabilities we included in our apps have not seen any coverage in any of the existing MASTG reference apps. This approach was intended to even out the coverage of vulnerabilities, since half of the vulnerabilities implemented are a reference to only eight OWASP MASWE categories \todo{varify the numbers, improve phrasing and move this into selection process of design section}. Without our apps, the MASTG dataset includes 164 vulnerability implementations, which can be mapped to only 38 different MASWE vulnerabilities. This means that the existing dataset had a MASWE-vulnerability-to-implemented-vulnerability ratio of 23\%, which stands in stark contrast to our ratio of 71.4\%. The graph ref illustrates this by showing the total amount of MASWE vulnerabilities covered per app, which do not see coverage in any of the other existing apps of the dataset.
+One of our criteria defined for the selection of vulnerabilities was to focus on vulnerabilities which have seen little to no coverage in existing MASTG reference apps. Of our 28 implemented vulnerabilities, 20 have not been implemented in any way by the existing reference apps. This means that in terms of broadening the pool of MASWE vulnerabilities with practical reference implementations, our apps have "unique vulnerability coverage" of 71.4\%. This is not to imply that the other vulnerabilities implemented are not unique in their own right. Even if two implementations address the same vulnerability, they will most likely still differ greatly in logic and design. It does mean however that 71.4\% of the vulnerabilities we included in our apps have not seen any coverage in any of the existing MASTG reference apps. This approach was intended to even out the coverage of vulnerabilities, since half of the vulnerabilities implemented are a reference to only eight OWASP MASWE vulnerability types \todo{varify the numbers, improve phrasing and move this into selection process of design section}. Without our apps, the MASTG dataset includes 163 vulnerability implementations, which can be mapped to only 42 different MASWE vulnerabilities. This means that the existing dataset had a MASWE-vulnerability-to-implemented-vulnerability ratio of 25.8\%, which stands in stark contrast to our ratio of 64.3\%. The graph \ref{fig:maswe_vulnerabilities_covered_per_app_without_own_apps} illustrates this by showing the total amount of MASWE vulnerabilities covered per app, which do not see coverage in any of the other existing apps of the dataset.
 
 
 \begin{figure}[htbp]
@@ -57,10 +57,11 @@ One of our criteria defined for the selection of vulnerabilities was to focus on
   \label{fig:maswe_vulnerabilities_covered_per_app_without_own_apps}
 \end{figure}
 
-This furthermore means that our own apps improve the total coverage of OWASP MASWE vulnerabilities from 38 to 58 out of 117, resulting in an increase of coverage from 32.5\% to 49.6\%. The MASWE-vulnerability-to-implemented-vulnerability ratio is increased from from 23\% to 30\%.
+This furthermore means that our own apps improve the total coverage of OWASP MASWE vulnerabilities from 42 to 60 out of 117, resulting in an increase of coverage from 35.9\% to 51.3\%. The MASWE-vulnerability-to-implemented-vulnerability ratio is increased from from 25.8\% to 31.4\%.
 
 If we add our own apps to the previous graph, as done in \ref{fig:maswe_vulnerabilities_covered_per_app_with_own_apps}, the difference in magnitude when it comes to MASWE-vulnerability-to-implemented-vulnerability ratios becomes more clear. The graph seen in \ref{fig:maswe_vulnerabilities_to_implemented_vulnerabilities_ratio} better illustrates this ratio by adding the total amount of implemented vulnerabilities to each app.
 
+\todo{Replace with new graph from py}
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/unique_with_own_app.png}
@@ -68,6 +69,7 @@ If we add our own apps to the previous graph, as done in \ref{fig:maswe_vulnerab
   \label{fig:maswe_vulnerabilities_covered_per_app_with_own_apps}
 \end{figure}
 
+\todo{Replace with new graph from py}
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{dev_documents/BA_Thesis_Kronig/figures/results/total_vs_unique_with_own_app.png}

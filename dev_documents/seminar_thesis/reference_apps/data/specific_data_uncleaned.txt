@@ -38,7 +38,7 @@
 |  | Storage |  |  |
 |  |  | Insecure Data Storage – Part 1 | MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
 |  |  | Insecure Data Storage – Part 2 | MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction |
-|  |  | Insecure Data Storage – Part 3 | MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations |
+|  |  | Insecure Data Storage – Part 3 | MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
 |  |  | Insecure Data Storage – Part 4 | MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations |
 |  |  | Insecure Logging | MASWE-0001: Insertion of Sensitive Data into Logs |
 |  | Crypto |  |  |
@@ -240,7 +240,7 @@
 |  |  | Insecure services | MASWE-0062: Insecure Services |
 |  |  | Fragment injection in Refer-Us | MASWE-0060: Insecure Use of UIActivity |
 |  |  | Copy/Paste buffer Caching | MASWE-0053: Sensitive Data Leaked via the User Interface |
-|  |  | Application backgrounding | MASWE-0055: Sensitive Data Leaked via Screenshots |
+|  |  | Application backgrounding | MASWE-0053: Sensitive Data Leaked via the User Interface |
 |  |  | Tapjacking | MASWE-0056: Tapjacking Attacks |
 |  |  | Task Hijacking | MASWE-0057: StrandHogg Attack / Task Affinity Vulnerability |
 |  | Code |  |  |

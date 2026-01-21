@@ -25,7 +25,7 @@ Androgoat,Resilience,Root Detection,MASWE-0097: Root/Jailbreak Detection Not Imp
 Androgoat,Resilience,Emulator Detection,MASWE-0099: Emulator Detection Not Implemented
 DIVA,Storage,Insecure Data Storage – Part 1,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
 DIVA,Storage,Insecure Data Storage – Part 2,MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction
-DIVA,Storage,Insecure Data Storage – Part 3,MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations
+DIVA,Storage,Insecure Data Storage – Part 3,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
 DIVA,Storage,Insecure Data Storage – Part 4,MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations
 DIVA,Storage,Insecure Logging,MASWE-0001: Insertion of Sensitive Data into Logs
 DIVA,Auth,Hardcoding Issues – Part 1,MASWE-0005: API Keys Hardcoded in the App Package
@@ -146,7 +146,7 @@ BugBazaar,Platform,Access to Protected Components via broadcast Receiver,MASWE-0
 BugBazaar,Platform,Insecure services,MASWE-0062: Insecure Services
 BugBazaar,Platform,Fragment injection in Refer-Us,MASWE-0060: Insecure Use of UIActivity
 BugBazaar,Platform,Copy/Paste buffer Caching,MASWE-0053: Sensitive Data Leaked via the User Interface
-BugBazaar,Platform,Application backgrounding,MASWE-0055: Sensitive Data Leaked via Screenshots
+BugBazaar,Platform,Application backgrounding,MASWE-0053: Sensitive Data Leaked via the User Interface
 BugBazaar,Platform,Tapjacking,MASWE-0056: Tapjacking Attacks
 BugBazaar,Platform,Task Hijacking,MASWE-0057: StrandHogg Attack / Task Affinity Vulnerability
 BugBazaar,Code,RCE through insecure Dynamic Code Loading,MASWE-0085: Unsafe Dynamic Code Loading

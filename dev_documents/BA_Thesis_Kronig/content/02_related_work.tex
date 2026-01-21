@@ -12,7 +12,7 @@ At the time of writing, there are currently 19 MASTG reference apps listed on th
 \subsection{Methodology}
 We evaluated 19 MASTG reference apps as to whether they have any source code available at all, and if so, whether they have any documentation of their weaknesses. The app selection includes four "Android Uncrackable" reference apps, named L1 \citep{android_uncrackable_l1}, L2 \citep{android_uncrackable_l2}, L3 \citep{android_uncrackable_l3} and L4 \citep{android_uncrackable_l4}. All four of these do not have any documentation on their implemented weaknesses, and are hence not included in this review. The "Android License Validator" \citep{license_validator} by the same author does also not include any such documentation, and is excluded on the same grounds as well. The other apps excluded for the same reason are: DVHMA \citep{dvhma}, Digitalbank \citep{digitalbank}, DodoVulnerableBank \citep{dodo_vulnerable_bank}, disable-flutter-tls-verification \citep{disable_flutter_verification_app}, and MASTestApp-Android-NETWORK \citep{mast_test_app_android_network}. The MASTG-Hacking-Playground-Kotlin-App \citep{mastg_hacking_playground_kotlin} has been excluded from this literature review, since there exists an identical Java version of this app, which has been evaluated. 
 
-The following apps have been included in the review: AndroGoat \citep{andro_goat}, DIVA Android \citep{diva_android},  InsecureBankv2 \citep{insecure_bank_v2}, MASTG-Hacking-Playground \citep{mastg_hacking_playground}, OVAA \citep{ovaa}, InsecureShop \citep{insecure_shop}, Finstergram \citep{finstergram} and Android BugBazaar \citep{android_bugbazaar}.
+The following apps have been included in the review: AndroGoat \citep{andro_goat}, DIVA Android \citep{diva_android},  InsecureBankv2 \citep{insecure_bank_v2}, MASTG-Hacking-Playground \citep{mastg_hacking_playground}, OVAA \citep{ovaa}, InsecureShop \citep{insecure_shop}, Finstergram \citep{finstergram} and Android BugBazaar \citep{android_bugbazaar}. A summary of this can be seen in \ref{overview_reference_apps_sourcecode_and_documentation}.
 
 \begin{table}[htpb]
 \centering
@@ -66,7 +66,38 @@ The following apps have been included in the review: AndroGoat \citep{andro_goat
 \end{table}
 
 \subsection{Findings}
-Across the eight evaluated OWASP MASTG reference apps, 162 weaknesses where mapped to their respective MASWE counterpart and grouped by their vulnerability category (Storage, Crypto, Auth, etc.).
+Across the eight evaluated OWASP MASTG reference apps, 163 weaknesses where mapped to their respective MASWE counterpart and grouped by their vulnerability category (Storage, Crypto, Auth, etc.). An overview of the apps and their implemented vulnerabilities can be seen in \ref{overview_reference_apps_vulnerabilities_per_category_each}.
+
+\begin{table}[htpb]
+\centering
+\small
+\caption{Mapping of MASTG reference app vulnerabilities to their MASVS categories.}
+\label{overview_reference_apps_vulnerabilities_per_category_each}
+\begin{tabular}{ |p{1.75cm}||p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|p{0.9cm}|  }
+    \hline
+    \multicolumn{10}{|c|}{OWASP MASTG Reference Apps} \\
+    \hline
+    App name & \# Vuln. & Stora. & Crypt.  & Auth  & Netwo.  & Platf.  & Code  & Resil.  & Priva. \\
+    \hline
+    Androgoat & \centering24 & \centering7 & \centering1 & \centering1 & \centering4 & \centering8 & \centering1 & \centering2 &  \\
+    \hline
+    DIVA & \centering13 & \centering5 &  & \centering5 &  &  & \centering3 &  &  \\
+    \hline
+    InsecureB. & \centering25 & \centering4 & \centering2 & \centering4 & \centering1 & \centering8 & \centering1 & \centering5 &  \\
+    \hline
+    Playground & \centering15 & \centering5 & \centering1 &  & \centering1 & \centering3 & \centering3 & \centering2 &  \\
+    \hline
+    OVAA & \centering18 & \centering1 & \centering1 &  &  & \centering10 & \centering6 &  &  \\
+    \hline
+    Ins.Shop & \centering19 & \centering2 &  & \centering2 & \centering1 & \centering13 &  & \centering1 &  \\
+    \hline
+    Finster. & \centering5 &  &  &  &  & \centering3 & \centering2 &  &  \\
+    \hline
+    BugBaza. & \centering44 & \centering7 &  & \centering1 &  & \centering23 & \centering10 & \centering3 &  \\
+    \hline
+\end{tabular}
+\end{table}
+
 
 \subsubsection{Lack of vulnerability documentation}
 A reoccurring issue with many of the reference apps is their documentation of the implemented vulnerabilities. 11 of the listed reference apps do not have any documentation of their weaknesses at all, which led to their exclusion from this evaluation. Those apps that do have some form of documentation are often incomplete, and almost always only consist of a single list, naming the implemented weaknesses and leaving it at that. None of the apps map the implemented weaknesses to their OWASP MASWE counterparts, despite them being a MASTG reference app, designed for this very purpose. Only one app \todo{add source and specific name here, finstergram?} actually documents what the weaknesses entail, how they are implemented, and how to fix or exploit them. 

@@ -102,7 +102,7 @@ To still implement this vulnerability, we made use of an custom FileProvider whi
 \begin{lstlisting}[float=tbh, style=XMLStyle, mathescape=true, captionpos=b, caption={Custom FileProvider that grants Uri permissions without checking access permissions.}, label=lst:Maswe0002FileProvider]
 <provider
     android:name="androidx.core.content.FileProvider"
-    android:authorities="com.dkronig.maswe_storage.CustomFileProvider"
+    android:authorities="com.dkronig.masvs_storage.CustomFileProvider"
     android:exported="false"
     android:grantUriPermissions="true"
     android:permission="" >
@@ -1197,8 +1197,8 @@ To ensure this is the case and further extend the impact of this vulnerability, 
 
 \begin{lstlisting}[style=XMLStyle, float=tbh, captionpos=b, caption={Exporting the custom content provider, making it accessible to other apps without enforcing permissions.}, label={lst:Maswe0064ExportedProvider}]
 <provider
-    android:name="com.dkronig.maswe_platform.maswe_0064.CustomContentProvider"
-    android:authorities="com.dkronig.maswe_platform.CustomContentProvider"
+    android:name="com.dkronig.masvs_platform.maswe_0064.CustomContentProvider"
+    android:authorities="com.dkronig.masvs_platform.CustomContentProvider"
     android:exported="true"
     android:permission=""
     tools:ignore="ExportedContentProvider" />
@@ -1208,12 +1208,12 @@ This, in combination with the unsanitized content provider, means that any malic
 
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Accessing and reading files containing sensitive user data from malicious apps, both directly and using path traversal.}, label={lst:Maswe0064AccessingFilesExample}]
 // Direct file access 
-Uri.parse("content://com.dkronig.maswe_platform.CustomContentProvider
+Uri.parse("content://com.dkronig.masvs_platform.CustomContentProvider
     /maswe_0064_user_credentials.txt"); 
 InputStream in = getContentResolver().openInputStream(uri); 
 
 // Read files via path traversal
-Uri uri = Uri.parse("content://com.dkronig.maswe_platform.CustomContentProvider
+Uri uri = Uri.parse("content://com.dkronig.masvs_platform.CustomContentProvider
     /../databases/app.db"); 
 InputStream in = getContentResolver().openInputStream(uri);
 \end{lstlisting}
@@ -1242,7 +1242,7 @@ The implementation of this vulnerability is rather straightforward, as only one 
 
 \begin{lstlisting}[style=XMLStyle, float=tbh, captionpos=b, caption={Setting the app to debuggable.}, label={lst:Maswe0067SettingAppDebuggable}]
 <application
-    android:theme="@style/Theme.maswe_platform"
+    android:theme="@style/Theme.masvs_platform"
     // ...
     
     android:debuggable="true"
@@ -1256,13 +1256,13 @@ The issue with setting the app to debuggable is that it directly weakens the app
 \todo{figure out why some \& are lighted blue and some are not?}
 
 \begin{lstlisting}[style=XMLStyle, float=tbh, captionpos=b, caption={Listing and reading Shared Preferences files containing user credentials.}, label={lst:Maswe0067ReadingSharedPreferences}]
-C:\Users\Domi>adb shell run-as com.dkronig.maswe_platform ls shared_prefs
+C:\Users\Domi>adb shell run-as com.dkronig.masvs_platform ls shared_prefs
 maswe_0053_user_credentials.xml
 maswe_0055_user_credentials.xml
 maswe_0064_user_credentials.xml
 maswe_0067_user_credentials.xml
 
-C:\Users\Domi>adb shell run-as com.dkronig.maswe_platform cat shared_prefs/maswe_0053_user_credentials.xml
+C:\Users\Domi>adb shell run-as com.dkronig.masvs_platform cat shared_prefs/maswe_0053_user_credentials.xml
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 <map>
     <string name="users_json">{&quot;qwertz&quot;:{&quot;password&quot;

@@ -1,5 +1,5 @@
 @startuml
-title BaseActivityTemplate Flow
+' title BaseActivityTemplate Flow
 
 skinparam conditionStyle diamond
 skinparam partitionMinWidth 300

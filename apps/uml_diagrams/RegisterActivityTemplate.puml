@@ -1,5 +1,5 @@
 @startuml
-title BaseRegisterActivity Template Flow
+' title BaseRegisterActivity Template Flow
 skinparam dpi 300
 skinparam conditionStyle diamond
 

@@ -14,8 +14,8 @@ package "apps"{
     }
 
 
-    package maswe_storage{
-        class storage_menu
+    package masvs_storage{
+        class storage_menu <<Activity>>
 
         package maswe_0001{
             class MainActivity0001 <<Activity>>
@@ -43,10 +43,5 @@ BaseLoginActivity <|-- LoginActivity
 BaseActivityTemplate <|---- storage_menu
 BaseActivityTemplate <|----- MainActivity0001
 BaseActivityTemplate <|--- ProfileActivity
-
-
-
-
-
 
 @enduml

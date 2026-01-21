@@ -1,5 +1,5 @@
 @startuml
-title BaseLoginActivity Template Flow
+' title BaseLoginActivity Template Flow
 skinparam dpi 300
 skinparam conditionStyle diamond
 

@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 skinparam classAttributeIconSize 0
-title MASWE Storage App – MASWE_0001
+' title MASWE Storage App – MASWE_0001
 
 ' ========= Base Classes =========
 package "com.dkronig.common" {
@@ -11,7 +11,7 @@ package "com.dkronig.common" {
 }
 
 ' ========= App Package =========
-package "com.dkronig.maswe_storage" {
+package "com.dkronig.masvs_storage" {
   class StorageMenu <<Activity>> {
       - SCREEN_TITLE : String
       + onCreate(Bundle)
@@ -21,7 +21,7 @@ package "com.dkronig.maswe_storage" {
 }
 
 ' ========= MASWE-0001 Package =========
-package "com.dkronig.maswe_storage.maswe_0001" {
+package "com.dkronig.masvs_storage.maswe_0001" {
 
   class MainActivity0001 <<Activity>> {
       - SCREEN_TITLE : String

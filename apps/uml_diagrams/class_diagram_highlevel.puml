@@ -11,7 +11,7 @@ package "apps" {
         rectangle "..." as empty
     }
 
-    package maswe_storage {
+    package masvs_storage {
         rectangle storage_menu
 
         together {
@@ -31,7 +31,7 @@ package "apps" {
         }
     }
 
-    package maswe_crypto {
+    package masvs_crypto {
         rectangle crypto_menu
 
         together {
@@ -52,7 +52,7 @@ package "apps" {
         }
     }
 
-    package maswe_platform {
+    package masvs_platform {
         rectangle platform_menu
 
         together {
@@ -108,9 +108,9 @@ skipped3 -[hidden]down- MainActivity0067
 
 
 ' Inhertiance
-common <|-- maswe_storage
-common <|-- maswe_crypto
-common <|-- maswe_platform
+common <|-- masvs_storage
+common <|-- masvs_crypto
+common <|-- masvs_platform
 
 
 

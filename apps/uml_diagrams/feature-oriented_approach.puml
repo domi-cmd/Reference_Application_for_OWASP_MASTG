@@ -7,7 +7,7 @@ skinparam dpi 300
 skinparam linetype poly
 
 package "apps"{
-    package maswe_storage{
+    package masvs_storage{
         class storage_menu
 
         package maswe_0001{

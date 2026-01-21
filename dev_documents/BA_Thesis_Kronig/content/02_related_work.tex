@@ -14,51 +14,56 @@ We evaluated 19 MASTG reference apps as to whether they have any source code ava
 
 The following apps have been included in the review: AndroGoat \citep{andro_goat}, DIVA Android \citep{diva_android},  InsecureBankv2 \citep{insecure_bank_v2}, MASTG-Hacking-Playground \citep{mastg_hacking_playground}, OVAA \citep{ovaa}, InsecureShop \citep{insecure_shop}, Finstergram \citep{finstergram} and Android BugBazaar \citep{android_bugbazaar}.
 
+\begin{table}[htpb]
+\centering
+\caption{Availability of sourcecode and documentation of MASTG reference apps, and whether they were included in our analysis.}
+\label{overview_reference_apps_sourcecode_and_documentation}
 \begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
     \hline
     \multicolumn{4}{|c|}{OWASP MASTG Reference Apps} \\
     \hline
     App name& Sourcecode & Documentation & Included \\
     \hline
-    Uncrackable L1   &  No   & No &  No \\
+    Uncrackable L1   &  &  &  \\
     \hline
-    Uncrackable L2   &  No   & No &  No \\
+    Uncrackable L2   &  &  &   \\
     \hline
-    Uncrackable L3   &  No   & No &  No \\
+    Uncrackable L3   &  &  &   \\
     \hline
-    Uncrackable L4   &  No   & No &  No \\
+    Uncrackable L4   &  &  &   \\
     \hline
-    License Validator   &  No   & No &  No \\
+    License Validator   &  &  &   \\
     \hline
-    DVHMA   &  No   & No &  No \\
+    DVHMA   &  &  &  \\
     \hline
-    Digitalbank   &  Yes   & No &  No \\
+    Digitalbank   & \centering\checkmark &  &    \\
     \hline
-    Dodo Vulnerable Bank   &  Yes   & No &  No \\
+    Dodo Vulnerable Bank   & \centering\checkmark &  &  \\
     \hline
-    disable-flutter-tls-verification   &  Yes   & No &  No \\
+    disable-flutter-tls-verification   & \centering\checkmark &  &  \\
     \hline
-    MASTestApp-Android-NETWORK   &  Yes & No &  No \\
+    MASTestApp-Android-NETWORK   & \centering\checkmark &  &  \\
     \hline
-    MASTG-Hacking-Playground-Kotlin-App  & Yes & Yes &  No \\
+    MASTG-Hacking-Playground-Kotlin-App  & \centering\checkmark & \centering\checkmark &  \\
     \hline
-    AndroGoat  & Yes & Yes &  Yes \\
+    AndroGoat  & \centering\checkmark & \centering\checkmark & \centering\arraybackslash\checkmark \\
     \hline
-    DIVA Android  & Yes & Yes &  Yes \\
+    DIVA Android  & \centering\checkmark & \centering\checkmark & \centering\arraybackslash\checkmark \\
     \hline
-    InsecureBankv2 & Yes & Yes &  Yes \\
+    InsecureBankv2 & \centering\checkmark & \centering\checkmark & \centering\arraybackslash\checkmark \\
     \hline
-    MASTG-Hacking-Playground & Yes & Yes &  Yes \\
+    MASTG-Hacking-Playground & \centering\checkmark & \centering\checkmark & \centering\arraybackslash\checkmark \\
     \hline
-    OVAA & Yes & Yes &  Yes \\
+    OVAA & \centering\checkmark & \centering\checkmark & \centering\arraybackslash\checkmark \\
     \hline
-    InsecureShop & Yes & Yes &  Yes \\
+    InsecureShop & \centering\checkmark & \centering\checkmark & \centering\arraybackslash\checkmark \\
     \hline
-    Finstergram & Yes & Yes &  Yes \\
+    Finstergram & \centering\checkmark & \centering\checkmark & \centering\arraybackslash\checkmark \\
     \hline
-    BugBazaar & Yes & Yes &  Yes \\
+    BugBazaar & \centering\checkmark & \centering\checkmark & \centering\arraybackslash\checkmark \\
     \hline
 \end{tabular}
+\end{table}
 
 \subsection{Findings}
 Across the eight evaluated OWASP MASTG reference apps, 162 weaknesses where mapped to their respective MASWE counterpart and grouped by their vulnerability category (Storage, Crypto, Auth, etc.).
@@ -80,8 +85,8 @@ To make this point more clear; the ten most frequently covered vulnerabilities a
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{figures/related_work/top_10_vulnerabilities.png}
-  \caption{Barplot depicting the ten most frequently covered types of OWASP MASWE vulnerabilities.}
-  \label{fig:model}
+  \caption{Ten most frequently covered types of OWASP MASWE vulnerabilities.}
+  \label{fig:ten_most_frequently_covered_maswe_vulnerability_types}
 \end{figure}
 
 \subsubsection{Coverage of vulnerability categories}
@@ -90,7 +95,7 @@ There is not only a favouring of certain specific MASWE vulnerabilities, but an 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{figures/related_work/vulnerability_coverage_percentage.png}
-  \caption{\todo{ADD IMAGE CAPTION}}
+  \caption{Relative coverage of MASVS categories.}
   \label{fig:vulnerability_coverage_percentage_without_own_apps}
 \end{figure}
 
@@ -102,7 +107,7 @@ The remarkably high coverage of Platform vulnerabilities further enforces the fi
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{figures/related_work/vulnerability_coverage_counts.png}
-  \caption{\todo{ADD IMAGE CAPTION}}
+  \caption{Absolute coverage of MASVS categories.}
   \label{fig:vulnerability_coverage_absolute_without_own_apps}
 \end{figure}
 
@@ -116,45 +121,50 @@ The OWASP MASTG is the industry standard for mobile app security. But what relev
 
 This literature review was conducted by searching for relevant papers that include and deal with the keywords "OWASP" and "MASTG" on Google Scholar. Only papers written in English have been considered. Furthermore, all evaluated papers have been published in the last two years, with no paper having an older publishing year than 2023. The top 22 papers matching these criteria have been carefully read, with seven of them discarded because their research focus did not match the OWASP MASTG. This left 15 papers \citep{paper_01, paper_02, paper_03, paper_04, paper_05, paper_06, paper_07, paper_08, paper_10, paper_13, paper_14, paper_19, paper_20, paper_21, paper_22}, which have then been evaluated for their usage of OWASP MASTG and grouped by similarities.
 
-Of the 15 papers evaluated, eight \citep{paper_01, paper_02, paper_03, paper_04, paper_05, paper_07, paper_13, paper_14} used OWASP MASTG to evaluate real-world android apps based on whether they adhere to the security standard set by OWASP MASVS. Six papers \citep{paper_01, paper_02, paper_03, paper_04, paper_05, paper_07} mapped android app security vulnerabilities to the OWASP MASVS. Three papers \citep{paper_03, paper_04, paper_06} made use of the 5-steps penetration testing guide as layed out by OWASP MASTG, in order to conduct penetration tests on android apps. Three papers \citep{paper_10, paper_19, paper_22} also used the MASTG reference apps by evaluating vulnerability assessment tools on them in order to verify their accuracy in finding such vulnerabilities. Two of these papers \citep{paper_19, paper_22} then compared their findings to results found when conducting the same tests on real-world apps. Lastly, four papers \citep{paper_08, paper_20, paper_21, paper_22} mentioned the OWASP MASTG in discussion, either by the authors, comparing the OWASP mobile project to other Mobile Security Frameworks, or by interviewees as a tool used.
+Of the 15 papers evaluated, eight \citep{paper_01, paper_02, paper_03, paper_04, paper_05, paper_07, paper_13, paper_14} used OWASP MASTG to evaluate real-world android apps based on whether they adhere to the security standard set by OWASP MASVS. Six papers \citep{paper_01, paper_02, paper_03, paper_04, paper_05, paper_07} mapped android app security vulnerabilities to the OWASP MASVS. Three papers \citep{paper_03, paper_04, paper_06} made use of the 5-steps penetration testing guide as laid out by OWASP MASTG, in order to conduct penetration tests on android apps. Three papers \citep{paper_10, paper_19, paper_22} also used the MASTG reference apps by evaluating vulnerability assessment tools on them in order to verify their accuracy in finding such vulnerabilities. Two of these papers \citep{paper_19, paper_22} then compared their findings to results found when conducting the same tests on real-world apps. Lastly, four papers \citep{paper_08, paper_20, paper_21, paper_22} mentioned the OWASP MASTG in discussion, either by the authors, comparing the OWASP mobile project to other Mobile Security Frameworks, or by interviewees as a tool used.
 
+\begin{table}[htpb]
+\centering
+\caption{Overview of how scientific papers make use of the OWASP MAS project.}
 \begin{tabular}{ |p{1.2cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
     \hline
-    \multicolumn{6}{|c|}{OWASP MASTG usage by scientific papers} \\
+    \multicolumn{6}{|c|}{OWASP MAS usage by scientific papers} \\
     \hline
     Paper & Evaluating real-world apps & Vulnerability mapping & 5-Steps Pen-testing guide & Reference apps & In Discussion \\
     \hline
-    1 \citep{paper_01}   &  X   & X &   &   &   \\
+    1 \citep{paper_01}   & \centering\checkmark & \centering\checkmark &   &   &   \\
     \hline
-    2 \citep{paper_02}   &  X   & X &   &   &   \\
+    2 \citep{paper_02}   & \centering\checkmark & \centering\checkmark &   &   &   \\
     \hline
-    3 \citep{paper_03}   &  X   & X &  X &   &   \\
+    3 \citep{paper_03}   & \centering\checkmark & \centering\checkmark & \centering\checkmark &   &   \\
     \hline
-    4 \citep{paper_04}   &  X   & X &  X &   &   \\
+    4 \citep{paper_04}   & \centering\checkmark & \centering\checkmark & \centering\checkmark &   &   \\
     \hline
-    5 \citep{paper_05}   &  X   & X &   &   &   \\
+    5 \citep{paper_05}   & \centering\checkmark & \centering\checkmark &   &   &   \\
     \hline
-    6 \citep{paper_06}   &     &  &  X &   &   \\
+    6 \citep{paper_06}   &     &  & \centering\checkmark &   &   \\
     \hline
-    7 \citep{paper_07}   &  X   & X &   &   &   \\
+    7 \citep{paper_07}   & \centering\checkmark & \centering\checkmark &   &   &   \\
     \hline
-    8 \citep{paper_08}   &     &  &   &   &  X \\
+    8 \citep{paper_08}   &     &  &   &   & \centering\arraybackslash\checkmark \\
     \hline
-    9 \citep{paper_10}   &     &  &   &  X &   \\
+    9 \citep{paper_10}   &     &  &   & \centering\checkmark &   \\
     \hline
-    10 \citep{paper_13}   &  X   &  &   &   &   \\
+    10 \citep{paper_13}   & \centering\checkmark &  &   &   &   \\
     \hline
-    11 \citep{paper_14}   &  X   &  &   &   &   \\
+    11 \citep{paper_14}   & \centering\checkmark &  &   &   &   \\
     \hline
-    12 \citep{paper_19}   &     &  &   &  X &   \\
+    12 \citep{paper_19}   &     &  &   & \centering\checkmark &   \\
     \hline
-    13 \citep{paper_20}   &     &  &   &   &  X \\
+    13 \citep{paper_20}   &     &  &   &   & \centering\arraybackslash\checkmark \\
     \hline
-    14 \citep{paper_21}   &     &  &   &   &  X \\
+    14 \citep{paper_21}   &     &  &   &   & \centering\arraybackslash\checkmark \\
     \hline
-    15 \citep{paper_22}   &     &  &   &  X &  X \\
+    15 \citep{paper_22}   &     &  &   & \centering\checkmark & \centering\arraybackslash\checkmark \\
     \hline
 \end{tabular}
+\label{overview_owasp_mas_usage_academic_world}
+\end{table}
 
 \subsubsection{Cryptographic security shortcomings in African mobile financial applications}
 Chiboora et al. \citep{paper_07} use the OWASP MASTG \& MASVS to evaluate 18 android apps belonging to different African financial institutions based on their mobile security. They chose MASVS as a testing framework, since it is specifically designed to "be a guide and checklist for evaluating the security of mobile applications". They applied the strictest level of MASVS, L2, and focused solely on unauthenticated client-side testing, following the black-box testing approach. They did not implement all MASVS tests. Nevertheless, their findings in terms of security shortcomings are quite damning. Some of the worst findings are as follows. All 18 apps allowed for screenshotting of sensitive data. 14 of the apps used outdated and thus insecure cryptographic protocols such as MD5, SHA-1 and DES. 10 apps used security libraries that are outdated and known to have vulnerabilities. Furthermore, eight apps were using insecure random number generation for their cryptographic protocols, and five apps have no certificate pinning. This shows a clear and dramatic shortcoming in terms of cryptographic mobile security. All of the above mentioned shortcomings are well documented in the OWASP MASWE, with examples for how to test for such weaknesses described in the MASTG and are part of the verification standard MASVS. This shows that the OWASP mobile security project has a great use case in the real world, and is far from being outdated or redundant. In a  conducted survey by the authors of the study, 78\% of respondents said they avoided implementing security due to a lack of expertise and knowledge about security. By creating a intentionally vulnerable reference app which greatly covers vulnerabilities in the cryptographic sector, this BA thesis fills a hole in the current landscape of available reference apps, which do not cover the CRYPTO section of the MASWE to a sufficient extent. It builds on the issues found and discussed in this paper, by enabling mobile developers to deepen their expertise and knowledge of cryptographic vulnerabilities in a hands-on way.

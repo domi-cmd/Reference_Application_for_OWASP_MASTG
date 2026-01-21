@@ -2,14 +2,14 @@
 <resources>
     <!-- Color palette as used by OWASP MAS -->
     <color name="root_app">#FF6200EE</color>
-    <color name="maswe_storage">#df5c8d</color>
-    <color name="maswe_crypto">#f65928</color>
-    <color name="maswe_auth">#f09236</color>
-    <color name="maswe_network">#f2c200</color>
-    <color name="maswe_platform">#4fb991</color>
-    <color name="maswe_code">#5facd3</color>
-    <color name="maswe_resilience">#317cc0</color>
-    <color name="maswe_privacy">#8b5f9e</color>
+    <color name="masvs_storage">#df5c8d</color>
+    <color name="masvs_crypto">#f65928</color>
+    <color name="masvs_auth">#f09236</color>
+    <color name="masvs_network">#f2c200</color>
+    <color name="masvs_platform">#4fb991</color>
+    <color name="masvs_code">#5facd3</color>
+    <color name="masvs_resilience">#317cc0</color>
+    <color name="masvs_privacy">#8b5f9e</color>
     
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

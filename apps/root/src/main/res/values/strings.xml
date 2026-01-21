@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">App</string>
-    <string name="title">Chose Vulnerability Category</string>
-    <string name="storage_app_name">MASWE STORAGE</string>
-    <string name="crypto_app_name">MASWE CRYPTO</string>
-    <string name="platform_app_name">MASWE PLATFORM</string>
-</resources>

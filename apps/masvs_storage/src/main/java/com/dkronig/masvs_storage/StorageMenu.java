@@ -1,0 +1,49 @@
+package com.dkronig.masvs_storage;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.dkronig.common.BaseActivityTemplate;
+import com.dkronig.masvs_storage.maswe_0001.MainActivity0001;
+import com.dkronig.masvs_storage.maswe_0002.MainActivity0002;
+import com.dkronig.masvs_storage.maswe_0006.MainActivity0006;
+import com.dkronig.masvs_storage.maswe_0007.MainActivity0007;
+
+/**
+ * Starting activity of the MASVS storage app, displays all implemented maswe storage
+ * vulnerabilities in the form of buttons, which lead to the designated vulnerability.
+ */
+public class StorageMenu extends BaseActivityTemplate {
+    private static final String SCREEN_TITLE = "MASVS Storage";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_storage_menu);
+
+        initializeButtons();
+    }
+
+    /**
+     * Initializes and binds navigation buttons to their respective activities.
+     */
+    private void initializeButtons(){
+        Map<Integer, Class<? extends AppCompatActivity>> buttonMap = new HashMap<>();
+
+        buttonMap.put(R.id.btn_maswe_0001, MainActivity0001.class);
+        buttonMap.put(R.id.btn_maswe_0002, MainActivity0002.class);
+        buttonMap.put(R.id.btn_maswe_0006, MainActivity0006.class);
+        buttonMap.put(R.id.btn_maswe_0007, MainActivity0007.class);
+        // More buttons as more vulnerabilities are implemented
+
+        bindButtons(buttonMap);
+    }
+
+    @Override
+    protected String getScreenTitle() {
+        return SCREEN_TITLE;
+    }
+}

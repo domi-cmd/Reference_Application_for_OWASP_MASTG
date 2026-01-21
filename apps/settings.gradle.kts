@@ -21,7 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "apps"
 include(":common")
-include(":root")
-include(":maswe_storage")
-include(":maswe_crypto")
-include(":maswe_platform")
+include(":masvs_storage")
+include(":masvs_crypto")
+include(":masvs_platform")

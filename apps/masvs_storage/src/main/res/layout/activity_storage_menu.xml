@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.dkronig.masvs_storage.StorageMenu">
+
+    <LinearLayout
+        android:id="@+id/ll_button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/regular_top_spacing">
+
+        <!-- Storage Menu Title -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_spacing_below_title"
+            android:text="@string/menu_choose_vulnerability"
+            android:textSize="@dimen/text_size_title"
+            tools:text="Choose Vulnerability Category"/>
+
+        <!-- MASWE-0001 Button -->
+        <Button
+            android:id="@+id/btn_maswe_0001"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_spacing_below_title"
+            android:text="@string/maswe_0001" />
+
+        <!-- MASWE-0002 Button -->
+        <Button
+            android:id="@+id/btn_maswe_0002"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular_top_spacing"
+            android:text="@string/maswe_0002" />
+
+        <!-- MASWE-0006 Button -->
+        <Button
+            android:id="@+id/btn_maswe_0006"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular_top_spacing"
+            android:text="@string/maswe_0006" />
+
+        <!-- MASWE-0007 Button -->
+        <Button
+            android:id="@+id/btn_maswe_0007"
+            android:layout_width="@dimen/maswe_button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular_top_spacing"
+            android:text="@string/maswe_0007" />
+
+    </LinearLayout>
+
+</ScrollView>

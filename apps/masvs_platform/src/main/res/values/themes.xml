@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- maswe_platform theme -->
+    <style name="Theme.masvs_platform" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+        <!-- Primary color. -->
+        <item name="colorPrimary">@color/masvs_platform</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+
+    </style>
+
+</resources>
+

@@ -11,10 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/common" />
-            <option value="$PROJECT_DIR$/maswe_crypto" />
-            <option value="$PROJECT_DIR$/maswe_platform" />
-            <option value="$PROJECT_DIR$/maswe_storage" />
-            <option value="$PROJECT_DIR$/root" />
+            <option value="$PROJECT_DIR$/masvs_crypto" />
+            <option value="$PROJECT_DIR$/masvs_platform" />
+            <option value="$PROJECT_DIR$/masvs_storage" />
           </set>
         </option>
       </GradleProjectSettings>

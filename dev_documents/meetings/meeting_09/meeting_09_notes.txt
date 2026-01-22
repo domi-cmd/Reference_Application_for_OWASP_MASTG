@@ -1,0 +1,48 @@
+1. 
+Darf/Soll ich MobSF und semgrep eval von meinen apps in die Results Section packen, oder kein "neues Material" mehr in Results?
+
+
+9.
+Soll "Objectives of the Thesis eine Liste oder purer Text sein?
+
+
+3.
+Code Snippets - Habe da extra comments reingetan für Verständnis des Lesers, die nicht im wirklichen Code sind wegen Coding Standards. Ist das okay/gut 
+so oder weg damit?
+
+
+5.
+Was kommt alles ins Background? Gar keine Crypto Algorithmen? (Kurz über meine Liste zusammen gehen)
+
+
+
+2.
+Soll ich Quellen angeben für Aussagen im "Motivation" Abteil der Introduction?
+
+
+10. 
+Wie sieht die Abgabe der Arbeit aus? einfach pdf per mail schicken bis Freitag 23:59?
+
+
+11.
+Muss man AI autocorrect bei Overleaf angeben als tool? Falls ja, wie?
+
+
+"""
+3.
+Quellen angeben für Background section android concepts?
+"""
+
+
+4. 
+Anforderungen an den Inhalt des Vortrags, Bewertungskriterien? Template mit Unibe logo für Powerpoint?
+
+
+7. 
+Sollen flow diagramme und uml's neben der Bildbeschreibung auch noch einen Titel haben?
+
+
+8.
+Darf man eine Widmung hinzufügen?
+
+

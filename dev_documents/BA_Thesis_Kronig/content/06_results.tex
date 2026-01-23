@@ -75,4 +75,24 @@ If we add our own apps to the previous graph, as done in \ref{fig:maswe_vulnerab
   \label{fig:maswe_vulnerabilities_to_implemented_vulnerabilities_ratio}
 \end{figure}
 
-\section{Usability for Benchmarking SAST and DAST Tools}
+\newpage
+\section{Usability for Benchmarking Mobile App Security Testing Tools}
+A key motivation behind our work is the testing and benchmarking of SAST and DAST tools. Although our focus is on the design and development of MASTG reference apps, benchmarking different security testing tools using our apps would be a natural direction to take for future work. To take a first step in this direction, we used MobSF \cite{mobsf} and a free version of Semgrep \cite{semgrep} to statically evaluate our apps for security vulnerabilities. The complete results for both the MobSF and the Semgrep scans are provided in the Appendix \ref{app:mobsf_results} and \ref{app:semgrep_results}.
+
+\subsubsection{MobSF Results}
+Interestingly, both \texttt{masvs\_storage} and \texttt{masvs\_crypto} received a low risk grade by MobSF, having a security score of 64/100 and 60/100 respectively. \texttt{masvs\_platform} was deemed to be of medium risk and received a security score of 52/100, the lowest of all three. 
+
+In terms of storage vulnerabilities, it managed to find the hard-coded cryptographic key in \texttt{maswe\_0006}, and detected the logging of sensitive user data in \texttt{maswe\_0001}. However, it failed to understand the risk of storing sensitive user data in shared storage spaces and was unable to grasp the full extent of the backup vulnerabilities.
+
+Of 18 implemented MASVS-CRYPTO vulnerabilities, MobSF managed to find the insecure random number generator and the usage of logs for enabling a padding oracle attack. It detected one implementation of SHA-1, and nine instances of hard-coded sensitive information. It is interesting that it found and flagged one instance of SHA-1, but failed to do so on the many other instances of SHA-1 across the app. It furthermore ignored all other broken or risky forms of cryptographic algorithms, such as DES, Base64 encoding, or AES in GCM mode with hard-coded IV's. These are all things that can be statically evaluated and detected.
+
+The low security score of \texttt{masvs\_platform} is a result of the app including a vulnerability that sets it to debuggable. MobSF did manage to find this vulnerability, as well as the insecure custom content provider. It did not find the vulnerabilities enabling the screenshots of sensitive user data, or simply did not consider it to be a real security threat. The same holds for the vulnerability enabling clipboard attacks for stealing user credentials.
+
+In summary, MobSF gave our intentionally vulnerable apps a surprisingly high security score. Of the 28 vulnerabilities implemented across the three apps, it managed to clearly identify 8 of them. It failed to detect many instances of deprecated cryptographic algorithms used, as well as all instances of custom low-level cryptographic algorithms.
+
+
+\subsubsection{Semgrep Results}
+For Semgrep, we used the free version on our apps, with the configurations set to \texttt{r/java.lang.security}. This scanned all three apps for static security vulnerabilities. It is important to state that Semgrep has more features and configurations that would lead to improved performance. We decided to focus on the free version for monetary reasons. 
+
+Because of our configuration, Semgrep only found MASVS-CRYPTO vulnerabilities. It found 19 vulnerabilities across 8 of our implementations. Semgrep was able to detect more complex vulnerabilities than MobSF. Besides flagging the usage of SHA-1 as insecure, it did the same for any implementations using DES. It detected hard-coded IV's and the combination of this with AES in GCM mode. However, it too failed to mark any of the low-level cryptographic operations used for encryption as insecure.
+

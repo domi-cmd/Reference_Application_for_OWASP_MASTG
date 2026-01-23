@@ -1,31 +1,118 @@
 1. 
 Darf/Soll ich MobSF und semgrep eval von meinen apps in die Results Section packen, oder kein "neues Material" mehr in Results?
 
+____________________________________________________________________________________________________________________________________
+
+
+- Kann ich hinzufügen entweder zu den Results oder im Future Work als Ausblick
+
+- Einfach die Doks verlinken.
+
+- Warscheinlich nicht allzu sehr ins Detail gehen
+
+
+
+
+____________________________________________________________________________________________________________________________________
+
+
 
 9.
 Soll "Objectives of the Thesis eine Liste oder purer Text sein?
+
+____________________________________________________________________________________________________________________________________
+
+- Kann beides machen.
+
+- "Muss einfach akkurat sein." War etwas falsch auf Powerpoint Ausschnitt?
+
+
+
+
+
+____________________________________________________________________________________________________________________________________
 
 
 3.
 Code Snippets - Habe da extra comments reingetan für Verständnis des Lesers, die nicht im wirklichen Code sind wegen Coding Standards. Ist das okay/gut 
 so oder weg damit?
 
+____________________________________________________________________________________________________________________________________
+
+- Eigentlich weglassen für guten Coding Standard.
+
+- Auch keine /... zum zeigen, dass Code weggelassen wurde.
+
+- Kann die Kommentare drinlassen wenn ich will (eher nicht).
+
+
+
+
+
+____________________________________________________________________________________________________________________________________
+
 
 5.
 Was kommt alles ins Background? Gar keine Crypto Algorithmen? (Kurz über meine Liste zusammen gehen)
+
+____________________________________________________________________________________________________________________________________
+
+- Wirklich kein Crypto nötig. Die Algorithmen die ich verwende sind allgemein bekannt laut Thomas.
+
+- Auch kein komplettes Coverage von Android Internals nötig. 2.5 Seiten kann reichen
+
+
+
+
+
+____________________________________________________________________________________________________________________________________
 
 
 
 2.
 Soll ich Quellen angeben für Aussagen im "Motivation" Abteil der Introduction?
 
+____________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+____________________________________________________________________________________________________________________________________
+
 
 10. 
 Wie sieht die Abgabe der Arbeit aus? einfach pdf per mail schicken bis Freitag 23:59?
 
+____________________________________________________________________________________________________________________________________
+
+- Abgeben als pdf und Link zu GitHub Repository
+
+- Schicken an Thomas und an Herr Kehrer
+
+- Release machen auf auf GitHub Repository für fertige version
+
+
+
+
+____________________________________________________________________________________________________________________________________
+
 
 11.
 Muss man AI autocorrect bei Overleaf angeben als tool? Falls ja, wie?
+
+____________________________________________________________________________________________________________________________________
+
+
+- Wenn es nur um Rechtschreibkorrektur geht, muss man AI tool nicht angeben.
+
+
+
+
+
+____________________________________________________________________________________________________________________________________
 
 
 """
@@ -37,12 +124,49 @@ Quellen angeben für Background section android concepts?
 4. 
 Anforderungen an den Inhalt des Vortrags, Bewertungskriterien? Template mit Unibe logo für Powerpoint?
 
+____________________________________________________________________________________________________________________________________
+
+- Link zu SEG Vorgaben und Guidelines für BA Vortrag: https://seg.inf.unibe.ch/teaching/resources/presentation-checklist/
+
+- Forschungsgruppen auf Titelblatt angeben ist erlaubt aber nicht nötig
+
+- Muss die Unibe Template nicht verwenden für Vortrag
+
+
+
+____________________________________________________________________________________________________________________________________
+
 
 7. 
 Sollen flow diagramme und uml's neben der Bildbeschreibung auch noch einen Titel haben?
 
+____________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+Nein
+
+
+
+____________________________________________________________________________________________________________________________________
+
 
 8.
 Darf man eine Widmung hinzufügen?
+
+____________________________________________________________________________________________________________________________________
+
+
+Darf man ganz vorne oder hinten
+
+
+
+
+
+
+____________________________________________________________________________________________________________________________________
 
 

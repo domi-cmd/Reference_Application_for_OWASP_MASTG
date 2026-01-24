@@ -394,18 +394,16 @@ public static void setupEncryption() throws Exception {
     \label{tab:maswe-0011}
 \end{table}
 
-This vulnerability is not about adding an insecure feature but instead leaving a security feature (key rotation) out. To make the vulnerability more interesting, we added some additional security flaws to the implementation. The relevant code is shown in Listing \ref{lst:maswe0011NoRotationBks}. We use RSA for encrypting and decrypting user data. The issue with never rotating the key is that if it ever falls into the hands of an attackers, they could decrypt user data at will for an indefinite amount of time without said key becoming invalid and getting replaced with a new and secure one.
+This vulnerability is not about adding an insecure feature but instead leaving a security feature (key rotation) out. To make the vulnerability more interesting, we added some additional security flaws to the implementation. The relevant code is shown in Listing \ref{lst:maswe0011NoRotationBks}. We use Rivest-Shamir-Adleman (RSA) for encrypting and decrypting user data. Because there is no key rotation, the RSA key will never become invalid and will not be replaced by a new and secure one. This means that if it ever falls into the hands of attackers, they could decrypt user data at will for an indefinite amount of time.
 
-The additional security flaws consist of using the deprecated Bouncy Castle Keystore (BKS) to store our RSA key. The issues of using BKS for storing and managing our key is discussed at great length in the vulnerability implementation \ref{subsec:maswe-0015}, which is about deprecated KeyStores. In short; our implementation of BKS allows attackers to retrieve the private RSA key, which turns the theoretical security concern that the missing key rotation poses into a practical and detrimental security problem.
+The additional security flaws consist of using the deprecated Bouncy Castle Keystore (BKS) to store our RSA key. The issues of using BKS for storing and managing our key are discussed at great length in the vulnerability implementation \ref{subsec:maswe-0015}, which is about deprecated KeyStores. In short; our implementation of BKS allows attackers to retrieve the private RSA key, which turns the theoretical security concern that the missing key rotation poses into a practical and detrimental security problem.
 
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Using BKS for RSA encryption with no key rotation.}, label={lst:maswe0011NoRotationBks}]
 private static final String RSA_KEY_ALIAS = "maswe_0011_rsa_key";
+private static final String KEYSTORE_FILE = "maswe_0011_keystore.bks";
 private static final String KEYSTORE_PASSWORD = "Xk9$wR2!dF7pLq4Z";
 private static final String KEY_PASSWORD = "S7v!Tz8#uK2qRj5M";
 private static final String CIPHER_TRANSFORMATION = "RSA/ECB/PKCS1Padding";
-// placed in /assets/
-private static final String KEYSTORE_FILE = "maswe_0011_keystore.bks";
-// ...
 
 private static PrivateKey getPrivateKey() throws Exception {
     if (keyStore == null) throw new IllegalStateException("Keystore not loaded");
@@ -435,9 +433,9 @@ Programming Languages & Java \\
 \label{tab:maswe-0012}
 \end{table}
 
-We implement this vulnerability by using the same cryptographic key for multiple different purposes, namely encryption and decryption of user credentials, as well as for signing and verifying messages. RSA \todo{probably add a link to the algos wikipedia everytime I mention a new one} (Rivest–Shamir–Adleman) is chosen as the cryptographic algorithm because it is a long-lived key that typically remains valid and in use for an extended duration. This makes it even worse if our overloaded key falls into the hands of an attacker.
+We implemented this vulnerability by using the same cryptographic key for multiple different purposes. These include the encryption and decryption of user credentials, as well as signing and verifying messages. RSA was chosen as the cryptographic algorithm because it relies on a long-lived key that typically remains valid and in use for an extended duration. This makes it even worse if our overloaded key is compromised.
 
-As seen in \ref{lst:Maswe0012CreatingKey}, we ensure that only SHA-1 is used for message digests involved in the signing and verification process of signatures. This adds to the vulnerability, as SHA-1 is considered broken and insecure for signatures since collisions are feasible. Using SHA-1 with PKCS1 padding for the encryption makes it vulnerable to oracle attacks, such as the Bleichenbacher attack \todo{add source and stuff here}. If this key were to fall into an attackers hands, he would be able to decrypt all existing user credentials and otherwise encrypted data, as well as forge message signatures and feed malicious data to the app.
+As shown in Listing \ref{lst:Maswe0012CreatingKey}, we ensured that only RSA is used for message digests involved in the signing and verification process of signatures. Furthermore, RSA with Public-Key Cryptography Standards \#1 (PKCS\#1) v1.5 padding is used for encrypting and decrypting data. This makes the encryption vulnerable to oracle attacks, such as the Bleichenbacher attack \cite{bleichenbacher1998}. If this key were to fall into an attacker's hands, the attacker would be able to decrypt all existing user credentials and otherwise encrypted data. The attacker could furthermore forge message signatures and feed malicious data to the app.
 
 % Java Code
 \begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Creating an RSA key with multiple functionalities.}, label=lst:Maswe0012CreatingKey]
@@ -478,7 +476,7 @@ Programming Languages & Java \\
 \label{tab:maswe-0014}
 \end{table}
 
-For this vulnerability, we chose to use a modern and safe cryptographic algorithm, but storing its key and IV (initialization vector) \todo{add explanation of what iv is?} completely unencrypted in the devices' shared preferences. This means that anybody who has access to the devices files can retrieve the cryptographic key, making it completely unprotected at rest. Once the key has been retrieved, the encryptions made by using it become obsolete. The relevant code for this can be seen in \ref{lst:Maswe0014StoringIvAndKeyInSharedPrefs}.
+For this vulnerability, we chose to use a modern and safe cryptographic algorithm, but we stored its key and initialization vector (IV) completely unencrypted in the device's SharedPreferences. This means that any attacker who has access to the device's files can retrieve the cryptographic key, making it completely unprotected at rest. Once the key has been retrieved, the encryptions made using it become obsolete. The relevant code for this is shown in Listing \ref{lst:Maswe0014StoringIvAndKeyInSharedPrefs}.
 
 % Java Code
 \begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Storing cryptographic key and initialization vector unencrypted in shared preferences.}, label=lst:Maswe0014StoringIvAndKeyInSharedPrefs]
@@ -514,11 +512,10 @@ Programming Languages & Java \\
 \label{tab:maswe-0015}
 \end{table}
 
-Our implementation of this vulnerability makes use of the BKS (Bouncy Castle Keystore) and the BC (Bouncy Castle Provider) for storing and managing the RSA key used for encrypting user credentials. The relevant code for this can be seen in \ref{lst:Maswe0015UsingBcAndBks}.
+Our implementation of this vulnerability makes use of the BKS and the Bouncy Castle Provider (BC) for storing and managing the RSA key used for encrypting user credentials. The relevant code for this is shown in Listing \ref{lst:Maswe0015UsingBcAndBks}.
 
 % Java Code
 \begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Loading BC and using BKS for managing cryptographic keys.}, label=lst:Maswe0015UsingBcAndBks]
-// Load BouncyCastle once
 static {
     if (Security.getProvider("BC") == null) {
         Security.addProvider(new BouncyCastleProvider());
@@ -526,7 +523,6 @@ static {
 }
 
 public static void loadBksKeystore(Context context) throws Exception {
-    // If keystore has already been loaded, do nothing and return
     if(keyStore != null){
         return;
     }
@@ -539,9 +535,9 @@ public static void loadBksKeystore(Context context) throws Exception {
 }
 \end{lstlisting}
 
-Android considers BKS to be a deprecated keystore. A significant issue with BKS is that it is a file-based keystore, meaning that the keystore stores the keys in the \texttt{maswe\_0015\_keystore.bks} file, which is bundled with the APK and is easily extractable. Because of this, anybody who downloads the app has a copy of the keystore.
+Android considers BKS to be a deprecated keystore. A significant issue with BKS is that it is a file-based keystore, meaning that the keystore stores the keys in the \texttt{maswe\_0015\_keystore.bks} file, which is bundled with the APK and is easily extractable. Because of this, any attacker that downloads the app has a copy of the keystore.
 
-The second part of this vulnerability consists of having both the keystore and the private key password hard-coded into the \texttt{EncryptionHandler.java} file, as seen here \ref{lst:Maswe0015HardCodedPasswords}. This means that an attacker who decompiles the APK has access to the file containing the private RSA encryption key used for encrypting user credentials, the password \texttt{KEYSTORE\_PASSWORD} needed for opening the keystore file, as well as the \texttt{KEY\_PASSWORD} needed for extracting the private RSA key. This makes it extremely easy for an attacker to gain access to decrypted user credentials.
+The second part of this vulnerability consists of having both the keystore and the private key password hard-coded into the \texttt{EncryptionHandler.java} file, as shown in Listing \ref{lst:Maswe0015HardCodedPasswords}. This means that an attacker who decompiles the APK has access to the file containing the private RSA encryption key used for encrypting user credentials, the password \texttt{KEYSTORE\_PASSWORD} needed for opening the keystore file, as well as the \texttt{KEY\_PASSWORD} needed for extracting the private RSA key. This makes it extremely easy for an attacker to gain access to decrypted user credentials.
 
 % Java Code
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Hard-coded passwords for the keystore and private key stored in keystore.}, label=lst:Maswe0015HardCodedPasswords]
@@ -549,11 +545,9 @@ public class EncryptionHandler {
     private static final String RSA_KEY_ALIAS = "maswe_0015_rsa_key";
     private static final String SIGNING_ALGORITHM = "SHA1withRSA";
     private static final String CIPHER_TRANSFORMATION = "RSA/ECB/PKCS1Padding";
+    private static final String KEYSTORE_FILE = "maswe_0015_keystore.bks";
     private static final String KEYSTORE_PASSWORD = "Xk9$wR2!dF7pLq4Z";
     private static final String KEY_PASSWORD = "S7v!Tz8#uK2qRj5M";
-    // placed in /assets/
-    private static final String KEYSTORE_FILE = "maswe_0015_keystore.bks";
-    ...
 \end{lstlisting}
 
 
@@ -576,9 +570,9 @@ public class EncryptionHandler {
     \label{tab:maswe-0016}
 \end{table}
 
-This vulnerability's implementation makes use of MediaStore to store and retrieve a public RSA key. The issue with exporting and importing our cryptographic key to and from MediaStore is that other apps have unrestricted access to the files placed here, being able to modify or replace our public RSA key with a key of their own at will. Any user credentials that are encrypted using said malicious public key can then be decrypted with the attackers private key, all the while causing the app itself to malfunction, as it is unable to properly decrypt and log in users with its now mismatched private key.
+This vulnerability's implementation makes use of MediaStore Documents directory to store and retrieve a public RSA key. The issue with exporting and importing our cryptographic key to and from MediaStore is that we did not add any access restrictions on the MediaStore entry containing the key. Because of this, other apps with the appropriate storage permissions have access to the keys placed here, enabling them to read, modify, or replace our public RSA key with a key of their own. There is, furthermore, a complete lack of identity and integrity checks conducted upon importing the key for use. If an attacking party were to replace the public RSA key with a malicious key of their own, it would be used for the future encryption of user credentials without the app noticing. Any user credentials that are encrypted using the malicious public key can then be decrypted with the attacker's private key. The app itself will start to malfunction, as it is unable to properly decrypt and log in users with its now mismatched private key.
 
-The complete lack of sanitization and checks for the keys integrity, identity and signature is what makes this attack possible. The import function that completely neglects to safely handle the imported key is shown in \ref{lst:Maswe0016ImportingKey}.
+The complete lack of sanitization and checks for the key's integrity, identity, and signature is what makes this attack possible. The import function that completely neglects to safely handle the imported key is shown in Listing \ref{lst:Maswe0016ImportingKey}.
 
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Importing a public RSA key from untrusted storage without sanitization.}, label={lst:Maswe0016ImportingKey}]
 private static PublicKey importKey(Uri keyUri) throws Exception {
@@ -608,13 +602,12 @@ private static PublicKey importKey(Uri keyUri) throws Exception {
     \caption{Overview of our MASWE-0017 implementation.}
     \label{tab:maswe-0017}
 \end{table}
-This vulnerability is the counterpiece to the vulnerability discussed in the previous subsection \ref{subsec:maswe-0016}. Instead of improperly import a public RSA key from MediaStore, which is an untrusted place of storage that other apps have access to, we are now improperly exporting a public RSA key to MediaStore.
+This vulnerability is the counterpart to the vulnerability discussed in the previous subsection \ref{subsec:maswe-0016}. Instead of improperly importing a public RSA key from the MediaStore Documents directory, which is an untrusted storage location that other apps can have access to, we are now improperly exporting a public RSA key to it.
 
-The public RSA key is exported in its raw DER format \todo{Add explanation what DER format is?}, as seen in \ref{lst:Maswe0017ExportingKeyWithoutProtection}. By implementing no certificate pinning or wrapping of the key when exporting it and not verifying any signatures when importing it, we allow attackers to replace the public key with a malicious one of their own. This allows them to decrypt any user data that they manage to gather, which poses a huge security liability.
+The public RSA key is exported in its raw format, as shown in Listing \ref{lst:Maswe0017ExportingKeyWithoutProtection}. By implementing no key wrapping or integrity protection when exporting the key and not verifying any signatures or authenticity when importing it, we allow attackers to replace the public key with a malicious one of their own. This allows them to decrypt any user data that they manage to gather, which poses a huge security liability.
 
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Exporting a public RSA key to untrusted storage without protecting it.}, label={lst:Maswe0017ExportingKeyWithoutProtection}]
 private PublicKey generateAndStorePublicKey() throws Exception {
-    // Read the existing, trusted public key from Android Keystore:
     PublicKey publicKey = getKeystorePublicKey();
     byte[] keyBytes = publicKey.getEncoded();
 
@@ -627,7 +620,6 @@ private PublicKey generateAndStorePublicKey() throws Exception {
             MediaStore.Files.getContentUri("external"), values);
 
     OutputStream outputStream = encryptionContext.getContentResolver().openOutputStream(uri);
-    // Export the public key without wrapping it in another key, nor signing it
     outputStream.write(keyBytes);
     outputStream.close();
 
@@ -656,17 +648,14 @@ private PublicKey generateAndStorePublicKey() throws Exception {
     \label{tab:maswe-0018}
 \end{table}
 
-This vulnerability was challenging to implement, due to Android security features that cannot be overridden. An intuitive way go about this is removing any access-restricting settings in the key generation parameters, as seen in the code here \ref{lst:Maswe0018AccessParameters}. 
+This vulnerability was challenging to implement due to Android security features that cannot be overridden. An intuitive way to go about this is to remove any access-restricting settings in the key generation parameters, as shown in Listing \ref{lst:Maswe0018AccessParameters}. 
 
-The issue is that this does not add a real security vulnerability to the app. Allowing access to the key with the device locked does not create any issues; Android 7.0 introduced the concept of FBE (File-Based Encryption) that partitions the devices storage into data available after boot but before launch, DE storage, and data that is only available once the device is fully unlocked, CE storage. Because app data is stored in CE by default, an attacker cannot access any of the apps data, even if the key itself does not require the device to be unlocked to function. The authentication flag set to false runs into similar issues. It could pose a threat if the device were stolen while being unlocked, but in this case the flag becomes redundant, as the thief would have access to the app, its data and thus also the key regardless of the flag. StrongBox \todo{add reference here?} only adds an additional layer of physical security, which is nice to have, but the regular settings are very secure in themselves.
+The issue is that this does not add a real security vulnerability to the app. Allowing access to the key with the device locked does not create any issues; Android 7.0 introduced the concept of File-Based Encryption (FBE), which partitions the device's storage into data that is available before and after booting. App data is, by default, stored in the partition that remains inaccessible until the device is fully unlocked. Because of this, an attacker cannot access any of the apps data, even if the key itself does not require the device to be unlocked to function. The authentication flag set to false runs into similar issues. It could pose a threat if the device were stolen while being unlocked. But in this case, the flag becomes redundant, as the thief would have access to the app, its data, and thus also the key, regardless of the flag. Disabling StrongBox does not create a real vulnerability, since StrongBox only adds an additional layer of physical security that is not necessary for the data storage to be considered secure.
 
 
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Removing any access-restricting settings from key generation parameters.}, label={lst:Maswe0018AccessParameters}]
 private static void createAndStoreKeyPair() throws Exception{
-    // ...
     KeyGenParameterSpec spec = new KeyGenParameterSpec
-            // ...
-            
             .setUserAuthenticationRequired(false)
             .setUnlockedDeviceRequired(false)
             .setIsStrongBoxBacked(false)
@@ -678,9 +667,9 @@ private static void createAndStoreKeyPair() throws Exception{
 }
 \end{lstlisting}
 
-One way to make this vulnerability a real threat would be to move the apps data from CE to DE storage, so that it is usable even before the device is unlocked. A code example of this can be seen in \ref{lst:Maswe0018StoringDataInDeStorage}. This together with the unlocked device and user authenticated flags both set to false could allow an attacker to use the apps cryptographic key, as well as its encryption and decryption methods on the apps data, all without the app being unlocked.
+One way to make this vulnerability a real threat is to move the app's data to the storage partition available before booting the device. This way, the key is usable, and the user data is accessible even before the device is unlocked. A code example of this is shown in Listing \ref{lst:Maswe0018StoringDataInDeStorage}. This, together with the unlocked device and user authenticated flags both set to false, could allow an attacker to use the app's cryptographic key, as well as its encryption and decryption methods on the app's data, all without the app being unlocked.
 
-\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Storing encrypted user data in DE (Device Encrypted) storage.}, label={lst:Maswe0018StoringDataInDeStorage}]
+\begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Storing encrypted user data in Device Encrypted (DE) storage.}, label={lst:Maswe0018StoringDataInDeStorage}]
 Context deContext = context.createDeviceProtectedStorageContext();
 SharedPreferences dePrefs = deContext.getSharedPreferences("secrets", MODE_PRIVATE);
 dePrefs.edit().putString("encrypted_password", encryptedData).apply();
@@ -705,11 +694,12 @@ Programming Languages & Java \\
 \label{tab:maswe-0019}
 \end{table}
 
-This vulnerability has been implemented using low-level mathematical operations for the encryption and decryption of user credentials instead of any proper cryptographic operations.
+This vulnerability has been implemented using low-level mathematical operations for the encryption and decryption of user credentials instead of proper cryptographic operations.
 
-We use a circular bit-shifting approach for encrypting and decrypting data, as seen in \ref{lst:Maswe0019Encryption}. For encryption, the string to be encrypted is turned into bytes. After shifting all bytes to the left by 2 bytes, we add any lost bytes back onto the right end and convert the bytes back to string format. The same operation, in reverse, is used for decryption. 
+We used a circular bit-shifting approach for encrypting and decrypting data, as shown in Listing \ref{lst:Maswe0019Encryption}. For encryption, the string to be encrypted is converted into bytes. After shifting all bytes to the left by 2 bytes, any bytes shifted out are added back onto the right end. Afterward, the bytes are converted back to string format. The same operation, in reverse, is used for decryption. 
 
-An attacker will quickly spot the extremely weak vulnerability used here upon decompiling the app's APK and can decrypt any user credentials by applying the decryption operation found in the code to the user credentials stored in shared preferences.
+An attacker will quickly spot the extremely weak vulnerability used here upon decompiling the app's APK. They can decrypt any user credentials by applying the decryption operation found in the code to the user credentials stored in SharedPreferences.
+
 % Java Code
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Circular byte-shifting for low-level encryption of user data.}, label=lst:Maswe0019Encryption]
 public String encryptData(String plaintext) throws Exception {

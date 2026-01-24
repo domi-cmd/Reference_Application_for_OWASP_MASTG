@@ -365,6 +365,23 @@
   moredelim=[l][\color{CodeTypes}]{>}
 }
 
+% Terminal/Command-line style
+\lstdefinestyle{TerminalStyle}{
+  language=bash,
+  basicstyle={\small\ttfamily},
+  keywordstyle=\color{CodeKeywords}\bfseries,
+  commentstyle=\color{CodeComments}\itshape,
+  stringstyle=\color{CodeStrings},
+  numberstyle=\tiny\color{CodeNumbers},
+  identifierstyle=\color{black},
+  morekeywords={adb, run-as, cat, ls, cd, pwd, chmod, su, exit, echo, grep, shell},
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=flexible,
+  tabsize=4
+}
+
 % Set Java as default
 \lstset{style=JavaStyle}
 

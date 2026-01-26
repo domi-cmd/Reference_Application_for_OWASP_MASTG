@@ -76,7 +76,7 @@ If we add our own apps to the previous graph, as shown in Figure \ref{fig:maswe_
 
 \newpage
 \section{Usability for Benchmarking Mobile App Security Testing Tools}
-A key motivation behind our work is the testing and benchmarking of SAST and DAST tools. Although our focus is on the design and development of MASTG reference apps, benchmarking different security testing tools using our apps would be a natural direction to take for future work. To take a first step in this direction, we used MobSF \cite{mobsf} and a free version of Semgrep \cite{semgrep} to statically evaluate our apps for security vulnerabilities. The complete results for both the MobSF and the Semgrep scans are provided in the Appendix \ref{app:mobsf_results} and \ref{app:semgrep_results}.
+A key motivation behind our work is the testing and benchmarking of SAST and DAST tools. Although our focus is on the design and development of MASTG reference apps, benchmarking different security testing tools using our apps would be a natural direction to take for future work. To take a first step in this direction, we used an online deployment of MobSF \cite{mobsf} and a free version of Semgrep \cite{semgrep} to statically evaluate our apps for security vulnerabilities. The complete results for both the MobSF and the Semgrep scans are provided in the Appendix \ref{app:mobsf_results} and \ref{app:semgrep_results}.
 
 \subsubsection{MobSF Results}
 Interestingly, both \texttt{masvs\_storage} and \texttt{masvs\_crypto} received a low risk grade by MobSF, having security scores of 64/100 and 60/100 each. \texttt{masvs\_platform} was deemed to be of medium risk and received a security score of 52/100, which marks the lowest of all three. 

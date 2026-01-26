@@ -3,7 +3,6 @@ Darf/Soll ich MobSF und semgrep eval von meinen apps in die Results Section pack
 
 ____________________________________________________________________________________________________________________________________
 
-
 - Kann ich hinzufügen entweder zu den Results oder im Future Work als Ausblick
 
 - Einfach die Doks verlinken.

@@ -24,13 +24,11 @@ The \texttt{AndroidManifest.xml} \cite{android_concepts_android_manifest} is the
 \subsubsection{Data Storage}
 \texttt{SharedPreferences} \cite{android_concepts_shared_preferences} is an Android specific API that allows apps to store data persistently across user sessions. It is designed for storing small amounts of data in a dictionary-like key-value format. The data placed in shared preferences is stored in the apps private directory on internal storage.
 
+\texttt{KeyStores} are a system designed for safely storing cryptographic keys, making them hard to extract but easy to use. Once a key is stored within a keystore, it can be used for cryptographic operations, but is hard if not impossible to extract. Modern keystores such as the \texttt{Android Keystore system} \cite{android_concepts_android_keystore_system} allow for clearly defining what the key can and cannot do, as well as under what circumstances it can be used and what user authentication is required to do so. It is the modern and secure Android way of storing and managing cryptographic keys.
+
+\texttt{Application Sandbox} \cite{android_concepts_android_app_sandbox} is an Android security mechanism that isolates all apps from the system and from other apps. Through this, each app has its own dedicated storage area and runs in its own process. It prevents malicious apps from directly reading or modifying data from other apps. This mechanism is enforced at the operating system level. To access the storage of another app's sandbox or system components such as the camera or location, an app has to request the appropriate permissions. This design forces apps to communicate with one another through controlled channels, such as \texttt{Intents} or \texttt{Content Providers}.
+
 \todo{Maybe include MediaStore and Clipboard (copy and paste functionality)}
-
-\texttt{Keystores} are a system designed for safely storing cryptographic keys, making them hard to extract but easy to use. Once a key is stored within a keystore, it can be used for cryptographic operations, but is hard if not impossible to extract. Modern keystores such as the \texttt{Android Keystore system} \cite{android_concepts_android_keystore_system} allow for clearly defining what the key can and cannot do, as well as under what circumstances it can be used and what user authentication is required to do so. It is the modern and secure Android way of storing and managing cryptographic keys.
-
-\todo{- run-time Sandboxing - FBE (File-Based-Encryption), Android 7.0}
-
-\todo{Maybe include section Cryptography: - RSA - SHA1 - DES - AES - CBC}
 
 \section{OWASP MAS}
 

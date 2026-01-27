@@ -1,6 +1,6 @@
 # MASWE-0007: Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction
 
-The relevant code for this vulnerability can be seen in [maswe_0007/RegisterActivity.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/java/com/dkronig/maswe_storage/maswe_0007/RegisterActivity.java).
+The relevant code for this vulnerability can be seen in [maswe_0007/RegisterActivity.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/masvs_storage/src/main/java/com/dkronig/masvs_storage/maswe_0007/RegisterActivity.java).
 
 ## The vulnerability consists of:
 Using MediaStore to store user credentials upon user registration in shared storage space requiring no user interaction.

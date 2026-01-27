@@ -68,8 +68,8 @@ adb shell pm list packages | findstr -i "appname"
 ```
 - Concrete example:
 ```shell
-C:\Users\Domi>adb shell pm list packages | findstr -i maswe_storage
-package:com.dkronig.maswe_storage
+C:\Users\Domi>adb shell pm list packages | findstr -i masvs_storage
+package:com.dkronig.masvs_storage
 ```
 - Now run the app and use all possibly relevant functions, which could leader to sensitive data being logged (register user, login, etc.)
 - After this you can now start querying for potential logs
@@ -91,12 +91,12 @@ adb logcat | findstr /I "password email token jwt"
 adb logcat | findstr /I "password email user token jwt auth secret key pass pwd login register" > leaks.txt
 ```
 
-- To exploit the vulnerability in my app maswe_storage, you can for example run:
+- To exploit the vulnerability in my app masvs_storage, you can for example run:
 ```shell
 C:\Users\Domi>adb logcat | findstr /I "password email token jwt"
 11-11 14:06:06.553  5648  5648 D [REGISTER ACTIVITY]: User E-Mail: my_email3
 11-11 14:06:06.554  5648  5648 D [REGISTER ACTIVITY]: User Password: my_password
-11-11 14:06:09.210   778  2721 W NotificationService: Toast already killed. pkg=com.dkronig.maswe_storage token=android.os.BinderProxy@d1cc6bb
+11-11 14:06:09.210   778  2721 W NotificationService: Toast already killed. pkg=com.dkronig.masvs_storage token=android.os.BinderProxy@d1cc6bb
 ```
 
 ## The vulnerability can be fixed by:

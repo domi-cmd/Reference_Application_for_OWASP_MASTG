@@ -1,8 +1,8 @@
 # MASWE-0024: Improper Use of Message Authentication Code (MAC)
 
-The relevant code for this vulnerability can be seen in [IntegrityVerifier.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_crypto/src/main/java/com/dkronig/maswe_crypto/maswe_0024/IntegrityVerifier.java), 
-[BankAccountManagerService.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_crypto/src/main/java/com/dkronig/maswe_crypto/maswe_0024/BankAccountManagerService.java) 
-and [ProfileActivity.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/new/main/apps/maswe_crypto/src/main/java/com/dkronig/maswe_crypto/maswe_0024).
+The relevant code for this vulnerability can be seen in [IntegrityVerifier.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/masvs_crypto/src/main/java/com/dkronig/masvs_crypto/maswe_0024/IntegrityVerifier.java), 
+[BankAccountManagerService.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/masvs_crypto/src/main/java/com/dkronig/masvs_crypto/maswe_0024/BankAccountManagerService.java) 
+and [ProfileActivity.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/new/main/apps/masvs_crypto/src/main/java/com/dkronig/masvs_crypto/maswe_0024).
 
 ## The vulnerability consists of:
 

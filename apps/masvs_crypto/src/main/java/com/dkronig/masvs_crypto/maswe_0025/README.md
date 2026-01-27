@@ -36,7 +36,7 @@ Collision attacks for SHA-1 are considered practically feasible, as finding two 
  * This intercepts the signature creation in real-time
  */
 Java.perform(function() {
-    var EncryptionHandler = Java.use("com.dkronig.maswe_crypto.maswe_0025.EncryptionHandler");
+    var EncryptionHandler = Java.use("com.dkronig.masvs_crypto.maswe_0025.EncryptionHandler");
     
     // Hook the sign method
     EncryptionHandler.sign.implementation = function(message) {

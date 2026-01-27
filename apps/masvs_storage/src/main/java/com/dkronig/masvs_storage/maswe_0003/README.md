@@ -1,6 +1,6 @@
 # MASWE-0003: Backup Unencrypted
 
-The relevant code for this vulnerability can be seen in [res/xml/backup_rules.xml](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/res/xml/backup_rules.xml).
+The relevant code for this vulnerability can be seen in [res/xml/backup_rules.xml](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/masvs_storage/src/main/res/xml/backup_rules.xml).
 
 ## The vulnerability consists of:
 
@@ -20,11 +20,11 @@ To inspect the backup, one can change the backup transporter from cloud to local
 
 The files will then be readable in their completely unencrypted state:
 ```shell
--rw-------  0 1000   1000     1527 Jan 01  1970 apps/com.dkronig.maswe_storage/_manifest
-drwx------  0 10225  10225       0 Nov 05 11:20 apps/com.dkronig.maswe_storage/r/.agent-logs
--rw-------  0 10225  10225     225 Nov 05 12:37 apps/com.dkronig.maswe_storage/f/maswe_0001_user_credentials.txt 
--rw-------  0 10225  10225      24 Nov 05 13:00 apps/com.dkronig.maswe_storage/f/profileInstalled  
--rw-rw----  0 10225  10225     161 Nov 05 12:37 apps/com.dkronig.maswe_storage/sp/my_app_prefs.xml  
+-rw-------  0 1000   1000     1527 Jan 01  1970 apps/com.dkronig.masvs_storage/_manifest
+drwx------  0 10225  10225       0 Nov 05 11:20 apps/com.dkronig.masvs_storage/r/.agent-logs
+-rw-------  0 10225  10225     225 Nov 05 12:37 apps/com.dkronig.masvs_storage/f/maswe_0001_user_credentials.txt 
+-rw-------  0 10225  10225      24 Nov 05 13:00 apps/com.dkronig.masvs_storage/f/profileInstalled  
+-rw-rw----  0 10225  10225     161 Nov 05 12:37 apps/com.dkronig.masvs_storage/sp/my_app_prefs.xml  
 ```
 
 

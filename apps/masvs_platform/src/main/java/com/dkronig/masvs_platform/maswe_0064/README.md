@@ -1,6 +1,6 @@
 # MASWE-0064: Insecure Content Providers
 
-The relevant code for this vulnerability can be seen in [maswe_0064/CustomContentProvider.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_platform/src/main/java/com/dkronig/maswe_platform/maswe_0064/CustomContentProvider.java).
+The relevant code for this vulnerability can be seen in [maswe_0064/CustomContentProvider.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/masvs_platform/src/main/java/com/dkronig/masvs_platform/maswe_0064/CustomContentProvider.java).
 
 ## The vulnerability consists of:
 

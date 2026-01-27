@@ -1,6 +1,6 @@
 # MASWE-0002: Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations
 
-The relevant code for this vulnerability can be seen in maswe_storage's [AndroidManifest.xml](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/AndroidManifest.xml) and [maswe_0002/RegisterActivity.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/java/com/dkronig/maswe_storage/maswe_0002/RegisterActivity.java).
+The relevant code for this vulnerability can be seen in masvs_storage's [AndroidManifest.xml](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/masvs_storage/src/main/AndroidManifest.xml) and [maswe_0002/RegisterActivity.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/masvs_storage/src/main/java/com/dkronig/masvs_storage/maswe_0002/RegisterActivity.java).
 
 ## The vulnerability consists of:
 

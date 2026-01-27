@@ -1,6 +1,6 @@
 # MASWE-0009: Improper Cryptographic Key Generation
 
-The relevant code for this vulnerability can be seen in [maswe_0009/EncryptionHandler.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_crypto/src/main/java/com/dkronig/maswe_crypto/maswe_0009/EncryptionHandler.java).
+The relevant code for this vulnerability can be seen in [maswe_0009/EncryptionHandler.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/masvs_crypto/src/main/java/com/dkronig/masvs_crypto/maswe_0009/EncryptionHandler.java).
 
 ## The vulnerability consists of:
 All three modes of introduction for this vulnerability as described by OWASP. 

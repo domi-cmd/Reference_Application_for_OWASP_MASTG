@@ -494,7 +494,7 @@ Programming Languages & Java \\
 For this vulnerability, we chose to use a modern and safe cryptographic algorithm, but we stored its key and initialization vector (IV) completely unencrypted in the device's \texttt{SharedPreferences}. This means that any attacker who has access to the device's files can retrieve the cryptographic key, making it completely unprotected at rest. Once the key has been retrieved, the encryptions made using it become obsolete. The relevant code for this is shown in Listing \ref{lst:Maswe0014StoringIvAndKeyInSharedPrefs}.
 
 % Java Code
-\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Storing cryptographic key and initialization vector unencrypted in \texttt{SharedPreferences}.}, label=lst:Maswe0014StoringIvAndKeyInSharedPrefs]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Storing cryptographic key and initialization vector unencrypted in \texttt{Shared\linebreak[0]Preferences}.}, label=lst:Maswe0014StoringIvAndKeyInSharedPrefs]
 private static void storeKeyAndIV(Context context, String encodedKey, String encodedIV){
     sharedPreferences = context
             .getApplicationContext()

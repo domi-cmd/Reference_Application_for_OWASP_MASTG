@@ -26,11 +26,17 @@
 % ---------------------------------------------
 % References
 % ---------------------------------------------
+\begingroup
+\raggedbottom
+\raggedright
+\def\UrlBreaks{\do\/\do-\do.\do=\do?\do\&\do\_\do\:\do\~\do\#}
+\def\UrlBigBreaks{\do\:\do\/}  % Preferred break points
 \pagestyle{bib}
 \bibliography{database}
 % \bibliographystyle{alphadin}
 \bibliographystyle{IEEEtran}
 \addcontentsline{toc}{chapter}{Bibliography}
+\endgroup
 \cleardoublepage
 
 

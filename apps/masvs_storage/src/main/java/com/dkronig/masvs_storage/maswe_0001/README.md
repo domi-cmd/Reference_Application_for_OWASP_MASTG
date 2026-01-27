@@ -1,6 +1,6 @@
 # MASWE-0001: Insertion of Sensitive Data into Logs
 
-The relevant code for this vulnerability can be seen in [maswe_0001/RegistryActivity.java](https://github.com/domi-cmd/Reference_Application_for_OWASP_MASTG/blob/main/apps/maswe_storage/src/main/java/com/dkronig/maswe_storage/maswe_0001/RegisterActivity.java)
+The relevant code for this vulnerability can be seen in maswe_0001/RegistryActivity.java.
 
 ## The vulnerability consists of:
 

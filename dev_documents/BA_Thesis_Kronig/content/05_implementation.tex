@@ -133,7 +133,6 @@ protected void onRegister(String email, String password) {
 
 This approach is less dangerous than setting file permissions directly, as it makes the user aware of the issue by directly prompting them to share the file. A breach of sensitive user data can only occur if the user chooses to share the credentials with third parties. We decided to settle on this approach since it did not appear feasible to implement this vulnerability more directly on new Android versions.
 
-
 \subsection{MASWE-0003}
 
 \begin{table}[H]
@@ -161,7 +160,6 @@ Android does not enforce any encryption of backups made by Android applications.
 \end{lstlisting}
 
 We further ensured that client side encryption of the backup is not enforced by excluding the flag \lstinline|<... requireFlags="clientSideEncryption"/>| for each include statement. This is done for both the cloud backup and device-to-device transfer.
-
 
 \subsection{MASWE-0004}
 
@@ -237,7 +235,6 @@ public String encryptData(String plaintext) throws Exception {
 }
 \end{lstlisting}
 
-
 \subsection{MASWE-0007}
 
 \begin{table}[H]
@@ -256,10 +253,12 @@ Programming Languages & Java \\
 \label{tab:maswe-0007}
 \end{table}
 
-Writing to shared storage without user interaction has become increasingly difficult in newer Android versions. However, it is still possible to do so using \texttt{MediaStore}. \texttt{MediaStore} files are not part of the sandboxed app environment and are visible to all other apps on the device. If the reading permissions are not set properly, other apps are furthermore able to read the \texttt{MediaStore} files without restrictions. To implement this vulnerability, we first create a new \texttt{MediaStore} entry to store future user credentials in, as shown in Listing \ref{lst:Maswe0007CreateMediaStoreEntry}. We then write user credentials to this entry whenever a new user registers, as shown in Listing \ref{lst:Maswe0007WriteToMediaStore}.
+Writing to shared storage without user interaction has become increasingly difficult in newer Android versions. However, it is still possible to do so using \texttt{MediaStore}. \texttt{MediaStore} files are not part of the sandboxed app environment and are visible to all other apps on the device. If the reading permissions are not set properly, other apps are furthermore able to read the \texttt{MediaStore} files without restrictions. 
+
+To implement this vulnerability, we first create a new \texttt{MediaStore} entry to store future user credentials in, as shown in Listing \ref{lst:Maswe0007CreateMediaStoreEntry}. We then write user credentials to this entry whenever a new user registers.
 
 % Java Code
-\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Creating a \texttt{MediaStore} entry for storing user credentials.}, label=lst:Maswe0007CreateMediaStoreEntry]
+\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Creating a \texttt{MediaStore} entry and writing user credentials to it.}, label=lst:Maswe0007CreateMediaStoreEntry]
 private void createMediaStoreEntry(){
     ContentValues values = new ContentValues();
     values.put(MediaStore.MediaColumns.DISPLAY_NAME, FILENAME);
@@ -269,10 +268,7 @@ private void createMediaStoreEntry(){
     fileUri = getContentResolver().insert(MediaStore.Files.
             getContentUri("external"), values);
 }
-\end{lstlisting}
 
-% Java Code
-\begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Writing credentials of new users to \texttt{MediaStore}.}, label=lst:Maswe0007WriteToMediaStore]
 private void writeToSharedStorage(String content) {
     try (OutputStream out = getContentResolver().openOutputStream(fileUri)) {
         assert out != null;
@@ -285,6 +281,7 @@ private void writeToSharedStorage(String content) {
 \end{lstlisting}
 
 
+\clearpage
 % Start of MASVS Crypto section
 \section{MASVS-CRYPTO}
 
@@ -413,8 +410,8 @@ public String encryptData(String plaintext) throws Exception {
     Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION, "BC");
     cipher.init(Cipher.ENCRYPT_MODE, getPublicKey());
 
-    byte[] encrypted = cipher
-        .doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
+    byte[] encrypted = cipher.doFinal(plaintext
+                .getBytes(StandardCharsets.UTF_8));
     return Base64.encodeToString(encrypted, Base64.NO_WRAP);
 }
 
@@ -425,7 +422,7 @@ private static PublicKey getPublicKey() throws Exception {
 \end{lstlisting}
 
 
-
+\clearpage
 \subsection{MASWE-0012}
 \label{subsec:maswe-0012}
 
@@ -452,11 +449,8 @@ As shown in Listing \ref{lst:Maswe0012CreatingKey}, we ensured that only RSA is 
 % Java Code
 \begin{lstlisting}[style=JavaStyle, float=tbh, mathescape=true, captionpos=b, caption={Creating an RSA key with multiple functionalities.}, label=lst:Maswe0012CreatingKey]
 private static void createAndStoreKey() throws Exception {
-    KeyPairGenerator keyPairGenerator = KeyPairGenerator
-            .getInstance(KeyProperties.KEY_ALGORITHM_RSA, "AndroidKeyStore");
-
-    KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
-            RSA_KEY_ALIAS,
+    // ... omitted ...
+    KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(RSA_KEY_ALIAS,
             KeyProperties.PURPOSE_SIGN |
                     KeyProperties.PURPOSE_VERIFY |
                     KeyProperties.PURPOSE_ENCRYPT |
@@ -466,9 +460,7 @@ private static void createAndStoreKey() throws Exception {
             .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
             .setKeySize(2048)
             .build();
-
-    keyPairGenerator.initialize(spec);
-    keyPairGenerator.generateKeyPair();
+    // ... omitted ...
 }
 \end{lstlisting}
 
@@ -938,6 +930,8 @@ private BankCommand createBankCommand(String command, int amountEuros) throws Ex
 \subsection{MASWE-0025}
 \label{subsec:maswe-0025}
 
+\vspace{-30pt}
+
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
@@ -954,7 +948,13 @@ private BankCommand createBankCommand(String command, int amountEuros) throws Ex
     \label{tab:maswe-0025}
 \end{table}
 
-We implemented this vulnerability by using the algorithm \texttt{SHA1withRSA} to create cryptographic signatures, as shown in Listing \ref{lst:Maswe0025SignMethod}. The issue with this lies in the fact that SHA-1 is considered cryptographically broken and insecure for signatures, as explained in the previous subsection \ref{subsec:maswe_0021}. Using this hashing algorithm to create cryptographic signatures means that it is technically feasible for an attacker to construct a malicious message that generates the same valid hash as a real user message. This allows attackers to create fraudulent banking messages, resulting in fraudulent financial transactions that are authorized and executed by our app because of their valid signatures.
+\vspace{-20pt}
+
+We implemented this vulnerability by using the algorithm \texttt{SHA1withRSA} to create cryptographic signatures, as shown in Listing \ref{lst:Maswe0025SignMethod}. The issue with this lies in the fact that SHA-1 is considered cryptographically broken and insecure for signatures, as explained in the previous subsection \ref{subsec:maswe_0021}. 
+
+Using this hashing algorithm to create cryptographic signatures means that it is technically feasible for an attacker to construct a malicious message that generates the same valid hash as a real user message. This allows attackers to create fraudulent banking messages, resulting in fraudulent financial transactions that are authorized and executed by our app because of their valid signatures.
+
+\vspace{-1pt}
 
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Creating cryptographic signatures using \texttt{SHA1withRSA}.}, label={lst:Maswe0025SignMethod}]
 public static String sign(String message) throws Exception {
@@ -1018,6 +1018,8 @@ We considered implementing a more complex and less obviously flawed verification
 \subsection{MASWE-0027}
 \label{subsec:maswe-0027}
 
+\vspace{-65pt}
+
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
@@ -1033,6 +1035,8 @@ We considered implementing a more complex and less obviously flawed verification
     \caption{Overview of our MASWE-0027 implementation.}
     \label{tab:maswe-0027}
 \end{table}
+
+\vspace{-60pt}
 
 We made use of the \texttt{java.util.Random} API \cite{java_util_random} to implement the vulnerability described by MASWE-0027. This API is not intended to be cryptographically secure. It uses a linearly congruential generator (LCG) to produce mathematically predictable random values. For this, it needs a starting seed, which we provide in the form of the system's current time in milliseconds. The code relevant for this is shown in Listing \ref{lst:Maswe0027GeneratingRandomValues}. This means that any attacker who knows the timespan during which the app was first installed can roughly guess what seed was used to create the random values. Of this estimated timespan, they only have to try 1,000 possible seeds per second. This makes finding the correct seed and the generated random values highly feasible.
 
@@ -1054,7 +1058,6 @@ public class EncryptionHandler {
         String encodedIV = Base64.encodeToString(iv, Base64.DEFAULT);
         return encodedIV;
     }
-
     // ... omitted ...
 }
 \end{lstlisting}
@@ -1124,6 +1127,8 @@ By enabling copy and paste functionalities for the password field, any text that
 
 To implement this vulnerability, we ensured that the password is not obfuscated. Additionally, we allowed screenshots and screen recordings of the activities where the password is visible. To differentiate this vulnerability from the implementation in the previous subsection \ref{subsec:maswe-0053}, the password obfuscation is removed in the layout itself, instead of changing the password's type to plain text at runtime. The code for this is shown in Listing \ref{lst:Maswe0055RemovePasswordObfuscation}.
 
+\vspace{-1pt}
+
 \begin{lstlisting}[style=XMLStyle, float=tbh, captionpos=b, caption={Setting the password \texttt{EditText} to visible password as to remove text obfuscation.}, label={lst:Maswe0055RemovePasswordObfuscation}]
 <EditText
     android:id="@+id/et_password"
@@ -1133,7 +1138,11 @@ To implement this vulnerability, we ensured that the password is not obfuscated.
     android:inputType="textVisiblePassword" />
 \end{lstlisting}
 
-We furthermore disable and clear any lingering any flags that would prevent screenshots and screen recordings from happening, as shown in Listing \ref{lst:Maswe0055RemoveScreenshotFlags}.
+\vspace{-7.5pt}
+
+We furthermore disable and clear any lingering any flags that would prevent screenshots and screen recordings from happening, as shown in Listing \ref{lst:Maswe0055RemoveScreenshotFlags}. This implementation introduces the security risk of the user leaking sensitive data via accidental screenshots and screen recordings. There are also tools that allow an attacker to record the device's screen via a USB connection, such as \texttt{scrcpy} \cite{scrcpy}.
+
+\vspace{-3pt}
 
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Disabling and clearing security flags that prevent screenshots and screen recordings from login and register activities.}, label={lst:Maswe0055RemoveScreenshotFlags}]
 private void clearScreenshotFlags(){
@@ -1145,7 +1154,7 @@ private void clearScreenshotFlags(){
 }
 \end{lstlisting}
 
-This implementation introduces the security risk of the user leaking sensitive data via accidental screenshots and screen recordings. There are also tools that allow an attacker to record the device's screen via a USB connection, such as \texttt{scrcpy} \cite{scrcpy}.
+\vspace{-15pt}
 
 
 \subsection{MASWE-0064}

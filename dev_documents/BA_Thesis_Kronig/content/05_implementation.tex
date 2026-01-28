@@ -397,7 +397,7 @@ private static SecretKey generateKey() throws Exception {
 
 This vulnerability is not about adding an insecure feature but instead leaving a security feature (key rotation) out. To make the vulnerability more interesting, we added some additional security flaws to the implementation. The relevant code is shown in Listing \ref{lst:maswe0011NoRotationBks}. We use Rivest-Shamir-Adleman (RSA) for encrypting and decrypting user data. Because there is no key rotation, the RSA key will never become invalid and will not be replaced by a new and secure one. This means that if it ever falls into the hands of attackers, they could decrypt user data at will for an indefinite amount of time.
 
-The additional security flaws consist of using the deprecated Bouncy Castle Keystore (\texttt{BKS}) to store our RSA key. The issues of using \texttt{BKS} for storing and managing our key are discussed at great length in the vulnerability implementation \ref{subsec:maswe-0015}, which is about deprecated keystores. In short; our implementation of \texttt{BKS} allows attackers to retrieve the private RSA key, which turns the theoretical security concern that the missing key rotation poses into a practical and detrimental security problem.
+The additional security flaws consist of using the deprecated Bouncy Castle Keystore (\texttt{BKS}) to store our RSA key. The issues of using \texttt{BKS} for storing and managing our key are discussed at great length in the vulnerability implementation of Subsection \ref{subsec:maswe-0015}, which is about deprecated keystores. In short; our implementation of \texttt{BKS} allows attackers to retrieve the private RSA key, which turns the theoretical security concern that the missing key rotation poses into a practical and detrimental security problem.
 
 \begin{lstlisting}[style=JavaStyle, float=tbh, captionpos=b, caption={Using \texttt{BKS} for RSA encryption with no key rotation.}, label={lst:maswe0011NoRotationBks}]
 private static final String RSA_KEY_ALIAS = "maswe_0011_rsa_key";
@@ -612,7 +612,7 @@ private static PublicKey importKey(Uri keyUri) throws Exception {
     \caption{Overview of our MASWE-0017 implementation.}
     \label{tab:maswe-0017}
 \end{table}
-This vulnerability is the counterpart to the vulnerability discussed in the previous subsection \ref{subsec:maswe-0016}. Instead of improperly importing a public RSA key from the \texttt{MediaStore} \texttt{Environment.DIRECTORY\_DOCUMENTS}, which is an untrusted storage location that other apps can have access to, we are now improperly exporting a public RSA key to it.
+This vulnerability is the counterpart to the vulnerability discussed in the previous Subsection \ref{subsec:maswe-0016}. Instead of improperly importing a public RSA key from the \texttt{MediaStore} \texttt{Environment.DIRECTORY\_DOCUMENTS}, which is an untrusted storage location that other apps can have access to, we are now improperly exporting a public RSA key to it.
 
 The public RSA key is exported in its raw format, as shown in Listing \ref{lst:Maswe0017ExportingKeyWithoutProtection}. By implementing no key wrapping or integrity protection when exporting the key and not verifying any signatures or authenticity when importing it, we allow attackers to replace the public key with a malicious one of their own. This allows them to decrypt any user data that they manage to gather, which poses a huge security liability.
 
@@ -822,7 +822,7 @@ Programming Languages & Java \\
 \label{tab:maswe-0022}
 \end{table}
 
-IVs are meant to be random starting values used in the encryption process to ensure that two identical plaintexts still result in different ciphertexts. Since the point of this vulnerability is having predictable IVs, we decided to implement it by using a hard-coded, static IV, which breaks the layer of security added by it. The relevant parts of code are shown in \ref{lst:Maswe0022IvCbc}. 
+IVs are meant to be random starting values used in the encryption process to ensure that two identical plaintexts still result in different ciphertexts. Since the point of this vulnerability is having predictable IVs, we decided to implement it by using a hard-coded, static IV, which breaks the layer of security added by it. The relevant parts of code are shown in Listing \ref{lst:Maswe0022IvCbc}. 
 
 To make this vulnerability exploitable, we used the IV for encryption with AES in Cipher Block Chaining (CBC) \cite{aes_cbc} mode. Because we reuse the same hard-coded IV for all AES encryptions, the encryption becomes deterministic. If an attacker gains access to the \texttt{SharedPreferences} file containing the encrypted user passwords, they can use pattern analysis to determine how often each password is used. Furthermore, the deterministic nature of the encryption means that an attacker can identify which users have the same passwords. This is because deterministic encryption causes identical plaintexts to result in the same ciphertext. This leakage of information can improve the efficiency of brute-force attempts to steal user credentials.
 
@@ -860,7 +860,7 @@ public String encryptData(String plaintext) throws Exception {
     \label{tab:maswe-0023}
 \end{table}
 
-In subsection \ref{subsec:maswe-0012}, we implemented risky padding by using PKCS\#1 v1.5 padding, which is vulnerable to the Bleichenbacher attack. We wanted to implement this vulnerability differently by using PKCS\#7 padding. Since using AES in CBC mode with PKCS\#7 padding is widely used and not broken in any way, we enable padding oracle attacks by manually unpadding the encrypted user data and providing detailed and varying error messages.
+In Subsection \ref{subsec:maswe-0012}, we implemented risky padding by using PKCS\#1 v1.5 padding, which is vulnerable to the Bleichenbacher attack. We wanted to implement this vulnerability differently by using PKCS\#7 padding. Since using AES in CBC mode with PKCS\#7 padding is widely used and not broken in any way, we enable padding oracle attacks by manually unpadding the encrypted user data and providing detailed and varying error messages.
 
 The relevant code for our implementation is shown in Listing \ref{lst:Maswe0023ManualUnpadding}. Instead of using a cipher mode for decryption that automatically removes padding, we implement our own custom unpadding process. This involves different checks, such as whether the padding length is valid or whether the padding values themselves are equal to the length of the padding. If any one of these checks fails, we throw a detailed error message. The encrypted user credentials are stored in a designated \texttt{SharedPreferences} file. If an attacker gains access to the file, they can alter the encrypted data, request the app to decrypt it, and monitor whether the padding is valid based on the response given. By repeating this process, starting from the second-to-last code block and working backward to the first, they can recalculate what the original message was. 
 
@@ -950,7 +950,7 @@ private BankCommand createBankCommand(String command, int amountEuros) throws Ex
 
 \vspace{-20pt}
 
-We implemented this vulnerability by using the algorithm \texttt{SHA1withRSA} to create cryptographic signatures, as shown in Listing \ref{lst:Maswe0025SignMethod}. The issue with this lies in the fact that SHA-1 is considered cryptographically broken and insecure for signatures, as explained in the previous subsection \ref{subsec:maswe_0021}. 
+We implemented this vulnerability by using the algorithm \texttt{SHA1withRSA} to create cryptographic signatures, as shown in Listing \ref{lst:Maswe0025SignMethod}. The issue with this lies in the fact that SHA-1 is considered cryptographically broken and insecure for signatures, as explained in the previous Subsection \ref{subsec:maswe_0021}. 
 
 Using this hashing algorithm to create cryptographic signatures means that it is technically feasible for an attacker to construct a malicious message that generates the same valid hash as a real user message. This allows attackers to create fraudulent banking messages, resulting in fraudulent financial transactions that are authorized and executed by our app because of their valid signatures.
 
@@ -1125,7 +1125,7 @@ By enabling copy and paste functionalities for the password field, any text that
     \label{tab:maswe-0055}
 \end{table}
 
-To implement this vulnerability, we ensured that the password is not obfuscated. Additionally, we allowed screenshots and screen recordings of the activities where the password is visible. To differentiate this vulnerability from the implementation in the previous subsection \ref{subsec:maswe-0053}, the password obfuscation is removed in the layout itself, instead of changing the password's type to plain text at runtime. The code for this is shown in Listing \ref{lst:Maswe0055RemovePasswordObfuscation}.
+To implement this vulnerability, we ensured that the password is not obfuscated. Additionally, we allowed screenshots and screen recordings of the activities where the password is visible. To differentiate this vulnerability from the implementation in the previous Subsection \ref{subsec:maswe-0053}, the password obfuscation is removed in the layout itself, instead of changing the password's type to plain text at runtime. The code for this is shown in Listing \ref{lst:Maswe0055RemovePasswordObfuscation}.
 
 \vspace{-1pt}
 

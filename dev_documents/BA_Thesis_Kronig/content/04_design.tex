@@ -23,7 +23,7 @@ We use a shared-library approach to minimize the amount of redundant code. This 
 
 
 
-\subsection{Feature-oriented Structure after OWASP MASVS}
+\subsection{Feature-Oriented Structure Based on OWASP MASVS}
 
 Each app module is structured as follows. The launcher activity functions as the overview and hub from which all implemented vulnerabilities of the respective category can be selected. The vulnerabilities themselves are grouped into separate packages. These packages include all activities, services, and other files that are part of the vulnerability's code. Every vulnerability has a main activity that serves as the vulnerability's starting point. Furthermore, every package has a \texttt{RegisterActivity.java}, \texttt{LoginActivity.java}, and \texttt{ProfileActivity.java} that are used for user registration and login. This architecture is extended with other files depending on the vulnerability and its implementation, such as \texttt{EncryptionHandler.java}, which deals with cryptographic services. A high-level model of this structure can be seen in Figure \ref{fig:high_level_view_feature_oriented_project_structure}.
 
@@ -38,7 +38,7 @@ This architecture further reinforces the clean separation and structure of the A
 
 
 
-\subsection{Template Based Activity-Architecture}
+\subsection{Template-Based Activity Architecture}
 \label{subsec:template_based_architecture}
 We make use of custom templates to significantly reduce the amount of boilerplate code. All of our vulnerability implementations require a starting activity, as well as a registration, login, and profile activity. Between the different vulnerabilities, these might differ in code logic but are almost all identical in layout. Because of this, the \texttt{common} library module includes layout templates for all four of them. These are fitted with uniform styling, as well as the basic navigation buttons and user input fields expected of them.  
 
@@ -71,7 +71,7 @@ This template removes redundant code by implementing the functionalities shared 
   \label{fig:base_register_activity_template_flow_diagram}
 \end{figure}
 
-Any inheriting registration activity only needs to implement the abstract getters for the concrete layout ID and UI buttons. All other code is handled by the abstract class. The advantage of this is clear, as it greatly reduces the amount of boilerplate code. The template provides two different hooks. The first hook method, \texttt{encryptPassword()}, allows the inheriting registration activity to add custom encryption to the user credentials before storing them. This hook is where different MASVS-CRYPTO vulnerabilities introduce their vulnerable encryption methods. The second hook method \texttt{onRegister()} allows for custom post-registration behavior and logic.
+Any inheriting registration activity only needs to implement the abstract getters for the concrete layout ID and UI buttons. All other code is handled by the abstract class. The advantage of this is clear, as it greatly reduces the amount of boilerplate code. The template provides two different hooks. The first hook method, \texttt{encryptPassword()}, allows the inheriting registration activity to add custom encryption to the user credentials before storing them. This hook is where different MASVS-CRYPTO vulnerabilities introduce their vulnerable encryption methods. The second hook method, \texttt{onRegister()}, allows for custom post-registration behavior and logic.
 
 
 \subsubsection{Base Login Activity}
@@ -99,7 +99,7 @@ For cryptographic algorithms and operations, we use both Java Cryptography Archi
 The project makes use of AndroidX libraries to ensure the backward compatibility of our apps with older Android versions. This is especially relevant since the apps are based on Android 15, a relatively new Android version. We use AppCompat (\texttt{androidx.appcompat}) for backward-compatible UI elements, and all Activities extend \texttt{AppCompatActivity} to ensure our apps behave consistently and as intended across different Android API levels, especially the older ones.
 
 
-\section{Vulnerabilities Selection Process}
+\section{Vulnerability Selection Process}
 At the time of writing, there are 117 vulnerabilities documented by OWASP MASWE, with two of them classified as deprecated \cite{owasp_maswe_website}. 
 
 Of these 115 viable vulnerabilities, we decided to focus on those that have received little to no coverage in existing MASTG reference apps. Another approach would have been to add more variations of vulnerability types already covered by other apps. This can add value to the existing reference app dataset as well, but only if these variations differ sufficiently from existing implementations. By focusing on vulnerabilities with little to no previous coverage, we ensure that the vulnerabilities implemented in our apps are unique. This way, they add to both the educational value of the MASTG reference apps and the usefulness of the reference apps for benchmarking mobile application security testing tools.

@@ -6,14 +6,14 @@ This chapter describes the concrete technical implementations of the selected MA
 % Struktur
 \section{MASVS-STORAGE}
 
-\subsection{MASWE-0001}
+\subsection{MASWE-0001: Logging Sensitive Data}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm} } 
 \toprule
-Name & Insertion of Sensitive Data into Logs \\ 
+OWASP MASWE Name & Insertion of Sensitive Data into Logs \\ 
 \midrule
 Key Topics & App Logs, System Logs \\ 
 Key Components & \texttt{RegisterActivity.java} \\
@@ -70,14 +70,14 @@ private void userDataToAppLogs(String email, String password){
 }
 \end{lstlisting}
 
-\subsection{MASWE-0002}
+\subsection{MASWE-0002: Insufficiently Protected Local Storage Data}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations \\ 
+OWASP MASWE Name & Sensitive Data Stored With Insufficient Access Restrictions in Internal Locations \\ 
 \midrule
 Key Topics & \texttt{FileProvider}, File Permissions \\ 
 Key Components & \texttt{AndroidManifest.xml}, \texttt{RegisterActivity.java}\\
@@ -133,14 +133,14 @@ protected void onRegister(String email, String password) {
 
 This approach is less dangerous than setting file permissions directly, as it makes the user aware of the issue by directly prompting them to share the file. A breach of sensitive user data can only occur if the user chooses to share the credentials with third parties. We decided to settle on this approach since it did not appear feasible to implement this vulnerability more directly on new Android versions.
 
-\subsection{MASWE-0003}
+\subsection{MASWE-0003: Unencrypted Backup}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}}
 \toprule
-Name & Backup Unencrypted \\
+OWASP MASWE Name & Backup Unencrypted \\
 \midrule
 Key Topics & Backup Device Conditions and Backup Device Flags \\
 Key Components & \texttt{backup\_rules.xml} \\
@@ -161,14 +161,14 @@ Android does not enforce any encryption of backups made by Android applications.
 
 We further ensured that client side encryption of the backup is not enforced by excluding the flag \lstinline|<... requireFlags="clientSideEncryption"/>| for each include statement. This is done for both the cloud backup and device-to-device transfer.
 
-\subsection{MASWE-0004}
+\subsection{MASWE-0004: Sensitive Data in Backup}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm} } 
 \toprule  
-Name & Sensitive Data Not Excluded From Backup \\ 
+OWASP MASWE Name & Sensitive Data Not Excluded From Backup \\ 
 \midrule  
 Key Topics & Cloud Backup Flags, Device-Transfer \\ 
 Key Components & \texttt{backup\_rules.xml} \\ 
@@ -193,14 +193,14 @@ To ensure that user credentials are included in the backup, we explicitly includ
 </device-transfer>
 \end{lstlisting}
 
-\subsection{MASWE-0006}
+\subsection{MASWE-0006: Insufficiently Encrypted Private Storage Data}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Sensitive Data Stored Unencrypted in Private Storage Locations \\ 
+OWASP MASWE Name & Sensitive Data Stored Unencrypted in Private Storage Locations \\ 
 \midrule
 Key Topics & Hard-coded Encryption Key, Broken Outdated Encryption (DES), Encryption Key Stored on Filesystem \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -235,14 +235,16 @@ public String encryptData(String plaintext) throws Exception {
 }
 \end{lstlisting}
 
-\subsection{MASWE-0007}
+\subsection{MASWE-0007: Unencrypted Shared Storage Data}
+
+\vspace{-1pt}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction \\ 
+OWASP MASWE Name & Sensitive Data Stored Unencrypted in Shared Storage Requiring No User Interaction \\ 
 \midrule
 Key Topics & \texttt{MediaStore}, Unencrypted User Data, External Storage \\
 Key Components & \texttt{RegisterActivity.java} \\
@@ -285,14 +287,14 @@ private void writeToSharedStorage(String content) {
 % Start of MASVS Crypto section
 \section{MASVS-CRYPTO}
 
-\subsection{MASWE-0009}
+\subsection{MASWE-0009: Insecure Cryptographic Key Generation}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Improper Cryptographic Key Generation \\ 
+OWASP MASWE Name & Improper Cryptographic Key Generation \\ 
 \midrule
 Key Topics & Insufficient Entropy, Insufficient Key length, Broken Encryption \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -329,14 +331,16 @@ private static SecretKey generateKey() throws Exception {
 This predictable source of pseudo-random numbers is then used to generate our cryptographic key, as shown in the same Listing \ref{lst:Maswe0009RandomGeneration}. For the cryptographic algorithm, we chose DES (Data Encryption Standard), which is an old and broken cryptographic algorithm. Broken here means that the encryption created by DES can be cracked by modern devices, rendering it obsolete. In addition to this, the DES key length is set to 56 bits. This, together with our insufficiently random source of pseudo-random numbers, poses a great threat to the functionality of the encryption used here, even if a modern cryptographic algorithm had been chosen in place of DES.
 
 
-\subsection{MASWE-0010}
+\subsection{MASWE-0010: Insecure Cryptographic Key Derivation}
+
+\vspace{-3pt}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Improper Cryptographic Key Derivation \\ 
+OWASP MASWE Name & Improper Cryptographic Key Derivation \\ 
 \midrule
 Key Topics & PBKDF2, AES, Insufficient Salting and Iterations \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -376,7 +380,7 @@ private static SecretKey generateKey() throws Exception {
 \end{lstlisting}
 
 
-\subsection{MASWE-0011}
+\subsection{MASWE-0011: Missing Cryptographic Key Rotation}
 \label{subsec:maswe-0011}
 
 \begin{table}[H]
@@ -384,7 +388,7 @@ private static SecretKey generateKey() throws Exception {
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Cryptographic Key Rotation Not Implemented \\ 
+        OWASP MASWE Name & Cryptographic Key Rotation Not Implemented \\ 
         \midrule
         Key Topics & Long-lived key, \texttt{BKS} (Deprecated Keystore), RSA \\
         Key Components & \texttt{EncryptionHandler.java} \\
@@ -423,7 +427,7 @@ private static PublicKey getPublicKey() throws Exception {
 
 
 \clearpage
-\subsection{MASWE-0012}
+\subsection{MASWE-0012: Overloaded and Weak Cryptographic Key}
 \label{subsec:maswe-0012}
 
 \begin{table}[H]
@@ -431,7 +435,7 @@ private static PublicKey getPublicKey() throws Exception {
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Insecure or Wrong Usage of Cryptographic Key \\ 
+OWASP MASWE Name & Insecure or Wrong Usage of Cryptographic Key \\ 
 \midrule
 Key Topics & Overloaded Cryptographic Key, Broken Cryptographic Algorithm \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -465,14 +469,14 @@ private static void createAndStoreKey() throws Exception {
 \end{lstlisting}
 
 
-\subsection{MASWE-0014}
+\subsection{MASWE-0014: Cryptographic Key Unprotected at Rest}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Cryptographic Keys Not Properly Protected at Rest \\ 
+OWASP MASWE Name & Cryptographic Keys Not Properly Protected at Rest \\ 
 \midrule
 Key Topics & Lack of Encryption, \texttt{SharedPreferences} \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -500,7 +504,7 @@ private static void storeKeyAndIV(Context context, String encodedKey, String enc
 \end{lstlisting}
 
 
-\subsection{MASWE-0015}
+\subsection{MASWE-0015: Use of Deprecated Keystore}
 \label{subsec:maswe-0015}
 
 \begin{table}[H]
@@ -508,7 +512,7 @@ private static void storeKeyAndIV(Context context, String encodedKey, String enc
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Deprecated Android KeyStore Implementations \\ 
+OWASP MASWE Name & Deprecated Android KeyStore Implementations \\ 
 \midrule
 Key Topics & Bouncy Castle Keystore (\texttt{BKS}), Bouncy Castle Provider (\texttt{BC}), Filebased Keystore \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -561,7 +565,7 @@ public class EncryptionHandler {
 \end{lstlisting}
 
 
-\subsection{MASWE-0016}
+\subsection{MASWE-0016: Unsanitized Imported Cryptographic Key}
 \label{subsec:maswe-0016}
 
 \begin{table}[H]
@@ -569,7 +573,7 @@ public class EncryptionHandler {
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Unsafe Handling of Imported Cryptographic Keys \\ 
+        OWASP MASWE Name & Unsafe Handling of Imported Cryptographic Keys \\ 
         \midrule
         Key Topics & Key Import From Untrusted Storage, \texttt{MediaStore}, Missing Key Sanitization, RSA \\
         Key Components & \texttt{EncryptionHandler.java} \\
@@ -594,7 +598,7 @@ private static PublicKey importKey(Uri keyUri) throws Exception {
 }
 \end{lstlisting}
 
-\subsection{MASWE-0017}
+\subsection{MASWE-0017: Unprotected Exported Cryptographic Key}
 \label{subsec:maswe-0017}
 
 \begin{table}[H]
@@ -602,7 +606,7 @@ private static PublicKey importKey(Uri keyUri) throws Exception {
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Cryptographic Keys Not Properly Protected on Export \\ 
+        OWASP MASWE Name & Cryptographic Keys Not Properly Protected on Export \\ 
         \midrule
         Key Topics & No Key-Wrapping, Key Import From Untrusted Storage, \texttt{MediaStore}, RSA \\
         Key Components & \texttt{EncryptionHandler.java} \\
@@ -639,7 +643,7 @@ private PublicKey generateAndStorePublicKey() throws Exception {
 
 
 
-\subsection{MASWE-0018}
+\subsection{MASWE-0018: Cryptographic Key Without Access Restrictions}
 \label{subsec:maswe-0018}
 
 \begin{table}[H]
@@ -647,7 +651,7 @@ private PublicKey generateAndStorePublicKey() throws Exception {
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Cryptographic Keys Access Not Restricted \\ 
+        OWASP MASWE Name & Cryptographic Keys Access Not Restricted \\ 
         \midrule
         Key Topics & RSA, Key Accessible by Background Process, Key Accessible by Locked Device, Key Accessible Without Authentication \\
         Key Components & \texttt{EncryptionHandler.java} \\
@@ -689,14 +693,14 @@ dePrefs.edit().putString("encrypted_password", encryptedData).apply();
 \end{lstlisting}
 
 
-\subsection{MASWE-0019}
+\subsection{MASWE-0019: Low-Level Cryptographic Operations}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Risky Cryptography Implementations \\ 
+OWASP MASWE Name & Risky Cryptography Implementations \\ 
 \midrule
 Key Topics & Non-Cryptographic Functions, XOR Encryption, Use of Low-Level Mathematical Operations \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -728,14 +732,14 @@ public String encryptData(String plaintext) throws Exception {
 \end{lstlisting}
 
 
-\subsection{MASWE-0020}
+\subsection{MASWE-0020: Insecure Encryption Using Base64}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Improper Encryption \\ 
+OWASP MASWE Name & Improper Encryption \\ 
 \midrule
 Key Topics & Non-Cryptographic Operations, \texttt{Base64} Encoding \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -760,15 +764,17 @@ public String decryptData(String encrypted) throws Exception {
 \end{lstlisting}
 
 
-\subsection{MASWE-0021}
+\subsection{MASWE-0021: Insecure Hashing Using SHA-1}
 \label{subsec:maswe_0021}
+
+\vspace{-1pt}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Improper Hashing \\ 
+OWASP MASWE Name & Improper Hashing \\ 
 \midrule
 Key Topics & SHA-1, Broken Cryptographic Algorithm \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -804,14 +810,14 @@ The vulnerability stems from the fact that SHA-1 is considered cryptographically
 \end{lstlisting}
 
 
-\subsection{MASWE-0022}
+\subsection{MASWE-0022: Hard-Coded Initialization Vectors}
 
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Predictable Initialization Vectors (IVs) \\ 
+OWASP MASWE Name & Predictable Initialization Vectors (IVs) \\ 
 \midrule
 Key Topics & Hard-coded IVs, AES in CBC Mode \\
 Key Components & \texttt{EncryptionHandler.java} \\
@@ -842,14 +848,14 @@ public String encryptData(String plaintext) throws Exception {
 \end{lstlisting}
 
 
-\subsection{MASWE-0023}
+\subsection{MASWE-0023: Padding Oracle Attacks}
 
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Risky Padding \\ 
+        OWASP MASWE Name & Risky Padding \\ 
         \midrule
         Key Topics & Padding Oracle Attacks, Manual Unpadding, PKCS\#7, AES in CBC Mode \\
         Key Components & \texttt{EncryptionHandler.java} \\
@@ -891,7 +897,7 @@ public String decryptData(String encryptedData) throws Exception {
 \end{lstlisting}
 
 
-\subsection{MASWE-0024}
+\subsection{MASWE-0024: Insecure MAC Derivation Using CRC-32}
 \label{subsec:maswe-0024}
 
 \begin{table}[H]
@@ -899,7 +905,7 @@ public String decryptData(String encryptedData) throws Exception {
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Improper Use of Message Authentication Code (MAC) \\ 
+        OWASP MASWE Name & Improper Use of Message Authentication Code (MAC) \\ 
         \midrule
         Key Topics & Non-Cryptographic Checksum, CRC-32, Missing Nonce Validation \\
         Key Components & \texttt{IntegrityVerifier.java}, \texttt{ProfileActivity.java}, \texttt{BankAccountManagerService.java} \\
@@ -927,7 +933,7 @@ private BankCommand createBankCommand(String command, int amountEuros) throws Ex
 \end{lstlisting}
 
 
-\subsection{MASWE-0025}
+\subsection{MASWE-0025: Insecure Signature Generation Using SHA-1}
 \label{subsec:maswe-0025}
 
 \vspace{-30pt}
@@ -937,7 +943,7 @@ private BankCommand createBankCommand(String command, int amountEuros) throws Ex
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Improper Generation of Cryptographic Signatures \\ 
+        OWASP MASWE Name & Improper Generation of Cryptographic Signatures \\ 
         \midrule
         Key Topics & Weak Signature Algorithm, \texttt{SHA1withRSA} \\
         Key Components & \texttt{EncryptionHandler.java} \\
@@ -969,7 +975,7 @@ public static String sign(String message) throws Exception {
 \end{lstlisting}
 
 
-\subsection{MASWE-0026}
+\subsection{MASWE-0026: Improper Signature Verification}
 \label{subsec:maswe-0026}
 
 \begin{table}[H]
@@ -977,7 +983,7 @@ public static String sign(String message) throws Exception {
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Improper Verification of Cryptographic Signature \\ 
+        OWASP MASWE Name & Improper Verification of Cryptographic Signature \\ 
         \midrule
         Key Topics & Unverified Signature, Unverified Nonce, Unverified Timestamp \\
         Key Components & \texttt{EncryptionHandler.java} \\
@@ -1015,7 +1021,7 @@ public static boolean verify(BankCommand command) {
 
 We considered implementing a more complex and less obviously flawed verification of digital signatures. However, since any flawed verification methods of higher complexity would, once understood, boil down to giving a similarly flawed return, we decided to leave it at this and focus on other vulnerabilities.
 
-\subsection{MASWE-0027}
+\subsection{MASWE-0027: Insecure Random Number Generation}
 \label{subsec:maswe-0027}
 
 \vspace{-65pt}
@@ -1025,7 +1031,7 @@ We considered implementing a more complex and less obviously flawed verification
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Improper Random Number Generation \\ 
+        OWASP MASWE Name & Improper Random Number Generation \\ 
         \midrule
         Key Topics & Risky Random APIs, Non-Random Sources \\
         Key Components & \texttt{EncryptionHandler.java} \\
@@ -1067,7 +1073,7 @@ public class EncryptionHandler {
 % Start of MASVS Platform section
 \section{MASVS-PLATFORM}
 
-\subsection{MASWE-0053}
+\subsection{MASWE-0053: Password Leaked Through Input Fields}
 \label{subsec:maswe-0053}
 
 \begin{table}[H]
@@ -1075,7 +1081,7 @@ public class EncryptionHandler {
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5cm} p{8cm}} 
 \toprule
-Name & Sensitive Data Leaked via the User Interface \\ 
+OWASP MASWE Name & Sensitive Data Leaked via the User Interface \\ 
 \midrule
 Key Topics & Missing Password Obfuscation, Password Autocomplete, Password Autocorrect, Password Saved to Clipboard \\
 Key Components & \texttt{LoginActivity.java}, \texttt{RegisterActivity.java} \\
@@ -1106,7 +1112,7 @@ private void removeObfuscation(){
 
 By enabling copy and paste functionalities for the password field, any text that is copied or cut from the input field will be stored in the \texttt{Android Clipboard}. Data stored in the \texttt{Android Clipboard} is not confined to the app's sandbox and is accessible by all apps running in the foreground. This holds true even on newer Android versions \cite{secure_clipboard_handling}. This means that an attacker can run a service from a malicious app installed on the device that accesses data from the \texttt{Android Clipboard}, potentially reading and stealing sensitive user data.
 
-\subsection{MASWE-0055}
+\subsection{MASWE-0055: Password Exposed to Screenshots}
 \label{subsec:maswe-0055}
 
 \begin{table}[H]
@@ -1114,7 +1120,7 @@ By enabling copy and paste functionalities for the password field, any text that
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Sensitive Data Leaked via Screenshots or Screen Recordings \\ 
+        OWASP MASWE Name & Sensitive Data Leaked via Screenshots or Screen Recordings \\ 
         \midrule
         Key Topics & Missing Password Obfuscation, Missing Screenshot Protection \\
         Key Components & \texttt{LoginActivity.java}, \texttt{RegisterActivity.java}, \texttt{activity\_login\_maswe0055.xml}, \texttt{activity\_register\_maswe0055.xml} \\
@@ -1157,7 +1163,7 @@ private void clearScreenshotFlags(){
 \vspace{-15pt}
 
 
-\subsection{MASWE-0064}
+\subsection{MASWE-0064: Insecure Content Provider}
 \label{subsec:maswe-0064}
 
 \begin{table}[H]
@@ -1165,7 +1171,7 @@ private void clearScreenshotFlags(){
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Insecure Content Providers \\ 
+        OWASP MASWE Name & Insecure Content Providers \\ 
         \midrule
         Key Topics & Exported Content Provider, Insecure File Reading Permissions, Unsanitized Path Construction, Missing Access Control \\
         Key Components & \texttt{CustomContentProvider.java}, \texttt{RegisterActivity.java}, \texttt{AndroidManifest.xml} \\
@@ -1219,7 +1225,7 @@ InputStream in = getContentResolver().openInputStream(uri);
 \end{lstlisting}
 
 
-\subsection{MASWE-0067}
+\subsection{MASWE-0067: App Set to Debuggable}
 \label{subsec:maswe-0067}
 
 \begin{table}[H]
@@ -1227,7 +1233,7 @@ InputStream in = getContentResolver().openInputStream(uri);
     \renewcommand{\arraystretch}{1.3}
         \begin{tabular}{p{5cm} p{8cm}} 
         \toprule
-        Name & Debuggable Flag Not Disabled \\ 
+        OWASP MASWE Name & Debuggable Flag Not Disabled \\ 
         \midrule
         Key Topics & Memory Inspection, Cryptographic Key Access \\
         Key Components & \texttt{AndroidManifest.xml} \\
@@ -1238,7 +1244,7 @@ InputStream in = getContentResolver().openInputStream(uri);
     \label{tab:maswe-0067}
 \end{table}
 
-The implementation of this vulnerability is rather straightforward, as only one flag has to be set to true in the \texttt{AndroidManifest.xml} for the app to be debuggable. The code for this is shown in Listing \ref{lst:Maswe0067SettingAppDebuggable}.
+The implementation of this vulnerability is rather straightforward, as only one flag had to be set to true in the \texttt{AndroidManifest.xml} for the app to be debuggable. The code for this is shown in Listing \ref{lst:Maswe0067SettingAppDebuggable}.
 
 \begin{lstlisting}[style=XMLStyle, float=tbh, captionpos=b, caption={Setting the app to debuggable in \texttt{AndroidManifest.xml}}, label={lst:Maswe0067SettingAppDebuggable}]
 <application

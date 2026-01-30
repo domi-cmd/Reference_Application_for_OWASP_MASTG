@@ -8,7 +8,6 @@ The relevant code for this vulnerability can be seen in [maswe_0064/CustomConten
 ```java
  @Override
     public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        // extracts "login_data_readable.txt"
         String fileName = uri.getLastPathSegment();
 
         if (fileName == null) {

@@ -6,23 +6,31 @@ The relevant code for this vulnerability can be seen in maswe_0025/EncryptionHan
 
 1. Using SHA1withRSA for creating signatures in the lines here:
 ```java
+private static final String SIGNING_ALGORITHM = "SHA1withRSA";
+
 public static String sign(String message) throws Exception {
-    Signature s = Signature.getInstance("SHA1withRSA");
-    s.initSign(getPrivateKey());
-    s.update(message.getBytes("UTF-8"));
-    byte[] sig = s.sign();
-    return Base64.encodeToString(sig, Base64.NO_WRAP);
+    Signature signature = Signature.getInstance(SIGNING_ALGORITHM);
+
+    signature.initSign(getPrivateKey());
+    signature.update(message.getBytes(StandardCharsets.UTF_8));
+
+    byte[] signatureBytes = signature.sign();
+    return Base64.encodeToString(signatureBytes, Base64.NO_WRAP);
 }
 ```
 2. Using SHA1withRSA for verifying digital signatures in the lines here:
 ```java
+private static final String SIGNING_ALGORITHM = "SHA1withRSA";
+
 public static boolean verify(BankCommand command) throws Exception {
-    String payload = command.command + command.amountEuros + command.timestamp
-            + command.nonce;
-    Signature v = Signature.getInstance("SHA1withRSA");
-    v.initVerify(getPublicKey());
-    v.update(payload.getBytes("UTF-8"));
-    return v.verify(Base64.decode(command.signature, Base64.NO_WRAP));
+    String payload = command.command + command.amountEuros + command.timestamp + command.nonce;
+
+    Signature verificationSignature = Signature.getInstance(SIGNING_ALGORITHM);
+
+    verificationSignature.initVerify(getPublicKey());
+    verificationSignature.update(payload.getBytes(StandardCharsets.UTF_8));
+
+    return verificationSignature.verify(Base64.decode(command.signature, Base64.NO_WRAP));
 }
 ```
 

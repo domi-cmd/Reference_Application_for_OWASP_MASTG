@@ -7,11 +7,14 @@ The relevant code for this vulnerability can be seen in masvs_storage's [Android
 1. Using a FileProvider which grants URI permission without checking permissions of the requesting party in the lines here in the manifest:
 
 ```xml
-
-<provider android:name="androidx.core.content.FileProvider"
-    android:authorities="com.dkronig.masvs_storage.CustomFileProvider" android:exported="false"
-    android:grantUriPermissions="true" android:permission="">
-    <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+<provider
+    android:name="androidx.core.content.FileProvider"
+    android:authorities="com.dkronig.masvs_storage.CustomFileProvider"
+    android:exported="false"
+    android:grantUriPermissions="true"
+    android:permission="" >
+    <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
         android:resource="@xml/file_paths" />
 </provider>
 ```

@@ -14,12 +14,21 @@ public static long crc32(String data) {
       return crc.getValue();            
 }
 ```
-2. Using said checksum for signing integrity of sensitive banking information here:
+2. Using said checksum for signing integrity of sensitive banking information in ProfileActivity.java here:
 ```java
-// Use crc32 as a checksum
-String payload = bankCommand.command + bankCommand.amountEuros
-        + bankCommand.timestamp + bankCommand.nonce;
-bankCommand.hmac = String.valueOf(IntegrityVerifier.crc32(payload));
+private BankCommand createBankCommand(String command, int amountEuros) throws Exception {
+    BankCommand bankCommand = new BankCommand();
+    bankCommand.command = command;
+    bankCommand.amountEuros = amountEuros;
+    bankCommand.timestamp = System.currentTimeMillis();
+    bankCommand.nonce = UUID.randomUUID().toString();
+
+    String payload = buildSignaturePayload(bankCommand);
+    // Use crc32 as a checksum
+    bankCommand.hmac = String.valueOf(IntegrityVerifier.crc32(payload));
+
+    return bankCommand;
+}
 ```
 3. And then also using it for verifying integrity of received data in the bankaccount manager service here:
 ```java

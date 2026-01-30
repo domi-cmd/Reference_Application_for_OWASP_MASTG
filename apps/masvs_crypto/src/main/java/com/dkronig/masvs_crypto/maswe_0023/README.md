@@ -6,8 +6,17 @@ The relevant code for this vulnerability can be seen in [maswe_0023/EncryptionHa
 
 1. Manually unpadding the PKCS7 ciphertext instead of using the PKCS7 cipher in decrypt_mode in the lines here:
 ```java
-Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
-cipher.init(Cipher.DECRYPT_MODE, secretKey, ivSpec);
+private static final String CIPHER_TRANSFORMATION_DECRYPTION = "AES/CBC/NoPadding";
+
+public String decryptData(String encryptedData) throws Exception {
+    // ... omitted ...
+
+    Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION_DECRYPTION);
+    cipher.init(Cipher.DECRYPT_MODE, secretKey, ivSpec);
+    byte[] decryptedBytesWithPadding = cipher.doFinal(encryptedBytes);
+
+    // ... omitted ...
+}
 ```
 2. Making oracle attacks possible by leaking info about the ciphertext here:
 ```java

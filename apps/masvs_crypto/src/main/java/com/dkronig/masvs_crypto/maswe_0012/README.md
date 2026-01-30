@@ -6,30 +6,37 @@ The relevant code for this vulnerability can be seen in maswe_0012/EncryptionHan
 
 1. Using the same cryptographic key for multiple purposes, them being encryption, decryption, as well as signing and verifying of messages, as seen in the lines here:
 ```java
-KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, "AndroidKeyStore");
+private static void createAndStoreKey() throws Exception {
+   KeyPairGenerator keyPairGenerator = KeyPairGenerator
+            .getInstance(KeyProperties.KEY_ALGORITHM_RSA, KEYSTORE);
 
-KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(rsaKeyAlias,
-        KeyProperties.PURPOSE_SIGN |
-                KeyProperties.PURPOSE_VERIFY |
-                KeyProperties.PURPOSE_ENCRYPT |
-                KeyProperties.PURPOSE_DECRYPT)
-        .setDigests(KeyProperties.DIGEST_SHA1)
-        .setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PKCS1)
-        .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
-        .setKeySize(2048)
-        .build();
+   KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
+            RSA_KEY_ALIAS,
+            KeyProperties.PURPOSE_SIGN |
+                  KeyProperties.PURPOSE_VERIFY |
+                  KeyProperties.PURPOSE_ENCRYPT |
+                  KeyProperties.PURPOSE_DECRYPT)
+            .setDigests(KeyProperties.DIGEST_SHA1)
+            .setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PKCS1)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
+            .setKeySize(2048)
+            .build();
 
-keyPairGenerator.initialize(spec);
-keyPairGenerator.generateKeyPair();
+   keyPairGenerator.initialize(spec);
+   keyPairGenerator.generateKeyPair();
+}
 ```
 2. Using a weak SHA1 key and SHA1withRSA for all of this. Especially using SHA1 for hashing of digital signatures is a great security liability, as seen in the lines here:
 ```java
+private static final String SIGNING_ALGORITHM = "SHA1withRSA";
+
 public static String sign(String message) throws Exception {
-    Signature s = Signature.getInstance("SHA1withRSA");
-    s.initSign(getPrivateKey());
-    s.update(message.getBytes("UTF-8"));
-    byte[] sig = s.sign();
-    return Base64.encodeToString(sig, Base64.NO_WRAP);
+   Signature signature = Signature.getInstance(SIGNING_ALGORITHM);
+   signature.initSign(getPrivateKey());
+   signature.update(message.getBytes(StandardCharsets.UTF_8));
+
+   byte[] signatureBytes = signature.sign();
+   return Base64.encodeToString(signatureBytes, Base64.NO_WRAP);
 }
 ```
 

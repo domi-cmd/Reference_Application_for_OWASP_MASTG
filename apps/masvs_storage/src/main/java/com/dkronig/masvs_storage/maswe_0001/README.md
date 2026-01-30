@@ -7,7 +7,6 @@ The relevant code for this vulnerability can be seen in maswe_0001/RegistryActiv
 1. Writing user credentials to system logs upon user registration in the lines here:
 ```java
 private void userDataToSystemLogs(String user_email, String user_password){
-        // Log user credentials to system logs
         Log.d(TAG, "New User registered");
         Log.d(TAG, "User E-Mail: "+ user_email);
         Log.d(TAG, "User Password: " + user_password);
@@ -16,19 +15,21 @@ private void userDataToSystemLogs(String user_email, String user_password){
 
 2. Writing user credentials to app logs (apps data directory) upon user registration in the lines here:
 ```java
-private void userDataToAppLogs(String user_email, String user_password){
-        // Logging sensitive data to a file in app's data directory (App Logs)
+    private void userDataToAppLogs(String email, String password){
         try {
-            File logFile = new File(getFilesDir(), "maswe_0001_user_credentials.txt");
+            File logFile = new File(getFilesDir(), CREDENTIALS_FILE_NAME + ".txt");
             FileWriter writer = new FileWriter(logFile, true);
-            writer.append("Login - Username: " + user_email + ", Password: " + user_password + "\n");
+            writer.append("Login - Username: ")
+                    .append(email)
+                    .append(", Password: ")
+                    .append(password)
+                    .append("\n");
             writer.close();
-            Log.d(TAG, "Logged credentials to app logs");
+            Log.d(LOG_TAG, "Logged credentials to app logs");
         } catch (IOException e) {
-            // System log incase the app logging did not work
-            Log.e(TAG, "Error writing to log file: " + e.getMessage());
+            Log.e(LOG_TAG, "Error writing to log file: " + e.getMessage());
         }
-}
+    }
 ```
 
 ## The vulnerability can be exploited by:

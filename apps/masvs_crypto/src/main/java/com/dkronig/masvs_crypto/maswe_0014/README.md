@@ -6,16 +6,18 @@ The relevant code for this vulnerability can be seen in [maswe_0014/EncryptionHa
 
 1. Storing unencrypted secret key and initialization vector in shared preferences in the lines here:
 ```java
-// Get access to the shared preferences of the calling activity
-sharedPreferences = context.getApplicationContext()
-        .getSharedPreferences("maswe_0014_secret_key", Context.MODE_PRIVATE);
+private static final String KEY_ALIAS = "maswe_0014_secret_key";
+
+private static void storeKeyAndIV(Context context, String encodedKey, String encodedIV){
+sharedPreferences = context
+        .getApplicationContext()
+        .getSharedPreferences(KEY_ALIAS, Context.MODE_PRIVATE);
 SharedPreferences.Editor editor = sharedPreferences.edit();
-// Make sure no duplicate or multiple keys are stored
-editor.clear();
-// Add key and initialization vector to shared preferences
-editor.putString("encryption_key", encodedKey);
-editor.putString("IV", encodedIV);
+
+editor.putString(ENCRYPTION_KEY, encodedKey);
+editor.putString(IV, encodedIV);
 editor.apply();
+}
 ```
 
 ## This vulnerability can be exploited by:

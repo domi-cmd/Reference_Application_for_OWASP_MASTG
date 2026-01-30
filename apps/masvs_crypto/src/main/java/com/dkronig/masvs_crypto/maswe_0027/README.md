@@ -7,11 +7,24 @@ The relevant code for this vulnerability can be seen in [maswe_0027/EncryptionHa
 1. Using java.util.Random API for generating source of randomness in the line here. This API uses a linear congruential formula, and is hence considered insecure.
 ```java
 import java.util.Random;
-Random javaRandom = new Random(System.currentTimeMillis());
+
+private static String createIV(){
+    byte[] iv = new byte[16];
+    Random javaRandom = new Random(System.currentTimeMillis());
+    javaRandom.nextBytes(iv);
+
+    // ... omitted ...
+}
 ```
 2. Using the systems current time (non random source) to create "supposedly random" values in the same line here:
 ```java
-Random javaRandom = new Random(System.currentTimeMillis());
+private static String createIV(){
+    byte[] iv = new byte[16];
+    Random javaRandom = new Random(System.currentTimeMillis());
+    javaRandom.nextBytes(iv);
+
+    // ... omitted ...
+}
 ```
 
 ## The vulnerability can be exploited by:

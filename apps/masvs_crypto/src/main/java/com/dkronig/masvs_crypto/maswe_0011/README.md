@@ -7,9 +7,12 @@ OWASP MASWE describes this vulnerability as using a long-lived key, typically an
 this leads to huge problems.
 1. Using a long lived asymmetric key (RSA) for both encryption and decryption, without any key rotation:
 ```java
+private static final String CIPHER_TRANSFORMATION = "RSA/ECB/PKCS1Padding";
+
 public String encryptData(String plaintext) throws Exception {
-    Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
+    Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION, "BC");
     cipher.init(Cipher.ENCRYPT_MODE, getPublicKey());
+    
     byte[] encrypted = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
     return Base64.encodeToString(encrypted, Base64.NO_WRAP);
 }

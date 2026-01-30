@@ -10,7 +10,7 @@ import java.util.Base64;
  */
 public class EncryptionHandler {
     private static final String ENCRYPTION_KEY = "EncryptK";
-    private static final String ALGORITHM = "DES/ECB/PKCS5Padding";
+    private static final String CIPHER_TRANSFORMATION = "DES/ECB/PKCS5Padding";
     private static final String KEY_ALGORITHM = "DES";
 
     /**
@@ -23,7 +23,7 @@ public class EncryptionHandler {
      */
     public String encryptData(String plaintext) throws Exception {
         SecretKeySpec keySpec = createKeySpec();
-        Cipher cipher = Cipher.getInstance(ALGORITHM);
+        Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
         cipher.init(Cipher.ENCRYPT_MODE, keySpec);
 
         byte[] encryptedBytes = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
@@ -39,7 +39,7 @@ public class EncryptionHandler {
      */
     public String decryptData(String encryptedData) throws Exception {
         SecretKeySpec keySpec = createKeySpec();
-        Cipher cipher = Cipher.getInstance(ALGORITHM);
+        Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
         cipher.init(Cipher.DECRYPT_MODE, keySpec);
 
         byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedData));

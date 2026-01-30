@@ -7,22 +7,28 @@ The relevant code for this vulnerability can be seen in maswe_0018/EncryptionHan
 1. Setting various flags in a way that greatly undermines the keys access restrictions here:
 ```java
 public static void generateKey() throws Exception {
-    KeyStore ks = KeyStore.getInstance("AndroidKeyStore");
-    ks.load(null);
+    KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
+    keyStore.load(null);
 
     // Key already exists, do nothing
-    if (ks.containsAlias(RSA_KEY_ALIAS)) {
+    if (keyStore.containsAlias(RSA_KEY_ALIAS)) {
         return;
     }
 
-    KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, "AndroidKeyStore");
+    createAndStoreKeyPair();
+}
+
+private static void createAndStoreKeyPair() throws Exception{
+    KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(
+      KeyProperties.KEY_ALGORITHM_RSA, 
+      KEYSTORE);
 
     KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
             RSA_KEY_ALIAS,
                     KeyProperties.PURPOSE_ENCRYPT |
                     KeyProperties.PURPOSE_DECRYPT)
             .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
-            .setKeySize(2048)
+            .setKeySize(KEY_SIZE)
             .setUserAuthenticationRequired(false)
             .setUnlockedDeviceRequired(false)
             .setIsStrongBoxBacked(false)
@@ -48,9 +54,9 @@ public static void generateKey() throws Exception {
 3. Any malicious app on the same device could simply run:
 ```java
 // Attacker's app (no special permissions!)
-KeyStore ks = KeyStore.getInstance("AndroidKeyStore");
-ks.load(null);
-KeyStore.PrivateKeyEntry entry = (KeyStore.PrivateKeyEntry) ks.getEntry("maswe_0018_rsa_key", null);
+KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
+keyStore.load(null);
+KeyStore.PrivateKeyEntry entry = (KeyStore.PrivateKeyEntry) keyStore.getEntry("maswe_0018_rsa_key", null);
 PrivateKey stolenKey = entry.getPrivateKey();
 
 // Now export or use it directly

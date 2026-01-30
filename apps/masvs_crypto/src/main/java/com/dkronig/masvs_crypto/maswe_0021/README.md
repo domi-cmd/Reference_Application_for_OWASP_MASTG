@@ -14,10 +14,10 @@ The relevant code for this vulnerability can be seen in [maswe_0021/EncryptionHa
     byte[] messageDigest = digestAlgorithm.digest(plaintext.getBytes(StandardCharsets.UTF_8));
 
     // Convert it to signum representation
-    BigInteger no = new BigInteger(1, messageDigest);
+    BigInteger signumDigest = new BigInteger(1, messageDigest);
 
     // Convert it to hex value
-    StringBuilder hashText = new StringBuilder(no.toString(16));
+    StringBuilder hashText = new StringBuilder(signumDigest.toString(16));
 
     // Add preceding 0s to make it 40 digits long
     while (hashText.length() < 40) {

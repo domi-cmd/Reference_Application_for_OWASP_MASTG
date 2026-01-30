@@ -12,17 +12,20 @@ private static final String ENCRYPTION_KEY = "EncryptK";
 2. Specifying the encryption algorithm to be DES, which is considered outdated and even broken, in the line here:
 
 ```java
-private static final String ALGORITHM = "DES/ECB/PKCS5Padding";
+private static final String CIPHER_TRANSFORMATION = "DES/ECB/PKCS5Padding";
 ```
 
-3. Using the hardcoded key and broken algorithm to handle the encryption and decryption of sensitive user data in the lines here:
+3. Using the hardcoded key and broken algorithm to handle the encryption (same for decryption) of sensitive user data in the lines here:
 
 ```java
-SecretKeySpec keySpec = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), ALGORITHM);
-Cipher cipher = Cipher.getInstance(ALGORITHM);
-cipher.init(Cipher.ENCRYPT_MODE, keySpec);
-byte[] encryptedBytes = cipher.doFinal(data.getBytes(StandardCharsets.UTF_8));
-return Base64.getEncoder().encodeToString(encryptedBytes);
+public String encryptData(String plaintext) throws Exception {
+        SecretKeySpec keySpec = createKeySpec();
+        Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec);
+
+        byte[] encryptedBytes = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
+        return Base64.getEncoder().encodeToString(encryptedBytes);
+}
 ```
 
 ## The vulnerability can be exploited by:
@@ -34,7 +37,7 @@ With the secret key obtained and since DES, which is considered completely broke
 ## The vulnerability can be fixed by:
 1. Switching to a good encryption algorithm, such as AES, instead of DES:
 ```java
-private static final String ALGORITHM = "AES/GCM/NoPadding";
+private static final String CIPHER_TRANSFORMATION = "AES/GCM/NoPadding";
 private static final int AES_KEY_SIZE = 256;
 ```
 2. Implementing proper key derivation instead of a hardcoded key:

@@ -21,8 +21,8 @@ private PublicKey getImportedOrCreatePublicKey() throws Exception {
 2. Nor in the method doing the importing of the public key here:
 ```java
 private static PublicKey importKey(Uri keyUri) throws Exception {
-    InputStream is = encryptionContext.getContentResolver().openInputStream(keyUri);
-    byte[] keyBytes = readAllBytes(is);
+    InputStream inputStream = encryptionContext.getContentResolver().openInputStream(keyUri);
+    byte[] keyBytes = readAllBytes(inputStream);
 
     // This is unsafe, as we do no signature/identity/integrity checks
     X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);

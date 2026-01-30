@@ -10,17 +10,19 @@ private static byte[] iv = {47, -98, 3, 120, 14, -55, 89, 6, -12, 33, 9, -44, 63
 ```
 2. Reusing said IV for every en- and decryption, as seen here:
 ```java
+private static final String CIPHER_TRANSFORMATION = "AES/CBC/PKCS5PADDING";
+
 // Method for encrypting a string using strong AES with CBC
-    public String encryptData(String plaintext) throws Exception {
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+public String encryptData(String plaintext) throws Exception {
+    // Generate ivSpec from iv
+    IvParameterSpec ivSpec = new IvParameterSpec(iv);
 
-        // Generate ivSpec from iv
-        IvParameterSpec ivSpec = new IvParameterSpec(iv);
-
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivSpec);
-        byte[] encryptedBytes = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
-        return Base64.encodeToString(encryptedBytes, Base64.DEFAULT);
-    }
+    Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
+    cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivSpec);
+    
+    byte[] encryptedBytes = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
+    return Base64.encodeToString(encryptedBytes, Base64.DEFAULT);
+}
 ```
 
 ## The vulnerability can be exploited by:

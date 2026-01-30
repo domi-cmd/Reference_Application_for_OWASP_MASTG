@@ -15,15 +15,16 @@ private static SecretKey secretKey;
 private static final String PASSWORD_FOR_KEY_DERIVATION = "password";
 
 
-public static void setupEncryption() throws Exception {
-    PBEKeySpec secretKeySpec = new PBEKeySpec(PASSWORD_FOR_KEY_DERIVATION.toCharArray(), SALT,
-            ENCRYPTION_ITERATIONS, KEY_LENGTH);
-    SecretKeyFactory secretKeyFactory = SecretKeyFactory
-            .getInstance("PBKDF2WithHmacSHA256");
-    byte[] keyBytes = secretKeyFactory.generateSecret(secretKeySpec).getEncoded();
+private static SecretKey generateKey() throws Exception {
+        PBEKeySpec secretKeySpec = new PBEKeySpec(PASSWORD_FOR_KEY_DERIVATION.toCharArray(), SALT,
+                ENCRYPTION_ITERATIONS, KEY_LENGTH);
 
-    // Generate the secret key
-    secretKey = new SecretKeySpec(keyBytes, "AES");
+        SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance(ALGORITHM_PBKDF2);
+
+        byte[] keyBytes = secretKeyFactory.generateSecret(secretKeySpec).getEncoded();
+        SecretKey secretKey = new SecretKeySpec(keyBytes, "AES");
+
+        return secretKey;
 }
 ```
 

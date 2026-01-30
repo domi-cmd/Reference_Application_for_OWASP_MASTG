@@ -9,11 +9,7 @@ Using MediaStore to store user credentials upon user registration in shared stor
 private static final String FILENAME = "maswe_0007_user_credentials.txt";
 private Uri fileUri;
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-
-    // Create a new MediaStore entry in shared documents directory to store user credentials in
+private void createMediaStoreEntry(){
     ContentValues values = new ContentValues();
     values.put(MediaStore.MediaColumns.DISPLAY_NAME, FILENAME);
     values.put(MediaStore.MediaColumns.MIME_TYPE, "text/plain");
@@ -26,7 +22,6 @@ protected void onCreate(Bundle savedInstanceState) {
 2. Upon user registration, this function writing user credentials to shared storage is called in the lines here:
 ```java
 private void writeToSharedStorage(String content) {
-    // Write content using OutputStream wrapped in BufferedWriter
     try (OutputStream out = getContentResolver().openOutputStream(fileUri)) {
         assert out != null;
         out.write(content.getBytes());

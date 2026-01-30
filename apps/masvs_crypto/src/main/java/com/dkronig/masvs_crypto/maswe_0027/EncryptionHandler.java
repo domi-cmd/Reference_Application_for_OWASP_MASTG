@@ -100,7 +100,6 @@ public class EncryptionHandler {
         Random javaRandom = new Random(System.currentTimeMillis());
         javaRandom.nextBytes(iv);
 
-
         String encodedIV = Base64.encodeToString(iv, Base64.DEFAULT);
         return encodedIV;
     }

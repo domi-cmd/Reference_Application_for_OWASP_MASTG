@@ -38,7 +38,7 @@ To view the current status and progress of the project, take a look at the [vuln
 - Serve as a **practical companion** to the MASTG  
 - Provide a **safe environment** for mobile penetration testing practice  
 - Support **academic teaching** and **industry training**  
-- Map implemented vulnerabilities to the **MASTG test catalog**  
+- Map implemented vulnerabilities to the **MASWE vulnerability catalog**  
   
 ---
 

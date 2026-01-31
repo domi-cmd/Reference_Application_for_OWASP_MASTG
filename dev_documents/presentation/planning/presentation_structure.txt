@@ -1,0 +1,109 @@
+STRUCTURE
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+| Start by describing a problem; you can be innovative here, some use stories, some pose questions and so on. It’s contextual and subjective, but |
+| bottom line you start with a problem!														  |
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+-> Concrete examples? General scary numbers can be used in next point below.
+
+
+
+
+------------------------------------------------------------------------------------
+| Tell why this problem is relevant and thus important/interesting to investigate. |
+------------------------------------------------------------------------------------
+
+WHY ANDROID SECURITY IS IMPORT (GENERAL)
+-> Show some general numbers from papers (mHealth, etc) to convey how important (and faulty atm) Android mobile security is
+-> Show that also iOS has issues?
+-> Maybe ask people how many here have an Android?
+-> Show paper about how the popular apps also have tons of security issues
+-> Show paper with interviews about how people do not have the education/knowledge for proper Android security measures
+
+WHY TESTING SAST AND DAST TOOLS IS IMPORTANT
+-> Discuss the variety and diverse and large landscape of vulnerability detection tools
+-> Maybe convey that comparing & benchmarking them is not a "solved issues", mention how there are many papers that benchmark them (hence important topic!!)
+-> Discuss how there needs to be a ground truth on which they can be evaluated and benchmarked
+-> Discuss how even if without documentation tools can be evaluated/benchmarked in relation to eachother (tool A > tool b), we still dont know how well they
+   could/should have performed (no ground truth, number of missed/unnoticed vulnerabilities not known)
+-> Discuss/shift focus to how OWASP reference apps are (when vulnerabilities documented) great for this purpose:
+-----> OWASP is industry standard, which maybe doesnt guarantee but helps the benchmarking results to have validity and mimic results if done on real 
+	world apps (because industry standard means that apps model themselves after OWASP and its practices -> connection to the real world)
+-> Conclude with how this makes my goal clear: to develop OWASP MASTG reference app(s)
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+| Tell how you solved the problem. For sure, some problems are complex, so we do not always expect full solutions; but even getting a better  |
+| understanding of the problem is a first stepping stone towards a possible solution.							      |
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+LITERATURE REVIEW
+-> Probably better to discuss before the existing apps, since then the flow is smoother afterwards.
+-> Maybe segway into it by saying "but this is still a BA thesis, and hence an academic work. So it is important to discuss the relevance of OWASP (MASTG)
+  to academcia?
+-> Discuss how the MASTG, MASWE & MASVS are used for evaluating real-world apps.
+-----> Stress the point that multiple papers mention the strong presence and issue of CRYPTO vulnerabilities.
+-----> Mention that STORAGE vulnerabilities and PLATFORM vulnerabilities are also often found.
+-> Definitely conclude and go to next topic by discussing how the MAS project is used for its reference apps, either in comparison to real-world apps and 
+  for tool testing purposes.
+
+
+GATHERING KNOWLEDGE & UNDERSTANDING THE PROBLEM
+-> Talk about how the goal is clear (develop MASTG reference app(s)), but the way to get there not:
+-----> What makes a MASTG reference app? What is the state of the art in MASTG reference apps design?
+-----> Talk about my classification process. Mention how missing source code and documentation of vulnerabilities was a challenge.
+-----> Discuss the results. Mention how most vulnerabilities see no coverage, while a small number of vulnerabilities is completely overrepresented.
+-----> Convey how this inequality does not only hold true for specific vulnerability types, but is also reflected in the categories themselves.
+-----> Conclude: Most vulnerabilities are of the same type (low MASWE-to-reference-apps ratio), and how the ten most frequent vuln. are 50% of the implem.
+-> Say how all vulnerbilities are relevant, and even if some are more frequent in real-world apps, all should have at least one reference implementation.
+-> Use the findings above as key goals for our apps: 
+-----> Lay out that our vulnerabilities will have extensive documentation and that the apps will be completely open source.
+-----> Focus on vulnerabilities that have not received reference implementations yet. Attempt to counteract the inbalance and bad ratio.
+-----> Focus on the category CRYPTO; mentioned by multiple papers as being a real-world problem spot, second-highest number of unimplemented vulnerabilities
+-----> Mention how both STORAGE and PLATFORM were also important by the papers
+-----> Conclude that I decided to start with STORAGE, because all vulnerabilities are Android native issues and good starting point to get comfy + low num(6)
+
+
+DESIGN OF MY APPS
+-> Touch on the templating and modular architecture (this is Software Engineering Group after all)
+-> Probably dont mention frameworks and specific technical specs/details?
+-> 
+
+
+RESULTS
+-> Go over number of implemented ones
+-> Go over increased coverage of categories
+-> Same for total increase, increase of ratio
+-> Compare ratio per app, with and without our apps
+
+
+PROBLEMS FACED
+-> Missing/constantly changing OWASP documentation (throw in fun fact that the number of vulnerabilities in placeholder/beta has changed since start of BA)
+-> Insufficient depth & complexity of vulnerabilities
+-> "Or even, that the vulnerabilities are not even close to resembling real-world ones!"
+-> Quote/Cite papers to counter these points
+
+
+
+-------------------------------------------------
+| You may want to give an outlook; what’s next? |
+-------------------------------------------------
+
+-> Discuss how natural next step is to either use only our apps or combine them with other apps to form a benchmark
+-> Ideas for this: Compare the results of the benchmarked tools with how it goes without our apps, with only our apps, or a combi vs. existing benchmarks
+-> What we did already: Run MobSF and Semgrep, both static and free, on our apps
+-----> Discuss the results of this
+-> Discuss how our apps could be expanded using our architecture etc.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+| Cross-cutting: Try to provide the necessary context to understand your problem and solution; anticipate the background knowledge of your audience. |
+| Not always easy, but think about it..														     |
+------------------------------------------------------------------------------------------------------------------------------------------------------
+-> Honestly not sure if it is even necessary for me to go into specific Android details
+
+
+

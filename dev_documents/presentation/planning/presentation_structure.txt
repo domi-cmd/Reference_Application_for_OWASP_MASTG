@@ -23,7 +23,7 @@ WHY ANDROID SECURITY IS IMPORT (GENERAL)
 
 WHY TESTING SAST AND DAST TOOLS IS IMPORTANT
 -> Discuss the variety and diverse and large landscape of vulnerability detection tools
--> Maybe convey that comparing & benchmarking them is not a "solved issues", mention how there are many papers that benchmark them (hence important topic!!)
+-> Maybe convey that comparing & benchmarking them are not "solved issues", mention how there are many papers that benchmark them (hence important topic!!)
 -> Discuss how there needs to be a ground truth on which they can be evaluated and benchmarked
 -> Discuss how even if without documentation tools can be evaluated/benchmarked in relation to eachother (tool A > tool b), we still dont know how well they
    could/should have performed (no ground truth, number of missed/unnoticed vulnerabilities not known)

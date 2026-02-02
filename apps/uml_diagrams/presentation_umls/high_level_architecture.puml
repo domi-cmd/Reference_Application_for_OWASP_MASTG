@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/class-diagram
+' title "High level view of system architecture"
+top to bottom direction
+skinparam classAttributeIconSize 0
+skinparam dpi 300
+skinparam linetype ortho
+
+package "apps" {
+    package common {
+        rectangle "layouts, templates and resources"
+    }
+
+    package masvs_storage {
+        rectangle storage_menu
+
+    }
+
+    package masvs_crypto {
+        rectangle crypto_menu
+
+
+    }
+
+    package masvs_platform {
+        rectangle platform_menu
+
+    }
+}
+
+
+' Inheritance
+common <|-- masvs_storage
+common <|-- masvs_crypto
+common <|-- masvs_platform
+
+
+
+@enduml

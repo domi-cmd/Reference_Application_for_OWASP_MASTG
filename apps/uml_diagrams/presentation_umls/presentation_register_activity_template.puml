@@ -1,0 +1,30 @@
+@startuml
+' title BaseRegisterActivity Template Flow
+skinparam dpi 300
+skinparam conditionStyle diamond
+
+start
+
+:getCredentialFileName() <<HOOK>>;
+note left: Get credential file name\nfor SharedPreferences
+
+:User clicks Register button;
+
+-> Validate & sanitize user input;
+
+:encryptPassword() <<HOOK>>;
+note left: Override for\ncustom encryption
+
+partition "Save to Storage" {
+  if (User exists?) then (no)
+    :Store user data;
+    :onRegister() <<HOOK>>;
+    note right: Override for\npost-registration\nbehavior
+    stop
+  else (yes)
+    :Show "User exists!";
+    stop
+  endif
+}
+
+@enduml

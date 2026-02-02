@@ -1,0 +1,53 @@
+@startuml
+'https://plantuml.com/class-diagram
+' title High level class diagram of app inheritance
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam dpi 300
+skinparam linetype poly
+
+skinparam class {
+    ArrowThickness 2
+}
+
+package "apps"{
+    package common {
+        together {
+            abstract class BaseActivityTemplate
+            abstract class BaseLoginActivity
+            abstract class BaseRegisterActivity
+        }
+    }
+
+
+    package masvs_storage{
+        class storage_menu
+
+        package maswe_0001{
+            together {
+                class MainActivity0001
+                class RegisterActivity
+                class LoginActivity
+                class ProfileActivity
+            }
+
+        }
+    }
+}
+
+
+' Usage
+
+' Inheritance
+BaseActivityTemplate <|-- BaseRegisterActivity
+BaseActivityTemplate <|-- BaseLoginActivity
+
+BaseRegisterActivity <|-- RegisterActivity
+BaseLoginActivity <|-- LoginActivity
+BaseActivityTemplate <|---- storage_menu
+BaseActivityTemplate <|--- MainActivity0001
+BaseActivityTemplate <|- ProfileActivity
+
+maswe_0001 <- storage_menu
+
+@enduml

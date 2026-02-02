@@ -1,0 +1,33 @@
+@startuml
+' title BaseLoginActivity Template Flow
+skinparam dpi 300
+skinparam conditionStyle diamond
+
+start
+
+:getCredentialFileName() <<HOOK>>;
+note left: Get credential file name\nfor SharedPreferences
+
+:User clicks Login button;
+
+-> Validate & sanitize user input;
+
+-> If email exists;
+
+:decryptPassword() <<HOOK>>;
+note left: Override for\ncustom decryption
+
+:verifyPassword() <<HOOK>>;
+
+note left: Override for\ncustom verification
+
+if (matches?) then(yes)
+:onLoginSuccess() <<ABSTRACT>>;
+note right: Navigate to\nnext activity
+stop
+else ()
+:onLoginFailure() <<HOOK>>;
+stop
+endif
+
+@enduml

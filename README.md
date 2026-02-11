@@ -14,7 +14,7 @@
   <strong>Year:</strong> 2025-2026
 </td>
 <td width="200">
-  <img src="https://github.com/user-attachments/assets/44497052-3b3a-490f-a941-10d75269ad17" width="200">
+  <img src="https://github.com/user-attachments/assets/77908bf8-98a2-455a-9853-721ba312a43b" width="200">
 </td>
 </tr>
 </table>

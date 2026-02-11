@@ -4,18 +4,20 @@
 [![Security](https://img.shields.io/badge/security-intentional--flaws-red.svg)]()
 [![Status](https://img.shields.io/badge/status-research--project-blue.svg)]()
 
----
-
-## Bachelor Thesis  
-**Title:** Development of a Reference Application for the OWASP Mobile Application Security Testing Guide (MASTG)  
-
-**Author:** Dominic Kronig 
-
-**Institution:** University of Bern, Software Engineering Group (SEG)
-
-**Year:** 2025-2026  
-
----
+<table>
+<tr>
+<td>
+  <h2>Bachelor Thesis</h2>
+  <strong>Title:</strong> Development of a Reference Application for the OWASP Mobile Application Security Testing Guide (MASTG)<br>
+  <strong>Author:</strong> Dominic Kronig<br>
+  <strong>Institution:</strong> University of Bern, Software Engineering Group (SEG)<br>
+  <strong>Year:</strong> 2025-2026
+</td>
+<td width="200">
+  <img src="https://github.com/user-attachments/assets/44497052-3b3a-490f-a941-10d75269ad17" width="200">
+</td>
+</tr>
+</table>
 
 ## Overview
 The **OWASP Mobile Application Security Testing Guide (MASTG)** is an industry-standard manual for assessing the security of mobile applications.  

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="menu_choose_vulnerability">Choose Vulnerability Category</string>
+    <string name="menu_choose_vulnerability">Choose Vulnerability Type</string>
     <string name="email_hint">Enter email</string>
     <string name="password_hint">Enter password</string>
     <string name="register_button_text">Register</string>
